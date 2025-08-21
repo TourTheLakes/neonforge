@@ -4,14 +4,15 @@
   <!-- ===== Document meta ===== -->
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Tour The Lakes</title>
-  <meta name="description" content="Guided tours and special events across the Lake District, with commentary, scenic stops and time to explore."/>
+  <title>Neon Forge Events</title>
+  <meta name="description" content="Neon Forge creates small-group events and multi-day adventures — shared stories, new friends, and big scenery."/>
 
-  <!-- ===== Fonts & Favicon ===== -->
+    <!-- ===== Fonts & Favicon ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='58' fill='%23C7C6C1' stroke='%2300E5FF' stroke-width='4'/%3E%3Ctext x='60' y='66' text-anchor='middle' fill='%2313191f' font-family='Outfit' font-size='22' font-weight='800'%3ETTL%3C/text%3E%3C/svg%3E"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='58' fill='%23C7C6C1' stroke='%2300E5FF' stroke-width='4'/%3E%3Ctext x='60' y='66' text-anchor='middle' fill='%2313191f' font-family='Outfit' font-size='22' font-weight='800'%3ENF%3C/text%3E%3C/svg%3E"/>
+
 
   <!-- ===== Site styles (tidy, labelled, no redundancy) ===== -->
   <style>
@@ -316,75 +317,95 @@
 </head>
   
 <body>
-  <!-- =========================
+
+  <script>
+  (function () {
+    const host = location.hostname;
+    const isNeon = host === 'neonforge.co.uk' || host === 'www.neonforge.co.uk';
+    if (isNeon && location.protocol !== 'https:') {
+      location.replace('https://' + host + location.pathname + location.search + location.hash);
+    }
+  })();
+</script>
+
+    <!-- =========================
        HERO (Top Banner)
        ========================= -->
   <header class="banner">
     <div class="wash"></div>
     <div class="smoke"></div>
     <div class="hero">
-      <div class="mark">Tour<br>The<br>Lakes</div>
+      <div class="mark">Neon<br>Forge</div>
       <div class="hero-copy">
-        <h1>It’s time spent together — let’s go</h1>
-        <p>Stories · Friends · Scenery</p>
+        <h1>Gather. Explore. Celebrate.</h1>
+        <p>Small-group events & multi-day adventures</p>
       </div>
     </div>
   </header>
+
 
   <!-- =========================
        NAVIGATION
        ========================= -->
   <nav>
     <a href="#about">About</a>
-    <a href="#tours">Tours</a>
-    <a href="#events">Events</a>
+    <a href="#tours">Experiences</a>
+    <a href="#events">Signature Events</a>
     <a href="#contact">Contact</a>
   </nav>
+
 
   <!-- =========================
        MAIN CONTENT
        ========================= -->
   <main>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section">
-      <h2>About</h2>
-      <p class="muted">
-        Tour The Lakes is about bringing people together. In the last few years a lot of us have felt more distant, and it can be harder to step out and connect. A day in the Lakes helps with that. It gives people a shared experience, a chance to meet new faces, and time with friends old and new.
-      </p>
-      <p class="muted">
-        This isn’t about putting on a show. It’s me doing what I love and opening the door for others to enjoy it too. Some days it’s a small group in a minibus, other days it’s a larger coach, and sometimes the route itself calls for something smaller. Whatever the size, the feeling stays the same — safe, relaxed and welcoming.
-      </p>
-      <p class="muted">
-        Not every trip is for everyone and that’s part of the charm. Some people prefer a quiet garden walk, others want a bit of adventure. What matters is that you choose the day that suits you and leave feeling lighter, rested and ready to come back.
-      </p>
-      <p class="muted">
-        The Lakes don’t promise perfect weather, but they do promise character. Even when the rain turns up, the stories, the company and the scenery make it worth it. That’s what Tour The Lakes is here for — time shared, moments remembered and reasons to return.
-      </p>
-    </section>
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section">
+    <h2>About</h2>
+    <p class="muted">
+      Neon Forge is about bringing people together around memorable places and easy company.
+      We design days and long weekends that feel relaxed, well-looked-after and a little bit
+      electric — the kind you talk about afterwards.
+    </p>
+    <p class="muted">
+      Sometimes that’s a small group in a minibus, sometimes a bigger crew with a few moving parts,
+      and sometimes it’s a base with time to roam. Whatever the format, the mood stays the same:
+      safe, friendly and welcoming.
+    </p>
+    <p class="muted">
+      Not every plan fits everyone — and that’s fine. Some prefer a quiet wander with coffee stops;
+      others want viewpoints and fresh air. Pick what suits you and we’ll handle the rest.
+    </p>
+    <p class="muted">
+      The weather has a mind of its own, but the stories, company and scenery make it worth it.
+      That’s Neon Forge — shared time, good laughs and reasons to come back.
+    </p>
+  </section>
+    
+  <!-- EXPERIENCES SECTION -->
+  <section id="tours" class="section">
+    <h2>Experiences & Multi-Day Tours</h2>
+    <div id="toursList" class="list">
+      <div class="lead">Loading experiences…</div>
+    </div>
+  </section>
 
-    <!-- TOURS SECTION -->
-    <section id="tours" class="section">
-      <h2>Upcoming Tours</h2>
-      <div id="toursList" class="list">
-        <div class="lead">Loading tours…</div>
-      </div>
-    </section>
+  <!-- EVENTS SECTION -->
+  <section id="events" class="section">
+    <h2>Signature Events</h2>
+    <div id="eventsList" class="list">
+      <div class="lead">Loading events…</div>
+    </div>
+  </section>
 
-    <!-- EVENTS SECTION -->
-    <section id="events" class="section">
-      <h2>Special Events</h2>
-      <div id="eventsList" class="list">
-        <div class="lead">Loading events…</div>
-      </div>
-    </section>
 
     <!-- CONTACT SECTION -->
     <section id="contact" class="section">
       <h2>Contact</h2>
       <p class="muted">
         The best way to reach us is by email at
-        <a href="mailto:info@tourthelakes.com">info@tourthelakes.com</a>.
+        <a href="mailto:info@neonforge.co.uk">info@tourthelakes.com</a>.
         We’re a small team out on the road a lot, so we don’t run a live phone line.
         Email is monitored throughout the day and we aim to reply within a couple of hours.
       </p>
@@ -410,7 +431,7 @@
     <div class="wash"></div>
     <div class="smoke"></div>
     <div class="inner">
-      © <span id="yr"></span> Tour The Lakes
+      © <span id="yr"></span> Neon Forge
       <button id="signinDot" title="Staff" aria-label="Staff sign-in">•</button>
       <small id="authMsg" aria-live="polite"></small>
     </div>
