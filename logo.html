@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Neon Forge — Logo</title>
-  <meta name="description" content="Neon Forge provisional logo, color system, and favicon. Borderless. Alive. Remembered."/>
+  <meta name="description" content="Neon Forge provisional logo. Borderless. Alive. Remembered."/>
   <meta name="theme-color" content="#0b0f14"/>
 
   <!-- TYPE -->
@@ -15,19 +15,15 @@
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='54%25'%3E%3Cstop offset='0' stop-color='%2306d7ff'/%3E%3Cstop offset='1' stop-color='%2306d7ff' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='1.6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='96' height='96' fill='%230b0f14'/%3E%3Ccircle cx='48' cy='48' r='18' fill='url(%23g)'/%3E%3Cpath d='M20 48 H76' stroke='%2306d7ff' stroke-width='2' stroke-linecap='round' filter='url(%23b)'/%3E%3Cpath d='M26 48 Q48 38 70 48' stroke='%23ffab2e' stroke-width='1.6' stroke-linecap='round' fill='none' filter='url(%23b)'/%3E%3C/svg%3E"/>
 
   <style>
-    /* =========================
-       NEON FORGE — palette & tokens
-       ========================= */
     :root{
-      --bg:        #0b0f14;
-      --bg-2:      #0f141b;
-      --ink:       #e9f1ff;
-      --muted:     #8ea1b5;
-      --neon:      #06d7ff;
-      --ghost:     #9bdfff;
+      --bg:    #0b0f14;
+      --ink:   #e9f1ff;   /* base letter fill */
+      --neon:  #06d7ff;   /* cyan glow */
+      --green: #1eea7a;   /* Forrest-green glow for F */
+      --ghost: #9bdfff;   /* cyan highlight */
+      --muted: #8ea1b5;
 
-      --s1: 6px; --s2: 10px; --s3: 16px; --s4: 24px;
-      --s5: 36px; --s6: 64px; --s7: 100px;
+      --s3: 16px; --s4: 24px; --s6: 64px;
       --container: 1100px;
     }
 
@@ -39,104 +35,118 @@
         radial-gradient(1200px 900px at 50% 20%, #101620 0%, #0b0f14 40%, #05070a 100%),
         radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
         radial-gradient(900px 600px at 20% 80%, rgba(255,171,46,.08), transparent 60%);
-      font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    /* soft film grain */
+    /* soft grain */
     body::after{
-      content:"";
-      position:fixed; inset:0; pointer-events:none;
-      background-image: url("data:image/svg+xml;utf8,\
+      content:""; position:fixed; inset:0; pointer-events:none;
+      background-image:url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' opacity='.06'>\
 <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.5'/></feComponentTransfer></filter>\
 <rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      background-size: 280px 280px;
-      mix-blend-mode: soft-light;
+      background-size:280px 280px; mix-blend-mode:soft-light;
     }
 
     .wrap{
       max-width:var(--container); margin:0 auto;
-      padding: var(--s6) var(--s3);
-      min-height:100dvh;
-      display:grid; place-items:center;
-    }
-
-    .logo-stage{
-      width:100%;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap: var(--s4);
-      text-align:center;
+      min-height:100dvh; display:grid; place-items:center;
+      padding:var(--s6) var(--s3);
     }
 
     /* WORDMARK */
     .brand{
-      font-weight:700;
-      font-size: clamp(40px, 10vw, 120px);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      line-height: 1;
-      color: var(--ink);
-      text-shadow:
-        0 0 0.5px rgba(255,255,255,.8),
-        0 0 8px color-mix(in srgb, var(--ghost) 45%, transparent),
-        0 0 22px color-mix(in srgb, var(--neon) 55%, transparent);
+      font-weight:700; line-height:1;
+      font-size:clamp(40px, 10vw, 120px);
+      letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink); white-space:nowrap;
     }
 
-    /* Pulse only on the first N */
-    .brand .flashN{
-      display:inline-block;
-      filter: drop-shadow(0 0 10px color-mix(in srgb, var(--neon) 60%, transparent));
+    .brand .ch{
+      display:inline-block; position:relative;
+      color:var(--ink);
+      /* base glow for all letters */
+      text-shadow:
+        0 0 1px rgba(255,255,255,.9),
+        0 0 10px color-mix(in srgb, var(--ghost) 50%, transparent),
+        0 0 26px color-mix(in srgb, var(--neon) 65%, transparent);
+      filter: drop-shadow(0 0 10px color-mix(in srgb, var(--neon) 50%, transparent));
     }
+
+    /* Forrest-green variant for 'F' */
+    .brand .green{
+      text-shadow:
+        0 0 1px rgba(255,255,255,.9),
+        0 0 10px color-mix(in srgb, var(--green) 70%, transparent),
+        0 0 28px color-mix(in srgb, var(--green) 85%, transparent);
+      filter: drop-shadow(0 0 14px color-mix(in srgb, var(--green) 80%, transparent));
+    }
+
+    /* Pulse like original N — now applied to all letters, staggered slightly */
     @media (prefers-reduced-motion: no-preference){
-      .brand .flashN{
-        animation: neonPulse 2.4s ease-in-out infinite;
-      }
-      @keyframes neonPulse{
+      .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
+      .brand .ch:nth-child(1){ animation-delay: 0s }         /* N */
+      .brand .ch:nth-child(2){ animation-delay: .05s }       /* E */
+      .brand .ch:nth-child(3){ animation-delay: .10s }       /* O */
+      .brand .ch:nth-child(4){ animation-delay: .15s }       /* N */
+      .brand .ch:nth-child(5){ animation-delay: .30s }       /* space */
+      .brand .ch:nth-child(6){ animation-delay: .35s }       /* F (green) */
+      .brand .ch:nth-child(7){ animation-delay: .40s }       /* O */
+      .brand .ch:nth-child(8){ animation-delay: .45s }       /* R */
+      .brand .ch:nth-child(9){ animation-delay: .50s }       /* G */
+      .brand .ch:nth-child(10){ animation-delay: .55s }      /* E */
+
+      @keyframes pulse{
         0%,100%{
+          opacity:.95;
           text-shadow:
-            0 0 1px rgba(255,255,255,.9),
-            0 0 10px color-mix(in srgb, var(--ghost) 50%, transparent),
-            0 0 26px color-mix(in srgb, var(--neon) 65%, transparent);
-          filter: drop-shadow(0 0 12px color-mix(in srgb, var(--neon) 55%, transparent));
+            0 0 1px rgba(255,255,255,.95),
+            0 0 10px currentColor,
+            0 0 26px currentColor;
+          filter: drop-shadow(0 0 12px currentColor);
         }
         50%{
+          opacity:1;
           text-shadow:
             0 0 2px rgba(255,255,255,1),
-            0 0 16px color-mix(in srgb, var(--ghost) 70%, transparent),
-            0 0 38px color-mix(in srgb, var(--neon) 85%, transparent));
-          filter: drop-shadow(0 0 20px color-mix(in srgb, var(--neon) 80%, transparent));
+            0 0 16px currentColor,
+            0 0 40px currentColor;
+          filter: drop-shadow(0 0 22px currentColor);
         }
       }
     }
 
     .sub{
-      margin-top: -6px;
-      font: 500 clamp(14px, 2.4vw, 18px)/1.35 "Space Grotesk", sans-serif;
+      margin-top:12px;
+      font:500 clamp(14px,2.4vw,18px)/1.35 "Space Grotesk",sans-serif;
       letter-spacing:.06em;
-      color: color-mix(in srgb, var(--muted) 86%, transparent);
+      color:color-mix(in srgb, var(--muted) 86%, transparent);
+      text-align:center;
     }
 
     .note{
-      position: fixed; left: 50%; transform: translateX(-50%);
-      bottom: 14px; width: 100%; text-align:center; pointer-events:none;
-      color: color-mix(in srgb, var(--muted) 70%, transparent);
-      font: 500 12px/1 "Space Grotesk", sans-serif;
-      letter-spacing:.06em;
-      opacity:.7;
+      position:fixed; left:50%; transform:translateX(-50%);
+      bottom:14px; width:100%; text-align:center; pointer-events:none;
+      color:color-mix(in srgb, var(--muted) 70%, transparent);
+      font:500 12px/1 "Space Grotesk",sans-serif; letter-spacing:.06em; opacity:.7;
     }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="logo-stage" aria-label="Neon Forge provisional logo">
-      <!-- Wordmark — only the first N pulses -->
-      <h1 class="brand"><span class="flashN">N</span>EON&nbsp;FORGE</h1>
+    <section aria-label="Neon Forge logo">
+      <!-- Per-letter spans so we can color/glow the F -->
+      <h1 class="brand" aria-label="Neon Forge">
+        <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
+        <span class="ch">&nbsp;</span>
+        <span class="ch green">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
+      </h1>
       <p class="sub">Borderless&nbsp;&middot;&nbsp;Alive&nbsp;&middot;&nbsp;Remembered</p>
     </section>
   </main>
 
-  <div class="note">Provisional — single-letter neon pulse; favicon & palette wired</div>
+  <div class="note">All letters glow; “F” glows green. Favicon & palette wired.</div>
 
   <script>
     // keep Android theme-color aligned with bg
