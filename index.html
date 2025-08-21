@@ -313,6 +313,30 @@
     }
     #signinDot:focus-visible{ outline:3px solid rgba(0,229,255,.35); outline-offset:2px }
     #authMsg{ display:block; min-height:16px; color:#2e3c42 }
+
+/* === Desktop sizing tweaks (laptops & up) === */
+@media (min-width: 1024px){
+  /* make the page a bit narrower so lines read nicer */
+  main{ max-width: 960px; }
+
+  /* limit card hero image height and drop the forced 16:9 */
+  .thumb{
+    width:100%;
+    max-height: 380px;   /* adjust 320–420px to taste */
+    aspect-ratio: auto;  /* stop 16:9 on wide screens */
+    border-radius:14px;
+    overflow:hidden;
+    background:#eef2f2;
+  }
+  .thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;     /* fill the box nicely */
+    object-position:center 40%; /* nudge framing if needed */
+    display:block;
+  }
+}
+
   </style>
 </head>
   
