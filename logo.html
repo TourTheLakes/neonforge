@@ -17,13 +17,14 @@
   <style>
     :root{
       --bg:    #0b0f14;
-      --ink:   #e9f1ff;   /* base letter fill */
-      --neon:  #06d7ff;   /* cyan glow */
-      --green: #1eea7a;   /* Forrest-green glow for F */
-      --ghost: #9bdfff;   /* cyan highlight */
+      --ink:   #e9f1ff;     /* final letter colour (whitish) */
+      --neon:  #06d7ff;     /* cyan */
+      --vio:   #6b7bff;     /* violet */
+      --green: #1eea7a;     /* Forrest green for F */
+      --ghost: #9bdfff;     /* cyan highlight */
       --muted: #8ea1b5;
 
-      --s3: 16px; --s4: 24px; --s6: 64px;
+      --s3: 16px; --s6: 64px;
       --container: 1100px;
     }
 
@@ -65,8 +66,7 @@
 
     .brand .ch{
       display:inline-block; position:relative;
-      color:var(--ink);
-      /* base glow for all letters */
+      color:var(--ink); /* final state uses currentColor in glow */
       text-shadow:
         0 0 1px rgba(255,255,255,.9),
         0 0 10px color-mix(in srgb, var(--ghost) 50%, transparent),
@@ -74,28 +74,43 @@
       filter: drop-shadow(0 0 10px color-mix(in srgb, var(--neon) 50%, transparent));
     }
 
-    /* Forrest-green variant for 'F' */
+    /* Forrest-green glow for the 'F' (final state) */
     .brand .green{
       text-shadow:
         0 0 1px rgba(255,255,255,.9),
         0 0 10px color-mix(in srgb, var(--green) 70%, transparent),
         0 0 28px color-mix(in srgb, var(--green) 85%, transparent);
       filter: drop-shadow(0 0 14px color-mix(in srgb, var(--green) 80%, transparent));
+      color: var(--green); /* use green as currentColor for its glow */
     }
 
-    /* Pulse like original N — now applied to all letters, staggered slightly */
+    /* ====== ANIMATION LOGIC ======
+       - Intro (slower colour sweep): class 'intro' on <html>
+       - Live (normal pulse): class 'glow' on <html>
+    */
     @media (prefers-reduced-motion: no-preference){
-      .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
-      .brand .ch:nth-child(1){ animation-delay: 0s }         /* N */
-      .brand .ch:nth-child(2){ animation-delay: .05s }       /* E */
-      .brand .ch:nth-child(3){ animation-delay: .10s }       /* O */
-      .brand .ch:nth-child(4){ animation-delay: .15s }       /* N */
-      .brand .ch:nth-child(5){ animation-delay: .30s }       /* space */
-      .brand .ch:nth-child(6){ animation-delay: .35s }       /* F (green) */
-      .brand .ch:nth-child(7){ animation-delay: .40s }       /* O */
-      .brand .ch:nth-child(8){ animation-delay: .45s }       /* R */
-      .brand .ch:nth-child(9){ animation-delay: .50s }       /* G */
-      .brand .ch:nth-child(10){ animation-delay: .55s }      /* E */
+      /* 60% slower than 2.4s ≈ 3.84s */
+      .intro .brand .ch{
+        /* all letters: violet -> cyan -> final (white) */
+        animation: hueIntro 3.84s ease forwards;
+      }
+      .intro .brand .green{
+        /* special track for F: violet -> cyan -> green */
+        animation: hueIntroGreen 3.84s ease forwards;
+      }
+
+      /* normal pulse with stagger once intro finishes */
+      .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
+      .glow .brand .ch:nth-child(1){ animation-delay: 0s }         /* N */
+      .glow .brand .ch:nth-child(2){ animation-delay: .05s }       /* E */
+      .glow .brand .ch:nth-child(3){ animation-delay: .10s }       /* O */
+      .glow .brand .ch:nth-child(4){ animation-delay: .15s }       /* N */
+      .glow .brand .ch:nth-child(5){ animation-delay: .30s }       /* space */
+      .glow .brand .ch:nth-child(6){ animation-delay: .35s }       /* F */
+      .glow .brand .ch:nth-child(7){ animation-delay: .40s }       /* O */
+      .glow .brand .ch:nth-child(8){ animation-delay: .45s }       /* R */
+      .glow .brand .ch:nth-child(9){ animation-delay: .50s }       /* G */
+      .glow .brand .ch:nth-child(10){ animation-delay: .55s }      /* E */
 
       @keyframes pulse{
         0%,100%{
@@ -114,6 +129,18 @@
             0 0 40px currentColor;
           filter: drop-shadow(0 0 22px currentColor);
         }
+      }
+
+      /* one-time colour sweep */
+      @keyframes hueIntro{
+        0%   { color: var(--vio); }
+        40%  { color: var(--neon); }
+        100% { color: var(--ink); }
+      }
+      @keyframes hueIntroGreen{
+        0%   { color: var(--vio); }
+        40%  { color: var(--neon); }
+        100% { color: var(--green); }
       }
     }
 
@@ -136,7 +163,6 @@
 <body>
   <main class="wrap">
     <section aria-label="Neon Forge logo">
-      <!-- Per-letter spans so we can color/glow the F -->
       <h1 class="brand" aria-label="Neon Forge">
         <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
         <span class="ch">&nbsp;</span>
@@ -146,12 +172,21 @@
     </section>
   </main>
 
-  <div class="note">All letters glow; “F” glows green. Favicon & palette wired.</div>
+  <div class="note">Intro runs once (slower colour sweep). Then steady glow; “F” stays green.</div>
 
   <script>
     // keep Android theme-color aligned with bg
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
+
+    // One-time: start with 'intro', then switch to 'glow'
+    const root = document.documentElement;
+    const INTRO_MS = 3840; // ~60% slower than 2.4s
+    root.classList.add('intro');
+    setTimeout(()=> {
+      root.classList.remove('intro');
+      root.classList.add('glow');
+    }, INTRO_MS + 120); // small buffer
   </script>
 </body>
 </html>
