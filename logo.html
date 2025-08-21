@@ -7,27 +7,24 @@
   <meta name="description" content="Neon Forge provisional logo, color system, and favicon. Borderless. Alive. Remembered."/>
   <meta name="theme-color" content="#0b0f14"/>
 
-  <!-- TYPE: sleek + cinematic -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Oxanium:wght@600&display=swap" rel="stylesheet"/>
+  <!-- TYPE -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
 
-  <!-- FAVICON (pure SVG spark, follows palette) -->
+  <!-- FAVICON (spark) -->
   <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='54%25'%3E%3Cstop offset='0' stop-color='%2306d7ff'/%3E%3Cstop offset='1' stop-color='%2306d7ff' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='1.6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='96' height='96' fill='%230b0f14'/%3E%3Ccircle cx='48' cy='48' r='18' fill='url(%23g)'/%3E%3Cpath d='M20 48 H76' stroke='%2306d7ff' stroke-width='2' stroke-linecap='round' filter='url(%23b)'/%3E%3Cpath d='M26 48 Q48 38 70 48' stroke='%23ffab2e' stroke-width='1.6' stroke-linecap='round' fill='none' filter='url(%23b)'/%3E%3C/svg%3E"/>
 
   <style>
     /* =========================
        NEON FORGE — palette & tokens
-       (borderless page, no boxes)
-    ========================== */
+       ========================= */
     :root{
-      --bg:        #0b0f14;   /* midnight */
-      --bg-2:      #0f141b;   /* deep indigo */
-      --ink:       #e9f1ff;   /* cool paper white */
-      --muted:     #8ea1b5;   /* slate */
-      --neon:      #06d7ff;   /* electric cyan */
-      --ember:     #ffab2e;   /* molten amber */
-      --violet:    #6b7bff;   /* soft spectral edge */
-      --ghost:     #9bdfff;   /* cyan highlight for glow mix */
+      --bg:        #0b0f14;
+      --bg-2:      #0f141b;
+      --ink:       #e9f1ff;
+      --muted:     #8ea1b5;
+      --neon:      #06d7ff;
+      --ghost:     #9bdfff;
 
       --s1: 6px; --s2: 10px; --s3: 16px; --s4: 24px;
       --s5: 36px; --s6: 64px; --s7: 100px;
@@ -46,7 +43,7 @@
       -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
 
-    /* subtle film grain */
+    /* soft film grain */
     body::after{
       content:"";
       position:fixed; inset:0; pointer-events:none;
@@ -65,7 +62,6 @@
       display:grid; place-items:center;
     }
 
-    /* ---------- LOGO BLOCK ---------- */
     .logo-stage{
       width:100%;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -73,15 +69,13 @@
       text-align:center;
     }
 
-    /* wordmark line (borderless, space to breathe) */
+    /* WORDMARK */
     .brand{
-      font-family: "Space Grotesk", sans-serif;
       font-weight:700;
       font-size: clamp(40px, 10vw, 120px);
       letter-spacing: .08em;
       text-transform: uppercase;
       line-height: 1;
-      /* neon ink: layered glow for memory/afterimage */
       color: var(--ink);
       text-shadow:
         0 0 0.5px rgba(255,255,255,.8),
@@ -89,7 +83,33 @@
         0 0 22px color-mix(in srgb, var(--neon) 55%, transparent);
     }
 
-    /* subline */
+    /* Pulse only on the first N */
+    .brand .flashN{
+      display:inline-block;
+      filter: drop-shadow(0 0 10px color-mix(in srgb, var(--neon) 60%, transparent));
+    }
+    @media (prefers-reduced-motion: no-preference){
+      .brand .flashN{
+        animation: neonPulse 2.4s ease-in-out infinite;
+      }
+      @keyframes neonPulse{
+        0%,100%{
+          text-shadow:
+            0 0 1px rgba(255,255,255,.9),
+            0 0 10px color-mix(in srgb, var(--ghost) 50%, transparent),
+            0 0 26px color-mix(in srgb, var(--neon) 65%, transparent);
+          filter: drop-shadow(0 0 12px color-mix(in srgb, var(--neon) 55%, transparent));
+        }
+        50%{
+          text-shadow:
+            0 0 2px rgba(255,255,255,1),
+            0 0 16px color-mix(in srgb, var(--ghost) 70%, transparent),
+            0 0 38px color-mix(in srgb, var(--neon) 85%, transparent));
+          filter: drop-shadow(0 0 20px color-mix(in srgb, var(--neon) 80%, transparent));
+        }
+      }
+    }
+
     .sub{
       margin-top: -6px;
       font: 500 clamp(14px, 2.4vw, 18px)/1.35 "Space Grotesk", sans-serif;
@@ -97,31 +117,6 @@
       color: color-mix(in srgb, var(--muted) 86%, transparent);
     }
 
-    /* palette chips (so we can carry this system forward) */
-    .chips{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
-      margin-top: var(--s4);
-      opacity:.95;
-    }
-    .chip{
-      --c: var(--ink);
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; border-radius:999px;
-      background: linear-gradient(180deg, color-mix(in srgb, var(--c) 16%, transparent), transparent);
-      border: 1px solid color-mix(in srgb, var(--c) 28%, transparent);
-      font: 500 12px/1 "Space Grotesk", sans-serif;
-      color: color-mix(in srgb, var(--c) 80%, #c8d8ff);
-    }
-    .dot{ width:14px; height:14px; border-radius:50%; box-shadow: 0 0 12px rgba(255,255,255,.06) inset, 0 0 8px currentColor }
-
-    /* ---------- SVG SPARK ---------- */
-    .spark{
-      width: min(92vw, 820px);
-      height: clamp(40px, 10vw, 80px);
-      display:block;
-    }
-
-    /* small footer note (can be removed later) */
     .note{
       position: fixed; left: 50%; transform: translateX(-50%);
       bottom: 14px; width: 100%; text-align:center; pointer-events:none;
@@ -130,73 +125,18 @@
       letter-spacing:.06em;
       opacity:.7;
     }
-
-    @media (prefers-reduced-motion: no-preference){
-      .pulse{ animation: pulse 2.8s ease-in-out infinite }
-      @keyframes pulse{
-        0%,100%{ opacity:.9; filter: drop-shadow(0 0 12px color-mix(in srgb, var(--neon) 40%, transparent)); }
-        50%{ opacity:1; filter: drop-shadow(0 0 22px color-mix(in srgb, var(--neon) 65%, transparent)); }
-      }
-    }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="logo-stage" aria-label="Neon Forge provisional logo">
-      <!-- WORDMARK -->
-      <h1 class="brand">NEON&nbsp;FORGE</h1>
-
-      <!-- SPARK / STREAK (SVG, layered glows; borderless motif) -->
-      <svg class="spark" viewBox="0 0 1200 140" role="img" aria-label="Neon spark">
-        <defs>
-          <filter id="blur1"><feGaussianBlur stdDeviation="2.5"/></filter>
-          <filter id="blur2"><feGaussianBlur stdDeviation="1.4"/></filter>
-          <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="var(--neon)"/>
-            <stop offset="1" stop-color="var(--ghost)"/>
-          </linearGradient>
-          <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="var(--ember)"/>
-            <stop offset="1" stop-color="color-mix(in srgb, var(--ember) 40%, white)"/>
-          </linearGradient>
-        </defs>
-
-        <!-- cyan trail (memory / afterimage) -->
-        <path d="M 40 90
-                 C 170 60, 320 112, 470 86
-                 S 780 40, 990 78
-                 S 1140 120, 1180 90"
-              fill="none" stroke="url(#cyan)" stroke-width="4" stroke-linecap="round"
-              filter="url(#blur1)" opacity=".65"/>
-
-        <!-- amber core (forge heat) -->
-        <path d="M 60 88
-                 C 190 62, 340 106, 490 84
-                 S 780 44, 1000 76
-                 S 1120 108, 1160 88"
-              fill="none" stroke="url(#amber)" stroke-width="2.2" stroke-linecap="round"
-              filter="url(#blur2)" class="pulse"/>
-
-        <!-- subtle flare -->
-        <circle cx="1000" cy="76" r="10" fill="var(--neon)" opacity=".18"/>
-        <circle cx="490" cy="84"  r="8"  fill="var(--ember)" opacity=".18"/>
-      </svg>
-
-      <!-- SUBLINE (can be removed later; here for vibe confirmation) -->
+      <!-- Wordmark — only the first N pulses -->
+      <h1 class="brand"><span class="flashN">N</span>EON&nbsp;FORGE</h1>
       <p class="sub">Borderless&nbsp;&middot;&nbsp;Alive&nbsp;&middot;&nbsp;Remembered</p>
-
-      <!-- PALETTE CHIPS -->
-      <div class="chips" role="list" aria-label="Neon Forge palette">
-        <div class="chip" style="--c: var(--neon)"><span class="dot" style="background:var(--neon)"></span>neon</div>
-        <div class="chip" style="--c: var(--ember)"><span class="dot" style="background:var(--ember)"></span>ember</div>
-        <div class="chip" style="--c: var(--violet)"><span class="dot" style="background:var(--violet)"></span>violet</div>
-        <div class="chip" style="--c: var(--ink)"><span class="dot" style="background:var(--ink)"></span>ink</div>
-        <div class="chip" style="--c: var(--muted)"><span class="dot" style="background:var(--muted)"></span>slate</div>
-      </div>
     </section>
   </main>
 
-  <div class="note">Provisional — color variables & favicon already wired</div>
+  <div class="note">Provisional — single-letter neon pulse; favicon & palette wired</div>
 
   <script>
     // keep Android theme-color aligned with bg
