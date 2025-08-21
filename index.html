@@ -8,7 +8,7 @@
   <meta name="description" content="Neon Forge creates small-group events and multi-day adventures — shared stories, new friends, and big scenery."/>
   <meta name="theme-color" content="#0b0f14"/>
 
-  <!-- ===== Fonts (Neon Forge identity) ===== -->
+  <!-- ===== Font (matches your logo page) ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 
   <!-- ===== Favicon (NF, cyan & purple, nudged ↓3px, ←1px) ===== -->
@@ -25,29 +25,22 @@
           %3C/g%3E
         %3C/svg%3E"/>
 
-  <!-- ===== Styles (Borderless / Neon) ===== -->
+  <!-- ===== Styles (kept layout; swapped brand to your exact logo) ===== -->
   <style>
     /* ---------------------------------------------
        1) THEME TOKENS — Neon Forge
        --------------------------------------------- */
     :root{
-      /* Core palette */
       --bg:#0b0f14;       /* midnight */
       --bg-2:#0f141b;     /* deep indigo */
       --ink:#e9f1ff;      /* cool paper white */
       --muted:#8ea1b5;    /* slate */
       --line:#17212b;     /* hairline on dark */
 
-      /* Accent neon */
-      --cyan:#06d7ff;     /* neon turquoise */
-      --vio:#9b5cff;      /* neon purple */
-      --ember:#ffab2e;    /* warm accent (sparingly) */
+      --cyan:#06d7ff;     /* turquoise */
+      --vio:#9b5cff;      /* violet */
+      --neon: var(--cyan);/* alias so logo CSS works as-is */
 
-      /* Radiant ambient */
-      --glow-a: radial-gradient(1000px 700px at 78% 8%, rgba(6,215,255,.14), transparent 60%);
-      --glow-b: radial-gradient(900px 600px at 12% 82%, rgba(155,92,255,.12), transparent 60%);
-
-      /* Rhythm */
       --s1:6px; --s2:10px; --s3:14px; --s4:18px;
       --s5:26px; --s6:38px; --s7:58px;
       --container: 1100px;
@@ -60,20 +53,29 @@
     html,body{ height:100% }
     body{
       margin:0;
-      background:
-        radial-gradient(1200px 900px at 50% 12%, #101620 0%, #0b0f14 48%, #070a0f 100%),
-        var(--glow-a), var(--glow-b);
       color:var(--ink);
+      background:
+        radial-gradient(1200px 900px at 50% 20%, #101620 0%, #0b0f14 40%, #05070a 100%),
+        radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
+        radial-gradient(900px 600px at 20% 80%, rgba(155,92,255,.10), transparent 60%);
       font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
       line-height:1.6;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
     }
+    /* soft grain */
+    body::after{
+      content:""; position:fixed; inset:0; pointer-events:none;
+      background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' opacity='.05'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.5'/></feComponentTransfer></filter>\
+<rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-size:280px 280px; mix-blend-mode:soft-light;
+    }
 
     a{ color:var(--cyan); text-decoration:none }
     a:hover{ text-decoration:underline }
     .muted{ color:var(--muted) }
-
     .wrap{ max-width:var(--container); margin:0 auto; padding:0 var(--s3) }
 
     @media (prefers-reduced-motion:reduce){
@@ -81,19 +83,10 @@
     }
 
     /* ---------------------------------------------
-       3) BANNERS (header & footer share ambience)
+       3) BANNERS
        --------------------------------------------- */
     .banner{ position:relative; isolation:isolate; overflow:hidden }
-    .banner::before{
-      content:""; position:absolute; inset:-15% -8%;
-      background: var(--glow-a), var(--glow-b);
-      filter: blur(8px);
-      opacity:.9; z-index:0;
-    }
 
-    /* ---------------------------------------------
-       4) HERO
-       --------------------------------------------- */
     header.banner{
       padding: clamp(54px, 8vw, 96px) 0 clamp(26px, 5vw, 42px);
       border-bottom:1px solid var(--line);
@@ -103,24 +96,86 @@
     .hero{
       position:relative; z-index:1;
       max-width:var(--container); margin:0 auto; padding:0 var(--s3);
-      display:grid; grid-template-columns:1fr; gap:var(--s3);
+      display:grid; grid-template-columns:1fr; gap:var(--s2);
       text-align:center;
     }
 
-    /* Wordmark (subtle animated glow, performance-safe) */
+    /* ====== YOUR EXACT LOGO STYLES ====== */
     .brand{
-      font-weight:700; text-transform:uppercase; letter-spacing:.08em;
-      font-size: clamp(40px, 9vw, 112px);
-      line-height: 1;
-      color: var(--ink);
-      text-shadow:
-        0 0 0.6px rgba(255,255,255,.9),
-        0 0 12px color-mix(in srgb, var(--cyan) 40%, transparent),
-        0 0 28px color-mix(in srgb, var(--vio) 35%, transparent);
+      font-weight:700; line-height:1;
+      font-size:clamp(40px, 10vw, 120px);
+      letter-spacing:.08em; text-transform:uppercase;
+      color:var(--ink); white-space:nowrap;
     }
-    .brand .ch{ display:inline-block }
-    .brand .f{ color:var(--cyan); text-shadow: 0 0 14px var(--cyan), 0 0 32px var(--cyan) }
-    .brand .r{ color:var(--vio);  text-shadow: 0 0 14px var(--vio),  0 0 32px var(--vio) }
+    .brand .ch{
+      display:inline-block; position:relative; color:var(--ink);
+      text-shadow:
+        0 0 12px color-mix(in srgb, #9bdfff 40%, transparent),
+        0 0 26px color-mix(in srgb, var(--neon) 55%, transparent);
+      filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
+    }
+    /* turquoise F */
+    .brand .turq{
+      color: var(--neon);
+      text-shadow:
+        0 0 14px color-mix(in srgb, var(--neon) 75%, transparent),
+        0 0 36px color-mix(in srgb, var(--neon) 90%, transparent);
+      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
+    }
+    /* violet R */
+    .brand .violet{
+      color: var(--vio);
+      text-shadow:
+        0 0 14px color-mix(in srgb, var(--vio) 75%, transparent),
+        0 0 36px color-mix(in srgb, var(--vio) 90%, transparent);
+      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--vio) 85%, transparent));
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .intro .brand .ch{     animation: hueIntro 3.84s ease forwards }
+      .intro .brand .turq{   animation: hueIntroTurq 3.84s ease forwards }
+      .intro .brand .violet{ animation: hueIntroVio  3.84s ease forwards }
+
+      .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
+      .glow .brand .ch:nth-child(1){ animation-delay:0s }
+      .glow .brand .ch:nth-child(2){ animation-delay:.05s }
+      .glow .brand .ch:nth-child(3){ animation-delay:.10s }
+      .glow .brand .ch:nth-child(4){ animation-delay:.15s }
+      .glow .brand .ch:nth-child(5){ animation-delay:.30s } /* space */
+      .glow .brand .ch:nth-child(6){ animation-delay:.35s } /* F */
+      .glow .brand .ch:nth-child(7){ animation-delay:.40s } /* O */
+      .glow .brand .ch:nth-child(8){ animation-delay:.45s } /* R */
+      .glow .brand .ch:nth-child(9){ animation-delay:.50s } /* G */
+      .glow .brand .ch:nth-child(10){ animation-delay:.55s } /* E */
+
+      @keyframes pulse{
+        0%,100%{
+          opacity:.95;
+          text-shadow: 0 0 8px currentColor, 0 0 26px currentColor;
+          filter: drop-shadow(0 0 14px currentColor);
+        }
+        50%{
+          opacity:1;
+          text-shadow: 0 0 12px currentColor, 0 0 40px currentColor;
+          filter: drop-shadow(0 0 22px currentColor);
+        }
+      }
+      @keyframes hueIntro{
+        0%   { color: var(--vio); }
+        40%  { color: var(--neon); }
+        100% { color: var(--ink); }
+      }
+      @keyframes hueIntroTurq{
+        0%   { color: var(--vio); }
+        40%  { color: var(--ink); }
+        100% { color: var(--neon); }
+      }
+      @keyframes hueIntroVio{
+        0%   { color: var(--neon); }
+        40%  { color: var(--ink); }
+        100% { color: var(--vio); }
+      }
+    }
 
     .hero-copy h1{
       margin: var(--s2) 0 2px;
@@ -134,7 +189,7 @@
     }
 
     /* ---------------------------------------------
-       5) TOP NAV (borderless glass)
+       5) NAV
        --------------------------------------------- */
     nav{
       position:sticky; top:0; z-index:10;
@@ -159,7 +214,7 @@
     nav a:hover::after{ transform: scaleX(1) }
 
     /* ---------------------------------------------
-       6) MAIN CONTENT
+       6) MAIN
        --------------------------------------------- */
     main{ max-width: 980px; margin: 28px auto; padding: 0 var(--s3) }
     .section{ margin: 28px 0 }
@@ -172,9 +227,6 @@
     }
     .lead{ color:var(--muted) }
 
-    /* ---------------------------------------------
-       7) LIST ITEMS (no boxes, just rhythm)
-       --------------------------------------------- */
     .list{ margin-top: 12px }
     .item{ padding:18px 0; position:relative; transition: transform .25s ease, opacity .25s ease }
     .item + .item{ border-top:1px solid var(--line) }
@@ -183,7 +235,6 @@
     .row{ display:grid; grid-template-columns:1fr; gap:0; align-items:center }
     .title{ font-weight:700; margin-block:14px }
 
-    /* Meta chips on dark */
     .meta{
       color: #a9bed1; font-size:14px;
       display:flex; flex-wrap:wrap; gap:4px 12px; align-items:baseline;
@@ -192,19 +243,16 @@
     @media (max-width:420px){ .meta{ font-size:13px } }
     .meta--prog{ margin-top:6px }
 
-    /* Status pills */
     .status{
-      display:inline-block; font-size:12px; padding:3px 10px;
+      display:inline-block; font-size:12px; padding:3px 10px; margin-left:8px;
       border-radius:999px; background: rgba(6,215,255,.12); color:#89eaff;
       border:1px solid rgba(6,215,255,.28);
-      margin-left:8px;
     }
     .status.closed{
       background: rgba(155,92,255,.10);
       color:#c9adff; border-color: rgba(155,92,255,.26);
     }
 
-    /* Thumbs (keep mechanics, style for dark) */
     .thumb{
       width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
       background:#0f141b; border:1px solid var(--line);
@@ -212,9 +260,6 @@
     }
     .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
 
-    /* ---------------------------------------------
-       8) DETAILS / SUMMARY
-       --------------------------------------------- */
     details{ margin-top:10px }
     summary{
       list-style:none; cursor:pointer; padding:8px 0;
@@ -226,9 +271,6 @@
     details[open] summary .chev{ transform:rotate(180deg) }
     .drawer{ padding:2px 0 6px }
 
-    /* ---------------------------------------------
-       9) CAPACITY BAR (cyan→violet) + marker
-       --------------------------------------------- */
     .bar{
       height:10px; background:#0f141b; border:1px solid var(--line);
       border-radius:999px; overflow:visible; margin:8px 0 10px; position:relative;
@@ -241,9 +283,6 @@
       border-radius:999px;
     }
 
-    /* ---------------------------------------------
-       10) FORM (dark fields, cyan focus)
-       --------------------------------------------- */
     .interest{ margin-top:10px }
     .interest label{ display:block; font-weight:700; margin:10px 0 6px }
     .interest input, .interest select{
@@ -274,9 +313,6 @@
     .okmsg{ color:#89eaff; margin-top:8px }
     .errmsg{ color:#ff8b6b; margin-top:8px }
 
-    /* ---------------------------------------------
-       11) FOOTER
-       --------------------------------------------- */
     footer.banner{
       padding: 34px 0 42px;
       border-top:1px solid var(--line);
@@ -294,9 +330,6 @@
     #signinDot:focus-visible{ outline:3px solid rgba(6,215,255,.35); outline-offset:2px }
     #authMsg{ display:block; min-height:16px; color:#a4b9cf }
 
-    /* ---------------------------------------------
-       12) Desktop tweaks
-       --------------------------------------------- */
     @media (min-width:1024px){
       main{ max-width: 940px }
       .thumb{ max-height: 380px; aspect-ratio:auto }
@@ -306,7 +339,6 @@
 </head>
 
 <body>
-
   <!-- Force HTTPS on production domain (mechanics unchanged) -->
   <script>
     (function () {
@@ -319,15 +351,14 @@
   </script>
 
   <!-- =========================
-       HERO
+       HERO (with your logo)
        ========================= -->
   <header class="banner">
     <div class="hero">
-      <!-- Wordmark with colored F & R (identity) -->
       <h1 class="brand" aria-label="Neon Forge">
         <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
         <span class="ch">&nbsp;</span>
-        <span class="ch f">F</span><span class="ch">O</span><span class="ch r">R</span><span class="ch">G</span><span class="ch">E</span>
+        <span class="ch turq">F</span><span class="ch">O</span><span class="ch violet">R</span><span class="ch">G</span><span class="ch">E</span>
       </h1>
       <div class="hero-copy">
         <h1>Gather. Explore. Celebrate.</h1>
@@ -337,7 +368,7 @@
   </header>
 
   <!-- =========================
-       NAVIGATION (IDs unchanged)
+       NAVIGATION
        ========================= -->
   <nav>
     <a href="#about">About</a>
@@ -425,12 +456,10 @@
        APP SCRIPT (mechanics unchanged)
        ========================= -->
   <script type="module">
-    /* ---------- Firebase imports ---------- */
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
     import { getFirestore, collection, getDocs, addDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
-    /* ---------- Firebase config (unchanged) ---------- */
     const firebaseConfig = {
       apiKey: "AIzaSyA9EdglxWetAv81qe1GnwlMf7HbPccjXxQ",
       authDomain: "tourthelakes-1e165.firebaseapp.com",
@@ -441,14 +470,12 @@
       measurementId: "G-W6JY1LZXTP"
     };
 
-    /* ---------- Init ---------- */
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db   = getFirestore(app);
     const provider = new GoogleAuthProvider();
     const ALLOWED = ["info@tourthelakes.com"];
 
-    /* ---------- Helpers ---------- */
     const $ = id => document.getElementById(id);
     const authMsg = $("authMsg");
     const fmtUK = s => s ? s.split("-").reverse().join("/") : "";
@@ -468,7 +495,6 @@
       return safe.split(/\n{2,}/).map(p => `<p>${p.replace(/\n/g,"<br>")}</p>`).join("");
     }
 
-    /* ---------- Item renderer (unchanged logic; styled by CSS) ---------- */
     function item(col, id, data){
       const closed = isClosed(data.date, data.cutoff) || !!data.closed;
       const el = document.createElement("div");
@@ -502,16 +528,11 @@
           <div class="drawer">
             <p><strong>About this ${col.slice(0,-1)}:</strong></p>
             ${renderDescription(data.description || "")}
-
             ${
               (data.paymentInfo && data.paymentInfo.trim())
-                ? `
-                  <p><strong>Payment info:</strong></p>
-                  ${renderDescription(data.paymentInfo)}
-                `
+                ? `<p><strong>Payment info:</strong></p>${renderDescription(data.paymentInfo)}`
                 : ``
             }
-
             <div id="prog-${col}-${id}" style="margin-top:10px"></div>
 
             <form class="interest" id="form-${col}-${id}">
@@ -558,7 +579,6 @@
         </details>
       `;
 
-      // Progress bar
       const details  = el.querySelector("details");
       const progHost = el.querySelector(`#prog-${col}-${id}`);
 
@@ -567,20 +587,18 @@
 
       async function updateProgress(){
         if (!cap) { progHost.innerHTML = ""; return; }
-
-        let booked = 0; let interested = 0;
+        let booked = 0, interested = 0;
         try{
           const snap = await getDocs(collection(db, col, id, "interests"));
           snap.forEach(s=>{
             const x = s.data();
             let seats = parseInt(x.seats, 10);
             if (isNaN(seats) || seats <= 0) seats = 1;
-            const status = (x.status || "pending").toLowerCase();
+            const st = (x.status || "pending").toLowerCase();
             interested += seats;
-            if (status === "confirmed") booked += seats;
+            if (st === "confirmed") booked += seats;
           });
         }catch(e){ console.error(e); }
-
         const pct    = cap ? Math.min(100, Math.round((booked / cap) * 100)) : 0;
         const minPct = cap ? Math.min(100, Math.round((min    / cap) * 100)) : 0;
 
@@ -606,7 +624,6 @@
       details.addEventListener("toggle", ()=>{ if (details.open) updateProgress(); });
       updateProgress();
 
-      // Seats sanitiser
       const seats = el.querySelector(`#s-${id}`);
       seats.addEventListener("input", () => {
         let v = seats.value.replace(/\D/g, "");
@@ -617,15 +634,13 @@
         seats.value = isNaN(n) ? "1" : String(Math.max(1, Math.min(99, n)));
       });
 
-      // Submit
       const form = el.querySelector(`#form-${col}-${id}`);
       const ok   = el.querySelector(`#ok-${col}-${id}`);
       const er   = el.querySelector(`#er-${col}-${id}`);
 
       form.addEventListener("submit", async (e)=>{
         if (!form.checkValidity()) { form.reportValidity(); e.preventDefault(); return; }
-        e.preventDefault();
-        ok.style.display="none"; er.style.display="none";
+        e.preventDefault(); ok.style.display="none"; er.style.display="none";
         const fd = new FormData(form);
         try{
           await addDoc(collection(db, col, id, "interests"), {
@@ -667,7 +682,6 @@
     renderList("tours","toursList");
     renderList("events","eventsList");
 
-    // Admin sign-in
     async function openIfAllowed(user){
       const email = user?.email ?? "";
       if (["info@tourthelakes.com"].includes(email)){
@@ -697,11 +711,20 @@
     getRedirectResult(auth).then(res => { if (res?.user) return openIfAllowed(res.user); }).catch(console.error);
   </script>
 
-  <!-- Footer year + theme-color sync -->
+  <!-- Footer year + theme-color sync + one-time intro->glow -->
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
+
+    // Match your logo page behaviour:
+    const root = document.documentElement;
+    const INTRO_MS = 3840;
+    root.classList.add('intro');
+    setTimeout(()=> {
+      root.classList.remove('intro');
+      root.classList.add('glow');
+    }, INTRO_MS + 120);
   </script>
 </body>
 </html>
