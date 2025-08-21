@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Neon Forge — Favicon Preview</title>
+  <meta name="theme-color" content="#0b0f14"/>
+
+  <!-- TYPE -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --bg: #0b0f14;     /* midnight backdrop */
+      --ink: #ffffff;    /* initial white */
+      --neon-purple: #9b5cff; /* glowing purple */
+    }
+
+    html,body{
+      margin:0; height:100%; display:grid; place-items:center;
+      background:var(--bg); color:var(--ink);
+    }
+
+    .favicon{
+      font-family:"Space Grotesk", sans-serif;
+      font-weight:700;
+      font-size: min(40vw, 220px);
+      line-height:1;
+      color:var(--ink);
+      text-shadow:
+        0 0 1px rgba(255,255,255,.9),
+        0 0 8px rgba(255,255,255,.6),
+        0 0 20px rgba(255,255,255,.5);
+      animation: glowTransit 4s ease forwards;
+    }
+
+    @keyframes glowTransit{
+      0%{
+        color:var(--ink);
+        text-shadow:
+          0 0 2px rgba(255,255,255,.9),
+          0 0 10px rgba(255,255,255,.7),
+          0 0 24px rgba(255,255,255,.5);
+      }
+      40%{
+        color:var(--ink);
+        text-shadow:
+          0 0 3px rgba(255,255,255,.9),
+          0 0 12px rgba(255,255,255,.7),
+          0 0 28px rgba(255,255,255,.5);
+      }
+      60%{
+        color:var(--neon-purple);
+        text-shadow:
+          0 0 3px rgba(155,92,255,.9),
+          0 0 14px rgba(155,92,255,.7),
+          0 0 34px rgba(155,92,255,.6);
+      }
+      100%{
+        color:var(--neon-purple);
+        text-shadow:
+          0 0 4px rgba(155,92,255,.95),
+          0 0 18px rgba(155,92,255,.75),
+          0 0 40px rgba(155,92,255,.7);
+      }
+    }
+
+    /* optional: tiny note for context */
+    .note{
+      position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+      font:500 12px/1 "Space Grotesk", sans-serif;
+      color:rgba(255,255,255,.4);
+      letter-spacing:.06em;
+    }
+  </style>
+</head>
+<body>
+  <div class="favicon">F</div>
+  <div class="note">Favicon preview — white ➝ purple glow</div>
+</body>
+</html>
