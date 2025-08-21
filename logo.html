@@ -10,21 +10,17 @@
   <!-- TYPE -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
 
-  <!-- FAVICON (spark) -->
-  <link rel="icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='54%25'%3E%3Cstop offset='0' stop-color='%2306d7ff'/%3E%3Cstop offset='1' stop-color='%2306d7ff' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='1.6'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='96' height='96' fill='%230b0f14'/%3E%3Ccircle cx='48' cy='48' r='18' fill='url(%23g)'/%3E%3Cpath d='M20 48 H76' stroke='%2306d7ff' stroke-width='2' stroke-linecap='round' filter='url(%23b)'/%3E%3Cpath d='M26 48 Q48 38 70 48' stroke='%23ffab2e' stroke-width='1.6' stroke-linecap='round' fill='none' filter='url(%23b)'/%3E%3C/svg%3E"/>
-
   <style>
     :root{
-      --bg:#0b0f14;
-      --ink:#e9f1ff;   /* final letter colour (white) */
-      --turq:#06d7ff;  /* turquoise (yours) */
-      --vio:#6b7bff;   /* purple (husband) */
-      --ghost:#9bdfff;
-      --muted:#8ea1b5;
+      --bg:    #0b0f14;
+      --ink:   #e9f1ff;     /* base letters */
+      --neon:  #06d7ff;     /* turquoise cyan */
+      --vio:   #6b7bff;     /* violet purple */
+      --ghost: #9bdfff;     /* cyan highlight */
+      --muted: #8ea1b5;
 
-      --s3:16px; --s6:64px;
-      --container:1100px;
+      --s3: 16px; --s6: 64px;
+      --container: 1100px;
     }
 
     *{ box-sizing:border-box }
@@ -34,7 +30,7 @@
       background:
         radial-gradient(1200px 900px at 50% 20%, #101620 0%, #0b0f14 40%, #05070a 100%),
         radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
-        radial-gradient(900px 600px at 20% 80%, rgba(107,123,255,.10), transparent 60%);
+        radial-gradient(900px 600px at 20% 80%, rgba(255,171,46,.08), transparent 60%);
       font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
@@ -69,78 +65,75 @@
       text-shadow:
         0 0 1px rgba(255,255,255,.9),
         0 0 10px color-mix(in srgb, var(--ghost) 50%, transparent),
-        0 0 26px color-mix(in srgb, var(--turq) 65%, transparent);
-      filter: drop-shadow(0 0 10px color-mix(in srgb, var(--turq) 50%, transparent));
+        0 0 26px color-mix(in srgb, var(--neon) 65%, transparent);
+      filter: drop-shadow(0 0 10px color-mix(in srgb, var(--neon) 50%, transparent));
     }
 
-    /* ====== ANIMATION LOGIC ======
-       Intro: slower colour sweep violet → turquoise → white
-       After: steady glow; 'F' cycles turquoise ↔ violet glow
-    */
+    /* special turquoise F */
+    .brand .f-tq{
+      text-shadow:
+        0 0 2px rgba(255,255,255,.9),
+        0 0 12px var(--neon),
+        0 0 30px var(--neon);
+      filter: drop-shadow(0 0 16px var(--neon));
+      color: var(--neon);
+    }
+
+    /* special purple R */
+    .brand .r-vio{
+      text-shadow:
+        0 0 2px rgba(255,255,255,.9),
+        0 0 12px var(--vio),
+        0 0 30px var(--vio);
+      filter: drop-shadow(0 0 16px var(--vio));
+      color: var(--vio);
+    }
+
+    /* ====== ANIMATION ====== */
     @media (prefers-reduced-motion: no-preference){
       .intro .brand .ch{ animation: hueIntro 3.84s ease forwards }
+      .intro .brand .f-tq{ animation: hueIntroF 3.84s ease forwards }
+      .intro .brand .r-vio{ animation: hueIntroR 3.84s ease forwards }
 
       .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
       .glow .brand .ch:nth-child(1){ animation-delay: 0s }
       .glow .brand .ch:nth-child(2){ animation-delay: .05s }
       .glow .brand .ch:nth-child(3){ animation-delay: .10s }
       .glow .brand .ch:nth-child(4){ animation-delay: .15s }
-      .glow .brand .ch:nth-child(5){ animation-delay: .30s } /* space */
+      .glow .brand .ch:nth-child(5){ animation-delay: .30s }
       .glow .brand .ch:nth-child(6){ animation-delay: .35s } /* F */
       .glow .brand .ch:nth-child(7){ animation-delay: .40s }
-      .glow .brand .ch:nth-child(8){ animation-delay: .45s }
+      .glow .brand .ch:nth-child(8){ animation-delay: .45s } /* R */
       .glow .brand .ch:nth-child(9){ animation-delay: .50s }
       .glow .brand .ch:nth-child(10){ animation-delay: .55s }
-
-      /* F: keep text white but cycle its glow hue (turquoise ↔ violet) */
-      .glow .brand .f{
-        animation:
-          pulse 2.4s ease-in-out infinite,
-          fHue 3.2s ease-in-out infinite;
-      }
 
       @keyframes pulse{
         0%,100%{
           opacity:.95;
-          text-shadow:
-            0 0 1px rgba(255,255,255,.95),
-            0 0 10px currentColor,
-            0 0 26px currentColor;
-          filter: drop-shadow(0 0 12px currentColor);
+          text-shadow:0 0 2px rgba(255,255,255,.95),0 0 12px currentColor,0 0 28px currentColor;
+          filter:drop-shadow(0 0 14px currentColor);
         }
         50%{
           opacity:1;
-          text-shadow:
-            0 0 2px rgba(255,255,255,1),
-            0 0 16px currentColor,
-            0 0 40px currentColor;
-          filter: drop-shadow(0 0 22px currentColor);
+          text-shadow:0 0 3px rgba(255,255,255,1),0 0 20px currentColor,0 0 44px currentColor;
+          filter:drop-shadow(0 0 24px currentColor);
         }
       }
 
-      /* one-time colour sweep (violet → turquoise → white) */
       @keyframes hueIntro{
-        0%   { color: var(--vio); }
-        40%  { color: var(--turq); }
-        100% { color: var(--ink); }
+        0%{color:var(--vio)}
+        40%{color:var(--neon)}
+        100%{color:var(--ink)}
       }
-
-      /* hue cycle for F's glow (keeps letter itself white) */
-      @keyframes fHue{
-        0%,100%{
-          text-shadow:
-            0 0 1px rgba(255,255,255,.9),
-            0 0 10px var(--turq),
-            0 0 28px var(--turq);
-          filter: drop-shadow(0 0 16px var(--turq));
-        }
-        50%{
-          text-shadow:
-            0 0 1px rgba(255,255,255,.9),
-            0 0 12px var(--vio),
-            0 0 32px var(--vio);
-          filter: drop-shadow(0 0 18px var(--vio));
-        }
+      @keyframes hueIntroF{
+        0%{color:var(--vio)}
+        40%{color:var(--ink)}
+        100%{color:var(--neon)}
+      }
+      @keyframes hueIntroR{
+        0%{color:var(--neon)}
+        40%{color:var(--ink)}
+        100%{color:var(--vio)}
       }
     }
 
@@ -166,27 +159,25 @@
       <h1 class="brand" aria-label="Neon Forge">
         <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
         <span class="ch">&nbsp;</span>
-        <span class="ch f">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
+        <span class="ch f-tq">F</span><span class="ch">O</span><span class="ch r-vio">R</span><span class="ch">G</span><span class="ch">E</span>
       </h1>
       <p class="sub">Borderless&nbsp;&middot;&nbsp;Alive&nbsp;&middot;&nbsp;Remembered</p>
     </section>
   </main>
 
-  <div class="note">Intro runs once (slower violet→turquoise sweep). Then steady glow; “F” flashes turquoise/violet while letters stay white.</div>
+  <div class="note">F glows turquoise, R glows purple, all else stay white after intro sweep</div>
 
   <script>
-    // keep Android theme-color aligned with bg
-    const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg')?.trim() || '#0b0f14';
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
 
-    // One-time: start with 'intro', then switch to 'glow'
     const root = document.documentElement;
-    const INTRO_MS = 3840; // ~60% slower than 2.4s
+    const INTRO_MS = 3840;
     root.classList.add('intro');
     setTimeout(()=>{
       root.classList.remove('intro');
       root.classList.add('glow');
-    }, INTRO_MS + 120);
+    }, INTRO_MS+120);
   </script>
 </body>
 </html>
