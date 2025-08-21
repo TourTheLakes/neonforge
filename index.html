@@ -1,227 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ===== Document meta ===== -->
+  <!-- ===== Meta ===== -->
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Neon Forge Events</title>
   <meta name="description" content="Neon Forge creates small-group events and multi-day adventures — shared stories, new friends, and big scenery."/>
+  <meta name="theme-color" content="#0b0f14"/>
 
-    <!-- ===== Fonts & Favicon ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='58' fill='%23C7C6C1' stroke='%2300E5FF' stroke-width='4'/%3E%3Ctext x='60' y='66' text-anchor='middle' fill='%2313191f' font-family='Outfit' font-size='22' font-weight='800'%3ENF%3C/text%3E%3C/svg%3E"/>
+  <!-- ===== Fonts (Neon Forge identity) ===== -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 
+  <!-- ===== Favicon (NF, cyan & purple, nudged ↓3px, ←1px) ===== -->
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E
+          %3Crect x='6' y='6' width='84' height='84' rx='22' fill='%230b0f14'/%3E
+          %3Cdefs%3E
+            %3Cfilter id='glowC' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E
+            %3Cfilter id='glowP' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E
+          %3C/defs%3E
+          %3Cg text-anchor='middle' font-family='Space Grotesk, sans-serif' font-weight='700' font-size='46'%3E
+            %3Ctext x='43%25' y='66%25' fill='%2306d7ff' filter='url(%23glowC)'%3EN%3C/text%3E
+            %3Ctext x='62%25' y='66%25' fill='%239b5cff' filter='url(%23glowP)'%3EF%3C/text%3E
+          %3C/g%3E
+        %3C/svg%3E"/>
 
-  <!-- ===== Site styles (tidy, labelled, no redundancy) ===== -->
+  <!-- ===== Styles (Borderless / Neon) ===== -->
   <style>
     /* ---------------------------------------------
-       1) THEME TOKENS
+       1) THEME TOKENS — Neon Forge
        --------------------------------------------- */
     :root{
-      /* Base palette */
-      --bg:#D9DDDC;
-      --ink:#13191f;
-      --muted:#4e565c;
+      /* Core palette */
+      --bg:#0b0f14;       /* midnight */
+      --bg-2:#0f141b;     /* deep indigo */
+      --ink:#e9f1ff;      /* cool paper white */
+      --muted:#8ea1b5;    /* slate */
+      --line:#17212b;     /* hairline on dark */
 
-      /* Accent (“festival neon”) */
-      --neonB:#00E5FF;
-      --neonG:#9DFF00;
-      --neonY:#FFD347;
+      /* Accent neon */
+      --cyan:#06d7ff;     /* neon turquoise */
+      --vio:#9b5cff;      /* neon purple */
+      --ember:#ffab2e;    /* warm accent (sparingly) */
 
-      /* Lines / borders */
-      --line:#cfd6d6;
+      /* Radiant ambient */
+      --glow-a: radial-gradient(1000px 700px at 78% 8%, rgba(6,215,255,.14), transparent 60%);
+      --glow-b: radial-gradient(900px 600px at 12% 82%, rgba(155,92,255,.12), transparent 60%);
 
-      /* Soft ambient background (hero/footer) */
-      --smoke:
-        radial-gradient(80% 90% at 20% 20%, rgba(0,229,255,.18), rgba(0,229,255,0) 60%),
-        radial-gradient(80% 90% at 80% 30%, rgba(157,255,0,.20), rgba(157,255,0,0) 60%),
-        radial-gradient(90% 100% at 60% 80%, rgba(255,211,71,.18), rgba(255,211,71,0) 60%);
+      /* Rhythm */
+      --s1:6px; --s2:10px; --s3:14px; --s4:18px;
+      --s5:26px; --s6:38px; --s7:58px;
+      --container: 1100px;
     }
 
     /* ---------------------------------------------
-       2) GLOBAL RESET / BASE
+       2) GLOBAL
        --------------------------------------------- */
     *{ box-sizing:border-box }
-    html,body{
+    html,body{ height:100% }
+    body{
       margin:0;
-      background:var(--bg);
+      background:
+        radial-gradient(1200px 900px at 50% 12%, #101620 0%, #0b0f14 48%, #070a0f 100%),
+        var(--glow-a), var(--glow-b);
       color:var(--ink);
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;
-      line-height:1.55;
+      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
     }
 
-    /* Typography */
-    h1,h2,h3{
-      font-family:Outfit,Inter,system-ui;
-      letter-spacing:.2px;
-      margin:0 0 .4rem;
-    }
+    a{ color:var(--cyan); text-decoration:none }
+    a:hover{ text-decoration:underline }
     .muted{ color:var(--muted) }
 
-    /* Links */
-    a{
-      color:#0f3d42;
-      text-decoration:none;
-      transition:opacity .25s ease, color .25s ease;
-    }
-    a:hover{ opacity:.85 }
+    .wrap{ max-width:var(--container); margin:0 auto; padding:0 var(--s3) }
 
-    /* Motion preferences */
     @media (prefers-reduced-motion:reduce){
       *{ animation:none!important; transition:none!important }
     }
 
     /* ---------------------------------------------
-       3) BANNERS (hero + footer share canvas)
+       3) BANNERS (header & footer share ambience)
        --------------------------------------------- */
-    .banner{ position:relative; overflow:hidden; color:var(--ink); isolation:isolate }
-    .banner .wash{ position:absolute; inset:0; background:linear-gradient(180deg,#EDEEEE 0%, #E6E9E9 100%); z-index:-1 }
-    .banner .smoke{ position:absolute; inset:-15% -8%; background:var(--smoke); opacity:.9; z-index:0; filter:blur(8px) }
+    .banner{ position:relative; isolation:isolate; overflow:hidden }
+    .banner::before{
+      content:""; position:absolute; inset:-15% -8%;
+      background: var(--glow-a), var(--glow-b);
+      filter: blur(8px);
+      opacity:.9; z-index:0;
+    }
 
     /* ---------------------------------------------
        4) HERO
        --------------------------------------------- */
     header.banner{
-      padding:80px 16px 56px;
+      padding: clamp(54px, 8vw, 96px) 0 clamp(26px, 5vw, 42px);
       border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+      backdrop-filter: saturate(140%) blur(4px);
     }
     .hero{
       position:relative; z-index:1;
-      max-width:1100px; margin:0 auto; padding-inline:6px;
-      display:grid; grid-template-columns:1fr; gap:24px;
+      max-width:var(--container); margin:0 auto; padding:0 var(--s3);
+      display:grid; grid-template-columns:1fr; gap:var(--s3);
       text-align:center;
     }
-    .mark{
-      justify-self:center;
-      width:clamp(120px,36vw,160px); height:clamp(120px,36vw,160px);
-      border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      background:radial-gradient(circle at 30% 30%, #ffffff, #f1f3f3 60%);
-      border:5px solid rgba(0,229,255,.85);
-      box-shadow:
-        0 0 0 8px rgba(0,229,255,.12),
-        0 16px 30px rgba(0,0,0,.08),
-        inset 0 12px 26px rgba(0,0,0,.05);
-      font-family:Outfit; font-weight:800;
-      font-size:clamp(16px,2vw,20px); line-height:1.15;
-      text-transform:uppercase; color:#0f1417;
+
+    /* Wordmark (subtle animated glow, performance-safe) */
+    .brand{
+      font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+      font-size: clamp(40px, 9vw, 112px);
+      line-height: 1;
+      color: var(--ink);
+      text-shadow:
+        0 0 0.6px rgba(255,255,255,.9),
+        0 0 12px color-mix(in srgb, var(--cyan) 40%, transparent),
+        0 0 28px color-mix(in srgb, var(--vio) 35%, transparent);
     }
+    .brand .ch{ display:inline-block }
+    .brand .f{ color:var(--cyan); text-shadow: 0 0 14px var(--cyan), 0 0 32px var(--cyan) }
+    .brand .r{ color:var(--vio);  text-shadow: 0 0 14px var(--vio),  0 0 32px var(--vio) }
+
     .hero-copy h1{
-      font-size:clamp(32px,6.8vw,54px);
-      letter-spacing:.3px;
-      text-wrap:balance;
+      margin: var(--s2) 0 2px;
+      font-weight:700; letter-spacing:.06em;
+      font-size: clamp(18px, 2.6vw, 22px);
+      color: color-mix(in srgb, var(--ink) 92%, transparent);
     }
     .hero-copy p{
-      margin:0;
-      color:var(--muted);
-      font-size:clamp(15px,2.6vw,18px);
-    }
-    @media (min-width:1200px){
-      .hero{ grid-template-columns:200px 1fr 200px; gap:30px; padding-inline:0 }
-      .mark{ justify-self:center }
-      .hero-copy{ grid-column:2 }
+      margin:0; color:var(--muted);
+      font-size: clamp(14px, 2.2vw, 16px);
     }
 
     /* ---------------------------------------------
-       5) NAV (plain text, sticky)
+       5) TOP NAV (borderless glass)
        --------------------------------------------- */
     nav{
       position:sticky; top:0; z-index:10;
       display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
-      background:rgba(255,255,255,.55);
-      backdrop-filter:saturate(180%) blur(8px);
+      background: rgba(10,14,20,.38);
+      backdrop-filter: saturate(160%) blur(8px);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
-      padding:10px 14px;
+      padding: 10px 14px;
     }
-    nav a{ font-weight:600; color:#0f3d42 }
-    nav a:hover{ color:#062b2f }
+    nav a{
+      color: var(--ink); font-weight:700; letter-spacing:.04em;
+      opacity:.92; position:relative; padding:4px 2px;
+    }
+    nav a::after{
+      content:""; position:absolute; left:0; right:0; bottom:0;
+      height:2px; background: linear-gradient(90deg, var(--cyan), var(--vio));
+      transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+      border-radius:2px;
+    }
+    nav a:hover{ opacity:1 }
+    nav a:hover::after{ transform: scaleX(1) }
 
     /* ---------------------------------------------
-       6) LAYOUT SECTIONS
+       6) MAIN CONTENT
        --------------------------------------------- */
-    main{ max-width:1100px; margin:28px auto; padding:0 14px }
-    .section{ margin:28px 0 }
-    .section h2{ font-weight:800 }
+    main{ max-width: 980px; margin: 28px auto; padding: 0 var(--s3) }
+    .section{ margin: 28px 0 }
+    .section h2{
+      margin:0 0 2px;
+      font-weight:700; letter-spacing:.06em;
+      font-size: clamp(20px, 3vw, 28px);
+      color: color-mix(in srgb, var(--ink) 94%, transparent);
+      text-shadow: 0 0 10px rgba(155,92,255,.15);
+    }
     .lead{ color:var(--muted) }
 
     /* ---------------------------------------------
-       7) LISTS (event/tour cards — no boxes)
+       7) LIST ITEMS (no boxes, just rhythm)
        --------------------------------------------- */
-    .list{ margin-top:10px }
-    .item{
-      padding:18px 0;
-      position:relative;
-      transition:transform .25s ease, opacity .25s ease;
-    }
+    .list{ margin-top: 12px }
+    .item{ padding:18px 0; position:relative; transition: transform .25s ease, opacity .25s ease }
     .item + .item{ border-top:1px solid var(--line) }
-    .item:hover{ transform:translateY(-1px) }
+    .item:hover{ transform: translateY(-1px) }
 
-    /* Row holds title + meta; spacing via title margins */
-    .row{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:0; /* margins drive spacing */
-      align-items:center;
+    .row{ display:grid; grid-template-columns:1fr; gap:0; align-items:center }
+    .title{ font-weight:700; margin-block:14px }
+
+    /* Meta chips on dark */
+    .meta{
+      color: #a9bed1; font-size:14px;
+      display:flex; flex-wrap:wrap; gap:4px 12px; align-items:baseline;
     }
-    .title{
-      font-weight:700;
-      margin-block:14px; /* equal space above/below for visual balance */
-    }
-/* Meta rows: make them wrap nicely on small screens */
-.meta{
-  color:#59666d;
-  font-size:14px;
-  display:flex; 
-  flex-wrap:wrap;  
-  gap:4px 12px; 
-  align-items:baseline;
-}
-.meta > span{
-  white-space:nowrap;
-}
-@media (max-width:420px){
-  .meta{ font-size:13px }
-}
-.meta--prog{ margin-top:6px }
+    .meta > span{ white-space:nowrap }
+    @media (max-width:420px){ .meta{ font-size:13px } }
+    .meta--prog{ margin-top:6px }
 
-
-    /* Status pill */
+    /* Status pills */
     .status{
-      display:inline-block;
-      font-size:12px;
-      padding:3px 10px;
-      border-radius:999px;
-      background:rgba(157,255,0,.16);
-      color:#2a4c00;
+      display:inline-block; font-size:12px; padding:3px 10px;
+      border-radius:999px; background: rgba(6,215,255,.12); color:#89eaff;
+      border:1px solid rgba(6,215,255,.28);
+      margin-left:8px;
     }
     .status.closed{
-      background:#fff3f0;
-      color:#9a2c16;
+      background: rgba(155,92,255,.10);
+      color:#c9adff; border-color: rgba(155,92,255,.26);
     }
 
-    /* Thumbnail */
+    /* Thumbs (keep mechanics, style for dark) */
     .thumb{
-      width:100%;
-      aspect-ratio:16/9;
-      border-radius:14px;
-      overflow:hidden;
-      background:#eef2f2;
+      width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+      background:#0f141b; border:1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
     }
     .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
 
     /* ---------------------------------------------
-       8) DETAILS / SUMMARY (drawer)
+       8) DETAILS / SUMMARY
        --------------------------------------------- */
     details{ margin-top:10px }
     summary{
-      list-style:none;
-      cursor:pointer;
-      padding:8px 0;
-      color:#20323a;
-      font-weight:600;
+      list-style:none; cursor:pointer; padding:8px 0;
+      color: var(--ink); font-weight:700; letter-spacing:.04em;
       display:flex; align-items:center; gap:8px;
     }
     summary::-webkit-details-marker{ display:none }
@@ -230,136 +227,108 @@
     .drawer{ padding:2px 0 6px }
 
     /* ---------------------------------------------
-       9) CAPACITY BAR
+       9) CAPACITY BAR (cyan→violet) + marker
        --------------------------------------------- */
     .bar{
-      height:10px;
-      background:#eef3f4;
-      border:1px solid #dfe6e7;
-      border-radius:999px;
-      overflow:visible;
-      margin:8px 0 10px;
-      position:relative;
+      height:10px; background:#0f141b; border:1px solid var(--line);
+      border-radius:999px; overflow:visible; margin:8px 0 10px; position:relative;
+      box-shadow: inset 0 0 10px rgba(6,215,255,.08), inset 0 0 12px rgba(155,92,255,.06);
     }
     .bar > span{
-      display:block;
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg,var(--neonB),var(--neonG));
+      display:block; height:100%; width:0%;
+      background: linear-gradient(90deg, var(--cyan), var(--vio));
+      box-shadow: 0 0 12px rgba(6,215,255,.35), 0 0 22px rgba(155,92,255,.25);
+      border-radius:999px;
     }
-    /* (Triangle marker for minimum is injected inline near the bar) */
 
     /* ---------------------------------------------
-       10) FORMS (interest form)
+       10) FORM (dark fields, cyan focus)
        --------------------------------------------- */
     .interest{ margin-top:10px }
-    .interest label{ display:block; font-weight:600; margin:10px 0 6px }
+    .interest label{ display:block; font-weight:700; margin:10px 0 6px }
     .interest input, .interest select{
-      width:100%;
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid #dfe6e7;
-      background:#ffffff;
-      color:#182329;
-      outline:none;
-      transition:box-shadow .25s ease, border-color .25s ease;
+      width:100%; padding:12px 12px; border-radius:12px;
+      border:1px solid var(--line); background:#0f1417; color:#dce7f7;
+      outline:none; transition: box-shadow .25s ease, border-color .25s ease;
     }
+    .interest input::placeholder{ color:#7f8ea0 }
     .interest input:focus, .interest select:focus{
-      border-color:#cfe8ea;
-      box-shadow:0 0 0 6px rgba(0,229,255,.12);
+      border-color: color-mix(in srgb, var(--cyan) 70%, transparent);
+      box-shadow: 0 0 0 6px rgba(6,215,255,.12);
     }
 
-    /* Two-column rows on wider screens */
     .row2{ display:grid; grid-template-columns:1fr; gap:10px }
     @media (min-width:600px){ .row2{ grid-template-columns:1fr 1fr } }
 
-    /* Number input spinners removed (cross-browser) */
     input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button{ -webkit-appearance:none !important; margin:0 }
-    input[type=number]{ -moz-appearance:textfield !important; -webkit-appearance:none !important; appearance:textfield !important }
+    input[type=number]::-webkit-outer-spin-button{ -webkit-appearance:none!important; margin:0 }
+    input[type=number]{ appearance:textfield!important }
 
-    /* Link-like submit */
     .send{
-      margin-top:10px;
-      background:none; border:0; padding:0; font:inherit; cursor:pointer;
-      color:#003e44; position:relative; display:inline-block;
+      margin-top:10px; background:none; border:0; padding:0; font:inherit; cursor:pointer;
+      color:var(--ink); position:relative; display:inline-block; font-weight:700;
     }
-    .send:hover{ opacity:.85 }
     .send .arrow{ display:inline-block; transform:translateX(0); transition:transform .25s ease }
     .send:hover .arrow{ transform:translateX(3px) }
 
-    /* Feedback messages */
-    .okmsg{ color:#215e00; margin-top:8px }
-    .errmsg{ color:#9a2c16; margin-top:8px }
+    .okmsg{ color:#89eaff; margin-top:8px }
+    .errmsg{ color:#ff8b6b; margin-top:8px }
 
     /* ---------------------------------------------
        11) FOOTER
        --------------------------------------------- */
     footer.banner{
-      padding:40px 16px;
+      padding: 34px 0 42px;
       border-top:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.00), rgba(255,255,255,.02));
+      backdrop-filter: saturate(140%) blur(4px);
     }
-    footer.banner .smoke{ inset:-20% -8% }
     footer .inner{
-      max-width:1100px; margin:0 auto; text-align:center; color:#2e3c42;
+      max-width:var(--container); margin:0 auto; text-align:center; color:#c8d6e6;
       position:relative; z-index:1;
     }
-
-    /* Staff sign-in dot */
     #signinDot{
-      background:none; border:0; color:#003e44; cursor:pointer;
-      font-size:16px; line-height:1;
-      padding:2px 8px; border-radius:999px; margin-left:6px;
+      background:none; border:0; color:var(--ink); cursor:pointer;
+      font-size:16px; line-height:1; padding:2px 8px; border-radius:999px; margin-left:6px;
     }
-    #signinDot:focus-visible{ outline:3px solid rgba(0,229,255,.35); outline-offset:2px }
-    #authMsg{ display:block; min-height:16px; color:#2e3c42 }
+    #signinDot:focus-visible{ outline:3px solid rgba(6,215,255,.35); outline-offset:2px }
+    #authMsg{ display:block; min-height:16px; color:#a4b9cf }
 
-/* === Desktop sizing tweaks (laptops & up) === */
-@media (min-width: 1024px){
-  /* make the page a bit narrower so lines read nicer */
-  main{ max-width: 960px; }
-
-  /* limit card hero image height and drop the forced 16:9 */
-  .thumb{
-    width:100%;
-    max-height: 380px;   /* adjust 320–420px to taste */
-    aspect-ratio: auto;  /* stop 16:9 on wide screens */
-    border-radius:14px;
-    overflow:hidden;
-    background:#eef2f2;
-  }
-  .thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;     /* fill the box nicely */
-    object-position:center 40%; /* nudge framing if needed */
-    display:block;
-  }
-}
-
+    /* ---------------------------------------------
+       12) Desktop tweaks
+       --------------------------------------------- */
+    @media (min-width:1024px){
+      main{ max-width: 940px }
+      .thumb{ max-height: 380px; aspect-ratio:auto }
+      .thumb img{ object-fit:cover; object-position: center 40% }
+    }
   </style>
 </head>
-  
+
 <body>
 
+  <!-- Force HTTPS on production domain (mechanics unchanged) -->
   <script>
-  (function () {
-    const host = location.hostname;
-    const isNeon = host === 'neonforge.co.uk' || host === 'www.neonforge.co.uk';
-    if (isNeon && location.protocol !== 'https:') {
-      location.replace('https://' + host + location.pathname + location.search + location.hash);
-    }
-  })();
-</script>
+    (function () {
+      const host = location.hostname;
+      const isNeon = host === 'neonforge.co.uk' || host === 'www.neonforge.co.uk';
+      if (isNeon && location.protocol !== 'https:') {
+        location.replace('https://' + host + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
 
-    <!-- =========================
-       HERO (Top Banner)
+  <!-- =========================
+       HERO
        ========================= -->
   <header class="banner">
-    <div class="wash"></div>
-    <div class="smoke"></div>
     <div class="hero">
-      <div class="mark">Neon<br>Forge</div>
+      <!-- Wordmark with colored F & R (identity) -->
+      <h1 class="brand" aria-label="Neon Forge">
+        <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
+        <span class="ch">&nbsp;</span>
+        <span class="ch f">F</span><span class="ch">O</span><span class="ch r">R</span><span class="ch">G</span><span class="ch">E</span>
+      </h1>
       <div class="hero-copy">
         <h1>Gather. Explore. Celebrate.</h1>
         <p>Small-group events & multi-day adventures</p>
@@ -367,9 +336,8 @@
     </div>
   </header>
 
-
   <!-- =========================
-       NAVIGATION
+       NAVIGATION (IDs unchanged)
        ========================= -->
   <nav>
     <a href="#about">About</a>
@@ -378,53 +346,48 @@
     <a href="#contact">Contact</a>
   </nav>
 
-
   <!-- =========================
-       MAIN CONTENT
+       MAIN
        ========================= -->
   <main>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <p class="muted">
+        Neon Forge is about bringing people together around memorable places and easy company.
+        We design days and long weekends that feel relaxed, well-looked-after and a little electric — the kind you talk about afterwards.
+      </p>
+      <p class="muted">
+        Sometimes that’s a small group in a minibus, sometimes a bigger crew with a few moving parts, and sometimes it’s a base with time to roam.
+        Whatever the format, the mood stays the same: safe, friendly and welcoming.
+      </p>
+      <p class="muted">
+        Not every plan fits everyone — and that’s fine. Some prefer a quiet wander with coffee stops; others want viewpoints and fresh air.
+        Pick what suits you and we’ll handle the rest.
+      </p>
+      <p class="muted">
+        The weather has a mind of its own, but the stories, company and scenery make it worth it.
+        That’s Neon Forge — shared time, good laughs and reasons to come back.
+      </p>
+    </section>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="section">
-    <h2>About</h2>
-    <p class="muted">
-      Neon Forge is about bringing people together around memorable places and easy company.
-      We design days and long weekends that feel relaxed, well-looked-after and a little bit
-      electric — the kind you talk about afterwards.
-    </p>
-    <p class="muted">
-      Sometimes that’s a small group in a minibus, sometimes a bigger crew with a few moving parts,
-      and sometimes it’s a base with time to roam. Whatever the format, the mood stays the same:
-      safe, friendly and welcoming.
-    </p>
-    <p class="muted">
-      Not every plan fits everyone — and that’s fine. Some prefer a quiet wander with coffee stops;
-      others want viewpoints and fresh air. Pick what suits you and we’ll handle the rest.
-    </p>
-    <p class="muted">
-      The weather has a mind of its own, but the stories, company and scenery make it worth it.
-      That’s Neon Forge — shared time, good laughs and reasons to come back.
-    </p>
-  </section>
-    
-  <!-- EXPERIENCES SECTION -->
-  <section id="tours" class="section">
-    <h2>Experiences & Multi-Day Tours</h2>
-    <div id="toursList" class="list">
-      <div class="lead">Loading experiences…</div>
-    </div>
-  </section>
+    <!-- EXPERIENCES -->
+    <section id="tours" class="section">
+      <h2>Experiences & Multi-Day Tours</h2>
+      <div id="toursList" class="list">
+        <div class="lead">Loading experiences…</div>
+      </div>
+    </section>
 
-  <!-- EVENTS SECTION -->
-  <section id="events" class="section">
-    <h2>Signature Events</h2>
-    <div id="eventsList" class="list">
-      <div class="lead">Loading events…</div>
-    </div>
-  </section>
+    <!-- EVENTS -->
+    <section id="events" class="section">
+      <h2>Signature Events</h2>
+      <div id="eventsList" class="list">
+        <div class="lead">Loading events…</div>
+      </div>
+    </section>
 
-
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT -->
     <section id="contact" class="section">
       <h2>Contact</h2>
       <p class="muted">
@@ -445,15 +408,12 @@
         Ask anything — dates, accessibility, what to bring — and we’ll help you pick the day that suits you.
       </p>
     </section>
-
   </main>
 
   <!-- =========================
        FOOTER
        ========================= -->
   <footer class="banner">
-    <div class="wash"></div>
-    <div class="smoke"></div>
     <div class="inner">
       © <span id="yr"></span> Neon Forge
       <button id="signinDot" title="Staff" aria-label="Staff sign-in">•</button>
@@ -462,349 +422,286 @@
   </footer>
 
   <!-- =========================
-       APP SCRIPT (Firebase + Rendering)
+       APP SCRIPT (mechanics unchanged)
        ========================= -->
- <script type="module">
-  /* Firebase imports */
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
-  import { getFirestore, collection, getDocs, addDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+  <script type="module">
+    /* ---------- Firebase imports ---------- */
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+    import { getFirestore, collection, getDocs, addDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
-  /* Firebase config */
-  const firebaseConfig = {
-    apiKey: "AIzaSyA9EdglxWetAv81qe1GnwlMf7HbPccjXxQ",
-    authDomain: "tourthelakes-1e165.firebaseapp.com",
-    projectId: "tourthelakes-1e165",
-    storageBucket: "tourthelakes-1e165.firebasestorage.app",
-    messagingSenderId: "470758171431",
-    appId: "1:470758171431:web:f06dd39b0f15b63b2bff02",
-    measurementId: "G-W6JY1LZXTP"
-  };
+    /* ---------- Firebase config (unchanged) ---------- */
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9EdglxWetAv81qe1GnwlMf7HbPccjXxQ",
+      authDomain: "tourthelakes-1e165.firebaseapp.com",
+      projectId: "tourthelakes-1e165",
+      storageBucket: "tourthelakes-1e165.firebasestorage.app",
+      messagingSenderId: "470758171431",
+      appId: "1:470758171431:web:f06dd39b0f15b63b2bff02",
+      measurementId: "G-W6JY1LZXTP"
+    };
 
-  /* Initialise Firebase */
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db   = getFirestore(app);
-  const provider = new GoogleAuthProvider();
-  const ALLOWED = ["info@tourthelakes.com"];
+    /* ---------- Init ---------- */
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+    const ALLOWED = ["info@tourthelakes.com"];
 
-  /* Helper shortcuts */
-  const $ = id => document.getElementById(id);
-  const authMsg = $("authMsg");
-
-  // ----------------------------
-  // Utility helpers
-  // ----------------------------
-  const fmtUK = s => s ? s.split("-").reverse().join("/") : "";
-  const isClosed = (d,c)=>{ const n=new Date(); return n>new Date(c)||n>new Date(d); };
-  const daysUntil = s => {
-    if(!s) return null;
-    const n=new Date(); n.setHours(0,0,0,0);
-    const d=new Date(s); d.setHours(0,0,0,0);
-    return Math.round((d-n)/86400000);
-  };
-  function escapeHtml(s){
-    return (s||"").replace(/[&<>"']/g,c=>({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[c]));
-  }
-  function renderDescription(s=""){
-    const safe = escapeHtml(s.trim());
-    if (!safe) return "<p></p>";
-    return safe
-      .split(/\n{2,}/)              // blank line = new paragraph
-      .map(p => `<p>${p.replace(/\n/g,"<br>")}</p>`)
-      .join("");
-  }
-
-// ----------------------------
-// Item renderer  (DROP-IN REPLACEMENT)
-// ----------------------------
-function item(col, id, data){
-  const closed = isClosed(data.date, data.cutoff) || !!data.closed;
-  const el = document.createElement("div");
-  el.className = "item";
-
-  // days remaining (for open status only)
-  const d = daysUntil(data.cutoff);
-  const extra = (!closed && d != null && d > 0)
-    ? ` · ${d} day${d === 1 ? "" : "s"} to cutoff`
-    : "";
-
-  // status pill
-  const status = closed
-    ? `<span class="status closed">Closed</span>`
-    : `<span class="status">Open${extra}</span>`;
-
-  // optional image
-  const img = data.imageUrl
-    ? `<div class="thumb"><img src="${data.imageUrl}" alt=""></div>`
-    : ``;
-
-  // build card
-  el.innerHTML = `
-    ${img}
-    <div class="row">
-      <div class="title">${escapeHtml(data.title || "")} ${status}</div>
-
-      <!-- FLEX meta chips (wrap nicely on small screens) -->
-      <div class="meta">
-        <span><strong>Date:</strong>&nbsp;${fmtUK(data.date)}</span>
-        &nbsp; &middot; &nbsp;
-        <span><strong>Cutoff:</strong>&nbsp;${fmtUK(data.cutoff)}</span>
-        &nbsp; &middot; &nbsp;
-        <span><strong>Price:</strong>&nbsp;£${Number(data.price||0).toFixed(0)}</span>
-      </div>
-    </div>
-
-    <details>
-      <summary><span class="chev">▾</span> Details</summary>
-      <div class="drawer">
-        <p><strong>About this ${col.slice(0,-1)}:</strong></p>
-        ${renderDescription(data.description || "")}
-
-        ${
-          (data.paymentInfo && data.paymentInfo.trim())
-            ? `
-              <p><strong>Payment info:</strong></p>
-              ${renderDescription(data.paymentInfo)}
-            `
-            : ``
-        }
-
-        <!-- progress bar host -->
-        <div id="prog-${col}-${id}" style="margin-top:10px"></div>
-
-        <!-- Interest form -->
-        <form class="interest" id="form-${col}-${id}">
-          <div class="row2">
-            <div>
-              <label for="n-${id}">Name</label>
-              <input id="n-${id}" name="name" type="text" required maxlength="100"
-                     autocomplete="name" placeholder="Full name"
-                     title="Please enter your full name"/>
-            </div>
-            <div>
-              <label for="e-${id}">Email *</label>
-              <input id="e-${id}" name="email" type="email" required
-                     autocomplete="email" placeholder="name@example.com"
-                     title="Please enter a valid email address (e.g. name@example.com)"/>
-            </div>
-          </div>
-
-          <div class="row2">
-            <div>
-              <label for="p-${id}">Phone</label>
-              <input id="p-${id}" name="phone" type="tel" placeholder="+44 1234 567890"
-                     pattern="^\\+?[0-9\\s\\-]{7,20}$" inputmode="tel" autocomplete="tel"/>
-            </div>
-            <div>
-              <label for="s-${id}">Places</label>
-              <input id="s-${id}" name="seats" type="number" inputmode="numeric" pattern="[0-9]*"
-                     min="1" max="99" step="1" required value="1"/>
-            </div>
-          </div>
-
-          <button type="submit" class="send" ${closed ? "disabled" : ""}>
-            Send <span class="arrow">→</span>
-          </button>
-
-          <div class="okmsg" id="ok-${col}-${id}" style="display:none">
-            Thanks — we’ve got your interest. We’ll be in touch.
-          </div>
-          <div class="errmsg" id="er-${col}-${id}" style="display:none">
-            Could not send. Please try again.
-          </div>
-        </form>
-      </div>
-    </details>
-  `;
-
-  // === Progress bar (confirmed seats only) ===
-  const details  = el.querySelector("details");
-  const progHost = el.querySelector(`#prog-${col}-${id}`);
-
-  const cap = Number(data.capacity || 0);
-  const min = Number(data.minNeeded ?? 20);
-
-  async function updateProgress(){
-    if (!cap) {
-      progHost.innerHTML = "";
-      console.log(`[progress] ${col}/${id}: no capacity set; skipping UI`);
-      return;
+    /* ---------- Helpers ---------- */
+    const $ = id => document.getElementById(id);
+    const authMsg = $("authMsg");
+    const fmtUK = s => s ? s.split("-").reverse().join("/") : "";
+    const isClosed = (d,c)=>{ const n=new Date(); return n>new Date(c)||n>new Date(d); };
+    const daysUntil = s => {
+      if(!s) return null;
+      const n=new Date(); n.setHours(0,0,0,0);
+      const d=new Date(s); d.setHours(0,0,0,0);
+      return Math.round((d-n)/86400000);
+    };
+    function escapeHtml(s){
+      return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    }
+    function renderDescription(s=""){
+      const safe = escapeHtml(s.trim());
+      if (!safe) return "<p></p>";
+      return safe.split(/\n{2,}/).map(p => `<p>${p.replace(/\n/g,"<br>")}</p>`).join("");
     }
 
-    let booked = 0;      // confirmed only
-    let interested = 0;  // all (pending + confirmed)
+    /* ---------- Item renderer (unchanged logic; styled by CSS) ---------- */
+    function item(col, id, data){
+      const closed = isClosed(data.date, data.cutoff) || !!data.closed;
+      const el = document.createElement("div");
+      el.className = "item";
 
-    try{
-      const qRef = collection(db, col, id, "interests");
-      const snap = await getDocs(qRef);
-      console.log(`[progress] reading ${col}/${id}/interests — docs:`, snap.size);
+      const d = daysUntil(data.cutoff);
+      const extra = (!closed && d != null && d > 0) ? ` · ${d} day${d === 1 ? "" : "s"} to cutoff` : "";
+      const status = closed
+        ? `<span class="status closed">Closed</span>`
+        : `<span class="status">Open${extra}</span>`;
 
-      snap.forEach(s=>{
-        const x = s.data();
-        let seats = parseInt(x.seats, 10);
-        if (isNaN(seats) || seats <= 0) seats = 1;
+      const img = data.imageUrl
+        ? `<div class="thumb"><img src="${data.imageUrl}" alt=""></div>`
+        : ``;
 
-        const status = (x.status || "pending").toLowerCase();
-        interested += seats;
-        if (status === "confirmed") booked += seats;
+      el.innerHTML = `
+        ${img}
+        <div class="row">
+          <div class="title">${escapeHtml(data.title || "")} ${status}</div>
+          <div class="meta">
+            <span><strong>Date:</strong>&nbsp;${fmtUK(data.date)}</span>
+            &nbsp; &middot; &nbsp;
+            <span><strong>Cutoff:</strong>&nbsp;${fmtUK(data.cutoff)}</span>
+            &nbsp; &middot; &nbsp;
+            <span><strong>Price:</strong>&nbsp;£${Number(data.price||0).toFixed(0)}</span>
+          </div>
+        </div>
+
+        <details>
+          <summary><span class="chev">▾</span> Details</summary>
+          <div class="drawer">
+            <p><strong>About this ${col.slice(0,-1)}:</strong></p>
+            ${renderDescription(data.description || "")}
+
+            ${
+              (data.paymentInfo && data.paymentInfo.trim())
+                ? `
+                  <p><strong>Payment info:</strong></p>
+                  ${renderDescription(data.paymentInfo)}
+                `
+                : ``
+            }
+
+            <div id="prog-${col}-${id}" style="margin-top:10px"></div>
+
+            <form class="interest" id="form-${col}-${id}">
+              <div class="row2">
+                <div>
+                  <label for="n-${id}">Name</label>
+                  <input id="n-${id}" name="name" type="text" required maxlength="100"
+                         autocomplete="name" placeholder="Full name"
+                         title="Please enter your full name"/>
+                </div>
+                <div>
+                  <label for="e-${id}">Email *</label>
+                  <input id="e-${id}" name="email" type="email" required
+                         autocomplete="email" placeholder="name@example.com"
+                         title="Please enter a valid email address"/>
+                </div>
+              </div>
+
+              <div class="row2">
+                <div>
+                  <label for="p-${id}">Phone</label>
+                  <input id="p-${id}" name="phone" type="tel" placeholder="+44 1234 567890"
+                         pattern="^\\+?[0-9\\s\\-]{7,20}$" inputmode="tel" autocomplete="tel"/>
+                </div>
+                <div>
+                  <label for="s-${id}">Places</label>
+                  <input id="s-${id}" name="seats" type="number" inputmode="numeric" pattern="[0-9]*"
+                         min="1" max="99" step="1" required value="1"/>
+                </div>
+              </div>
+
+              <button type="submit" class="send" ${closed ? "disabled" : ""}>
+                Send <span class="arrow">→</span>
+              </button>
+
+              <div class="okmsg" id="ok-${col}-${id}" style="display:none">
+                Thanks — we’ve got your interest. We’ll be in touch.
+              </div>
+              <div class="errmsg" id="er-${col}-${id}" style="display:none">
+                Could not send. Please try again.
+              </div>
+            </form>
+          </div>
+        </details>
+      `;
+
+      // Progress bar
+      const details  = el.querySelector("details");
+      const progHost = el.querySelector(`#prog-${col}-${id}`);
+
+      const cap = Number(data.capacity || 0);
+      const min = Number(data.minNeeded ?? 20);
+
+      async function updateProgress(){
+        if (!cap) { progHost.innerHTML = ""; return; }
+
+        let booked = 0; let interested = 0;
+        try{
+          const snap = await getDocs(collection(db, col, id, "interests"));
+          snap.forEach(s=>{
+            const x = s.data();
+            let seats = parseInt(x.seats, 10);
+            if (isNaN(seats) || seats <= 0) seats = 1;
+            const status = (x.status || "pending").toLowerCase();
+            interested += seats;
+            if (status === "confirmed") booked += seats;
+          });
+        }catch(e){ console.error(e); }
+
+        const pct    = cap ? Math.min(100, Math.round((booked / cap) * 100)) : 0;
+        const minPct = cap ? Math.min(100, Math.round((min    / cap) * 100)) : 0;
+
+        progHost.innerHTML = `
+          <div class="meta">
+            <strong>Capacity:</strong> ${cap}
+            &nbsp; · &nbsp; <strong>Min to run:</strong> ${min}
+            &nbsp; · &nbsp; <strong>Booked:</strong> ${booked}
+            &nbsp; · &nbsp; <strong>Interested:</strong> ${interested}
+          </div>
+          <div class="bar">
+            <span style="width:${pct}%"></span>
+            <div style="
+              position:absolute; left:${minPct}%; top:50%; transform:translate(-50%,-50%);
+              width:0;height:0; border-left:6px solid transparent; border-right:6px solid transparent;
+              border-bottom:8px solid #a9bed1;
+            "></div>
+          </div>
+          <div class="meta">Fill ${pct}% &nbsp; • &nbsp; <span class="muted">▲ = minimum</span></div>
+        `;
+      }
+
+      details.addEventListener("toggle", ()=>{ if (details.open) updateProgress(); });
+      updateProgress();
+
+      // Seats sanitiser
+      const seats = el.querySelector(`#s-${id}`);
+      seats.addEventListener("input", () => {
+        let v = seats.value.replace(/\D/g, "");
+        seats.value = v === "" ? "" : String(Math.max(1, Math.min(99, parseInt(v, 10))));
       });
-    }catch(e){
-      console.error("[progress] failed to read interests:", e);
-    }
-
-    const pct    = cap ? Math.min(100, Math.round((booked / cap) * 100)) : 0;
-    const minPct = cap ? Math.min(100, Math.round((min    / cap) * 100)) : 0;
-
-    progHost.innerHTML = `
-      <div class="meta">
-        <strong>Capacity:</strong> ${cap}
-        &nbsp; · &nbsp; <strong>Min to run:</strong> ${min}
-        &nbsp; · &nbsp; <strong>Booked:</strong> ${booked}
-        &nbsp; · &nbsp; <strong>Interested:</strong> ${interested}
-      </div>
-      <div class="bar">
-        <span style="width:${pct}%"></span>
-        <div style="
-          position:absolute;
-          left:${minPct}%;
-          top:50%;
-          transform:translate(-50%, -50%);
-          width:0;height:0;
-          border-left:6px solid transparent;
-          border-right:6px solid transparent;
-          border-bottom:8px solid #2e3c42;
-        "></div>
-      </div>
-      <div class="meta">Fill ${pct}% &nbsp; • &nbsp; <span class="muted">▲ = minimum</span></div>
-    `;
-  }
-
-  details.addEventListener("toggle", ()=>{ if (details.open) updateProgress(); });
-  updateProgress();
-
-  // === Seats input sanitiser ===
-  const seats = el.querySelector(`#s-${id}`);
-  seats.addEventListener("input", () => {
-    let v = seats.value.replace(/\D/g, "");
-    seats.value = v === "" ? "" : String(Math.max(1, Math.min(99, parseInt(v, 10))));
-  });
-  seats.addEventListener("blur", () => {
-    const n = parseInt(seats.value, 10);
-    seats.value = isNaN(n) ? "1" : String(Math.max(1, Math.min(99, n)));
-  });
-
-  // === Interest submit (native validation first) ===
-  const form = el.querySelector(`#form-${col}-${id}`);
-  const ok   = el.querySelector(`#ok-${col}-${id}`);
-  const er   = el.querySelector(`#er-${col}-${id}`);
-
-  form.addEventListener("submit", async (e)=>{
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      e.preventDefault();
-      return;
-    }
-
-    e.preventDefault();
-    ok.style.display="none";
-    er.style.display="none";
-
-    const fd    = new FormData(form);
-    const email = (fd.get("email")+"").trim();
-    const name  = (fd.get("name")+"").trim();
-
-    try{
-      await addDoc(collection(db, col, id, "interests"), {
-        name,
-        email,
-        phone:(fd.get("phone")+"").trim(),
-        seats:Number(fd.get("seats")||1),
-        status:"pending",
-        createdAt: serverTimestamp()
+      seats.addEventListener("blur", () => {
+        const n = parseInt(seats.value, 10);
+        seats.value = isNaN(n) ? "1" : String(Math.max(1, Math.min(99, n)));
       });
-      form.reset();
-      ok.style.display="block";
-      if (details.open) updateProgress();
-    }catch(err){
-      console.error(err);
-      er.style.display="block";
+
+      // Submit
+      const form = el.querySelector(`#form-${col}-${id}`);
+      const ok   = el.querySelector(`#ok-${col}-${id}`);
+      const er   = el.querySelector(`#er-${col}-${id}`);
+
+      form.addEventListener("submit", async (e)=>{
+        if (!form.checkValidity()) { form.reportValidity(); e.preventDefault(); return; }
+        e.preventDefault();
+        ok.style.display="none"; er.style.display="none";
+        const fd = new FormData(form);
+        try{
+          await addDoc(collection(db, col, id, "interests"), {
+            name: (fd.get("name")+"").trim(),
+            email:(fd.get("email")+"").trim(),
+            phone:(fd.get("phone")+"").trim(),
+            seats:Number(fd.get("seats")||1),
+            status:"pending",
+            createdAt: serverTimestamp()
+          });
+          form.reset(); ok.style.display="block";
+          if (details.open) updateProgress();
+        }catch(err){ console.error(err); er.style.display="block"; }
+      });
+
+      return el;
     }
-  });
 
-  return el;
-}
+    async function renderList(col, mountId){
+      const mount = document.getElementById(mountId);
+      mount.innerHTML = `<div class="lead">Loading…</div>`;
+      try{
+        const qy = query(collection(db, col), orderBy("date","asc"));
+        const snap = await getDocs(qy);
+        const items = [];
+        snap.forEach(d=> items.push({ id:d.id, data:d.data() }));
 
+        const open   = items.filter(x=>!isClosed(x.data.date, x.data.cutoff) && !x.data.closed);
+        const closed = items.filter(x=> isClosed(x.data.date, x.data.cutoff) || x.data.closed);
 
-  // ----------------------------
-  // Render lists
-  // ----------------------------
-  async function renderList(col, mountId){
-    const mount = document.getElementById(mountId);
-    mount.innerHTML = `<div class="lead">Loading…</div>`;
-    try{
-      const qy = query(collection(db, col), orderBy("date","asc"));
-      const snap = await getDocs(qy);
-      const items = [];
-      snap.forEach(d=> items.push({ id:d.id, data:d.data() }));
-
-      const open   = items.filter(x=>!isClosed(x.data.date, x.data.cutoff) && !x.data.closed);
-      const closed = items.filter(x=> isClosed(x.data.date, x.data.cutoff) || x.data.closed);
-
-      mount.innerHTML = "";
-      [...open,...closed].forEach(({id,data})=> mount.appendChild(item(col,id,data)));
-      if (!items.length) mount.innerHTML = `<div class="lead">No ${col} yet.</div>`;
-    }catch(e){
-      console.error(e);
-      mount.innerHTML = `<div class="lead">Could not load ${col}.</div>`;
-    }
-  }
-  renderList("tours","toursList");
-  renderList("events","eventsList");
-
-  // ----------------------------
-  // Admin sign-in
-  // ----------------------------
-  async function openIfAllowed(user){
-    const email = user?.email ?? "";
-    if (ALLOWED.includes(email)){
-      window.open("admin.html","_blank","noopener");
-    } else if (user){
-      authMsg.textContent = "Not authorised";
-      setTimeout(()=>authMsg.textContent="", 3000);
-      await signOut(auth);
-    }
-  }
-
-  async function doSignIn(){
-    if (auth.currentUser) return openIfAllowed(auth.currentUser);
-    try{
-      const res = await signInWithPopup(auth, provider);
-      await openIfAllowed(res.user);
-    }catch(err){
-      if (err?.code==='auth/operation-not-supported-in-this-environment' || err?.code==='auth/popup-blocked'){
-        await signInWithRedirect(auth, provider);
-      }else{
-        console.error(err);
-        authMsg.textContent = "Sign in failed";
-        setTimeout(()=>authMsg.textContent="", 3000);
+        mount.innerHTML = "";
+        [...open,...closed].forEach(({id,data})=> mount.appendChild(item(col,id,data)));
+        if (!items.length) mount.innerHTML = `<div class="lead">No ${col} yet.</div>`;
+      }catch(e){
+        console.error(e);
+        mount.innerHTML = `<div class="lead">Could not load ${col}.</div>`;
       }
     }
-  }
+    renderList("tours","toursList");
+    renderList("events","eventsList");
 
-  document.getElementById("signinDot").addEventListener("click", doSignIn);
-  getRedirectResult(auth).then(res => { if (res?.user) return openIfAllowed(res.user); }).catch(console.error);
-</script>
+    // Admin sign-in
+    async function openIfAllowed(user){
+      const email = user?.email ?? "";
+      if (["info@tourthelakes.com"].includes(email)){
+        window.open("admin.html","_blank","noopener");
+      } else if (user){
+        authMsg.textContent = "Not authorised";
+        setTimeout(()=>authMsg.textContent="", 3000);
+        await signOut(auth);
+      }
+    }
+    async function doSignIn(){
+      if (auth.currentUser) return openIfAllowed(auth.currentUser);
+      try{
+        const res = await signInWithPopup(auth, provider);
+        await openIfAllowed(res.user);
+      }catch(err){
+        if (err?.code==='auth/operation-not-supported-in-this-environment' || err?.code==='auth/popup-blocked'){
+          await signInWithRedirect(auth, provider);
+        }else{
+          console.error(err);
+          authMsg.textContent = "Sign in failed";
+          setTimeout(()=>authMsg.textContent="", 3000);
+        }
+      }
+    }
+    document.getElementById("signinDot").addEventListener("click", doSignIn);
+    getRedirectResult(auth).then(res => { if (res?.user) return openIfAllowed(res.user); }).catch(console.error);
+  </script>
 
-  <!-- =========================
-       FOOTER YEAR SCRIPT
-       ========================= -->
+  <!-- Footer year + theme-color sync -->
   <script>
-    const yr = document.getElementById('yr');
-    if (yr) { yr.textContent = new Date().getFullYear(); }
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
   </script>
 </body>
-
 </html>
