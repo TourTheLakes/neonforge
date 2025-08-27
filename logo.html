@@ -35,7 +35,6 @@
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    /* soft grain */
     body::after{
       content:""; position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
@@ -68,7 +67,7 @@
       filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
     }
 
-    /* turquoise F */
+    /* turquoise N */
     .brand .turq{
       color: var(--neon);
       text-shadow:
@@ -77,7 +76,7 @@
       filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
     }
 
-    /* violet R */
+    /* violet F */
     .brand .violet{
       color: var(--vio);
       text-shadow:
@@ -87,7 +86,6 @@
     }
 
     @media (prefers-reduced-motion: no-preference){
-      /* intro sweep (slower) */
       .intro .brand .ch{
         animation: hueIntro 3.84s ease forwards;
       }
@@ -98,32 +96,27 @@
         animation: hueIntroVio 3.84s ease forwards;
       }
 
-      /* steady pulse */
       .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
-      .glow .brand .ch:nth-child(1){ animation-delay:0s }
+      .glow .brand .ch:nth-child(1){ animation-delay:0s }      /* N */
       .glow .brand .ch:nth-child(2){ animation-delay:.05s }
       .glow .brand .ch:nth-child(3){ animation-delay:.10s }
       .glow .brand .ch:nth-child(4){ animation-delay:.15s }
-      .glow .brand .ch:nth-child(5){ animation-delay:.30s } /* space */
-      .glow .brand .ch:nth-child(6){ animation-delay:.35s } /* F */
-      .glow .brand .ch:nth-child(7){ animation-delay:.40s } /* O */
-      .glow .brand .ch:nth-child(8){ animation-delay:.45s } /* R */
-      .glow .brand .ch:nth-child(9){ animation-delay:.50s } /* G */
-      .glow .brand .ch:nth-child(10){ animation-delay:.55s } /* E */
+      .glow .brand .ch:nth-child(5){ animation-delay:.30s }
+      .glow .brand .ch:nth-child(6){ animation-delay:.35s }    /* F */
+      .glow .brand .ch:nth-child(7){ animation-delay:.40s }
+      .glow .brand .ch:nth-child(8){ animation-delay:.45s }
+      .glow .brand .ch:nth-child(9){ animation-delay:.50s }
+      .glow .brand .ch:nth-child(10){ animation-delay:.55s }
 
       @keyframes pulse{
         0%,100%{
           opacity:.95;
-          text-shadow:
-            0 0 8px currentColor,
-            0 0 26px currentColor;
+          text-shadow: 0 0 8px currentColor, 0 0 26px currentColor;
           filter: drop-shadow(0 0 14px currentColor);
         }
         50%{
           opacity:1;
-          text-shadow:
-            0 0 12px currentColor,
-            0 0 40px currentColor;
+          text-shadow: 0 0 12px currentColor, 0 0 40px currentColor;
           filter: drop-shadow(0 0 22px currentColor);
         }
       }
@@ -165,15 +158,15 @@
   <main class="wrap">
     <section aria-label="Neon Forge logo">
       <h1 class="brand" aria-label="Neon Forge">
-        <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
+        <span class="ch turq">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
         <span class="ch">&nbsp;</span>
-        <span class="ch turq">F</span><span class="ch">O</span><span class="ch violet">R</span><span class="ch">G</span><span class="ch">E</span>
+        <span class="ch violet">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
       </h1>
       <p class="sub">Borderless&nbsp;&middot;&nbsp;Alive&nbsp;&middot;&nbsp;Remembered</p>
     </section>
   </main>
 
-  <div class="note">F turquoise · R violet · all others white — intro sweep then steady glow.</div>
+  <div class="note">N turquoise · F violet · all others white — intro sweep then steady glow.</div>
 
   <script>
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
