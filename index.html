@@ -11,7 +11,7 @@
   <!-- ===== Font (matches your logo page) ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 
-  <!-- ===== Favicon (NF, cyan & purple, nudged ↓3px, ←1px) ===== -->
+  <!-- ===== Favicon (NF, cyan N & purple F) ===== -->
   <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E
           %3Crect x='6' y='6' width='84' height='84' rx='22' fill='%230b0f14'/%3E
@@ -25,7 +25,7 @@
           %3C/g%3E
         %3C/svg%3E"/>
 
-  <!-- ===== Styles (kept layout; swapped brand to your exact logo) ===== -->
+  <!-- ===== Styles (layout + logo) ===== -->
   <style>
     /* ---------------------------------------------
        1) THEME TOKENS — Neon Forge
@@ -100,7 +100,7 @@
       text-align:center;
     }
 
-    /* ====== YOUR EXACT LOGO STYLES ====== */
+    /* ====== LOGO STYLES ====== */
     .brand{
       font-weight:700; line-height:1;
       font-size:clamp(40px, 10vw, 120px);
@@ -114,7 +114,7 @@
         0 0 26px color-mix(in srgb, var(--neon) 55%, transparent);
       filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
     }
-    /* turquoise F */
+    /* cyan/turquoise */
     .brand .turq{
       color: var(--neon);
       text-shadow:
@@ -122,7 +122,7 @@
         0 0 36px color-mix(in srgb, var(--neon) 90%, transparent);
       filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
     }
-    /* violet R */
+    /* violet */
     .brand .violet{
       color: var(--vio);
       text-shadow:
@@ -132,17 +132,19 @@
     }
 
     @media (prefers-reduced-motion: no-preference){
+      /* intro sweep (slower) */
       .intro .brand .ch{     animation: hueIntro 3.84s ease forwards }
       .intro .brand .turq{   animation: hueIntroTurq 3.84s ease forwards }
       .intro .brand .violet{ animation: hueIntroVio  3.84s ease forwards }
 
+      /* steady pulse */
       .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
       .glow .brand .ch:nth-child(1){ animation-delay:0s }
       .glow .brand .ch:nth-child(2){ animation-delay:.05s }
       .glow .brand .ch:nth-child(3){ animation-delay:.10s }
       .glow .brand .ch:nth-child(4){ animation-delay:.15s }
       .glow .brand .ch:nth-child(5){ animation-delay:.30s } /* space */
-      .glow .brand .ch:nth-child(6){ animation-delay:.35s } /* F */
+      .glow .brand .ch:nth-child(6){ animation-delay:.35s } /* F/N depending */
       .glow .brand .ch:nth-child(7){ animation-delay:.40s } /* O */
       .glow .brand .ch:nth-child(8){ animation-delay:.45s } /* R */
       .glow .brand .ch:nth-child(9){ animation-delay:.50s } /* G */
@@ -160,6 +162,7 @@
           filter: drop-shadow(0 0 22px currentColor);
         }
       }
+
       @keyframes hueIntro{
         0%   { color: var(--vio); }
         40%  { color: var(--neon); }
@@ -339,7 +342,7 @@
 </head>
 
 <body>
-  <!-- Force HTTPS on production domain (mechanics unchanged) -->
+  <!-- Force HTTPS on production domain -->
   <script>
     (function () {
       const host = location.hostname;
@@ -351,14 +354,14 @@
   </script>
 
   <!-- =========================
-       HERO (with your logo)
+       HERO (with revised logo)
        ========================= -->
   <header class="banner">
     <div class="hero">
       <h1 class="brand" aria-label="Neon Forge">
-        <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
+        <span class="ch turq">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
         <span class="ch">&nbsp;</span>
-        <span class="ch turq">F</span><span class="ch">O</span><span class="ch violet">R</span><span class="ch">G</span><span class="ch">E</span>
+        <span class="ch violet">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
       </h1>
       <div class="hero-copy">
         <h1>Gather. Explore. Celebrate.</h1>
@@ -453,7 +456,7 @@
   </footer>
 
   <!-- =========================
-       APP SCRIPT (mechanics unchanged)
+       APP SCRIPT
        ========================= -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
@@ -717,7 +720,6 @@
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
 
-    // Match your logo page behaviour:
     const root = document.documentElement;
     const INTRO_MS = 3840;
     root.classList.add('intro');
