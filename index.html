@@ -8,10 +8,10 @@
   <meta name="description" content="Neon Forge creates small-group events and multi-day adventures — shared stories, new friends, and big scenery."/>
   <meta name="theme-color" content="#0b0f14"/>
 
-  <!-- ===== Font (matches your logo page) ===== -->
+  <!-- ===== Font ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 
-  <!-- ===== Favicon (NF, cyan N & purple F) ===== -->
+  <!-- ===== Favicon (N cyan, F violet) ===== -->
   <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E
           %3Crect x='6' y='6' width='84' height='84' rx='22' fill='%230b0f14'/%3E
@@ -25,25 +25,24 @@
           %3C/g%3E
         %3C/svg%3E"/>
 
-  <!-- ===== Styles (layout + logo) ===== -->
   <style>
     /* ---------------------------------------------
        1) THEME TOKENS — Neon Forge
        --------------------------------------------- */
     :root{
-      --bg:#0b0f14;       /* midnight */
-      --bg-2:#0f141b;     /* deep indigo */
-      --ink:#e9f1ff;      /* cool paper white */
-      --muted:#8ea1b5;    /* slate */
-      --line:#17212b;     /* hairline on dark */
+      --bg:#0b0f14;
+      --bg-2:#0f141b;
+      --ink:#e9f1ff;
+      --muted:#8ea1b5;
+      --line:#17212b;
 
-      --cyan:#06d7ff;     /* turquoise */
-      --vio:#9b5cff;      /* violet */
-      --neon: var(--cyan);/* alias so logo CSS works as-is */
+      --cyan:#06d7ff;
+      --vio:#9b5cff;
+      --neon: var(--cyan);
 
       --s1:6px; --s2:10px; --s3:14px; --s4:18px;
       --s5:26px; --s6:38px; --s7:58px;
-      --container: 1100px;
+      --container:1100px;
     }
 
     /* ---------------------------------------------
@@ -52,10 +51,15 @@
     *{ box-sizing:border-box }
     html,body{ height:100% }
     body{
-      margin:0;
-      color:var(--ink);
+      margin:0; color:var(--ink);
+      /* smoother background with extra stops to avoid banding */
       background:
-        radial-gradient(1200px 900px at 50% 20%, #101620 0%, #0b0f14 40%, #05070a 100%),
+        radial-gradient(1200px 900px at 50% 18%,
+          #101620 0%,
+          #0d131c 38%,
+          #0b0f14 55%,
+          #080c11 78%,
+          #05070a 100%),
         radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
         radial-gradient(900px 600px at 20% 80%, rgba(155,92,255,.10), transparent 60%);
       font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
@@ -63,14 +67,16 @@
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
     }
-    /* soft grain */
+
+    /* soft grain — slightly stronger to break up 8-bit steps */
     body::after{
       content:""; position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' opacity='.05'>\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' opacity='.07'>\
 <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.5'/></feComponentTransfer></filter>\
 <rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      background-size:280px 280px; mix-blend-mode:soft-light;
+      background-size:220px 220px;
+      mix-blend-mode:soft-light;
     }
 
     a{ color:var(--cyan); text-decoration:none }
@@ -89,10 +95,16 @@
 
     header.banner{
       padding: clamp(54px, 8vw, 96px) 0 clamp(26px, 5vw, 42px);
-      border-bottom:1px solid var(--line);
+      /* remove the hard 1px border and use a fade */
       background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
       backdrop-filter: saturate(140%) blur(4px);
     }
+    /* soft separator fade under header to prevent a “line” */
+    header.banner::after{
+      content:""; position:absolute; left:0; right:0; bottom:-1px; height:80px; pointer-events:none;
+      background: linear-gradient(180deg, rgba(11,15,20,.28), rgba(11,15,20,0));
+    }
+
     .hero{
       position:relative; z-index:1;
       max-width:var(--container); margin:0 auto; padding:0 var(--s3);
@@ -100,7 +112,7 @@
       text-align:center;
     }
 
-    /* ====== LOGO STYLES ====== */
+    /* ====== LOGO ====== */
     .brand{
       font-weight:700; line-height:1;
       font-size:clamp(40px, 10vw, 120px);
@@ -114,7 +126,6 @@
         0 0 26px color-mix(in srgb, var(--neon) 55%, transparent);
       filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
     }
-    /* cyan/turquoise */
     .brand .turq{
       color: var(--neon);
       text-shadow:
@@ -122,7 +133,6 @@
         0 0 36px color-mix(in srgb, var(--neon) 90%, transparent);
       filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
     }
-    /* violet */
     .brand .violet{
       color: var(--vio);
       text-shadow:
@@ -132,23 +142,21 @@
     }
 
     @media (prefers-reduced-motion: no-preference){
-      /* intro sweep (slower) */
       .intro .brand .ch{     animation: hueIntro 3.84s ease forwards }
       .intro .brand .turq{   animation: hueIntroTurq 3.84s ease forwards }
       .intro .brand .violet{ animation: hueIntroVio  3.84s ease forwards }
 
-      /* steady pulse */
       .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
       .glow .brand .ch:nth-child(1){ animation-delay:0s }
       .glow .brand .ch:nth-child(2){ animation-delay:.05s }
       .glow .brand .ch:nth-child(3){ animation-delay:.10s }
       .glow .brand .ch:nth-child(4){ animation-delay:.15s }
-      .glow .brand .ch:nth-child(5){ animation-delay:.30s } /* space */
-      .glow .brand .ch:nth-child(6){ animation-delay:.35s } /* F/N depending */
-      .glow .brand .ch:nth-child(7){ animation-delay:.40s } /* O */
-      .glow .brand .ch:nth-child(8){ animation-delay:.45s } /* R */
-      .glow .brand .ch:nth-child(9){ animation-delay:.50s } /* G */
-      .glow .brand .ch:nth-child(10){ animation-delay:.55s } /* E */
+      .glow .brand .ch:nth-child(5){ animation-delay:.30s }
+      .glow .brand .ch:nth-child(6){ animation-delay:.35s }
+      .glow .brand .ch:nth-child(7){ animation-delay:.40s }
+      .glow .brand .ch:nth-child(8){ animation-delay:.45s }
+      .glow .brand .ch:nth-child(9){ animation-delay:.50s }
+      .glow .brand .ch:nth-child(10){ animation-delay:.55s }
 
       @keyframes pulse{
         0%,100%{
@@ -162,7 +170,6 @@
           filter: drop-shadow(0 0 22px currentColor);
         }
       }
-
       @keyframes hueIntro{
         0%   { color: var(--vio); }
         40%  { color: var(--neon); }
@@ -199,17 +206,23 @@
       display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
       background: rgba(10,14,20,.38);
       backdrop-filter: saturate(160%) blur(8px);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
       padding: 10px 14px;
     }
+    /* soft fade above and below nav instead of hard lines */
+    nav::before,
+    nav::after{
+      content:""; position:absolute; left:0; right:0; height:18px; pointer-events:none;
+    }
+    nav::before{ top:-18px;  background:linear-gradient(180deg, rgba(11,15,20,.32), rgba(11,15,20,0)); }
+    nav::after { bottom:-18px;background:linear-gradient(0deg,  rgba(11,15,20,.24), rgba(11,15,20,0)); }
+
     nav a{
       color: var(--ink); font-weight:700; letter-spacing:.04em;
       opacity:.92; position:relative; padding:4px 2px;
     }
     nav a::after{
-      content:""; position:absolute; left:0; right:0; bottom:0;
-      height:2px; background: linear-gradient(90deg, var(--cyan), var(--vio));
+      content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+      background: linear-gradient(90deg, var(--cyan), var(--vio));
       transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
       border-radius:2px;
     }
@@ -318,7 +331,6 @@
 
     footer.banner{
       padding: 34px 0 42px;
-      border-top:1px solid var(--line);
       background: linear-gradient(180deg, rgba(255,255,255,.00), rgba(255,255,255,.02));
       backdrop-filter: saturate(140%) blur(4px);
     }
@@ -354,7 +366,7 @@
   </script>
 
   <!-- =========================
-       HERO (with revised logo)
+       HERO (logo: N cyan, F violet)
        ========================= -->
   <header class="banner">
     <div class="hero">
@@ -477,7 +489,6 @@
     const auth = getAuth(app);
     const db   = getFirestore(app);
     const provider = new GoogleAuthProvider();
-    const ALLOWED = ["info@tourthelakes.com"];
 
     const $ = id => document.getElementById(id);
     const authMsg = $("authMsg");
@@ -714,7 +725,7 @@
     getRedirectResult(auth).then(res => { if (res?.user) return openIfAllowed(res.user); }).catch(console.error);
   </script>
 
-  <!-- Footer year + theme-color sync + one-time intro->glow -->
+  <!-- Footer year + theme-color sync + intro->glow -->
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
