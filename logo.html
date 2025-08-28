@@ -3,44 +3,45 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Neon Forge — Logo</title>
-  <meta name="description" content="Neon Forge logo concept: stacked wordmark aligned to a neon wall with mirrored headlines."/>
+  <title>Neon Forge — Logo (Wall Layout)</title>
+  <meta name="description" content="Neon Forge stacked wordmark aligned to a continuous neon wall; mirrored headlines on the right."/>
   <meta name="theme-color" content="#0b0f14"/>
 
-  <!-- TYPE -->
+  <!-- Type -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 
   <style>
     :root{
+      /* Colors */
       --bg:#0b0f14;
-      --ink:#e9f1ff;
+      --ink:#e9f1ff;       /* letter color */
       --muted:#9fb2c7;
-
       --vio:#8f7bff;
       --cy:#06d7ff;
 
-      /* ===== Scales ===== */
-      --brandSize: clamp(14px, 3vw, 38px);
-      --gap-x: clamp(3px, 0.6vw, 7px);  /* word-wall gap */
-      --gap-y: clamp(2px, 0.4vw, 4px);  /* vertical gap tightened */
-      --wall: clamp(2px, 0.2vw, 3px);
-
-      --pad: clamp(6px, 1.2vw, 14px);
-      --container: 420px;
+      /* Layout scales (responsive) */
+      --brandSize: clamp(22px, 7vw, 72px);
+      --gap:       clamp(6px, 0.9vw, 14px);    /* << equal horizontal + vertical spacing */
+      --wallW:     clamp(2px, 0.35vw, 4px);
+      --containerW: min(92vw, 1100px);
+      --pad: clamp(10px, 3vw, 40px);
     }
 
     *{ box-sizing:border-box }
     html,body{ height:100% }
     body{
       margin:0; color:var(--ink);
+      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+
+      /* Dark, subtle vignette + cyan/violet breathing */
       background:
         radial-gradient(1100px 800px at 50% -10%, #18212d 0%, #0b0f14 55%, #06080b 100%),
         radial-gradient(900px 600px at 12% 78%, rgba(129,108,255,.10), transparent 60%),
         radial-gradient(820px 520px at 88% 22%, rgba(6,215,255,.08), transparent 60%);
-      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
+    /* Gentle grain (very faint) */
     body::after{
       content:""; position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
@@ -50,103 +51,123 @@
       background-size:280px 280px; mix-blend-mode:soft-light;
     }
 
-    main{
-      max-width:var(--container);
+    /* Center stage */
+    .stage{
       min-height:100dvh;
-      margin:0 auto;
-      padding:var(--pad);
-      display:flex;
-      justify-content:center;
-      align-items:center;
+      display:grid; place-items:center;
+      padding: var(--pad);
     }
 
-    /* Offset the whole logo 15% left */
-    .wallmark{
-      transform: translateX(-15%);
+    /* LOGO GRID
+       5 columns: [left text] gap [wall] gap [right text]
+       3 rows   : [NEON] gap [FORGE]
+       The single --gap controls both directions. */
+    .logo{
+      width: var(--containerW);
       display:grid;
-      grid-template-columns: 1fr var(--gap-x) var(--wall) var(--gap-x) 1fr;
-      grid-template-rows: auto var(--gap-y) auto; /* tightened vertical spacing */
+      grid-template-columns: 1fr var(--gap) var(--wallW) var(--gap) 1fr;
+      grid-template-rows: auto var(--gap) auto;
       align-items:center;
-      width:100%;
+      /* Offset 15vw left of true center on wide screens */
+      transform: translateX(-15vw);
     }
 
+    /* Ease the offset on small screens */
+    @media (max-width: 900px){
+      .logo{ transform: translateX(-10vw); }
+    }
+    @media (max-width: 600px){
+      .logo{ transform: translateX(-5vw); }
+    }
+    @media (max-width: 420px){
+      .logo{ transform: translateX(-2vw); }
+    }
+
+    /* The neon wall */
     .wall{
-      grid-column:3; grid-row:1 / -1; justify-self:center; width:var(--wall); height:100%;
+      grid-column:3;
+      grid-row:1 / -1;
+      align-self:stretch;
       position:relative;
-      background: linear-gradient(180deg, var(--vio) 0%, var(--cy) 50%, #ffffff 100%);
-      filter: drop-shadow(0 0 6px rgba(143,123,255,.45))
-              drop-shadow(0 0 10px rgba(6,215,255,.28));
+      width:var(--wallW);
+      background: linear-gradient(180deg, var(--vio) 0%, var(--cy) 55%, #ffffff 100%);
+      box-shadow:
+        0 0 8px rgba(143,123,255,.50),
+        0 0 16px rgba(6,215,255,.35),
+        0 0 26px rgba(255,255,255,.18);
     }
-    .wall::before,
-    .wall::after{
-      content:""; position:absolute; inset:-8px; z-index:-1;
-      background: radial-gradient(closest-side, rgba(143,123,255,.24), transparent 70%);
-      animation: wallHue 12s ease-in-out infinite;
-      filter: blur(2px);
-    }
-    .wall::after{
-      inset:-16px;
-      background: radial-gradient(closest-side, rgba(6,215,255,.16), transparent 70%);
-      animation: wallHue 12s ease-in-out infinite reverse;
-      filter: blur(4px);
+    /* Soft animated glow around the wall */
+    .wall::before{
+      content:""; position:absolute; inset:-16px;
+      background: linear-gradient(180deg, var(--vio) 0%, var(--cy) 55%, #ffffff 100%);
+      filter: blur(12px);
+      opacity:.55;
+      animation: wallHue 14s ease-in-out infinite alternate;
     }
     @keyframes wallHue{
-      0%   { opacity:.62; }
-      33%  { opacity:.70; }
-      66%  { opacity:.60; }
-      100% { opacity:.62; }
+      0%   { filter: blur(12px) hue-rotate(-15deg); opacity:.50; }
+      50%  { filter: blur(12px) hue-rotate( 12deg); opacity:.62; }
+      100% { filter: blur(12px) hue-rotate(  0deg); opacity:.55; }
+    }
+    @media (prefers-reduced-motion:reduce){
+      .wall::before{ animation:none }
     }
 
+    /* Wordmark (left) */
     .brand{
-      grid-column:1; line-height:1; letter-spacing:.16em; text-transform:uppercase;
+      grid-column:1;
       font-family:"Orbitron",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      font-weight:800; font-size:var(--brandSize);
-      text-align:right; white-space:nowrap;
+      font-weight:800;
+      font-size:var(--brandSize);
+      line-height:1;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      text-align:right;
+      white-space:nowrap;
       color:#eaf6ff;
       text-shadow:
-        0 0 4px rgba(234,246,255,.6),
-        0 0 8px rgba(143,123,255,.35),
-        0 0 12px rgba(6,215,255,.22);
+        0 0 4px rgba(234,246,255,.65),
+        0 0 10px rgba(143,123,255,.35),
+        0 0 16px rgba(6,215,255,.22);
     }
     .brand--top{ grid-row:1 }
     .brand--bot{ grid-row:3 }
 
+    /* Headlines (right) — same size as brand, aligned left */
     .head{
       grid-column:5;
       font-family:"Orbitron",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      font-weight:800; font-size:var(--brandSize);
-      line-height:1; letter-spacing:.16em; text-transform:uppercase;
-      color:var(--ink); opacity:.9; white-space:nowrap;
+      font-weight:800;
+      font-size:var(--brandSize);
+      line-height:1;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      text-align:left;
+      color:var(--ink);
       text-shadow:
-        0 0 2px color-mix(in srgb, var(--ink) 28%, transparent),
-        0 0 6px color-mix(in srgb, var(--ink) 18%, transparent);
+        0 0 3px color-mix(in srgb, var(--ink) 30%, transparent),
+        0 0 8px color-mix(in srgb, var(--ink) 18%, transparent);
+      opacity:.95;
     }
-    .head--top{ grid-row:1; text-align:left }
-    .head--bot{ grid-row:3; text-align:left }
-
-    .note{
-      margin-top: clamp(6px, 1vw, 10px);
-      text-align:center; color: color-mix(in srgb, var(--muted) 82%, transparent);
-      font:500 10px/1.4 "Space Grotesk",sans-serif; letter-spacing:.06em;
-      opacity:.9;
-    }
+    .head--top{ grid-row:1 }
+    .head--bot{ grid-row:3 }
   </style>
 </head>
 <body>
-  <main>
-    <section class="wallmark" aria-label="Neon Forge wordmark aligned to a neon wall">
+  <main class="stage">
+    <section class="logo" aria-label="Neon Forge stacked wordmark aligned to a neon wall">
       <h1 class="brand brand--top">NEON</h1>
       <div class="wall" aria-hidden="true"></div>
-      <div class="head head--top">other headline here</div>
+      <div class="head head--top">OTHER HEADLINE HERE</div>
 
       <h2 class="brand brand--bot">FORGE</h2>
-      <div class="head head--bot">a different here.</div>
+      <div class="head head--bot">A DIFFERENT HERE.</div>
     </section>
-
-    <p class="note">Offset 15% left. Vertical gap tightened.</p>
   </main>
 
   <script>
+    // Keep browser UI bar color in dark theme
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#0b0f14';
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
   </script>
