@@ -90,94 +90,97 @@
     }
     .hero{ position:relative; z-index:1; max-width:var(--container); margin:0 auto; padding:0 var(--s3) }
 
-    /* ====== HEADER LOGO (NEON/ FORGE → wall → 2 headlines) ======
-       Scoped variables so changes don't leak outside the logo. */
-    .nf-logo{
-      --brand: clamp(22px, 3.6vw, 42px);   /* font size for NEON/FORGE + headlines */
-      --gap:   clamp(6px, 0.9vw, 10px);    /* left text→wall AND NEON↔FORGE gap */
-      --wall:  clamp(2px, 0.28vw, 3px);    /* wall thickness */
+/* ====== HEADER LOGO (NEON/FORGE → wall → 2 headlines) ====== */
+/* Scoped sizing so changes don’t leak outside the logo */
+.nf-logo{
+  --brand: clamp(22px, 3.6vw, 42px);   /* word sizes */
+  --gap:   clamp(6px, 0.9vw, 10px);    /* left text↔wall AND NEON↔FORGE gap */
+  --wall:  clamp(2px, 0.28vw, 3px);    /* wall thickness */
 
-      display:grid;
-      grid-template-columns: 1fr var(--gap) var(--wall) var(--gap) 1fr;
-      grid-template-rows: auto var(--gap) auto;
-      align-items:center;
-      font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
-      transform: translateX(-15%); /* requested left bias */
-    }
-    /* Medium screens: nudge size down a touch and relax the bias a bit */
-    @media (max-width:900px){
-      .nf-logo{
-        --brand: clamp(20px, 4.2vw, 34px);
-        --gap:   clamp(5px, 1.2vw, 8px);
-        transform: translateX(-10%);
-      }
-    }
-    /* Phones / Fold (folded): compact and safe from clipping */
-    @media (max-width:520px){
-      .nf-logo{
-        --brand: clamp(18px, 5.6vw, 24px);
-        --gap:   clamp(4px, 1.5vw, 6px);
-        --wall:  2px;
-        transform: translateX(-6%);
-      }
-      header.banner{ padding: 26px 0 18px; }
-    }
+  display:grid;
+  grid-template-columns: 1fr var(--gap) var(--wall) var(--gap) 1fr;
+  grid-template-rows: auto var(--gap) auto;
+  align-items:center;
+  font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
 
-    .nf-left{
-      grid-column:1;
-      white-space:nowrap;
-      font-weight:800;
-      font-size: var(--brand);
-      line-height:1;
-      letter-spacing:.16em; text-transform:uppercase; text-align:right;
-      color:var(--ink-on-dark);
-      text-shadow:
-        0 0 4px rgba(234,246,255,.55),
-        0 0 10px rgba(143,123,255,.28),
-        0 0 16px rgba(6,215,255,.18);
-    }
-    .nf-left--top{ grid-row:1 }
-    .nf-left--bot{ grid-row:3 }
+  /* Left bias for big screens (your request) */
+  transform: translateX(-15%);
+}
 
-    .nf-right{
-      grid-column:5;
-      white-space:nowrap;
-      font-weight:800;
-      font-size: var(--brand);
-      line-height:1;
-      letter-spacing:.16em; text-transform:uppercase; text-align:left;
-      color:var(--ink-on-dark);
-      text-shadow:
-        0 0 3px color-mix(in srgb, var(--ink-on-dark) 35%, transparent),
-        0 0 8px color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
-      opacity:.96;
-    }
-    .nf-right--top{ grid-row:1 }
-    .nf-right--bot{ grid-row:3 }
+@media (max-width: 1024px){
+  .nf-logo{
+    transform: translateX(-8%); /* soften bias */
+  }
+}
 
-    .nf-wall{
-      grid-column:3; grid-row:1 / -1; align-self:stretch;
-      position:relative; width:var(--wall);
-      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
-      box-shadow:
-        0 0 6px rgba(143,123,255,.42),
-        0 0 14px rgba(6,215,255,.30),
-        0 0 22px rgba(255,255,255,.16);
-      border-radius:1px;
-    }
-    .nf-wall::before{
-      content:""; position:absolute; inset:-12px;
-      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
-      filter: blur(10px); opacity:.55;
-      animation: wallHue 14s ease-in-out infinite alternate;
-      pointer-events:none;
-    }
-    @keyframes wallHue{
-      0%   { filter: blur(10px) hue-rotate(-18deg); opacity:.50; }
-      50%  { filter: blur(10px) hue-rotate(12deg);  opacity:.62; }
-      100% { filter: blur(10px) hue-rotate(0deg);   opacity:.55; }
-    }
-    @media (prefers-reduced-motion:reduce){ .nf-wall::before{ animation:none } }
+@media (max-width: 820px){
+  .nf-logo{
+    --brand: clamp(18px, 4.6vw, 30px);
+    --gap:   clamp(4px, 1.4vw, 8px);
+    --wall:  2px;
+    transform: translateX(-3%);
+  }
+}
+
+@media (max-width: 640px){           /* phones + Fold (folded) */
+  .nf-logo{
+    --brand: clamp(16px, 5.6vw, 22px);
+    --gap:   clamp(3px, 1.6vw, 6px);
+    transform: translateX(0);        /* center so nothing clips */
+  }
+}
+
+@media (max-width: 380px){           /* very small phones */
+  .nf-left, .nf-right{ letter-spacing:.12em; } /* tiny tighten */
+}
+
+/* left/right word styles – unchanged */
+.nf-left{
+  grid-column:1; white-space:nowrap; font-weight:800;
+  font-size: var(--brand); line-height:1; letter-spacing:.16em;
+  text-transform:uppercase; text-align:right; color:var(--ink-on-dark);
+  text-shadow:
+    0 0 4px rgba(234,246,255,.55),
+    0 0 10px rgba(143,123,255,.28),
+    0 0 16px rgba(6,215,255,.18);
+}
+.nf-left--top{ grid-row:1 } .nf-left--bot{ grid-row:3 }
+
+.nf-right{
+  grid-column:5; white-space:nowrap; font-weight:800;
+  font-size: var(--brand); line-height:1; letter-spacing:.16em;
+  text-transform:uppercase; text-align:left; color:var(--ink-on-dark);
+  text-shadow:
+    0 0 3px color-mix(in srgb, var(--ink-on-dark) 35%, transparent),
+    0 0 8px color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
+  opacity:.96;
+}
+.nf-right--top{ grid-row:1 } .nf-right--bot{ grid-row:3 }
+
+.nf-wall{
+  grid-column:3; grid-row:1 / -1; align-self:stretch;
+  position:relative; width:var(--wall);
+  background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+  box-shadow:
+    0 0 6px rgba(143,123,255,.42),
+    0 0 14px rgba(6,215,255,.30),
+    0 0 22px rgba(255,255,255,.16);
+  border-radius:1px;
+}
+.nf-wall::before{
+  content:""; position:absolute; inset:-12px;
+  background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+  filter: blur(10px); opacity:.55;
+  animation: wallHue 14s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes wallHue{
+  0%   { filter: blur(10px) hue-rotate(-18deg); opacity:.50; }
+  50%  { filter: blur(10px) hue-rotate(12deg);  opacity:.62; }
+  100% { filter: blur(10px) hue-rotate(0deg);   opacity:.55; }
+}
+@media (prefers-reduced-motion:reduce){ .nf-wall::before{ animation:none } }
+
 
     /* ---------------------------------------------
        5) NAV (white; hard transition, NO underlines)
