@@ -50,11 +50,6 @@
       --s1:6px; --s2:10px; --s3:14px; --s4:18px;
       --s5:26px; --s6:38px; --s7:58px;
       --container: 1100px;
-
-      /* Header logo sizing (compact) */
-      --logo-brand: clamp(22px, 3.6vw, 42px);   /* font size for NEON/FORGE + headlines */
-      --logo-gap:   clamp(6px, 0.9vw, 10px);    /* = left text→wall AND NEON↔FORGE gap */
-      --logo-wall:  clamp(2px, 0.28vw, 3px);    /* wall thickness */
     }
 
     /* ---------------------------------------------
@@ -73,7 +68,7 @@
       overflow-x:hidden;
     }
     a{ color:var(--cyan); text-decoration:none }
-    a:hover{ text-decoration:underline }
+    a:hover{ text-decoration:none } /* no underline anywhere */
     .muted{ color:var(--muted) }
     .wrap{ max-width:var(--container); margin:0 auto; padding:0 var(--s3) }
 
@@ -92,35 +87,39 @@
         radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
         radial-gradient(900px 600px at 20% 80%, rgba(155,92,255,.10), transparent 60%);
       color: var(--ink-on-dark);
-      border-bottom: none;
     }
     .hero{ position:relative; z-index:1; max-width:var(--container); margin:0 auto; padding:0 var(--s3) }
 
-    /* ====== NEW HEADER LOGO (NEON/ FORGE → wall → 2 headlines) ====== */
+    /* ====== HEADER LOGO (NEON/ FORGE → wall → 2 headlines) ======
+       Scoped variables so changes don't leak outside the logo. */
     .nf-logo{
+      --brand: clamp(22px, 3.6vw, 42px);   /* font size for NEON/FORGE + headlines */
+      --gap:   clamp(6px, 0.9vw, 10px);    /* left text→wall AND NEON↔FORGE gap */
+      --wall:  clamp(2px, 0.28vw, 3px);    /* wall thickness */
+
       display:grid;
-      grid-template-columns: 1fr var(--logo-gap) var(--logo-wall) var(--logo-gap) 1fr;
-      grid-template-rows: auto var(--logo-gap) auto;
+      grid-template-columns: 1fr var(--gap) var(--wall) var(--gap) 1fr;
+      grid-template-rows: auto var(--gap) auto;
       align-items:center;
       font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
       transform: translateX(-15%); /* requested left bias */
     }
-    /* Ease the bias + tighten sizing for medium screens */
+    /* Medium screens: nudge size down a touch and relax the bias a bit */
     @media (max-width:900px){
-      :root{
-        --logo-brand: clamp(20px, 4.2vw, 34px);
-        --logo-gap:   clamp(5px, 1.2vw, 8px);
+      .nf-logo{
+        --brand: clamp(20px, 4.2vw, 34px);
+        --gap:   clamp(5px, 1.2vw, 8px);
+        transform: translateX(-10%);
       }
-      .nf-logo{ transform: translateX(-10%); }
     }
-    /* Phone / Fold (folded) */
+    /* Phones / Fold (folded): compact and safe from clipping */
     @media (max-width:520px){
-      :root{
-        --logo-brand: clamp(18px, 5.6vw, 24px);
-        --logo-gap:   clamp(4px, 1.5vw, 6px);
-        --logo-wall:  2px;
+      .nf-logo{
+        --brand: clamp(18px, 5.6vw, 24px);
+        --gap:   clamp(4px, 1.5vw, 6px);
+        --wall:  2px;
+        transform: translateX(-6%);
       }
-      .nf-logo{ transform: translateX(-6%); }
       header.banner{ padding: 26px 0 18px; }
     }
 
@@ -128,7 +127,7 @@
       grid-column:1;
       white-space:nowrap;
       font-weight:800;
-      font-size: var(--logo-brand);
+      font-size: var(--brand);
       line-height:1;
       letter-spacing:.16em; text-transform:uppercase; text-align:right;
       color:var(--ink-on-dark);
@@ -144,7 +143,7 @@
       grid-column:5;
       white-space:nowrap;
       font-weight:800;
-      font-size: var(--logo-brand);
+      font-size: var(--brand);
       line-height:1;
       letter-spacing:.16em; text-transform:uppercase; text-align:left;
       color:var(--ink-on-dark);
@@ -158,7 +157,7 @@
 
     .nf-wall{
       grid-column:3; grid-row:1 / -1; align-self:stretch;
-      position:relative; width:var(--logo-wall);
+      position:relative; width:var(--wall);
       background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
       box-shadow:
         0 0 6px rgba(143,123,255,.42),
@@ -181,7 +180,7 @@
     @media (prefers-reduced-motion:reduce){ .nf-wall::before{ animation:none } }
 
     /* ---------------------------------------------
-       5) NAV (white; hard transition)
+       5) NAV (white; hard transition, NO underlines)
        --------------------------------------------- */
     nav{
       position:sticky; top:0; z-index:10;
@@ -192,34 +191,21 @@
       padding: 12px 14px;
     }
     nav a{
-      color: var(--ink); font-weight:700; letter-spacing:.04em;
-      opacity:.92; position:relative; padding:4px 2px;
+      color: var(--ink);
+      font-weight:700; letter-spacing:.04em;
+      opacity:.92; padding:4px 2px;
+      text-decoration:none; /* explicitly none */
     }
-    nav a::after{
-      content:""; position:absolute; left:0; right:0; bottom:0;
-      height:2px; background: linear-gradient(90deg, var(--cyan), var(--vio));
-      transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
-      border-radius:2px;
-    }
-    nav a:hover{ opacity:1 }
-    nav a:hover::after{ transform: scaleX(1) }
+    nav a:hover{ opacity:1; text-decoration:none } /* no neon line */
 
     /* Nav responsiveness */
-    /* Medium: allow two-line wrap with tighter gaps */
     @media (max-width:760px){
       nav{ gap:10px 18px; padding: 10px 10px; }
       nav a{ padding:6px 2px }
     }
-    /* Small: full vertical stack for narrow phones / Fold5 (folded) */
     @media (max-width:520px){
-      nav{
-        flex-direction:column;
-        align-items:center;
-        gap:6px;
-      }
-      nav a{
-        padding:8px 0;
-      }
+      nav{ flex-direction:column; align-items:center; gap:6px; }
+      nav a{ padding:8px 0 }
     }
 
     /* ---------------------------------------------
@@ -341,12 +327,6 @@
     }
     #signinDot:focus-visible{ outline:3px solid rgba(6,215,255,.35); outline-offset:2px }
     #authMsg{ display:block; min-height:16px; color:#a4b9cf }
-
-    @media (min-width:1024px){
-      main{ max-width: 940px }
-      .thumb{ max-height: 380px; aspect-ratio:auto }
-      .thumb img{ object-fit:cover; object-position: center 40% }
-    }
   </style>
 </head>
 
@@ -363,7 +343,7 @@
   </script>
 
   <!-- =========================
-       HERO (new stacked logo with neon wall)
+       HERO (stacked logo with neon wall)
        ========================= -->
   <header class="banner">
     <div class="hero">
@@ -499,7 +479,7 @@
       return Math.round((d-n)/86400000);
     };
     function escapeHtml(s){
-      return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+      return (s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"," >":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
     }
     function renderDescription(s=""){
       const safe = escapeHtml(s.trim());
