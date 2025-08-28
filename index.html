@@ -101,23 +101,23 @@
       max-width:var(--container); margin:0 auto; padding:0 var(--s3);
     }
 
-    /* ====== NEW HEADER LOGO (NEON/ FORGE → wall → 2 headlines) ====== */
-    .nf-logo{
-      display:grid;
-      grid-template-columns: 1fr var(--logo-gap) var(--logo-wall) var(--logo-gap) 1fr;
-      grid-template-rows: auto var(--logo-gap) auto;
-      align-items:center;
-      font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
-      transform: translateX(-15%);       /* requested 15% left offset */
-    }
-    @media (max-width:900px){ .nf-logo{ transform: translateX(-10%); } }
-    @media (max-width:640px){ .nf-logo{ transform: translateX(-6%); } }
+   /* ====== NEW HEADER LOGO (NEON/ FORGE → wall → 2 headlines) ====== */
+.nf-logo{
+  display:grid;
+  grid-template-columns: 1fr var(--logo-gap) var(--logo-wall) var(--logo-gap) 1fr;
+  grid-template-rows: auto var(--logo-gap) auto;
+  align-items:center;
+  font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  transform: translateX(-15%);       /* requested 15% left offset */
+}
+@media (max-width:900px){ .nf-logo{ transform: translateX(-10%); } }
+@media (max-width:640px){ .nf-logo{ transform: translateX(-6%); } }
 
 .nf-left{
   grid-column:1;
   white-space:nowrap;
   font-weight:800;
-  font-size: clamp(14px, 3.1vw, 34px); /* was clamp(20px, 4.4vw, 48px) -> ~70% */
+  font-size: clamp(14px, 3.1vw, 34px); /* scaled down ~70% */
   line-height:1;
   letter-spacing:.16em; text-transform:uppercase; text-align:right;
   color:var(--ink-on-dark);
@@ -126,14 +126,14 @@
     0 0 10px rgba(143,123,255,.28),
     0 0 16px rgba(6,215,255,.18);
 }
-    .nf-left--top{ grid-row:1 }
-    .nf-left--bot{ grid-row:3 }
+.nf-left--top{ grid-row:1 }
+.nf-left--bot{ grid-row:3 }
 
 .nf-right{
   grid-column:5;
   white-space:nowrap;
   font-weight:800;
-  font-size: clamp(14px, 3.1vw, 34px); /* was clamp(20px, 4.4vw, 48px) -> ~70% */
+  font-size: clamp(14px, 3.1vw, 34px); /* scaled down ~70% */
   line-height:1;
   letter-spacing:.16em; text-transform:uppercase; text-align:left;
   color:var(--ink-on-dark);
@@ -142,58 +142,58 @@
     0 0 8px color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
   opacity:.96;
 }
-    .nf-right--top{ grid-row:1 }
-    .nf-right--bot{ grid-row:3 }
+.nf-right--top{ grid-row:1 }
+.nf-right--bot{ grid-row:3 }
 
-    .nf-wall{
-      grid-column:3; grid-row:1 / -1; align-self:stretch;
-      position:relative; width:var(--logo-wall);
-      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
-      box-shadow:
-        0 0 6px rgba(143,123,255,.42),
-        0 0 14px rgba(6,215,255,.30),
-        0 0 22px rgba(255,255,255,.16);
-      border-radius:1px;
-    }
-    .nf-wall::before{
-      content:""; position:absolute; inset:-12px;
-      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
-      filter: blur(10px); opacity:.55;
-      animation: wallHue 14s ease-in-out infinite alternate;
-      pointer-events:none;
-    }
-    @keyframes wallHue{
-      0%   { filter: blur(10px) hue-rotate(-18deg); opacity:.50; }
-      50%  { filter: blur(10px) hue-rotate(12deg);  opacity:.62; }
-      100% { filter: blur(10px) hue-rotate(0deg);   opacity:.55; }
-    }
-    @media (prefers-reduced-motion:reduce){
-      .nf-wall::before{ animation:none }
-    }
+.nf-wall{
+  grid-column:3; grid-row:1 / -1; align-self:stretch;
+  position:relative; width:var(--logo-wall);
+  background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+  box-shadow:
+    0 0 6px rgba(143,123,255,.42),
+    0 0 14px rgba(6,215,255,.30),
+    0 0 22px rgba(255,255,255,.16);
+  border-radius:1px;
+}
+.nf-wall::before{
+  content:""; position:absolute; inset:-12px;
+  background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+  filter: blur(10px); opacity:.55;
+  animation: wallHue 14s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes wallHue{
+  0%   { filter: blur(10px) hue-rotate(-18deg); opacity:.50; }
+  50%  { filter: blur(10px) hue-rotate(12deg);  opacity:.62; }
+  100% { filter: blur(10px) hue-rotate(0deg);   opacity:.55; }
+}
+@media (prefers-reduced-motion:reduce){
+  .nf-wall::before{ animation:none }
+}
 
-    /* ---------------------------------------------
-       5) NAV (white; hard transition)
-       --------------------------------------------- */
-    nav{
-      position:sticky; top:0; z-index:10;
-      display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
-      background:#fff; /* abrupt switch */
-      border-top:4px solid #0b0f14;  /* strong black rule at top of nav */
-      border-bottom:1px solid var(--line);
-      padding: 12px 14px;
-    }
-    nav a{
-      color: var(--ink); font-weight:700; letter-spacing:.04em;
-      opacity:.92; position:relative; padding:4px 2px;
-    }
-    nav a::after{
-      content:""; position:absolute; left:0; right:0; bottom:0;
-      height:2px; background: linear-gradient(90deg, var(--cyan), var(--vio));
-      transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
-      border-radius:2px;
-    }
-    nav a:hover{ opacity:1 }
-    nav a:hover::after{ transform: scaleX(1) }
+/* ---------------------------------------------
+   5) NAV (white; hard transition)
+   --------------------------------------------- */
+nav{
+  position:sticky; top:0; z-index:10;
+  display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+  background:#fff; /* abrupt switch */
+  border-top:4px solid #0b0f14;  /* strong black rule at top of nav */
+  border-bottom:1px solid var(--line);
+  padding: 12px 14px;
+}
+nav a{
+  color: var(--ink); font-weight:700; letter-spacing:.04em;
+  opacity:.92; position:relative; padding:4px 2px;
+}
+nav a::after{
+  content:""; position:absolute; left:0; right:0; bottom:0;
+  height:2px; background: linear-gradient(90deg, var(--cyan), var(--vio));
+  transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+  border-radius:2px;
+}
+nav a:hover{ opacity:1 }
+nav a:hover::after{ transform: scaleX(1) }
 
     /* ---------------------------------------------
        6) MAIN (white page)
