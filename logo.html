@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Neon Forge — Logo</title>
-  <meta name="description" content="Neon Forge provisional logo. Borderless. Alive. Remembered."/>
+  <meta name="description" content="Neon Forge logo study: white neon wordmark inside a cycling violet/cyan/white frame."/>
   <meta name="theme-color" content="#0b0f14"/>
 
   <!-- TYPE -->
@@ -13,11 +13,17 @@
   <style>
     :root{
       --bg:    #0b0f14;
-      --ink:   #e9f1ff;     /* final letter colour (whitish) */
-      --neon:  #06d7ff;     /* turquoise */
+      --ink:   #e9f1ff;     /* whitish letters */
+      --neon:  #06d7ff;     /* cyan */
       --vio:   #6b7bff;     /* violet */
       --ghost: #9bdfff;     /* cyan highlight */
       --muted: #8ea1b5;
+
+      /* frame geometry */
+      --frame-pad-x: 28px;
+      --frame-pad-y: 18px;
+      --frame-radius: 18px;
+      --frame-hairline: 1.2px; /* thin border; tweak if you want */
 
       --s3: 16px; --s6: 64px;
       --container: 1100px;
@@ -35,6 +41,7 @@
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
+    /* soft grain */
     body::after{
       content:""; position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
@@ -50,96 +57,111 @@
       padding:var(--s6) var(--s3);
     }
 
-    /* WORDMARK */
-    .brand{
-      font-weight:700; line-height:1;
-      font-size:clamp(40px, 10vw, 120px);
-      letter-spacing:.08em; text-transform:uppercase;
-      color:var(--ink); white-space:nowrap;
+    /* === LOGO BLOCK ===================================================== */
+
+    /* Frame wrapper whose color animates; border uses currentColor */
+    .logo-frame{
+      position:relative; display:inline-block;
+      padding: var(--frame-pad-y) var(--frame-pad-x);
+      border-radius: var(--frame-radius);
+      /* animate the frame's hue by animating 'color' property */
+      color: var(--vio);
+      animation: frameHue 12s linear infinite;
+      /* subtle inner mist behind text */
+      background:
+        radial-gradient(80% 120% at 50% 50%, rgba(255,255,255,.06), rgba(255,255,255,0) 60%);
+      isolation:isolate;
     }
 
+    /* the actual thin border + airy glow */
+    .logo-frame::after{
+      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+      border: var(--frame-hairline) solid currentColor;
+      box-shadow:
+        0 0 24px color-mix(in srgb, currentColor 36%, transparent),
+        0 0 48px color-mix(in srgb, currentColor 22%, transparent);
+    }
+
+    /* decorative “speed-line” corners (inspired by your reference) */
+    .corner{ position:absolute; width:96px; height:64px; opacity:.65; }
+    .corner::before, .corner::after{
+      content:""; position:absolute; inset:0; border-radius:8px; pointer-events:none;
+      background:
+        linear-gradient(90deg, currentColor, currentColor) 0 0 / 42% 2px no-repeat,
+        linear-gradient(90deg, currentColor, transparent) 18% 10px / 82% 2px no-repeat,
+        linear-gradient(90deg, currentColor, transparent) 28% 18px / 66% 2px no-repeat,
+        linear-gradient(90deg, currentColor, transparent) 42% 26px / 52% 2px no-repeat,
+        linear-gradient(0deg, currentColor, currentColor) 0 0 / 2px 60% no-repeat,
+        linear-gradient(0deg, currentColor, transparent) 10px 38% / 2px 70% no-repeat,
+        linear-gradient(0deg, currentColor, transparent) 18px 24% / 2px 76% no-repeat;
+      filter: drop-shadow(0 0 10px color-mix(in srgb, currentColor 40%, transparent));
+    }
+    /* positions */
+    .tl{ left:-6px; top:-6px; transform: rotate(0deg) }
+    .tr{ right:-6px; top:-6px; transform: scaleX(-1) }
+    .bl{ left:-6px; bottom:-6px; transform: scaleY(-1) }
+    .br{ right:-6px; bottom:-6px; transform: scale(-1) }
+
+    /* Wordmark: all white neon */
+    .brand{
+      font-weight:700; line-height:1;
+      font-size:clamp(36px, 9vw, 110px);
+      letter-spacing:.14em; text-transform:uppercase;
+      color:var(--ink); white-space:nowrap;
+    }
     .brand .ch{
       display:inline-block; position:relative;
       color:var(--ink);
       text-shadow:
-        0 0 12px color-mix(in srgb, var(--ghost) 40%, transparent),
-        0 0 26px color-mix(in srgb, var(--neon) 55%, transparent);
-      filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
+        0 0 10px color-mix(in srgb, var(--ink) 55%, transparent),
+        0 0 22px color-mix(in srgb, var(--ghost) 55%, transparent),
+        0 0 44px color-mix(in srgb, var(--neon) 35%, transparent);
+      filter: drop-shadow(0 0 16px color-mix(in srgb, var(--neon) 35%, transparent));
     }
 
-    /* turquoise N */
-    .brand .turq{
-      color: var(--neon);
-      text-shadow:
-        0 0 14px color-mix(in srgb, var(--neon) 75%, transparent),
-        0 0 36px color-mix(in srgb, var(--neon) 90%, transparent);
-      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
-    }
-
-    /* violet F */
-    .brand .violet{
-      color: var(--vio);
-      text-shadow:
-        0 0 14px color-mix(in srgb, var(--vio) 75%, transparent),
-        0 0 36px color-mix(in srgb, var(--vio) 90%, transparent);
-      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--vio) 85%, transparent));
-    }
-
-    @media (prefers-reduced-motion: no-preference){
-      .intro .brand .ch{
-        animation: hueIntro 3.84s ease forwards;
-      }
-      .intro .brand .turq{
-        animation: hueIntroTurq 3.84s ease forwards;
-      }
-      .intro .brand .violet{
-        animation: hueIntroVio 3.84s ease forwards;
-      }
-
-      .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
-      .glow .brand .ch:nth-child(1){ animation-delay:0s }      /* N */
-      .glow .brand .ch:nth-child(2){ animation-delay:.05s }
-      .glow .brand .ch:nth-child(3){ animation-delay:.10s }
-      .glow .brand .ch:nth-child(4){ animation-delay:.15s }
-      .glow .brand .ch:nth-child(5){ animation-delay:.30s }
-      .glow .brand .ch:nth-child(6){ animation-delay:.35s }    /* F */
-      .glow .brand .ch:nth-child(7){ animation-delay:.40s }
-      .glow .brand .ch:nth-child(8){ animation-delay:.45s }
-      .glow .brand .ch:nth-child(9){ animation-delay:.50s }
-      .glow .brand .ch:nth-child(10){ animation-delay:.55s }
+    @media (prefers-reduced-motion:no-preference){
+      .brand .ch{ animation: pulse 2.6s ease-in-out infinite }
+      .brand .ch:nth-child(1){ animation-delay:0s }
+      .brand .ch:nth-child(2){ animation-delay:.05s }
+      .brand .ch:nth-child(3){ animation-delay:.10s }
+      .brand .ch:nth-child(4){ animation-delay:.15s }
+      .brand .ch:nth-child(5){ animation-delay:.28s } /* space */
+      .brand .ch:nth-child(6){ animation-delay:.33s }
+      .brand .ch:nth-child(7){ animation-delay:.38s }
+      .brand .ch:nth-child(8){ animation-delay:.43s }
+      .brand .ch:nth-child(9){ animation-delay:.48s }
+      .brand .ch:nth-child(10){ animation-delay:.53s }
 
       @keyframes pulse{
         0%,100%{
           opacity:.95;
-          text-shadow: 0 0 8px currentColor, 0 0 26px currentColor;
-          filter: drop-shadow(0 0 14px currentColor);
+          text-shadow:
+            0 0 8px currentColor,
+            0 0 26px color-mix(in srgb, var(--ink) 70%, transparent),
+            0 0 42px color-mix(in srgb, var(--neon) 32%, transparent);
+          filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 28%, transparent));
         }
         50%{
           opacity:1;
-          text-shadow: 0 0 12px currentColor, 0 0 40px currentColor;
-          filter: drop-shadow(0 0 22px currentColor);
+          text-shadow:
+            0 0 12px currentColor,
+            0 0 40px color-mix(in srgb, var(--ink) 80%, transparent),
+            0 0 64px color-mix(in srgb, var(--neon) 40%, transparent);
+          filter: drop-shadow(0 0 26px color-mix(in srgb, var(--neon) 36%, transparent));
         }
       }
 
-      @keyframes hueIntro{
+      /* Frame color cycle: violet -> cyan -> white -> violet */
+      @keyframes frameHue{
         0%   { color: var(--vio); }
-        40%  { color: var(--neon); }
-        100% { color: var(--ink); }
-      }
-      @keyframes hueIntroTurq{
-        0%   { color: var(--vio); }
-        40%  { color: var(--ink); }
-        100% { color: var(--neon); }
-      }
-      @keyframes hueIntroVio{
-        0%   { color: var(--neon); }
-        40%  { color: var(--ink); }
+        45%  { color: var(--neon); }
+        70%  { color: var(--ink); }
         100% { color: var(--vio); }
       }
     }
 
     .sub{
-      margin-top:12px;
+      margin-top:14px;
       font:500 clamp(14px,2.4vw,18px)/1.35 "Space Grotesk",sans-serif;
       letter-spacing:.06em;
       color:color-mix(in srgb, var(--muted) 86%, transparent);
@@ -157,28 +179,29 @@
 <body>
   <main class="wrap">
     <section aria-label="Neon Forge logo">
-      <h1 class="brand" aria-label="Neon Forge">
-        <span class="ch turq">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
-        <span class="ch">&nbsp;</span>
-        <span class="ch violet">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
-      </h1>
+      <div class="logo-frame" aria-hidden="true">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+
+        <h1 class="brand" aria-label="Neon Forge">
+          <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
+          <span class="ch">&nbsp;</span>
+          <span class="ch">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
+        </h1>
+      </div>
+
       <p class="sub">Borderless&nbsp;&middot;&nbsp;Alive&nbsp;&middot;&nbsp;Remembered</p>
     </section>
   </main>
 
-  <div class="note">N turquoise · F violet · all others white — intro sweep then steady glow.</div>
+  <div class="note">All letters glow white. Frame slowly cycles violet → cyan → white.</div>
 
   <script>
+    /* keep the browser UI theme in sync with background */
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
-
-    const root = document.documentElement;
-    const INTRO_MS = 3840;
-    root.classList.add('intro');
-    setTimeout(()=> {
-      root.classList.remove('intro');
-      root.classList.add('glow');
-    }, INTRO_MS + 120);
   </script>
 </body>
 </html>
