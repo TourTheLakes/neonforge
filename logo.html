@@ -12,24 +12,21 @@
 
   <style>
     :root{
-      /* Theme */
       --bg:#0b0f14;
       --ink:#e9f1ff;
       --muted:#9fb2c7;
 
-      /* Neon hues for the wall */
       --vio:#8f7bff;
       --cy:#06d7ff;
 
-      /* ===== Scales (smaller & tighter) ===== */
-      --brandSize: clamp(34px, 7.5vw, 96px);  /* shared size for wordmark + headlines */
-      --gap-x: clamp(8px, 1.6vw, 18px);       /* word-to-wall & wall-to-headline gap */
-      --gap-y: var(--gap-x);                  /* vertical gap between NEON / FORGE */
-      --wall: clamp(4px, 0.45vw, 7px);        /* narrow wall */
+      /* ===== Scales (40% of previous) ===== */
+      --brandSize: clamp(14px, 3vw, 38px);   /* text size */
+      --gap-x: clamp(3px, 0.6vw, 7px);       /* word-to-wall & wall-to-headline */
+      --gap-y: var(--gap-x);                 /* vertical gap */
+      --wall: clamp(2px, 0.2vw, 3px);        /* thin wall */
 
-      /* Container */
-      --pad: clamp(14px, 3vw, 36px);
-      --container: 1000px;
+      --pad: clamp(6px, 1.2vw, 14px);
+      --container: 420px;                    /* narrower container */
     }
 
     *{ box-sizing:border-box }
@@ -42,10 +39,8 @@
         radial-gradient(820px 520px at 88% 22%, rgba(6,215,255,.08), transparent 60%);
       font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      text-rendering:optimizeLegibility;
     }
 
-    /* subtle film grain */
     body::after{
       content:""; position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
@@ -64,39 +59,33 @@
       place-items:center;
     }
 
-    /* ===================== WALLMARK LAYOUT ===================== */
     .wallmark{
       display:grid;
-      /* Left words | gap | wall | gap | right headlines */
       grid-template-columns: 1fr var(--gap-x) var(--wall) var(--gap-x) 1fr;
-      /* NEON row | equal gap | FORGE row  */
       grid-template-rows: auto var(--gap-y) auto;
       align-items:center;
       width:100%;
     }
 
-    /* Neon wall (continuous) */
     .wall{
       grid-column:3; grid-row:1 / -1; justify-self:center; width:var(--wall); height:100%;
       position:relative;
       background: linear-gradient(180deg, var(--vio) 0%, var(--cy) 50%, #ffffff 100%);
-      /* tighter, softer glow */
-      filter: drop-shadow(0 0 14px rgba(143,123,255,.45))
-              drop-shadow(0 0 22px rgba(6,215,255,.28));
-      overflow:visible;
+      filter: drop-shadow(0 0 6px rgba(143,123,255,.45))
+              drop-shadow(0 0 10px rgba(6,215,255,.28));
     }
     .wall::before,
     .wall::after{
-      content:""; position:absolute; inset:-18px; z-index:-1;
+      content:""; position:absolute; inset:-8px; z-index:-1;
       background: radial-gradient(closest-side, rgba(143,123,255,.24), transparent 70%);
       animation: wallHue 12s ease-in-out infinite;
-      filter: blur(4px);
+      filter: blur(2px);
     }
     .wall::after{
-      inset:-36px;
+      inset:-16px;
       background: radial-gradient(closest-side, rgba(6,215,255,.16), transparent 70%);
       animation: wallHue 12s ease-in-out infinite reverse;
-      filter: blur(9px);
+      filter: blur(4px);
     }
     @keyframes wallHue{
       0%   { opacity:.62; }
@@ -105,24 +94,20 @@
       100% { opacity:.62; }
     }
 
-    /* ===================== WORDMARK ===================== */
     .brand{
       grid-column:1; line-height:1; letter-spacing:.16em; text-transform:uppercase;
       font-family:"Orbitron",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       font-weight:800; font-size:var(--brandSize);
       text-align:right; white-space:nowrap;
       color:#eaf6ff;
-      /* tighter white neon glow */
       text-shadow:
-        0 0 8px rgba(234,246,255,.6),
-        0 0 18px rgba(143,123,255,.35),
-        0 0 30px rgba(6,215,255,.22);
-      filter: drop-shadow(0 0 16px rgba(6,215,255,.12));
+        0 0 4px rgba(234,246,255,.6),
+        0 0 8px rgba(143,123,255,.35),
+        0 0 12px rgba(6,215,255,.22);
     }
     .brand--top{ grid-row:1 }
     .brand--bot{ grid-row:3 }
 
-    /* ===================== HEADLINES (match size) ===================== */
     .head{
       grid-column:5;
       font-family:"Orbitron",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
@@ -130,17 +115,16 @@
       line-height:1; letter-spacing:.16em; text-transform:uppercase;
       color:var(--ink); opacity:.9; white-space:nowrap;
       text-shadow:
-        0 0 6px color-mix(in srgb, var(--ink) 28%, transparent),
-        0 0 18px color-mix(in srgb, var(--ink) 18%, transparent);
+        0 0 2px color-mix(in srgb, var(--ink) 28%, transparent),
+        0 0 6px color-mix(in srgb, var(--ink) 18%, transparent);
     }
     .head--top{ grid-row:1; text-align:left }
     .head--bot{ grid-row:3; text-align:left }
 
-    /* ===================== Caption ===================== */
     .note{
-      margin-top: clamp(12px, 2.5vw, 18px);
+      margin-top: clamp(6px, 1vw, 10px);
       text-align:center; color: color-mix(in srgb, var(--muted) 82%, transparent);
-      font:500 13px/1.4 "Space Grotesk",sans-serif; letter-spacing:.06em;
+      font:500 10px/1.4 "Space Grotesk",sans-serif; letter-spacing:.06em;
       opacity:.9;
     }
   </style>
@@ -156,7 +140,7 @@
       <div class="head head--bot">a different here.</div>
     </section>
 
-    <p class="note">Vertical gap between NEON/FORGE equals the horizontal gap to the wall. Headlines match the word size.</p>
+    <p class="note">Scaled down to ~40% of original size.</p>
   </main>
 
   <script>
