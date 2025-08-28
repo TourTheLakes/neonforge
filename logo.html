@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Neon Forge — Logo</title>
-  <meta name="description" content="Neon Forge logo. White neon wordmark with animated rounded frame."/>
+  <meta name="description" content="Neon Forge logo. White neon wordmark with square animated frame."/>
   <meta name="theme-color" content="#0b0f14"/>
 
   <!-- TYPE -->
@@ -13,17 +13,21 @@
   <style>
     :root{
       --bg:#0b0f14;
-      --ink:#e9f1ff;   /* letter glow (white) */
-      --cyan:#06d7ff;
-      --vio:#6b7bff;
+      --ink:#e9f1ff; /* letters */
       --muted:#8ea1b5;
 
+      /* frame animation colors (smooth loop) */
+      --vio:#7a6bff;
+      --cyan:#06d7ff;
+      --near:#cfefff; /* near-white with a hint of blue */
+
+      /* layout + frame */
       --container:1100px;
       --padX: clamp(28px, 8vw, 72px);
       --padY: clamp(18px, 4vw, 28px);
-      --radius: 22px;
-      --frameW: 2px;      /* frame stroke */
-      --sparkW: 2px;      /* corner spark lines */
+      --frameW: 2px;    /* main frame stroke */
+      --sparkW: 2px;    /* corner “tech” lines */
+      --inset: 3.5%;    /* how far the main rect sits in from svg edge */
     }
 
     *{ box-sizing:border-box }
@@ -55,68 +59,54 @@
     }
 
     /* =======================
-       PANEL + FRAME (rounded, continuous)
+       PANEL (square, no rounding)
        ======================= */
     .panel{
       position:relative;
       padding: var(--padY) var(--padX);
-      border-radius: var(--radius);
       isolation:isolate;
       background:
-        radial-gradient(140% 200% at 50% 35%, rgba(6,215,255,.16), rgba(107,123,255,.10) 38%, transparent 70%);
+        radial-gradient(140% 200% at 50% 35%, rgba(6,215,255,.14), rgba(107,123,255,.08) 38%, transparent 70%);
+      outline: 0; /* crisp edges; we keep all corners 90º */
     }
     /* wide glow behind panel */
     .panel::before{
-      content:""; position:absolute; inset:-22px; border-radius: calc(var(--radius) + 22px);
+      content:""; position:absolute; inset:-18px;
       background: radial-gradient(160% 220% at 50% 35%,
                   rgba(6,215,255,.12), rgba(107,123,255,.10) 35%, transparent 72%);
       filter: blur(18px); z-index:-1;
     }
 
-    /* animated frame color */
-    @keyframes frameHue {
-      0%   { --frame: var(--vio); }
-      45%  { --frame: var(--cyan); }
-      75%  { --frame: #ffffff; }
-      100% { --frame: var(--vio); }
-    }
-
+    /* =======================
+       FRAME (SVG fills the panel; 90º corners)
+       ======================= */
     .frame{
-      --frame: var(--vio);
-      animation: frameHue 7.5s ease-in-out infinite;
-      position:absolute; inset:0; border-radius: var(--radius);
-      pointer-events:none;
-    }
-    /* crisp stroke */
-    .frame::before{
-      content:""; position:absolute; inset:0; border-radius:inherit;
-      border: var(--frameW) solid var(--frame);
-    }
-    /* neon bloom */
-    .frame::after{
-      content:""; position:absolute; inset:-10px; border-radius: calc(var(--radius) + 10px);
-      box-shadow:
-        0 0 18px color-mix(in srgb, var(--frame) 55%, transparent),
-        0 0 36px color-mix(in srgb, var(--frame) 45%, transparent);
+      --frame-color: var(--vio);
+      color: var(--frame-color);
+      position:absolute; inset:0; pointer-events:none;
+      filter:
+        drop-shadow(0 0 8px  color-mix(in srgb, var(--frame-color) 52%, transparent))
+        drop-shadow(0 0 16px color-mix(in srgb, var(--frame-color) 42%, transparent))
+        drop-shadow(0 0 28px color-mix(in srgb, var(--frame-color) 32%, transparent));
+      /* ultra-smooth color loop */
+      animation: frameColor 10s ease-in-out infinite;
     }
 
-    /* tiny corner “speed lines” (subtle) */
-    .spark{ position:absolute; width:64px; height:64px; }
-    .spark i{ position:absolute; background: var(--frame); display:block; }
-    .spark i.h1{ height:var(--sparkW); width:70%; left:10px; top:10px; opacity:.95 }
-    .spark i.h2{ height:var(--sparkW); width:50%; left:10px; top:18px; opacity:.7 }
-    .spark i.h3{ height:var(--sparkW); width:32%; left:10px; top:26px; opacity:.55 }
-    .spark i.v1{ width:var(--sparkW); height:70%; top:10px; left:10px; opacity:.95 }
-    .spark i.v2{ width:var(--sparkW); height:50%; top:10px; left:18px; opacity:.7 }
-    .spark i.v3{ width:var(--sparkW); height:32%; top:10px; left:26px; opacity:.55 }
-
-    .spark.tl{ left:-2px; top:-2px; }
-    .spark.tr{ right:-2px; top:-2px; transform:scaleX(-1) }
-    .spark.br{ right:-2px; bottom:-2px; transform:scale(-1) }
-    .spark.bl{ left:-2px; bottom:-2px; transform:scaleY(-1) }
+    /* Smooth gradiented loop: violet → cyan → near-white → violet (lots of stops) */
+    @keyframes frameColor{
+      0%   { --frame-color: var(--vio); }
+      12%  { --frame-color: #756ffb; }
+      25%  { --frame-color: #6f77ff; }
+      37%  { --frame-color: #44cfff; }
+      50%  { --frame-color: var(--cyan); }
+      62%  { --frame-color: #5fe1ff; }
+      75%  { --frame-color: var(--near); }
+      87%  { --frame-color: #aebfff; }
+      100% { --frame-color: var(--vio); }
+    }
 
     /* =======================
-       WORDMARK (Orbitron)
+       WORDMARK (Orbitron, all-white glow)
        ======================= */
     .brand{
       font-family:'Orbitron', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -131,14 +121,14 @@
       text-shadow:
         0 0 10px color-mix(in srgb, var(--ink) 32%, transparent),
         0 0 24px color-mix(in srgb, var(--ink) 36%, transparent),
-        0 0 40px color-mix(in srgb, var(--cyan) 28%, transparent);
-      filter: drop-shadow(0 0 16px color-mix(in srgb, var(--cyan) 30%, transparent));
+        0 0 40px color-mix(in srgb, #06d7ff 26%, transparent);
+      filter: drop-shadow(0 0 16px color-mix(in srgb, #06d7ff 28%, transparent));
       opacity:.98;
     }
     .brand .gap{ display:inline-block; width: clamp(10px, 2vw, 24px) }
 
     @media (prefers-reduced-motion:no-preference){
-      .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
+      .glow .brand .ch{ animation: pulse 2.6s ease-in-out infinite }
       .glow .brand .ch:nth-child(1){ animation-delay:.00s }
       .glow .brand .ch:nth-child(2){ animation-delay:.05s }
       .glow .brand .ch:nth-child(3){ animation-delay:.10s }
@@ -183,25 +173,49 @@
   <main class="wrap">
     <section aria-label="Neon Forge logo">
       <div class="panel">
-        <!-- Animated rounded frame -->
-        <div class="frame" aria-hidden="true">
-          <div class="spark tl" aria-hidden="true">
-            <i class="h1"></i><i class="h2"></i><i class="h3"></i>
-            <i class="v1"></i><i class="v2"></i><i class="v3"></i>
-          </div>
-          <div class="spark tr" aria-hidden="true">
-            <i class="h1"></i><i class="h2"></i><i class="h3"></i>
-            <i class="v1"></i><i class="v2"></i><i class="v3"></i>
-          </div>
-          <div class="spark br" aria-hidden="true">
-            <i class="h1"></i><i class="h2"></i><i class="h3"></i>
-            <i class="v1"></i><i class="v2"></i><i class="v3"></i>
-          </div>
-          <div class="spark bl" aria-hidden="true">
-            <i class="h1"></i><i class="h2"></i><i class="h3"></i>
-            <i class="v1"></i><i class="v2"></i><i class="v3"></i>
-          </div>
-        </div>
+        <!-- Square, 90º frame rendered with SVG -->
+        <svg class="frame" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+          <!-- main rectangle (no rounded corners) -->
+          <rect x="3.5" y="3.5" width="93" height="33"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="square"
+                stroke-linejoin="miter"/>
+
+          <!-- tech-style corner lines (like your reference) -->
+          <!-- top-left -->
+          <line x1="3.5" y1="9"   x2="22"  y2="9"   stroke="currentColor" stroke-width="2"/>
+          <line x1="3.5" y1="12"  x2="18"  y2="12"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="3.5" y1="15"  x2="14"  y2="15"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+          <line x1="9"   y1="3.5" x2="9"   y2="22"  stroke="currentColor" stroke-width="2"/>
+          <line x1="12"  y1="3.5" x2="12"  y2="18"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="15"  y1="3.5" x2="15"  y2="14"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+
+          <!-- top-right -->
+          <line x1="96.5" y1="9"   x2="78"  y2="9"   stroke="currentColor" stroke-width="2"/>
+          <line x1="96.5" y1="12"  x2="82"  y2="12"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="96.5" y1="15"  x2="86"  y2="15"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+          <line x1="91"   y1="3.5" x2="91"  y2="22"  stroke="currentColor" stroke-width="2"/>
+          <line x1="88"   y1="3.5" x2="88"  y2="18"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="85"   y1="3.5" x2="85"  y2="14"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+
+          <!-- bottom-right -->
+          <line x1="96.5" y1="31"  x2="78"  y2="31"  stroke="currentColor" stroke-width="2"/>
+          <line x1="96.5" y1="28"  x2="82"  y2="28"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="96.5" y1="25"  x2="86"  y2="25"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+          <line x1="91"   y1="36.5" x2="91" y2="18"  stroke="currentColor" stroke-width="2"/>
+          <line x1="88"   y1="36.5" x2="88" y2="22"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="85"   y1="36.5" x2="85" y2="26"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+
+          <!-- bottom-left -->
+          <line x1="3.5" y1="31"  x2="22"  y2="31"  stroke="currentColor" stroke-width="2"/>
+          <line x1="3.5" y1="28"  x2="18"  y2="28"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="3.5" y1="25"  x2="14"  y2="25"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+          <line x1="9"   y1="36.5" x2="9"  y2="18"  stroke="currentColor" stroke-width="2"/>
+          <line x1="12"  y1="36.5" x2="12" y2="22"  stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="15"  y1="36.5" x2="15" y2="26"  stroke="currentColor" stroke-width="2" opacity=".6"/>
+        </svg>
 
         <!-- Wordmark -->
         <h1 class="brand" aria-label="Neon Forge">
@@ -215,14 +229,11 @@
     </section>
   </main>
 
-  <div class="note">Orbitron wordmark. All letters glow white. Rounded frame gently cycles violet → cyan → white.</div>
+  <div class="note">Orbitron wordmark. All letters glow white. **Square** frame with subtle tech corners. Frame gently cycles violet → cyan → near-white.</div>
 
   <script>
-    // theme color for mobile browser UI
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
-
-    // idle glow
     document.documentElement.classList.add('glow');
   </script>
 </body>
