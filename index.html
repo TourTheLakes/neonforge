@@ -32,17 +32,17 @@
     :root{
       --bg:#ffffff;         /* page background now white */
       --footer:#0b0f14;     /* footer stays black */
-      --ink:#0b0f14;        /* dark ink for white page body text */
+      --ink:#0b0f14;        /* dark ink for white body */
       --ink-on-dark:#e9f1ff;/* ink for dark header/footer */
-      --muted:#586a7b;      /* muted on white */
+      --muted:#586a7b;
       --muted-on-dark:#8ea1b5;
 
-      --line:#e8eef5;       /* hairline on white */
+      --line:#e8eef5;
       --line-on-dark:#17212b;
 
-      --cyan:#06d7ff;       /* turquoise */
-      --vio:#9b5cff;        /* violet */
-      --ghost:#9bdfff;      /* cyan highlight */
+      --cyan:#06d7ff;
+      --vio:#9b5cff;
+      --ghost:#9bdfff;
       --neon: var(--cyan);
 
       --s1:6px; --s2:10px; --s3:14px; --s4:18px;
@@ -74,25 +74,19 @@
     }
 
     /* ---------------------------------------------
-       3) HEADER / HERO (dark → fades to white)
+       3) HEADER / HERO (dark; NO fade)
        --------------------------------------------- */
     .banner{ position:relative; isolation:isolate; overflow:hidden }
 
     header.banner{
       padding: clamp(40px, 6vw, 72px) 0 clamp(26px, 5vw, 42px);
-      border-bottom:1px solid var(--line-on-dark);
-      /* Dark stage background now lives ONLY in header */
+      /* dark header background only here */
       background:
         radial-gradient(1200px 900px at 50% 20%, #101620 0%, #0b0f14 40%, #05070a 100%),
         radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
         radial-gradient(900px 600px at 20% 80%, rgba(155,92,255,.10), transparent 60%);
       color: var(--ink-on-dark);
-    }
-    /* smooth fade to page white */
-    header.banner::after{
-      content:""; position:absolute; left:0; right:0; bottom:-1px; height:140px;
-      background: linear-gradient(180deg, rgba(11,15,20,0) 0%, rgba(255,255,255,.75) 40%, #fff 100%);
-      pointer-events:none;
+      border-bottom: none; /* no fade/line from header itself */
     }
 
     .hero{
@@ -102,26 +96,31 @@
       text-align:center;
     }
 
-    /* ====== WORDMARK (40% shorter + frame glow) ====== */
+    /* ====== WORDMARK (40% shorter) + RECTANGULAR FRAME ====== */
     .brand-wrap{
       display:inline-block;
-      padding: 16px 24px;
-      border-radius: 18px;
       position: relative;
       margin: 0 auto;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.06) inset,
-        0 8px 28px rgba(255,255,255,.08),
-        0 0 60px rgba(255,255,255,.28); /* white glow frame */
+      padding: 20px 28px; /* just spacing inside frame */
     }
+    /* SVG frame behind the wordmark */
+    .brand-wrap svg.frame{
+      position:absolute; inset:0; width:100%; height:100%;
+      overflow:visible; pointer-events:none;
+      filter: drop-shadow(0 8px 22px rgba(255,255,255,.22));
+    }
+    .brand-wrap svg.frame rect{
+      fill: none;
+      stroke: rgba(255,255,255,.85);
+      stroke-width: 2.2;
+      rx: 6; ry: 6; /* tiny soften so it’s not a pill/bubble */
+    }
+
     .brand{
-      font-weight:700; line-height:0.86;  /* tighter line-height to help height reduction */
-      /* 40% shorter: old max 120px → 72px. Keep width feel with a touch more spacing */
-      font-size:clamp(24px, 6vw, 72px);
+      font-weight:700; line-height:0.86;
+      font-size:clamp(24px, 6vw, 72px); /* ~40% shorter than 120px */
       letter-spacing:.12em; text-transform:uppercase;
-      color:var(--ink-on-dark); white-space:nowrap;
+      color:var(--ink-on-dark); white-space:nowrap; position:relative;
     }
     .brand .ch{
       display:inline-block; position:relative; color:var(--ink-on-dark);
@@ -130,7 +129,7 @@
         0 0 26px color-mix(in srgb, var(--neon) 55%, transparent);
       filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
     }
-    /* turquoise F */
+    /* cyan N */
     .brand .turq{
       color: var(--neon);
       text-shadow:
@@ -138,7 +137,7 @@
         0 0 36px color-mix(in srgb, var(--neon) 90%, transparent);
       filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
     }
-    /* violet R */
+    /* violet F */
     .brand .violet{
       color: var(--vio);
       text-shadow:
@@ -165,32 +164,12 @@
       .glow .brand .ch:nth-child(10){ animation-delay:.55s } /* E */
 
       @keyframes pulse{
-        0%,100%{
-          opacity:.95;
-          text-shadow: 0 0 8px currentColor, 0 0 26px currentColor;
-          filter: drop-shadow(0 0 14px currentColor);
-        }
-        50%{
-          opacity:1;
-          text-shadow: 0 0 12px currentColor, 0 0 40px currentColor;
-          filter: drop-shadow(0 0 22px currentColor);
-        }
+        0%,100%{ opacity:.95; text-shadow: 0 0 8px currentColor, 0 0 26px currentColor; filter: drop-shadow(0 0 14px currentColor); }
+        50%{ opacity:1; text-shadow: 0 0 12px currentColor, 0 0 40px currentColor; filter: drop-shadow(0 0 22px currentColor); }
       }
-      @keyframes hueIntro{
-        0%   { color: var(--vio); }
-        40%  { color: var(--neon); }
-        100% { color: var(--ink-on-dark); }
-      }
-      @keyframes hueIntroTurq{
-        0%   { color: var(--vio); }
-        40%  { color: var(--ink-on-dark); }
-        100% { color: var(--neon); }
-      }
-      @keyframes hueIntroVio{
-        0%   { color: var(--neon); }
-        40%  { color: var(--ink-on-dark); }
-        100% { color: var(--vio); }
-      }
+      @keyframes hueIntro{ 0%{ color: var(--vio);} 40%{ color: var(--neon);} 100%{ color: var(--ink-on-dark);} }
+      @keyframes hueIntroTurq{ 0%{ color: var(--vio);} 40%{ color: var(--ink-on-dark);} 100%{ color: var(--neon);} }
+      @keyframes hueIntroVio{ 0%{ color: var(--neon);} 40%{ color: var(--ink-on-dark);} 100%{ color: var(--vio);} }
     }
 
     .hero-copy h1{
@@ -205,16 +184,15 @@
     }
 
     /* ---------------------------------------------
-       5) NAV (sits on white page)
+       5) NAV (white; the hard transition happens here)
        --------------------------------------------- */
     nav{
       position:sticky; top:0; z-index:10;
       display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
-      background: rgba(255,255,255,.86);
-      backdrop-filter: saturate(160%) blur(8px);
-      border-top:1px solid var(--line);
+      background:#fff; /* abrupt switch */
+      border-top:4px solid #0b0f14;  /* strong black rule at top of nav */
       border-bottom:1px solid var(--line);
-      padding: 10px 14px;
+      padding: 12px 14px;
     }
     nav a{
       color: var(--ink); font-weight:700; letter-spacing:.04em;
@@ -330,7 +308,7 @@
     .errmsg{ color:#c4452d; margin-top:8px }
 
     /* ---------------------------------------------
-       7) FOOTER (remains black)
+       7) FOOTER (black)
        --------------------------------------------- */
     footer.banner{
       padding: 34px 0 42px;
@@ -370,18 +348,23 @@
   </script>
 
   <!-- =========================
-       HERO (framed, smaller wordmark; dark → white fade)
+       HERO (rectangular frame; N + F colored)
        ========================= -->
   <header class="banner">
     <div class="hero">
-      <div class="brand-wrap" aria-hidden="true"></div>
       <div class="brand-wrap">
+        <!-- rectangular frame -->
+        <svg class="frame" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="97" height="37" rx="6" ry="6"/>
+        </svg>
+
         <h1 class="brand" aria-label="Neon Forge">
-          <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
+          <span class="ch turq">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
           <span class="ch">&nbsp;</span>
-          <span class="ch turq">F</span><span class="ch">O</span><span class="ch violet">R</span><span class="ch">G</span><span class="ch">E</span>
+          <span class="ch violet">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
         </h1>
       </div>
+
       <div class="hero-copy">
         <h1>Gather. Explore. Celebrate.</h1>
         <p>Small-group events &amp; multi-day adventures</p>
@@ -390,7 +373,7 @@
   </header>
 
   <!-- =========================
-       NAVIGATION
+       NAVIGATION (white; hard transition)
        ========================= -->
   <nav>
     <a href="#about">About</a>
@@ -736,10 +719,8 @@
   <!-- Footer year + theme-color sync + intro->glow -->
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
-    // theme-color matches page white now
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
 
-    // Keep the logo intro/pulse behaviour
     const root = document.documentElement;
     const INTRO_MS = 3840;
     root.classList.add('intro');
