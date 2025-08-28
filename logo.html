@@ -19,14 +19,14 @@
       --vio:#8f7bff;
       --cy:#06d7ff;
 
-      /* ===== Scales (40% of previous) ===== */
-      --brandSize: clamp(14px, 3vw, 38px);   /* text size */
-      --gap-x: clamp(3px, 0.6vw, 7px);       /* word-to-wall & wall-to-headline */
-      --gap-y: var(--gap-x);                 /* vertical gap */
-      --wall: clamp(2px, 0.2vw, 3px);        /* thin wall */
+      /* ===== Scales ===== */
+      --brandSize: clamp(14px, 3vw, 38px);
+      --gap-x: clamp(3px, 0.6vw, 7px);  /* word-wall gap */
+      --gap-y: clamp(2px, 0.4vw, 4px);  /* vertical gap tightened */
+      --wall: clamp(2px, 0.2vw, 3px);
 
       --pad: clamp(6px, 1.2vw, 14px);
-      --container: 420px;                    /* narrower container */
+      --container: 420px;
     }
 
     *{ box-sizing:border-box }
@@ -55,14 +55,17 @@
       min-height:100dvh;
       margin:0 auto;
       padding:var(--pad);
-      display:grid;
-      place-items:center;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
+    /* Offset the whole logo 15% left */
     .wallmark{
+      transform: translateX(-15%);
       display:grid;
       grid-template-columns: 1fr var(--gap-x) var(--wall) var(--gap-x) 1fr;
-      grid-template-rows: auto var(--gap-y) auto;
+      grid-template-rows: auto var(--gap-y) auto; /* tightened vertical spacing */
       align-items:center;
       width:100%;
     }
@@ -140,7 +143,7 @@
       <div class="head head--bot">a different here.</div>
     </section>
 
-    <p class="note">Scaled down to ~40% of original size.</p>
+    <p class="note">Offset 15% left. Vertical gap tightened.</p>
   </main>
 
   <script>
