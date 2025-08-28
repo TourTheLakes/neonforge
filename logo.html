@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Neon Forge — Logo</title>
-  <meta name="description" content="Neon Forge logo concept: stacked wordmark with a neon wall and mirrored headlines."/>
+  <meta name="description" content="Neon Forge logo concept: stacked wordmark aligned to a neon wall with mirrored headlines."/>
   <meta name="theme-color" content="#0b0f14"/>
 
   <!-- TYPE -->
@@ -17,21 +17,19 @@
       --ink:#e9f1ff;
       --muted:#9fb2c7;
 
-      /* Neon hues for the wall animation */
+      /* Neon hues for the wall */
       --vio:#8f7bff;
       --cy:#06d7ff;
 
-      /* Sizing knobs */
-      --brandSize: clamp(44px, 10vw, 140px);   /* shared size for wordmark + headlines */
-      --gap-x: clamp(14px, 2.6vw, 28px);       /* word-to-wall & wall-to-headline gap */
-      --gap-y: var(--gap-x);                   /* vertical gap between NEON / FORGE */
-
-      /* Wall width */
-      --wall: clamp(6px, 0.7vw, 10px);
+      /* ===== Scales (smaller & tighter) ===== */
+      --brandSize: clamp(34px, 7.5vw, 96px);  /* shared size for wordmark + headlines */
+      --gap-x: clamp(8px, 1.6vw, 18px);       /* word-to-wall & wall-to-headline gap */
+      --gap-y: var(--gap-x);                  /* vertical gap between NEON / FORGE */
+      --wall: clamp(4px, 0.45vw, 7px);        /* narrow wall */
 
       /* Container */
-      --pad: clamp(20px, 4vw, 60px);
-      --container: 1200px;
+      --pad: clamp(14px, 3vw, 36px);
+      --container: 1000px;
     }
 
     *{ box-sizing:border-box }
@@ -39,20 +37,20 @@
     body{
       margin:0; color:var(--ink);
       background:
-        radial-gradient(1200px 900px at 50% -10%, #18212d 0%, #0b0f14 50%, #06080b 100%),
-        radial-gradient(1000px 700px at 10% 80%, rgba(129,108,255,.12), transparent 60%),
-        radial-gradient(900px 600px at 90% 20%, rgba(6,215,255,.10), transparent 60%);
+        radial-gradient(1100px 800px at 50% -10%, #18212d 0%, #0b0f14 55%, #06080b 100%),
+        radial-gradient(900px 600px at 12% 78%, rgba(129,108,255,.10), transparent 60%),
+        radial-gradient(820px 520px at 88% 22%, rgba(6,215,255,.08), transparent 60%);
       font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
     }
 
-    /* soft film grain */
+    /* subtle film grain */
     body::after{
       content:""; position:fixed; inset:0; pointer-events:none;
       background-image:url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' opacity='.05'>\
-<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.5'/></feComponentTransfer></filter>\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' opacity='.04'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.45'/></feComponentTransfer></filter>\
 <rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
       background-size:280px 280px; mix-blend-mode:soft-light;
     }
@@ -80,31 +78,31 @@
     /* Neon wall (continuous) */
     .wall{
       grid-column:3; grid-row:1 / -1; justify-self:center; width:var(--wall); height:100%;
-      position:relative; border-radius:0;
+      position:relative;
       background: linear-gradient(180deg, var(--vio) 0%, var(--cy) 50%, #ffffff 100%);
-      filter: drop-shadow(0 0 22px rgba(143,123,255,.5))
-              drop-shadow(0 0 34px rgba(6,215,255,.35));
+      /* tighter, softer glow */
+      filter: drop-shadow(0 0 14px rgba(143,123,255,.45))
+              drop-shadow(0 0 22px rgba(6,215,255,.28));
       overflow:visible;
     }
     .wall::before,
     .wall::after{
-      content:""; position:absolute; inset:-28px; border-radius:0; z-index:-1;
-      background: radial-gradient(closest-side, rgba(143,123,255,.28), transparent 70%);
+      content:""; position:absolute; inset:-18px; z-index:-1;
+      background: radial-gradient(closest-side, rgba(143,123,255,.24), transparent 70%);
       animation: wallHue 12s ease-in-out infinite;
-      filter: blur(6px);
+      filter: blur(4px);
     }
     .wall::after{
-      inset:-60px;
-      background: radial-gradient(closest-side, rgba(6,215,255,.18), transparent 70%);
+      inset:-36px;
+      background: radial-gradient(closest-side, rgba(6,215,255,.16), transparent 70%);
       animation: wallHue 12s ease-in-out infinite reverse;
-      filter: blur(12px);
+      filter: blur(9px);
     }
-
     @keyframes wallHue{
-      0%   { opacity:.65; }
-      33%  { opacity:.75; }
-      66%  { opacity:.62; }
-      100% { opacity:.65; }
+      0%   { opacity:.62; }
+      33%  { opacity:.70; }
+      66%  { opacity:.60; }
+      100% { opacity:.62; }
     }
 
     /* ===================== WORDMARK ===================== */
@@ -114,12 +112,12 @@
       font-weight:800; font-size:var(--brandSize);
       text-align:right; white-space:nowrap;
       color:#eaf6ff;
-      /* white neon glow */
+      /* tighter white neon glow */
       text-shadow:
-        0 0 10px rgba(234,246,255,.65),
-        0 0 22px rgba(143,123,255,.45),
-        0 0 42px rgba(6,215,255,.30);
-      filter: drop-shadow(0 0 22px rgba(6,215,255,.15));
+        0 0 8px rgba(234,246,255,.6),
+        0 0 18px rgba(143,123,255,.35),
+        0 0 30px rgba(6,215,255,.22);
+      filter: drop-shadow(0 0 16px rgba(6,215,255,.12));
     }
     .brand--top{ grid-row:1 }
     .brand--bot{ grid-row:3 }
@@ -130,26 +128,20 @@
       font-family:"Orbitron",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
       font-weight:800; font-size:var(--brandSize);
       line-height:1; letter-spacing:.16em; text-transform:uppercase;
-      color:var(--ink); opacity:.95; white-space:nowrap;
+      color:var(--ink); opacity:.9; white-space:nowrap;
       text-shadow:
-        0 0 8px color-mix(in srgb, var(--ink) 30%, transparent),
-        0 0 26px color-mix(in srgb, var(--ink) 22%, transparent);
+        0 0 6px color-mix(in srgb, var(--ink) 28%, transparent),
+        0 0 18px color-mix(in srgb, var(--ink) 18%, transparent);
     }
     .head--top{ grid-row:1; text-align:left }
     .head--bot{ grid-row:3; text-align:left }
 
     /* ===================== Caption ===================== */
     .note{
-      margin-top: clamp(16px, 3vw, 24px);
+      margin-top: clamp(12px, 2.5vw, 18px);
       text-align:center; color: color-mix(in srgb, var(--muted) 82%, transparent);
-      font:500 14px/1.4 "Space Grotesk",sans-serif; letter-spacing:.06em;
+      font:500 13px/1.4 "Space Grotesk",sans-serif; letter-spacing:.06em;
       opacity:.9;
-    }
-
-    @media (max-width:700px){
-      :root{
-        --brandSize: clamp(38px, 12vw, 80px);
-      }
     }
   </style>
 </head>
@@ -164,11 +156,10 @@
       <div class="head head--bot">a different here.</div>
     </section>
 
-    <p class="note">Words are right-aligned into a continuous neon wall; headlines flow out to the right. Edit the two headlines in the HTML.</p>
+    <p class="note">Vertical gap between NEON/FORGE equals the horizontal gap to the wall. Headlines match the word size.</p>
   </main>
 
   <script>
-    // keep theme-color in sync with CSS var
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#0b0f14';
     document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
   </script>
