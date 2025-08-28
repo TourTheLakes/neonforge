@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Neon Forge Events</title>
   <meta name="description" content="Neon Forge creates small-group events and multi-day adventures — shared stories, new friends, and big scenery."/>
-  <meta name="theme-color" content="#0b0f14"/>
+  <meta name="theme-color" content="#ffffff"/>
 
   <!-- ===== Font ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 
-  <!-- ===== Favicon (N cyan, F violet) ===== -->
+  <!-- ===== Favicon (NF, cyan & purple) ===== -->
   <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E
           %3Crect x='6' y='6' width='84' height='84' rx='22' fill='%230b0f14'/%3E
@@ -27,22 +27,27 @@
 
   <style>
     /* ---------------------------------------------
-       1) THEME TOKENS — Neon Forge
+       1) THEME TOKENS
        --------------------------------------------- */
     :root{
-      --bg:#0b0f14;
-      --bg-2:#0f141b;
-      --ink:#e9f1ff;
-      --muted:#8ea1b5;
-      --line:#17212b;
+      --bg:#ffffff;         /* page background now white */
+      --footer:#0b0f14;     /* footer stays black */
+      --ink:#0b0f14;        /* dark ink for white page body text */
+      --ink-on-dark:#e9f1ff;/* ink for dark header/footer */
+      --muted:#586a7b;      /* muted on white */
+      --muted-on-dark:#8ea1b5;
 
-      --cyan:#06d7ff;
-      --vio:#9b5cff;
+      --line:#e8eef5;       /* hairline on white */
+      --line-on-dark:#17212b;
+
+      --cyan:#06d7ff;       /* turquoise */
+      --vio:#9b5cff;        /* violet */
+      --ghost:#9bdfff;      /* cyan highlight */
       --neon: var(--cyan);
 
       --s1:6px; --s2:10px; --s3:14px; --s4:18px;
       --s5:26px; --s6:38px; --s7:58px;
-      --container:1100px;
+      --container: 1100px;
     }
 
     /* ---------------------------------------------
@@ -51,34 +56,14 @@
     *{ box-sizing:border-box }
     html,body{ height:100% }
     body{
-      margin:0; color:var(--ink);
-      /* smoother background with extra stops to avoid banding */
-      background:
-        radial-gradient(1200px 900px at 50% 18%,
-          #101620 0%,
-          #0d131c 38%,
-          #0b0f14 55%,
-          #080c11 78%,
-          #05070a 100%),
-        radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
-        radial-gradient(900px 600px at 20% 80%, rgba(155,92,255,.10), transparent 60%);
+      margin:0;
+      color:var(--ink);
+      background: var(--bg);
       font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
       line-height:1.6;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
     }
-
-    /* soft grain — slightly stronger to break up 8-bit steps */
-    body::after{
-      content:""; position:fixed; inset:0; pointer-events:none;
-      background-image:url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' opacity='.07'>\
-<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.5'/></feComponentTransfer></filter>\
-<rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      background-size:220px 220px;
-      mix-blend-mode:soft-light;
-    }
-
     a{ color:var(--cyan); text-decoration:none }
     a:hover{ text-decoration:underline }
     .muted{ color:var(--muted) }
@@ -89,20 +74,25 @@
     }
 
     /* ---------------------------------------------
-       3) BANNERS
+       3) HEADER / HERO (dark → fades to white)
        --------------------------------------------- */
     .banner{ position:relative; isolation:isolate; overflow:hidden }
 
     header.banner{
-      padding: clamp(54px, 8vw, 96px) 0 clamp(26px, 5vw, 42px);
-      /* remove the hard 1px border and use a fade */
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
-      backdrop-filter: saturate(140%) blur(4px);
+      padding: clamp(40px, 6vw, 72px) 0 clamp(26px, 5vw, 42px);
+      border-bottom:1px solid var(--line-on-dark);
+      /* Dark stage background now lives ONLY in header */
+      background:
+        radial-gradient(1200px 900px at 50% 20%, #101620 0%, #0b0f14 40%, #05070a 100%),
+        radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
+        radial-gradient(900px 600px at 20% 80%, rgba(155,92,255,.10), transparent 60%);
+      color: var(--ink-on-dark);
     }
-    /* soft separator fade under header to prevent a “line” */
+    /* smooth fade to page white */
     header.banner::after{
-      content:""; position:absolute; left:0; right:0; bottom:-1px; height:80px; pointer-events:none;
-      background: linear-gradient(180deg, rgba(11,15,20,.28), rgba(11,15,20,0));
+      content:""; position:absolute; left:0; right:0; bottom:-1px; height:140px;
+      background: linear-gradient(180deg, rgba(11,15,20,0) 0%, rgba(255,255,255,.75) 40%, #fff 100%);
+      pointer-events:none;
     }
 
     .hero{
@@ -112,20 +102,35 @@
       text-align:center;
     }
 
-    /* ====== LOGO ====== */
+    /* ====== WORDMARK (40% shorter + frame glow) ====== */
+    .brand-wrap{
+      display:inline-block;
+      padding: 16px 24px;
+      border-radius: 18px;
+      position: relative;
+      margin: 0 auto;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.06) inset,
+        0 8px 28px rgba(255,255,255,.08),
+        0 0 60px rgba(255,255,255,.28); /* white glow frame */
+    }
     .brand{
-      font-weight:700; line-height:1;
-      font-size:clamp(40px, 10vw, 120px);
-      letter-spacing:.08em; text-transform:uppercase;
-      color:var(--ink); white-space:nowrap;
+      font-weight:700; line-height:0.86;  /* tighter line-height to help height reduction */
+      /* 40% shorter: old max 120px → 72px. Keep width feel with a touch more spacing */
+      font-size:clamp(24px, 6vw, 72px);
+      letter-spacing:.12em; text-transform:uppercase;
+      color:var(--ink-on-dark); white-space:nowrap;
     }
     .brand .ch{
-      display:inline-block; position:relative; color:var(--ink);
+      display:inline-block; position:relative; color:var(--ink-on-dark);
       text-shadow:
-        0 0 12px color-mix(in srgb, #9bdfff 40%, transparent),
+        0 0 12px color-mix(in srgb, var(--ghost) 40%, transparent),
         0 0 26px color-mix(in srgb, var(--neon) 55%, transparent);
       filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
     }
+    /* turquoise F */
     .brand .turq{
       color: var(--neon);
       text-shadow:
@@ -133,6 +138,7 @@
         0 0 36px color-mix(in srgb, var(--neon) 90%, transparent);
       filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
     }
+    /* violet R */
     .brand .violet{
       color: var(--vio);
       text-shadow:
@@ -151,12 +157,12 @@
       .glow .brand .ch:nth-child(2){ animation-delay:.05s }
       .glow .brand .ch:nth-child(3){ animation-delay:.10s }
       .glow .brand .ch:nth-child(4){ animation-delay:.15s }
-      .glow .brand .ch:nth-child(5){ animation-delay:.30s }
-      .glow .brand .ch:nth-child(6){ animation-delay:.35s }
-      .glow .brand .ch:nth-child(7){ animation-delay:.40s }
-      .glow .brand .ch:nth-child(8){ animation-delay:.45s }
-      .glow .brand .ch:nth-child(9){ animation-delay:.50s }
-      .glow .brand .ch:nth-child(10){ animation-delay:.55s }
+      .glow .brand .ch:nth-child(5){ animation-delay:.30s } /* space */
+      .glow .brand .ch:nth-child(6){ animation-delay:.35s } /* F */
+      .glow .brand .ch:nth-child(7){ animation-delay:.40s } /* O */
+      .glow .brand .ch:nth-child(8){ animation-delay:.45s } /* R */
+      .glow .brand .ch:nth-child(9){ animation-delay:.50s } /* G */
+      .glow .brand .ch:nth-child(10){ animation-delay:.55s } /* E */
 
       @keyframes pulse{
         0%,100%{
@@ -173,16 +179,16 @@
       @keyframes hueIntro{
         0%   { color: var(--vio); }
         40%  { color: var(--neon); }
-        100% { color: var(--ink); }
+        100% { color: var(--ink-on-dark); }
       }
       @keyframes hueIntroTurq{
         0%   { color: var(--vio); }
-        40%  { color: var(--ink); }
+        40%  { color: var(--ink-on-dark); }
         100% { color: var(--neon); }
       }
       @keyframes hueIntroVio{
         0%   { color: var(--neon); }
-        40%  { color: var(--ink); }
+        40%  { color: var(--ink-on-dark); }
         100% { color: var(--vio); }
       }
     }
@@ -191,38 +197,32 @@
       margin: var(--s2) 0 2px;
       font-weight:700; letter-spacing:.06em;
       font-size: clamp(18px, 2.6vw, 22px);
-      color: color-mix(in srgb, var(--ink) 92%, transparent);
+      color: color-mix(in srgb, var(--ink-on-dark) 92%, transparent);
     }
     .hero-copy p{
-      margin:0; color:var(--muted);
+      margin:0; color:var(--muted-on-dark);
       font-size: clamp(14px, 2.2vw, 16px);
     }
 
     /* ---------------------------------------------
-       5) NAV
+       5) NAV (sits on white page)
        --------------------------------------------- */
     nav{
       position:sticky; top:0; z-index:10;
       display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
-      background: rgba(10,14,20,.38);
+      background: rgba(255,255,255,.86);
       backdrop-filter: saturate(160%) blur(8px);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
       padding: 10px 14px;
     }
-    /* soft fade above and below nav instead of hard lines */
-    nav::before,
-    nav::after{
-      content:""; position:absolute; left:0; right:0; height:18px; pointer-events:none;
-    }
-    nav::before{ top:-18px;  background:linear-gradient(180deg, rgba(11,15,20,.32), rgba(11,15,20,0)); }
-    nav::after { bottom:-18px;background:linear-gradient(0deg,  rgba(11,15,20,.24), rgba(11,15,20,0)); }
-
     nav a{
       color: var(--ink); font-weight:700; letter-spacing:.04em;
       opacity:.92; position:relative; padding:4px 2px;
     }
     nav a::after{
-      content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
-      background: linear-gradient(90deg, var(--cyan), var(--vio));
+      content:""; position:absolute; left:0; right:0; bottom:0;
+      height:2px; background: linear-gradient(90deg, var(--cyan), var(--vio));
       transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
       border-radius:2px;
     }
@@ -230,7 +230,7 @@
     nav a:hover::after{ transform: scaleX(1) }
 
     /* ---------------------------------------------
-       6) MAIN
+       6) MAIN (white page)
        --------------------------------------------- */
     main{ max-width: 980px; margin: 28px auto; padding: 0 var(--s3) }
     .section{ margin: 28px 0 }
@@ -238,8 +238,8 @@
       margin:0 0 2px;
       font-weight:700; letter-spacing:.06em;
       font-size: clamp(20px, 3vw, 28px);
-      color: color-mix(in srgb, var(--ink) 94%, transparent);
-      text-shadow: 0 0 10px rgba(155,92,255,.15);
+      color: #0e1620;
+      text-shadow: 0 0 10px rgba(0,0,0,0.02);
     }
     .lead{ color:var(--muted) }
 
@@ -252,7 +252,7 @@
     .title{ font-weight:700; margin-block:14px }
 
     .meta{
-      color: #a9bed1; font-size:14px;
+      color: #5f7386; font-size:14px;
       display:flex; flex-wrap:wrap; gap:4px 12px; align-items:baseline;
     }
     .meta > span{ white-space:nowrap }
@@ -261,18 +261,18 @@
 
     .status{
       display:inline-block; font-size:12px; padding:3px 10px; margin-left:8px;
-      border-radius:999px; background: rgba(6,215,255,.12); color:#89eaff;
+      border-radius:999px; background: rgba(6,215,255,.12); color:#087ca0;
       border:1px solid rgba(6,215,255,.28);
     }
     .status.closed{
       background: rgba(155,92,255,.10);
-      color:#c9adff; border-color: rgba(155,92,255,.26);
+      color:#5f47a7; border-color: rgba(155,92,255,.26);
     }
 
     .thumb{
       width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
-      background:#0f141b; border:1px solid var(--line);
-      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      background:#f4f7fb; border:1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
     }
     .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
 
@@ -288,14 +288,14 @@
     .drawer{ padding:2px 0 6px }
 
     .bar{
-      height:10px; background:#0f141b; border:1px solid var(--line);
+      height:10px; background:#f4f7fb; border:1px solid var(--line);
       border-radius:999px; overflow:visible; margin:8px 0 10px; position:relative;
-      box-shadow: inset 0 0 10px rgba(6,215,255,.08), inset 0 0 12px rgba(155,92,255,.06);
+      box-shadow: inset 0 0 6px rgba(6,215,255,.10), inset 0 0 8px rgba(155,92,255,.08);
     }
     .bar > span{
       display:block; height:100%; width:0%;
       background: linear-gradient(90deg, var(--cyan), var(--vio));
-      box-shadow: 0 0 12px rgba(6,215,255,.35), 0 0 22px rgba(155,92,255,.25);
+      box-shadow: 0 0 12px rgba(6,215,255,.25), 0 0 18px rgba(155,92,255,.18);
       border-radius:999px;
     }
 
@@ -303,7 +303,7 @@
     .interest label{ display:block; font-weight:700; margin:10px 0 6px }
     .interest input, .interest select{
       width:100%; padding:12px 12px; border-radius:12px;
-      border:1px solid var(--line); background:#0f1417; color:#dce7f7;
+      border:1px solid var(--line); background:#ffffff; color:#0e1620;
       outline:none; transition: box-shadow .25s ease, border-color .25s ease;
     }
     .interest input::placeholder{ color:#7f8ea0 }
@@ -326,20 +326,24 @@
     .send .arrow{ display:inline-block; transform:translateX(0); transition:transform .25s ease }
     .send:hover .arrow{ transform:translateX(3px) }
 
-    .okmsg{ color:#89eaff; margin-top:8px }
-    .errmsg{ color:#ff8b6b; margin-top:8px }
+    .okmsg{ color:#0a6ea0; margin-top:8px }
+    .errmsg{ color:#c4452d; margin-top:8px }
 
+    /* ---------------------------------------------
+       7) FOOTER (remains black)
+       --------------------------------------------- */
     footer.banner{
       padding: 34px 0 42px;
-      background: linear-gradient(180deg, rgba(255,255,255,.00), rgba(255,255,255,.02));
-      backdrop-filter: saturate(140%) blur(4px);
+      border-top:1px solid var(--line-on-dark);
+      background: var(--footer);
+      color: var(--ink-on-dark);
     }
     footer .inner{
       max-width:var(--container); margin:0 auto; text-align:center; color:#c8d6e6;
       position:relative; z-index:1;
     }
     #signinDot{
-      background:none; border:0; color:var(--ink); cursor:pointer;
+      background:none; border:0; color:var(--ink-on-dark); cursor:pointer;
       font-size:16px; line-height:1; padding:2px 8px; border-radius:999px; margin-left:6px;
     }
     #signinDot:focus-visible{ outline:3px solid rgba(6,215,255,.35); outline-offset:2px }
@@ -366,18 +370,21 @@
   </script>
 
   <!-- =========================
-       HERO (logo: N cyan, F violet)
+       HERO (framed, smaller wordmark; dark → white fade)
        ========================= -->
   <header class="banner">
     <div class="hero">
-      <h1 class="brand" aria-label="Neon Forge">
-        <span class="ch turq">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
-        <span class="ch">&nbsp;</span>
-        <span class="ch violet">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
-      </h1>
+      <div class="brand-wrap" aria-hidden="true"></div>
+      <div class="brand-wrap">
+        <h1 class="brand" aria-label="Neon Forge">
+          <span class="ch">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
+          <span class="ch">&nbsp;</span>
+          <span class="ch turq">F</span><span class="ch">O</span><span class="ch violet">R</span><span class="ch">G</span><span class="ch">E</span>
+        </h1>
+      </div>
       <div class="hero-copy">
         <h1>Gather. Explore. Celebrate.</h1>
-        <p>Small-group events & multi-day adventures</p>
+        <p>Small-group events &amp; multi-day adventures</p>
       </div>
     </div>
   </header>
@@ -393,7 +400,7 @@
   </nav>
 
   <!-- =========================
-       MAIN
+       MAIN (white page)
        ========================= -->
   <main>
     <!-- ABOUT -->
@@ -419,7 +426,7 @@
 
     <!-- EXPERIENCES -->
     <section id="tours" class="section">
-      <h2>Experiences & Multi-Day Tours</h2>
+      <h2>Experiences &amp; Multi-Day Tours</h2>
       <div id="toursList" class="list">
         <div class="lead">Loading experiences…</div>
       </div>
@@ -457,7 +464,7 @@
   </main>
 
   <!-- =========================
-       FOOTER
+       FOOTER (black)
        ========================= -->
   <footer class="banner">
     <div class="inner">
@@ -489,6 +496,7 @@
     const auth = getAuth(app);
     const db   = getFirestore(app);
     const provider = new GoogleAuthProvider();
+    const ALLOWED = ["info@tourthelakes.com"];
 
     const $ = id => document.getElementById(id);
     const authMsg = $("authMsg");
@@ -628,7 +636,7 @@
             <div style="
               position:absolute; left:${minPct}%; top:50%; transform:translate(-50%,-50%);
               width:0;height:0; border-left:6px solid transparent; border-right:6px solid transparent;
-              border-bottom:8px solid #a9bed1;
+              border-bottom:8px solid #5f7386;
             "></div>
           </div>
           <div class="meta">Fill ${pct}% &nbsp; • &nbsp; <span class="muted">▲ = minimum</span></div>
@@ -728,9 +736,10 @@
   <!-- Footer year + theme-color sync + intro->glow -->
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
-    const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', bg);
+    // theme-color matches page white now
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
 
+    // Keep the logo intro/pulse behaviour
     const root = document.documentElement;
     const INTRO_MS = 3840;
     root.classList.add('intro');
