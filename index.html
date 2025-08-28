@@ -8,8 +8,10 @@
   <meta name="description" content="Neon Forge creates small-group events and multi-day adventures — shared stories, new friends, and big scenery."/>
   <meta name="theme-color" content="#ffffff"/>
 
-  <!-- ===== Font ===== -->
+  <!-- ===== Fonts ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <!-- Orbitron only powers the header logo -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&display=swap" rel="stylesheet"/>
 
   <!-- ===== Favicon (NF, cyan & purple) ===== -->
   <link rel="icon" type="image/svg+xml"
@@ -48,6 +50,11 @@
       --s1:6px; --s2:10px; --s3:14px; --s4:18px;
       --s5:26px; --s6:38px; --s7:58px;
       --container: 1100px;
+
+      /* Header logo sizing (compact) */
+      --logo-brand: clamp(22px, 3.6vw, 42px);   /* font size for NEON/FORGE + headlines */
+      --logo-gap:   clamp(6px, 1vw, 12px);      /* = left text→wall AND NEON↔FORGE gap */
+      --logo-wall:  clamp(2px, .35vw, 4px);     /* wall thickness */
     }
 
     /* ---------------------------------------------
@@ -63,6 +70,7 @@
       line-height:1.6;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
+      overflow-x:hidden;
     }
     a{ color:var(--cyan); text-decoration:none }
     a:hover{ text-decoration:underline }
@@ -80,111 +88,83 @@
 
     header.banner{
       padding: clamp(40px, 6vw, 72px) 0 clamp(26px, 5vw, 42px);
-      /* dark header background only here */
       background:
         radial-gradient(1200px 900px at 50% 20%, #101620 0%, #0b0f14 40%, #05070a 100%),
         radial-gradient(900px 600px at 80% 10%, rgba(6,215,255,.10), transparent 60%),
         radial-gradient(900px 600px at 20% 80%, rgba(155,92,255,.10), transparent 60%);
       color: var(--ink-on-dark);
-      border-bottom: none; /* no fade/line from header itself */
+      border-bottom: none;
     }
 
     .hero{
       position:relative; z-index:1;
       max-width:var(--container); margin:0 auto; padding:0 var(--s3);
-      display:grid; grid-template-columns:1fr; gap:var(--s2);
-      text-align:center;
     }
 
-    /* ====== WORDMARK (40% shorter) + RECTANGULAR FRAME ====== */
-    .brand-wrap{
-      display:inline-block;
-      position: relative;
-      margin: 0 auto;
-      padding: 20px 28px; /* just spacing inside frame */
+    /* ====== NEW HEADER LOGO (NEON/ FORGE → wall → 2 headlines) ====== */
+    .nf-logo{
+      display:grid;
+      grid-template-columns: 1fr var(--logo-gap) var(--logo-wall) var(--logo-gap) 1fr;
+      grid-template-rows: auto var(--logo-gap) auto;
+      align-items:center;
+      font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+      transform: translateX(-15%);       /* requested 15% left offset */
     }
-    /* SVG frame behind the wordmark */
-    .brand-wrap svg.frame{
-      position:absolute; inset:0; width:100%; height:100%;
-      overflow:visible; pointer-events:none;
-      filter: drop-shadow(0 8px 22px rgba(255,255,255,.22));
-    }
-    .brand-wrap svg.frame rect{
-      fill: none;
-      stroke: rgba(255,255,255,.85);
-      stroke-width: 0.44;
-      rx: 6; ry: 6; /* tiny soften so it’s not a pill/bubble */
-    }
+    @media (max-width:900px){ .nf-logo{ transform: translateX(-10%); } }
+    @media (max-width:640px){ .nf-logo{ transform: translateX(-6%); } }
 
-    .brand{
-      font-weight:700; line-height:0.86;
-      font-size:clamp(24px, 6vw, 72px); /* ~40% shorter than 120px */
-      letter-spacing:.12em; text-transform:uppercase;
-      color:var(--ink-on-dark); white-space:nowrap; position:relative;
-    }
-    .brand .ch{
-      display:inline-block; position:relative; color:var(--ink-on-dark);
+    .nf-left{
+      grid-column:1; white-space:nowrap;
+      font-weight:800; font-size:var(--logo-brand); line-height:1; letter-spacing:.16em;
+      text-transform:uppercase; text-align:right; color:var(--ink-on-dark);
       text-shadow:
-        0 0 12px color-mix(in srgb, var(--ghost) 40%, transparent),
-        0 0 26px color-mix(in srgb, var(--neon) 55%, transparent);
-      filter: drop-shadow(0 0 14px color-mix(in srgb, var(--neon) 50%, transparent));
+        0 0 4px rgba(234,246,255,.55),
+        0 0 10px rgba(143,123,255,.28),
+        0 0 16px rgba(6,215,255,.18);
     }
-    /* cyan N */
-    .brand .turq{
-      color: var(--neon);
+    .nf-left--top{ grid-row:1 }
+    .nf-left--bot{ grid-row:3 }
+
+    .nf-right{
+      grid-column:5; white-space:nowrap;
+      font-weight:800; font-size:var(--logo-brand); line-height:1; letter-spacing:.16em;
+      text-transform:uppercase; text-align:left; color:var(--ink-on-dark);
       text-shadow:
-        0 0 14px color-mix(in srgb, var(--neon) 75%, transparent),
-        0 0 36px color-mix(in srgb, var(--neon) 90%, transparent);
-      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--neon) 85%, transparent));
+        0 0 3px color-mix(in srgb, var(--ink-on-dark) 35%, transparent),
+        0 0 8px color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
+      opacity:.96;
     }
-    /* violet F */
-    .brand .violet{
-      color: var(--vio);
-      text-shadow:
-        0 0 14px color-mix(in srgb, var(--vio) 75%, transparent),
-        0 0 36px color-mix(in srgb, var(--vio) 90%, transparent);
-      filter: drop-shadow(0 0 18px color-mix(in srgb, var(--vio) 85%, transparent));
+    .nf-right--top{ grid-row:1 }
+    .nf-right--bot{ grid-row:3 }
+
+    .nf-wall{
+      grid-column:3; grid-row:1 / -1; align-self:stretch;
+      position:relative; width:var(--logo-wall);
+      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+      box-shadow:
+        0 0 6px rgba(143,123,255,.42),
+        0 0 14px rgba(6,215,255,.30),
+        0 0 22px rgba(255,255,255,.16);
+      border-radius:1px;
     }
-
-    @media (prefers-reduced-motion: no-preference){
-      .intro .brand .ch{     animation: hueIntro 3.84s ease forwards }
-      .intro .brand .turq{   animation: hueIntroTurq 3.84s ease forwards }
-      .intro .brand .violet{ animation: hueIntroVio  3.84s ease forwards }
-
-      .glow .brand .ch{ animation: pulse 2.4s ease-in-out infinite }
-      .glow .brand .ch:nth-child(1){ animation-delay:0s }
-      .glow .brand .ch:nth-child(2){ animation-delay:.05s }
-      .glow .brand .ch:nth-child(3){ animation-delay:.10s }
-      .glow .brand .ch:nth-child(4){ animation-delay:.15s }
-      .glow .brand .ch:nth-child(5){ animation-delay:.30s } /* space */
-      .glow .brand .ch:nth-child(6){ animation-delay:.35s } /* F */
-      .glow .brand .ch:nth-child(7){ animation-delay:.40s } /* O */
-      .glow .brand .ch:nth-child(8){ animation-delay:.45s } /* R */
-      .glow .brand .ch:nth-child(9){ animation-delay:.50s } /* G */
-      .glow .brand .ch:nth-child(10){ animation-delay:.55s } /* E */
-
-      @keyframes pulse{
-        0%,100%{ opacity:.95; text-shadow: 0 0 8px currentColor, 0 0 26px currentColor; filter: drop-shadow(0 0 14px currentColor); }
-        50%{ opacity:1; text-shadow: 0 0 12px currentColor, 0 0 40px currentColor; filter: drop-shadow(0 0 22px currentColor); }
-      }
-      @keyframes hueIntro{ 0%{ color: var(--vio);} 40%{ color: var(--neon);} 100%{ color: var(--ink-on-dark);} }
-      @keyframes hueIntroTurq{ 0%{ color: var(--vio);} 40%{ color: var(--ink-on-dark);} 100%{ color: var(--neon);} }
-      @keyframes hueIntroVio{ 0%{ color: var(--neon);} 40%{ color: var(--ink-on-dark);} 100%{ color: var(--vio);} }
+    .nf-wall::before{
+      content:""; position:absolute; inset:-12px;
+      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+      filter: blur(10px); opacity:.55;
+      animation: wallHue 14s ease-in-out infinite alternate;
+      pointer-events:none;
     }
-
-    .hero-copy h1{
-      margin: var(--s2) 0 2px;
-      font-weight:700; letter-spacing:.06em;
-      font-size: clamp(18px, 2.6vw, 22px);
-      color: color-mix(in srgb, var(--ink-on-dark) 92%, transparent);
+    @keyframes wallHue{
+      0%   { filter: blur(10px) hue-rotate(-18deg); opacity:.50; }
+      50%  { filter: blur(10px) hue-rotate(12deg);  opacity:.62; }
+      100% { filter: blur(10px) hue-rotate(0deg);   opacity:.55; }
     }
-    .hero-copy p{
-      margin:0; color:var(--muted-on-dark);
-      font-size: clamp(14px, 2.2vw, 16px);
+    @media (prefers-reduced-motion:reduce){
+      .nf-wall::before{ animation:none }
     }
 
     /* ---------------------------------------------
-       5) NAV (white; the hard transition happens here)
+       5) NAV (white; hard transition)
        --------------------------------------------- */
     nav{
       position:sticky; top:0; z-index:10;
@@ -348,26 +328,17 @@
   </script>
 
   <!-- =========================
-       HERO (rectangular frame; N + F colored)
+       HERO (new stacked logo with neon wall)
        ========================= -->
   <header class="banner">
     <div class="hero">
-      <div class="brand-wrap">
-        <!-- rectangular frame -->
-        <svg class="frame" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
-          <rect x="1.5" y="1.5" width="97" height="37" rx="6" ry="6"/>
-        </svg>
+      <div class="nf-logo" aria-label="Neon Forge header logo">
+        <div class="nf-left nf-left--top">NEON</div>
+        <div class="nf-wall" aria-hidden="true"></div>
+        <div class="nf-right nf-right--top">GATHER. EXPLORE. CELEBRATE.</div>
 
-        <h1 class="brand" aria-label="Neon Forge">
-          <span class="ch turq">N</span><span class="ch">E</span><span class="ch">O</span><span class="ch">N</span>
-          <span class="ch">&nbsp;</span>
-          <span class="ch violet">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">G</span><span class="ch">E</span>
-        </h1>
-      </div>
-
-      <div class="hero-copy">
-        <h1>Gather. Explore. Celebrate.</h1>
-        <p>Small-group events &amp; multi-day adventures</p>
+        <div class="nf-left nf-left--bot">FORGE</div>
+        <div class="nf-right nf-right--bot">SMALL-GROUP EVENTS &amp; MULTI-DAY ADVENTURES</div>
       </div>
     </div>
   </header>
