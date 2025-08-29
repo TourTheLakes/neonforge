@@ -100,121 +100,104 @@
       position:relative; z-index:1;
       max-width:var(--container); margin:0 auto; padding:0 var(--s3);
     }
-/* ====== HEADER LOGO (no translate; right side owns the leftover) ====== */
-.nf-logo{
-  display:grid;
-  grid-template-columns: auto var(--logo-gap) var(--logo-wall) var(--logo-gap) minmax(0,1fr);
-  grid-template-rows: auto var(--logo-gap) auto;
-  align-items:center;
-  font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
 
-  /* container sizing */
-  width:100%;
-  max-width:1100px;                 /* hard cap inside the hero */
-  margin-inline:auto;
-  padding-inline: clamp(8px, 2vw, 24px);
-}
+    /* ====== HEADER LOGO (no translate; right side owns the leftover) ====== */
+    .nf-logo{
+      display:grid;
+      grid-template-columns: auto var(--logo-gap) var(--logo-wall) var(--logo-gap) minmax(0,1fr);
+      grid-template-rows: auto var(--logo-gap) auto;
+      align-items:center;
+      font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
 
-.nf-left{
-  grid-column:1;
-  white-space:nowrap;
-  font-weight:800;
-  font-size: var(--logo-brand);
-  line-height:1;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  text-align:right;
-  color:var(--ink-on-dark);
-  text-shadow:
-    0 0 4px rgba(234,246,255,.55),
-    0 0 10px rgba(143,123,255,.28),
-    0 0 16px rgba(6,215,255,.18);
-}
-.nf-left--top{ grid-row:1 }
-.nf-left--bot{ grid-row:3 }
+      /* container sizing */
+      width:100%;
+      max-width:1100px;                 /* hard cap inside the hero */
+      margin-inline:auto;
+      padding-inline: clamp(8px, 2vw, 24px);
+    }
 
-.nf-right{
-  grid-column:5;
-  white-space:nowrap;
-  font-weight:800;
-  font-size: var(--logo-brand);
-  line-height:1;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  text-align:left;
-  color:var(--ink-on-dark);
-  text-shadow:
-    0 0 3px color-mix(in srgb, var(--ink-on-dark) 35%, transparent),
-    0 0 8px color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
-  opacity:.96;
-}
-.nf-right--top{ grid-row:1 }
-.nf-right--bot{ grid-row:3 }
+    .nf-left{
+      grid-column:1;
+      white-space:nowrap;
+      font-weight:800;
+      font-size: var(--logo-brand);
+      line-height:1;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      text-align:right;
+      color:var(--ink-on-dark);
+      text-shadow:
+        0 0 4px rgba(234,246,255,.55),
+        0 0 10px rgba(143,123,255,.28),
+        0 0 16px rgba(6,215,255,.18);
+    }
+    .nf-left--top{ grid-row:1 }
+    .nf-left--bot{ grid-row:3 }
 
-.nf-wall{
-  grid-column:3; grid-row:1 / -1; align-self:stretch;
-  position:relative; width:var(--logo-wall);
-  background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
-  box-shadow:
-    0 0 6px rgba(143,123,255,.42),
-    0 0 14px rgba(6,215,255,.30),
-    0 0 22px rgba(255,255,255,.16);
-  border-radius:1px;
-}
-.nf-wall::before{
-  content:""; position:absolute; inset:-12px;
-  background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
-  filter: blur(10px); opacity:.55;
-  animation: wallHue 14s ease-in-out infinite alternate;
-  pointer-events:none;
-}
+    .nf-right{
+      grid-column:5;
+      white-space:nowrap;
+      font-weight:800;
+      font-size: var(--logo-brand);
+      line-height:1;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      text-align:left;
+      color:var(--ink-on-dark);
+      text-shadow:
+        0 0 3px color-mix(in srgb, var(--ink-on-dark) 35%, transparent),
+        0 0 8px color-mix(in srgb, var(--ink-on-dark) 20%, transparent);
+      opacity:.96;
+    }
+    .nf-right--top{ grid-row:1 }
+    .nf-right--bot{ grid-row:3 }
 
-/* size tuning only (no translate!) */
-:root{
-  --logo-brand: clamp(22px, 3.6vw, 42px);
-  --logo-gap:   clamp(6px, 0.9vw, 10px);
-  --logo-wall:  clamp(2px, 0.28vw, 3px);
-}
-@media (max-width:980px){   /* Fold open / tablets */
-  :root{ --logo-brand: clamp(20px, 2.6vw, 34px); --logo-gap: clamp(6px, .7vw, 10px); --logo-wall: clamp(2px, .22vw, 3px) }
-}
-@media (max-width:760px){   /* Fold closed / big phones */
-  :root{ --logo-brand: clamp(18px, 2.8vw, 30px); --logo-gap: clamp(5px, .8vw, 8px) }
-}
-@media (max-width:640px){   /* phones */
-  :root{ --logo-brand: clamp(16px, 3.2vw, 26px); --logo-gap: clamp(4px, .9vw, 7px) }
-  .nf-logo{ letter-spacing:0.12em }
-}
+    .nf-wall{
+      grid-column:3; grid-row:1 / -1; align-self:stretch;
+      position:relative; width:var(--logo-wall);
+      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+      box-shadow:
+        0 0 6px rgba(143,123,255,.42),
+        0 0 14px rgba(6,215,255,.30),
+        0 0 22px rgba(255,255,255,.16);
+      border-radius:1px;
+    }
+    .nf-wall::before{
+      content:""; position:absolute; inset:-12px;
+      background: linear-gradient(180deg, #8f7bff 0%, var(--cyan) 50%, #ffffff 100%);
+      filter: blur(10px); opacity:.55;
+      animation: wallHue 14s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+
+    /* size tuning only (no translate!) */
+    :root{
+      --logo-brand: clamp(22px, 3.6vw, 42px);
+      --logo-gap:   clamp(6px, 0.9vw, 10px);
+      --logo-wall:  clamp(2px, 0.28vw, 3px);
+    }
+    @media (max-width:980px){   /* Fold open / tablets */
+      :root{ --logo-brand: clamp(20px, 2.6vw, 34px); --logo-gap: clamp(6px, .7vw, 10px); --logo-wall: clamp(2px, .22vw, 3px) }
+    }
+    @media (max-width:760px){   /* Fold closed / big phones */
+      :root{ --logo-brand: clamp(18px, 2.8vw, 30px); --logo-gap: clamp(5px, .8vw, 8px) }
+    }
+    @media (max-width:640px){   /* phones */
+      :root{ --logo-brand: clamp(16px, 3.2vw, 26px); --logo-gap: clamp(4px, .9vw, 7px) }
+      .nf-logo{ letter-spacing:0.12em }
+    }
+
     /* --- Fold closed fix (tighten letter spacing) --- */
-@media (max-width: 640px){
-  .nf-left, .nf-right { 
-    letter-spacing: .10em;  /* override the .16em set earlier */
-  }
-}
-
-@media (max-width: 760px) and (min-width: 641px){
-  .nf-left, .nf-right {
-    letter-spacing: .12em;
-  }
-}
-
-    /* ---------------------------------------------
-       5) NAV (white; hard transition)
-       --------------------------------------------- */
-    nav{
-      position:sticky; top:0; z-index:10;
-      display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
-      background:#fff; /* abrupt switch */
-      border-top:4px solid #0b0f14;  /* strong black rule at top of nav */
-      border-bottom:1px solid var(--line);
-      padding: 12px 14px;
+    @media (max-width: 640px){
+      .nf-left, .nf-right {
+        letter-spacing: .10em;  /* override the .16em set earlier */
+      }
     }
-    nav a{
-      color: var(--ink); font-weight:700; letter-spacing:.04em;
-      opacity:.92; position:relative; padding:4px 2px; text-decoration:none;
+    @media (max-width: 760px) and (min-width: 641px){
+      .nf-left, .nf-right {
+        letter-spacing: .12em;
+      }
     }
-    nav a::after{ content:none }   /* no neon underline */
-    nav a:hover{ opacity:1; text-decoration:none }
 
     /* ---------------------------------------------
        6) MAIN (white page)
@@ -372,16 +355,6 @@
       </div>
     </div>
   </header>
-
-  <!-- =========================
-       NAVIGATION (white; hard transition)
-       ========================= -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#tours">Experiences</a>
-    <a href="#events">Signature Events</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
   <!-- =========================
        MAIN (white page)
