@@ -100,21 +100,19 @@
       position:relative; z-index:1;
       max-width:var(--container); margin:0 auto; padding:0 var(--s3);
     }
-
-/* ====== NEW HEADER LOGO (NEON/ FORGE → wall → 2 headlines) ====== */
+/* ====== HEADER LOGO (no translate; right side owns the leftover) ====== */
 .nf-logo{
-  /* keep centred inside the container, then bias left safely */
   display:grid;
-  grid-template-columns: minmax(0,1fr) var(--logo-gap) var(--logo-wall) var(--logo-gap) minmax(0,1fr);
+  grid-template-columns: auto var(--logo-gap) var(--logo-wall) var(--logo-gap) minmax(0,1fr);
   grid-template-rows: auto var(--logo-gap) auto;
   align-items:center;
   font-family:"Orbitron", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
 
-  /* visual left-bias without letting content leave the viewport */
-  transform: translateX(-10%);
-  max-width: min(1100px, 96vw);      /* never wider than viewport */
-  margin-inline:auto;                 /* stay centred in header container */
-  padding-inline: clamp(8px, 2vw, 24px); /* edge breathing room on tiny screens */
+  /* container sizing */
+  width:100%;
+  max-width:1100px;                 /* hard cap inside the hero */
+  margin-inline:auto;
+  padding-inline: clamp(8px, 2vw, 24px);
 }
 
 .nf-left{
@@ -170,48 +168,23 @@
   animation: wallHue 14s ease-in-out infinite alternate;
   pointer-events:none;
 }
-@keyframes wallHue{
-  0%   { filter: blur(10px) hue-rotate(-18deg); opacity:.50; }
-  50%  { filter: blur(10px) hue-rotate(12deg);  opacity:.62; }
-  100% { filter: blur(10px) hue-rotate(0deg);   opacity:.55; }
-}
-@media (prefers-reduced-motion:reduce){
-  .nf-wall::before{ animation:none }
-}
 
-/* ===== Left-bias + size tuning per width (keeps right side in-bounds) ===== */
-@media (min-width:1200px){
-  .nf-logo{ transform: translateX(-15%); }
+/* size tuning only (no translate!) */
+:root{
+  --logo-brand: clamp(22px, 3.6vw, 42px);
+  --logo-gap:   clamp(6px, 0.9vw, 10px);
+  --logo-wall:  clamp(2px, 0.28vw, 3px);
 }
-@media (max-width:1199.98px) and (min-width:981px){
-  .nf-logo{ transform: translateX(-12%); }
+@media (max-width:980px){   /* Fold open / tablets */
+  :root{ --logo-brand: clamp(20px, 2.6vw, 34px); --logo-gap: clamp(6px, .7vw, 10px); --logo-wall: clamp(2px, .22vw, 3px) }
 }
-@media (max-width:980px) and (min-width:761px){   /* Fold open / tablets */
-  :root{
-    --logo-brand: clamp(20px, 2.6vw, 34px);
-    --logo-gap:   clamp(6px, 0.7vw, 10px);
-    --logo-wall:  clamp(2px, 0.22vw, 3px);
-  }
-  .nf-logo{ transform: translateX(-9%); }
+@media (max-width:760px){   /* Fold closed / big phones */
+  :root{ --logo-brand: clamp(18px, 2.8vw, 30px); --logo-gap: clamp(5px, .8vw, 8px) }
 }
-@media (max-width:760px) and (min-width:641px){   /* Fold closed / big phones */
-  :root{
-    --logo-brand: clamp(18px, 2.9vw, 30px);
-    --logo-gap:   clamp(5px, 0.8vw, 8px);
-  }
-  .nf-logo{ transform: translateX(-7%); }
+@media (max-width:640px){   /* phones */
+  :root{ --logo-brand: clamp(16px, 3.2vw, 26px); --logo-gap: clamp(4px, .9vw, 7px) }
+  .nf-logo{ letter-spacing:0.12em }
 }
-@media (max-width:640px){                          /* phones */
-  :root{
-    --logo-brand: clamp(16px, 3.4vw, 26px);
-    --logo-gap:   clamp(4px, 0.9vw, 7px);
-  }
-  .nf-logo{
-    transform: translateX(-6%);
-    letter-spacing: 0.12em;   /* tighten tracking at small sizes */
-  }
-}
-
 
     /* ---------------------------------------------
        5) NAV (white; hard transition)
