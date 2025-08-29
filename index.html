@@ -185,6 +185,18 @@
   :root{ --logo-brand: clamp(16px, 3.2vw, 26px); --logo-gap: clamp(4px, .9vw, 7px) }
   .nf-logo{ letter-spacing:0.12em }
 }
+    /* --- Fold closed fix (tighten letter spacing) --- */
+@media (max-width: 640px){
+  .nf-left, .nf-right { 
+    letter-spacing: .10em;  /* override the .16em set earlier */
+  }
+}
+
+@media (max-width: 760px) and (min-width: 641px){
+  .nf-left, .nf-right {
+    letter-spacing: .12em;
+  }
+}
 
     /* ---------------------------------------------
        5) NAV (white; hard transition)
