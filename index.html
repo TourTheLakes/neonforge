@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neon Forge — Design, Web & Media</title>
   <meta name="description" content="Neon Forge — Digital and physical design studio offering web design, digital art, print, SEO, and creative apps." />
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -14,7 +17,6 @@
       --neon: #06c8ff;
       --violet: #906eff;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Manrope", system-ui, sans-serif;
@@ -25,6 +27,7 @@
       text-rendering: optimizeLegibility;
     }
 
+    /* Header */
     header {
       text-align: center;
       padding: 4rem 1rem 3rem;
@@ -63,19 +66,17 @@
       font-size: 1.05rem;
     }
 
+    /* Body */
     main {
       max-width: 850px;
       margin: 0 auto;
       padding: 3rem 1.2rem;
     }
-    section {
-      margin-bottom: 3.5rem;
-    }
+    section { margin-bottom: 3.5rem; }
     h2 {
       font-size: 1.45rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
-      color: var(--text);
     }
     p {
       color: var(--muted);
@@ -92,10 +93,9 @@
       font-weight: 600;
       transition: color 0.2s ease;
     }
-    .contact a:hover {
-      color: var(--neon);
-    }
+    .contact a:hover { color: var(--neon); }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 2.5rem 1rem;
