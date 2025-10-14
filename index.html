@@ -8,14 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #eef4fa;
-      --surface: #ffffff;
-      --text: #1c1f26;
-      --muted: #586174;
-      --line: #d5deeb;
+      --bg: #f6f9ff;
+      --text: #1b1e25;
+      --muted: #5e6677;
       --neon: #06c8ff;
       --violet: #906eff;
-      --radius: 18px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,68 +20,59 @@
       font-family: "Manrope", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    /* HEADER */
     header {
-      background: linear-gradient(180deg, #fff 0%, #f6f9ff 100%);
-      border-bottom: 1px solid var(--line);
-      padding: 1.5rem 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      background: radial-gradient(circle at 50% 20%, rgba(6,200,255,0.15), transparent 70%);
     }
     .logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      margin: 0 auto 1rem;
       display: grid;
       place-items: center;
-      background: linear-gradient(145deg, rgba(6,200,255,0.15), rgba(144,110,255,0.15));
-      box-shadow: 0 0 14px rgba(6,200,255,0.25), 0 0 28px rgba(144,110,255,0.2);
+      background: linear-gradient(145deg, rgba(6,200,255,0.2), rgba(144,110,255,0.25));
+      box-shadow: 0 0 20px rgba(6,200,255,0.3), 0 0 35px rgba(144,110,255,0.2);
     }
     .spark {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 6px;
       background:
         radial-gradient(circle at 30% 30%, var(--neon), transparent 60%),
         radial-gradient(circle at 70% 70%, var(--violet), transparent 60%);
       transform: rotate(45deg);
-      box-shadow:
-        0 0 12px rgba(6,200,255,0.4),
-        0 0 20px rgba(144,110,255,0.3);
     }
     h1 {
       font-weight: 800;
-      font-size: 1.8rem;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
       background: linear-gradient(90deg, var(--neon), var(--violet));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+    header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
 
-    /* MAIN BODY */
     main {
-      max-width: 900px;
+      max-width: 850px;
       margin: 0 auto;
       padding: 3rem 1.2rem;
     }
     section {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      margin-bottom: 3.5rem;
     }
     h2 {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
       color: var(--text);
@@ -92,34 +80,33 @@
     p {
       color: var(--muted);
       margin-bottom: 1rem;
+      font-size: 1.05rem;
     }
-
-    /* CONTACT */
     .contact {
       text-align: center;
+      margin-top: 4rem;
     }
     .contact a {
       color: var(--violet);
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.2s ease;
     }
     .contact a:hover {
       color: var(--neon);
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      border-top: 1px solid var(--line);
+      padding: 2.5rem 1rem;
+      background: linear-gradient(180deg, #fff, #f0f6ff);
       color: var(--muted);
       font-size: 0.95rem;
-      background: linear-gradient(180deg, #fff, #f7faff);
     }
 
     @media (max-width: 640px) {
       main { padding: 2rem 1rem; }
-      section { padding: 1.5rem; }
+      h1 { font-size: 1.7rem; }
     }
   </style>
 </head>
@@ -127,27 +114,28 @@
   <header>
     <div class="logo"><div class="spark" aria-hidden="true"></div></div>
     <h1>Neon Forge</h1>
+    <p>Independent digital design for web, print, and creative media.</p>
   </header>
 
   <main>
     <section>
       <h2>About Neon Forge</h2>
-      <p>I’m a self-employed digital designer providing thoughtful, balanced creative work for individuals, businesses, and brands. My approach blends modern design sensibilities with practical execution — bringing a professional polish to every project while keeping things clear, efficient, and accessible.</p>
+      <p>I’m a self-employed digital designer providing thoughtful, professional design across digital and physical media. My work blends creativity with clarity — producing designs that are clean, bright, and built to make an impression.</p>
     </section>
 
     <section>
-      <h2>What I Do</h2>
-      <p><strong>Websites:</strong> Clean, responsive sites built for clarity, speed, and brand presence.</p>
-      <p><strong>Digital Art:</strong> Custom digital pieces, visuals, and motion graphics that tell a story.</p>
-      <p><strong>Physical Media:</strong> Prints, posters, and branded materials that carry digital identity into the real world.</p>
-      <p><strong>SEO Optimization:</strong> Structure, content, and performance tuning for search visibility and growth.</p>
-      <p><strong>Graphic Design:</strong> Logos, layouts, and brand elements that bring a unified visual identity to life.</p>
-      <p><strong>Simple Apps:</strong> Streamlined, lightweight web apps and interfaces built to solve small but important problems.</p>
+      <h2>Services</h2>
+      <p><strong>Websites:</strong> Modern, responsive designs that bring brands to life online, crafted for clarity and smooth performance.</p>
+      <p><strong>Digital Art:</strong> Original visuals, illustrations, and creative concepts developed for use across digital platforms.</p>
+      <p><strong>Physical Media:</strong> Posters, print layouts, and branded material that extend your identity into the real world.</p>
+      <p><strong>SEO Optimization:</strong> Subtle structure, speed, and visibility improvements that help your message get found.</p>
+      <p><strong>Graphic Design:</strong> From logos to full brand systems — distinctive, balanced, and purposeful visual design.</p>
+      <p><strong>Simple Apps:</strong> Lightweight, user-friendly applications built to simplify everyday processes and small business tasks.</p>
     </section>
 
     <section class="contact">
       <h2>Get in Touch</h2>
-      <p>For all enquiries, collaborations, or project discussions, feel free to reach out.</p>
+      <p>For all enquiries, collaborations, or design discussions, please get in touch:</p>
       <p><a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a></p>
     </section>
   </main>
