@@ -3,109 +3,159 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neon Forge — Digital Design</title>
-  <meta name="description" content="Neon Forge — Professional digital design, web, art, media, and branding." />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>Neon Forge — Design, Web & Media</title>
+  <meta name="description" content="Neon Forge — Digital and physical design studio offering web design, digital art, print, SEO, and creative apps." />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0e14;
-      --ink: #f3f7ff;
-      --muted: #a9b6cb;
-      --neon: #39e4ff;
-      --violet: #9b65ff;
-      --line: rgba(255,255,255,0.08);
+      --bg: #eef4fa;
+      --surface: #ffffff;
+      --text: #1c1f26;
+      --muted: #586174;
+      --line: #d5deeb;
+      --neon: #06c8ff;
+      --violet: #906eff;
+      --radius: 18px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: "Sora", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       background: var(--bg);
-      color: var(--ink);
-      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(180deg, #fff 0%, #f6f9ff 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 1.5rem 1rem;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 2rem;
+      gap: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     .logo {
-      position: relative;
-      width: 70px;
-      height: 70px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, rgba(57,228,255,0.08), rgba(155,101,255,0.08));
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      margin-bottom: 1.2rem;
-      box-shadow:
-        0 0 12px rgba(57,228,255,0.2),
-        0 0 20px rgba(155,101,255,0.15),
-        inset 0 0 10px rgba(255,255,255,0.04);
+      background: linear-gradient(145deg, rgba(6,200,255,0.15), rgba(144,110,255,0.15));
+      box-shadow: 0 0 14px rgba(6,200,255,0.25), 0 0 28px rgba(144,110,255,0.2);
     }
     .spark {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       border-radius: 6px;
       background:
         radial-gradient(circle at 30% 30%, var(--neon), transparent 60%),
         radial-gradient(circle at 70% 70%, var(--violet), transparent 60%);
-      box-shadow:
-        0 0 14px rgba(57,228,255,0.6),
-        0 0 24px rgba(155,101,255,0.5);
       transform: rotate(45deg);
+      box-shadow:
+        0 0 12px rgba(6,200,255,0.4),
+        0 0 20px rgba(144,110,255,0.3);
     }
     h1 {
       font-weight: 800;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      margin-bottom: 1rem;
+      font-size: 1.8rem;
       background: linear-gradient(90deg, var(--neon), var(--violet));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+
+    /* MAIN BODY */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.2rem;
+    }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
     p {
-      max-width: 680px;
-      margin: 0 auto 1.2rem;
       color: var(--muted);
-      line-height: 1.6;
+      margin-bottom: 1rem;
     }
+
+    /* CONTACT */
     .contact {
-      margin-top: 2rem;
-      font-size: 0.95rem;
+      text-align: center;
     }
-    a {
-      color: var(--neon);
-      text-decoration: none;
-      transition: 0.2s ease;
-    }
-    a:hover {
+    .contact a {
       color: var(--violet);
+      text-decoration: none;
+      font-weight: 600;
     }
+    .contact a:hover {
+      color: var(--neon);
+    }
+
+    /* FOOTER */
     footer {
-      margin-top: 2.5rem;
-      font-size: 0.85rem;
-      color: var(--muted);
+      text-align: center;
+      padding: 2rem 1rem;
       border-top: 1px solid var(--line);
-      padding-top: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      background: linear-gradient(180deg, #fff, #f7faff);
+    }
+
+    @media (max-width: 640px) {
+      main { padding: 2rem 1rem; }
+      section { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <div class="logo">
-      <div class="spark" aria-hidden="true"></div>
-    </div>
+  <header>
+    <div class="logo"><div class="spark" aria-hidden="true"></div></div>
     <h1>Neon Forge</h1>
-    <p>I’m a self-employed digital designer creating across web, digital art, and physical media — building modern, fast, and distinctive designs that connect brands with people.</p>
-    <p>Services include website design and development, digital art, physical media production, SEO optimization, and graphic design.</p>
-    <p class="contact">For all enquiries, please get in touch:<br>
-      <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
-    </p>
-    <footer>
-      Monday – Friday • 09:00 – 17:00<br>
-      © <span id="year"></span> Neon Forge
-    </footer>
+  </header>
+
+  <main>
+    <section>
+      <h2>About Neon Forge</h2>
+      <p>I’m a self-employed digital designer providing thoughtful, balanced creative work for individuals, businesses, and brands. My approach blends modern design sensibilities with practical execution — bringing a professional polish to every project while keeping things clear, efficient, and accessible.</p>
+    </section>
+
+    <section>
+      <h2>What I Do</h2>
+      <p><strong>Websites:</strong> Clean, responsive sites built for clarity, speed, and brand presence.</p>
+      <p><strong>Digital Art:</strong> Custom digital pieces, visuals, and motion graphics that tell a story.</p>
+      <p><strong>Physical Media:</strong> Prints, posters, and branded materials that carry digital identity into the real world.</p>
+      <p><strong>SEO Optimization:</strong> Structure, content, and performance tuning for search visibility and growth.</p>
+      <p><strong>Graphic Design:</strong> Logos, layouts, and brand elements that bring a unified visual identity to life.</p>
+      <p><strong>Simple Apps:</strong> Streamlined, lightweight web apps and interfaces built to solve small but important problems.</p>
+    </section>
+
+    <section class="contact">
+      <h2>Get in Touch</h2>
+      <p>For all enquiries, collaborations, or project discussions, feel free to reach out.</p>
+      <p><a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a></p>
+    </section>
   </main>
+
+  <footer>
+    Monday – Friday • 09:00 – 17:00<br>
+    © <span id="year"></span> Neon Forge. All rights reserved.
+  </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
