@@ -9,12 +9,11 @@
   <style>
     :root {
       --bg: #0b0e14;
-      --surface: #131820;
       --ink: #f3f7ff;
       --muted: #a9b6cb;
       --neon: #39e4ff;
       --violet: #9b65ff;
-      --radius: 18px;
+      --line: rgba(255,255,255,0.08);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -28,6 +27,32 @@
       align-items: center;
       text-align: center;
       padding: 2rem;
+    }
+    .logo {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(57,228,255,0.08), rgba(155,101,255,0.08));
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.2rem;
+      box-shadow:
+        0 0 12px rgba(57,228,255,0.2),
+        0 0 20px rgba(155,101,255,0.15),
+        inset 0 0 10px rgba(255,255,255,0.04);
+    }
+    .spark {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background:
+        radial-gradient(circle at 30% 30%, var(--neon), transparent 60%),
+        radial-gradient(circle at 70% 70%, var(--violet), transparent 60%);
+      box-shadow:
+        0 0 14px rgba(57,228,255,0.6),
+        0 0 24px rgba(155,101,255,0.5);
+      transform: rotate(45deg);
     }
     h1 {
       font-weight: 800;
@@ -51,6 +76,7 @@
     a {
       color: var(--neon);
       text-decoration: none;
+      transition: 0.2s ease;
     }
     a:hover {
       color: var(--violet);
@@ -59,13 +85,16 @@
       margin-top: 2.5rem;
       font-size: 0.85rem;
       color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid var(--line);
       padding-top: 1rem;
     }
   </style>
 </head>
 <body>
   <main>
+    <div class="logo">
+      <div class="spark" aria-hidden="true"></div>
+    </div>
     <h1>Neon Forge</h1>
     <p>I’m a self-employed digital designer creating across web, digital art, and physical media — building modern, fast, and distinctive designs that connect brands with people.</p>
     <p>Services include website design and development, digital art, physical media production, SEO optimization, and graphic design.</p>
@@ -73,7 +102,7 @@
       <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
     </p>
     <footer>
-      Monday – Friday &bull; 09:00 – 17:00<br>
+      Monday – Friday • 09:00 – 17:00<br>
       © <span id="year"></span> Neon Forge
     </footer>
   </main>
