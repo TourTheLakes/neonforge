@@ -36,7 +36,8 @@
     }
 
     header{
-      position:sticky; top:0;
+      position:sticky;
+      top:0;
       background:linear-gradient(180deg,#fff,rgba(255,255,255,.96));
       border-bottom:1px solid var(--line);
       text-align:center;
@@ -84,23 +85,23 @@
     }
     .list strong{font-weight:600}
 
-    .cta{
+    .contact{
       margin-top:3rem;
-      text-align:center;
+      font-size:var(--step-1);
+      color:var(--muted);
+      line-height:1.8;
+      max-width:60ch;
     }
-    .cta a{
-      display:inline-block;
-      background:var(--accent);
-      color:#fff;
+    .contact a{
+      color:var(--accent);
       font-weight:600;
       text-decoration:none;
-      padding:.9rem 2rem;
-      border-radius:999px;
-      font-size:1.05rem;
-      transition:background .25s ease;
+      border-bottom:1px solid rgba(59,130,246,0.25);
+      transition:border .25s ease, color .25s ease;
     }
-    .cta a:hover{
-      background:#2558c4;
+    .contact a:hover{
+      color:#2558c4;
+      border-bottom-color:rgba(37,88,196,0.4);
     }
 
     footer{
@@ -137,9 +138,7 @@
       <li><strong>Simple apps</strong> — focused web tools for real workflows.</li>
     </ul>
 
-    <div class="cta">
-      <a href="mailto:info@neonforge.co.uk">Get in touch</a>
-    </div>
+    <p class="contact">If any of this resonates with what you need, the conversation often begins simply — a brief idea, a shared direction, or just a hello. You can reach out any time at <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>, and we’ll go from there.</p>
   </main>
 
   <footer>
