@@ -4,31 +4,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neon Forge — Design & Development</title>
-  <meta name="description" content="Neon Forge — design & development for websites, digital art, physical media, SEO optimization, graphic design, and simple apps." />
-  <meta name="theme-color" content="#F5F6F7" />
+  <meta name="description" content="Neon Forge — design & development studio specialising in websites, digital art, physical media, SEO, graphic design, and simple apps." />
+  <meta name="theme-color" content="#F9F9F8" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,700;6..72,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,700;6..72,800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#F5F6F7;
-      --ink:#1F2328;
+      --bg:#F9F9F8;
+      --ink:#1C1E21;
       --muted:#6B7280;
       --accent:#3B82F6;
-      --line:#E5E7EB;
-
-      --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
+      --line:#E4E5E7;
+      --step--1:clamp(.95rem,.9rem + .2vw,1rem);
       --step-0:clamp(1rem,.9rem + .4vw,1.12rem);
-      --step-1:clamp(1.15rem,1.02rem + .8vw,1.35rem);
+      --step-1:clamp(1.25rem,1.1rem + .8vw,1.4rem);
+      --step-2:clamp(1.8rem,1.5rem + 2vw,2.6rem);
+      --step-3:clamp(2.6rem,2rem + 3vw,3.2rem);
     }
 
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
     body{
       margin:0;
-      min-height:100svh;
       font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       font-size:var(--step-0);
-      line-height:1.65;
+      line-height:1.7;
       color:var(--ink);
       background:var(--bg);
       -webkit-font-smoothing:antialiased;
@@ -36,57 +38,77 @@
     }
 
     header{
-      position:sticky;
-      top:0;
-      background:linear-gradient(180deg,#fff,rgba(255,255,255,.96));
-      border-bottom:1px solid var(--line);
       text-align:center;
-      padding:18px 12px 14px;
+      padding:2.2rem 1rem 1.8rem;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#fff,rgba(255,255,255,.9));
     }
-    .brand{font-family:"Newsreader",serif;font-weight:800;letter-spacing:.01em;white-space:nowrap}
-    .brand span{display:block}
-    .brand .name{font-size:clamp(1.6rem,4.5vw,2.4rem);line-height:1}
-    .brand .role{
-      margin-top:6px;
-      font-weight:600;
-      font-size:clamp(.85rem,1.8vw,1.05rem);
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--muted);
-      white-space:nowrap;
-    }
-
-    main{max-width:880px;margin:0 auto;padding:clamp(2.2rem,5vw,4.8rem) 1.2rem}
-    h1{
-      margin:0 0 1.4rem;
+    header .brand{
       font-family:"Newsreader",serif;
       font-weight:800;
-      line-height:1.08;
+      font-size:clamp(2rem,5vw,2.8rem);
+      line-height:1;
       letter-spacing:0;
     }
-    .line1,.line2{display:block;white-space:nowrap}
-    .line1{font-size:clamp(1.8rem,7.4vw,3.1rem)}
-    .line2{font-size:clamp(1.6rem,6.6vw,2.6rem)}
-    .line2 .color{color:var(--accent)}
+    header .role{
+      display:block;
+      margin-top:0.5rem;
+      font-weight:600;
+      font-size:clamp(.9rem,1.5vw,1.1rem);
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    main{
+      max-width:760px;
+      margin:0 auto;
+      padding:clamp(3rem,5vw,6rem) 1.2rem;
+    }
+
+    h1{
+      font-family:"Newsreader",serif;
+      font-weight:800;
+      font-size:var(--step-3);
+      line-height:1.1;
+      margin:0 0 2rem;
+      text-wrap:balance;
+    }
+    h1 .color{color:var(--accent)}
 
     p.lede{
       font-size:var(--step-1);
       color:var(--muted);
-      margin:0 0 1.8rem;
+      margin:0 0 2.4rem;
       max-width:65ch;
       text-wrap:balance;
     }
 
-    ul.list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
-    .list li{padding-left:1.35rem;position:relative}
+    ul.list{
+      list-style:none;
+      padding:0;
+      margin:0 0 3.5rem;
+      display:grid;
+      gap:1rem;
+    }
+    .list li{
+      position:relative;
+      padding-left:1.4rem;
+    }
     .list li::before{
-      content:"";position:absolute;left:0;top:.72rem;width:8px;height:8px;border-radius:50%;
-      background:var(--accent);opacity:.75
+      content:"";
+      position:absolute;
+      left:0;
+      top:.8rem;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--accent);
+      opacity:.7;
     }
     .list strong{font-weight:600}
 
     .contact{
-      margin-top:3rem;
       font-size:var(--step-1);
       color:var(--muted);
       line-height:1.8;
@@ -94,10 +116,10 @@
     }
     .contact a{
       color:var(--accent);
-      font-weight:600;
       text-decoration:none;
+      font-weight:600;
       border-bottom:1px solid rgba(59,130,246,0.25);
-      transition:border .25s ease, color .25s ease;
+      transition:color .25s ease, border .25s ease;
     }
     .contact a:hover{
       color:#2558c4;
@@ -107,7 +129,7 @@
     footer{
       border-top:1px solid var(--line);
       text-align:center;
-      padding:1.5rem 1rem;
+      padding:2rem 1rem;
       color:var(--muted);
       font-size:var(--step--1);
     }
@@ -115,30 +137,25 @@
 </head>
 <body>
   <header>
-    <div class="brand">
-      <span class="name">Neon Forge</span>
-      <span class="role">Design & Development</span>
-    </div>
+    <div class="brand">Neon Forge</div>
+    <span class="role">Design & Development</span>
   </header>
 
   <main>
-    <h1>
-      <span class="line1">Design &amp; Development</span>
-      <span class="line2">that <span class="color">feels</span> effortless.</span>
-    </h1>
+    <h1>Design &amp; Development that <span class="color">feels</span> effortless.</h1>
 
-    <p class="lede">I create clear, modern work across digital and physical media — building websites that communicate well, visuals that carry meaning, and small, elegant tools that make everyday tasks easier.</p>
+    <p class="lede">Design should feel as though it belongs — not bolted on, not shouting for attention, but woven into the way something works. At Neon Forge, every detail is considered with intention, so that what’s built is both clear and quietly confident.</p>
 
     <ul class="list">
-      <li><strong>Websites</strong> — responsive, fast, and calm to use.</li>
-      <li><strong>Digital art</strong> — original assets for campaigns and products.</li>
-      <li><strong>Physical media</strong> — posters, packaging, and printed collateral.</li>
-      <li><strong>SEO optimization</strong> — structure and performance that help people find you.</li>
-      <li><strong>Graphic design</strong> — identity, typography, and layout systems.</li>
-      <li><strong>Simple apps</strong> — focused web tools for real workflows.</li>
+      <li><strong>Websites</strong> — responsive, fast, and intuitive to use.</li>
+      <li><strong>Digital art</strong> — original assets that elevate campaigns and products.</li>
+      <li><strong>Physical media</strong> — printed collateral that extends your identity beyond the screen.</li>
+      <li><strong>SEO optimisation</strong> — thoughtful structure and performance that help people find you.</li>
+      <li><strong>Graphic design</strong> — typography, identity, and layouts that communicate with clarity.</li>
+      <li><strong>Simple apps</strong> — focused web tools that solve real problems elegantly.</li>
     </ul>
 
-    <p class="contact">If any of this resonates with what you need, the conversation often begins simply — a brief idea, a shared direction, or just a hello. You can reach out any time at <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>, and we’ll go from there.</p>
+    <p class="contact">If that sounds like the kind of work you’re looking for, you can always start a conversation simply by writing to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>. From there, we shape the details together.</p>
   </main>
 
   <footer>
