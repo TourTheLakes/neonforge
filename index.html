@@ -1,109 +1,540 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+  <!-- ===== META ===== -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neon Forge — Design, Web & Media</title>
-  <meta name="description" content="Neon Forge — self-employed digital designer offering websites, digital art, physical media, SEO, graphic design, and simple apps." />
+  <title>Neon Forge — Independent Design Studio</title>
+  <meta name="description" content="Neon Forge is a self-employed design studio crafting bright, modern websites, digital art, physical media, SEO, graphic design, and simple apps." />
+  <meta name="theme-color" content="#f7f5f2" />
+
+  <!-- Social -->
+  <meta property="og:title" content="Neon Forge — Independent Design Studio" />
+  <meta property="og:description" content="Bright, modern design across web, digital art, physical media, SEO, graphics, and simple apps." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="favicon.svg" />
+
+  <!-- Favicon (keep your existing SVG) -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Fonts (brand-new; no reuse) -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
+    /* =========================================================
+       Neon Forge — Static One-Pager
+       New palette, new type, new layout. No carry-overs.
+       ========================================================= */
+
+    /* -------- CSS RESET (trimmed) -------- */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;min-height:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    img,svg,video{display:block;max-width:100%}
+    input,button,textarea,select{font:inherit}
+    :focus-visible{outline:2px solid var(--ink-strong);outline-offset:2px;border-radius:8px}
+
+    /* -------- THEME TOKENS -------- */
     :root{
-      --bg:#f6f9ff; --text:#1b1e25; --muted:#5e6677;
-      --neon:#06c8ff; --violet:#906eff;
+      /* Light, bright, modern — intentionally not neon */
+      --bg: #f7f5f2;         /* page background (warm light) */
+      --paper: #ffffff;      /* surfaces */
+      --ink: #1c2024;        /* primary text */
+      --ink-muted:#5c6672;   /* secondary text */
+      --ink-strong:#162a46;  /* strong/focus */
+      --line: #e7e2da;       /* subtle borders */
+
+      /* Accents (fresh, not cyan/purple): coral + ultramarine + lime */
+      --acc-1:#ff7043;       /* coral */
+      --acc-2:#2b6aff;       /* ultramarine */
+      --acc-3:#30d17a;       /* lime/mint */
+
+      --shadow: 0 10px 30px rgba(20,35,60,.08), 0 2px 10px rgba(20,35,60,.06);
+      --radius: 18px;
+
+      /* Type scale */
+      --step--1: clamp(.9rem, .84rem + .2vw, 1.02rem);
+      --step-0: clamp(1rem, .9rem + .5vw, 1.15rem);
+      --step-1: clamp(1.15rem, 1.02rem + .8vw, 1.35rem);
+      --step-2: clamp(1.35rem, 1.14rem + 1.2vw, 1.7rem);
+      --step-3: clamp(1.8rem, 1.3rem + 2vw, 2.25rem);
+      --step-4: clamp(2.3rem, 1.6rem + 3vw, 3rem);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
+
+    @media (prefers-color-scheme: dark){
+      /* Optional dark auto-theming (still bright & clean) */
+      :root{
+        --bg:#121317; --paper:#171922;
+        --ink:#f3f6ff; --ink-muted:#aeb7c4; --ink-strong:#dfe8ff;
+        --line:#242938;
+        --shadow: 0 18px 50px rgba(0,0,0,.38), 0 3px 12px rgba(0,0,0,.32);
+      }
+    }
+
+    /* -------- BASE -------- */
     body{
-      font-family:"Manrope",system-ui,sans-serif;
-      background:radial-gradient(1200px 600px at 50% 0%, rgba(6,200,255,.15), transparent 60%), var(--bg);
-      color:var(--text); line-height:1.65;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
-
-    /* Header */
-    header{
-      text-align:center; padding:4rem 1rem 3rem;
-    }
-    .logo{
-      width:60px; height:60px; border-radius:16px; margin:0 auto 1rem;
-      display:grid; place-items:center;
-      background:linear-gradient(145deg, rgba(6,200,255,.22), rgba(144,110,255,.26));
-      box-shadow:0 0 20px rgba(6,200,255,.28), 0 0 35px rgba(144,110,255,.22);
-    }
-    .spark{
-      width:20px; height:20px; border-radius:6px;
       background:
-        radial-gradient(circle at 30% 30%, var(--neon), transparent 60%),
-        radial-gradient(circle at 70% 70%, var(--violet), transparent 60%);
-      transform:rotate(45deg);
-    }
-    h1{
-      font-weight:800; font-size:2rem; margin:.6rem 0 .5rem;
-      background:linear-gradient(90deg, var(--neon), var(--violet));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    header p{ color:var(--muted); font-size:1.05rem; }
-
-    /* Body */
-    main{ max-width:880px; margin:0 auto; padding:3rem 1.2rem; }
-    section{ margin-bottom:3.2rem; }
-    h2{ font-size:1.45rem; font-weight:800; margin-bottom:.75rem; }
-    p{ color:var(--muted); font-size:1.05rem; margin-bottom:1rem; }
-
-    .contact{ text-align:center; margin-top:3.5rem; }
-    .contact a{ color:var(--violet); text-decoration:none; font-weight:600; }
-    .contact a:hover{ color:var(--neon); }
-
-    /* Footer */
-    footer{
-      text-align:center; padding:2.5rem 1rem;
-      background:linear-gradient(180deg,#fff,#f0f6ff);
-      color:var(--muted); font-size:.95rem;
+        radial-gradient(1200px 400px at 70% -10%, rgba(43,106,255,.10), transparent 50%),
+        radial-gradient(900px 380px at -10% 35%, rgba(255,112,67,.10), transparent 55%),
+        var(--bg);
+      color:var(--ink);
+      font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-size:var(--step-0);
+      line-height:1.65;
+      letter-spacing:.01em;
     }
 
-    @media (max-width:640px){
-      main{ padding:2rem 1rem; }
-      h1{ font-size:1.7rem; }
+    .wrap{width:min(1100px,92vw);margin-inline:auto}
+
+    /* -------- ACCESSIBILITY -------- */
+    .skip{position:absolute;left:-999px;top:auto}
+    .skip:focus{left:1rem;top:1rem;background:var(--paper);padding:.5rem .75rem;border:1px solid var(--line);border-radius:10px;z-index:999}
+
+    /* -------- HEADER -------- */
+    header.site{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65));
+      backdrop-filter: blur(8px) saturate(130%);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:inherit}
+    .mark{
+      width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(255,112,67,.22), rgba(43,106,255,.24));
+      box-shadow:0 0 24px rgba(255,112,67,.18), 0 0 28px rgba(43,106,255,.18) inset;
+      border:1px solid rgba(0,0,0,.04);
+    }
+    .spark{width:16px;height:16px;border-radius:5px;transform:rotate(45deg);
+      background:
+        radial-gradient(circle at 28% 32%, var(--acc-1), transparent 60%),
+        radial-gradient(circle at 72% 40%, var(--acc-2), transparent 60%);
+      box-shadow:0 0 10px rgba(255,112,67,.4), 0 0 14px rgba(43,106,255,.35);
+    }
+    .wordmark{display:flex;flex-direction:column}
+    .title{font-weight:800;letter-spacing:.02em}
+    .tag{color:var(--ink-muted);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+
+    .navlinks{display:flex;gap:.75rem}
+    .navlinks a{
+      padding:.5rem .75rem;border-radius:999px;border:1px solid transparent;color:var(--ink-muted);text-decoration:none
+    }
+    .navlinks a:hover{border-color:rgba(43,106,255,.35);color:var(--ink)}
+    .cta-mail{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .85rem;border-radius:12px;
+      border:1px solid var(--line);background:linear-gradient(180deg,#fff, #f7f6f4);box-shadow:var(--shadow);text-decoration:none}
+    .cta-mail:hover{transform:translateY(-1px)}
+    .chip{display:inline-grid;place-items:center;border-radius:999px;background:linear-gradient(90deg,var(--acc-1),var(--acc-2));color:white;font:600 .72rem/1 "IBM Plex Mono",monospace;padding:.28rem .5rem}
+
+    /* -------- HERO -------- */
+    .hero{padding:clamp(48px,7vw,84px) 0 30px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,44px);align-items:center}
+    .eyebrow{color:var(--ink-muted);font:.8rem/1.2 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+    h1.display{font-weight:800;font-size:var(--step-4);line-height:1.05;margin:.35rem 0 .6rem;letter-spacing:.01em}
+    .grad{background:linear-gradient(90deg,var(--acc-2),var(--acc-1));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lede{color:var(--ink-muted);font-size:var(--step-1);max-width:60ch}
+    .actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.1rem}
+    .btn{
+      display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1rem;border-radius:12px;
+      border:1px solid var(--line);background:linear-gradient(180deg,#fff,#f6f4f1);box-shadow:var(--shadow);text-decoration:none;color:inherit
+    }
+    .btn.primary{border-color:rgba(43,106,255,.35);background:linear-gradient(180deg, rgba(43,106,255,.12), rgba(255,112,67,.12))}
+    .btn:hover{transform:translateY(-1px)}
+    .hero-art{border:1px solid var(--line);border-radius:var(--radius);padding:14px;background:linear-gradient(180deg,#fff, #faf8f6);box-shadow:var(--shadow)}
+    .art{
+      aspect-ratio:4/3;border-radius:12px;
+      background:
+        conic-gradient(from 210deg at 70% 40%, rgba(43,106,255,.18), transparent 35%),
+        conic-gradient(from 35deg at 20% 30%, rgba(255,112,67,.18), transparent 45%),
+        linear-gradient(135deg, #fefefe, #f6f3ef);
+    }
+
+    /* -------- SERVICES STRIP (container queries) -------- */
+    .services{padding:22px 0 8px}
+    .card-row{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px}
+    .card{
+      container-type:inline-size; /* enable container queries */
+      border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff;box-shadow:var(--shadow);
+      transition:transform .2s ease;will-change:transform
+    }
+    .card:hover{transform:translateY(-3px)}
+    .kicker{font:700 .78rem/1 "IBM Plex Mono",monospace;color:var(--ink-muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.35rem}
+    .card h3{margin:.15rem 0 .4rem;font:800 clamp(1.05rem, 1rem + .6cqi, 1.3rem)/1.1 "Plus Jakarta Sans",system-ui}
+    .card p{color:var(--ink-muted);margin:0}
+    .meter{
+      --p: 62%;
+      height:6px;border-radius:999px;background:linear-gradient(90deg, var(--acc-3), var(--acc-2));
+      width:var(--p);box-shadow:0 0 0 6px rgba(43,106,255,.06) inset;margin-top:10px
+    }
+
+    /* -------- CASE STUDY RAIL -------- */
+    .rail{padding:36px 0 8px}
+    .rail-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:10px}
+    .rail p{color:var(--ink-muted);margin:0}
+    .track{
+      display:grid;grid-auto-flow:column;grid-auto-columns: min(82vw, 340px);
+      gap:12px;overflow:auto;padding-bottom:8px;scroll-snap-type:x mandatory;scroll-padding:12px
+    }
+    .tile{
+      position:relative;scroll-snap-align:start;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow);
+      overflow:hidden;transform-style:preserve-3d;transition:transform .3s ease;
+    }
+    .tile:hover{transform:perspective(900px) rotateX(2deg) rotateY(-4deg) translateY(-2px)}
+    .shot{aspect-ratio:4/3;background:
+      radial-gradient(60% 50% at 20% 30%, rgba(43,106,255,.20), transparent 60%),
+      radial-gradient(60% 50% at 80% 40%, rgba(255,112,67,.20), transparent 60%),
+      linear-gradient(135deg,#fafafa,#f3f0ec)}
+    .tile .meta{padding:12px 14px}
+    .meta h4{margin:0 0 .25rem;font-weight:800}
+    .meta .small{color:var(--ink-muted);font-size:.9rem}
+    .pill{position:absolute;top:10px;left:10px}
+    .pill .chip{background:linear-gradient(90deg,var(--acc-2),var(--acc-3))}
+
+    /* -------- PLAYGROUND (interactions) -------- */
+    .play{padding:34px 0}
+    .play-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
+    .panel{
+      border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow);padding:16px
+    }
+    .panel h3{margin:.1rem 0 .4rem;font-size:var(--step-2)}
+    .panel p{color:var(--ink-muted);margin:0 0 .6rem}
+    .kbd{font:600 .82rem/1 "IBM Plex Mono",monospace;background:#f1eee9;border:1px solid var(--line);padding:.25rem .45rem;border-radius:8px}
+    .badge{display:inline-grid;place-items:center;border:1px dashed var(--line);border-radius:12px;padding:.4rem .7rem;font:.82rem/1 "IBM Plex Mono",monospace}
+    .tooltips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .tip{position:relative}
+    .tip:hover::after{
+      content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+      background:#111827;color:#fff;padding:.4rem .6rem;border-radius:8px;font-size:.82rem;white-space:nowrap
+    }
+
+    /* Copy email button */
+    .copy{display:inline-flex;gap:.5rem;align-items:center;border:1px solid var(--line);padding:.55rem .75rem;border-radius:12px;background:#fff}
+    .copy.ok{border-color:var(--acc-3);box-shadow:0 0 0 4px rgba(48,209,122,.12)}
+    .copy .mono{font-family:"IBM Plex Mono",monospace}
+
+    /* -------- CONTACT CTA -------- */
+    .cta{padding:36px 0 46px}
+    .cta-panel{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#fff,#f7f5f2);box-shadow:var(--shadow);
+      padding:18px 20px
+    }
+
+    /* -------- FOOTER -------- */
+    footer.site{
+      border-top:1px solid var(--line);background:linear-gradient(180deg,#fff,#f0f2f7);
+      color:var(--ink-muted);text-align:center;padding:28px 1rem 40px
+    }
+
+    /* -------- RESPONSIVE -------- */
+    @media (max-width: 980px){
+      .hero-grid, .play-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 760px){
+      .card-row{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+
+    /* -------- REDUCED MOTION -------- */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+      .tile:hover{transform:none}
     }
   </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"Neon Forge",
+    "email":"info@neonforge.co.uk",
+    "description":"Independent design studio for websites, digital art, physical media, SEO, graphic design, and simple apps.",
+    "openingHours":"Mo-Fr 09:00-17:00",
+    "url":"https://neonforge.co.uk"
+  }
+  </script>
 </head>
 <body>
-  <header>
-    <div class="logo"><div class="spark" aria-hidden="true"></div></div>
-    <h1>Neon Forge</h1>
-    <p>Independent digital design across web, digital art, and physical media.</p>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site">
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Neon Forge">
+        <span class="mark"><span class="spark" aria-hidden="true"></span></span>
+        <span class="wordmark">
+          <span class="title">NEON FORGE</span>
+          <span class="tag">Independent Studio</span>
+        </span>
+      </a>
+      <nav class="navlinks" aria-label="Sections">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#play">Playground</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="cta-mail" href="mailto:info@neonforge.co.uk" title="Email Neon Forge">
+        <span class="chip">Mon–Fri 09:00–17:00</span>
+      </a>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h2>About Neon Forge</h2>
-      <p>I’m a self-employed digital designer. I focus on clear ideas, clean execution, and bright, modern visuals — delivering work that feels considered without being complicated.</p>
-    </section>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">neonforge.co.uk</div>
+        <h1 id="hero-title" class="display">Bright, modern <span class="grad">design</span> for web, print & simple apps.</h1>
+        <p class="lede">
+          I’m a self-employed designer focused on clarity and polish — websites that feel effortless, digital art with intent, physical media that carries your brand, and SEO that quietly works.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#services">Explore Services</a>
+          <a class="btn" href="mailto:info@neonforge.co.uk">Email info@neonforge.co.uk</a>
+          <button class="btn" type="button" data-cmd>⌘/Ctrl+K Command</button>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art"></div>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2>Services</h2>
-      <p><strong>Websites:</strong> Responsive, fast, and tidy — built to communicate well and look good everywhere.</p>
-      <p><strong>Digital Art:</strong> Original visuals and assets for campaigns, socials, and brand storytelling.</p>
-      <p><strong>Physical Media:</strong> Posters, prints, and branded materials that carry your identity offline.</p>
-      <p><strong>SEO Optimization:</strong> Structure and performance tweaks that help the right people find you.</p>
-      <p><strong>Graphic Design:</strong> Logos, typography, and layouts for consistent, memorable branding.</p>
-      <p><strong>Simple Apps:</strong> Lightweight web apps and interfaces to solve small but important problems.</p>
-    </section>
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services" aria-labelledby="svc-title">
+    <div class="wrap">
+      <h2 id="svc-title" class="eyebrow" style="color:var(--ink);letter-spacing:.16em">Services</h2>
+      <div class="card-row">
+        <article class="card">
+          <div class="kicker">Websites</div>
+          <h3>Responsive, fast, and clear</h3>
+          <p>Mobile-first builds with thoughtful typography, solid structure, and genuine speed.</p>
+          <div class="meter" style="--p: 78%"></div>
+        </article>
+        <article class="card">
+          <div class="kicker">Digital Art</div>
+          <h3>Original visuals & motion</h3>
+          <p>Artwork that adds character, from subtle UI flourishes to bold campaign pieces.</p>
+          <div class="meter" style="--p: 64%"></div>
+        </article>
+        <article class="card">
+          <div class="kicker">Physical Media</div>
+          <h3>Prints & brand collateral</h3>
+          <p>Posters, packaging, and touchpoints that carry your identity into the real world.</p>
+          <div class="meter" style="--p: 70%"></div>
+        </article>
+        <article class="card">
+          <div class="kicker">SEO Optimization</div>
+          <h3>Quiet, compounding wins</h3>
+          <p>Structure, semantics, and performance tuning that improves findability.</p>
+          <div class="meter" style="--p: 60%"></div>
+        </article>
+        <article class="card">
+          <div class="kicker">Graphic Design</div>
+          <h3>Identity & systems</h3>
+          <p>Logos, palettes, and layouts designed to be consistent, legible, and memorable.</p>
+          <div class="meter" style="--p: 72%"></div>
+        </article>
+        <article class="card">
+          <div class="kicker">Simple Apps</div>
+          <h3>Lightweight web tools</h3>
+          <p>Focused, user-friendly apps that solve small but real problems beautifully.</p>
+          <div class="meter" style="--p: 66%"></div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <section class="contact">
-      <h2>Get in Touch</h2>
-      <p>For all enquiries, please email <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a></p>
-    </section>
-  </main>
+  <!-- ===== CASE STUDIES / WORK ===== -->
+  <section class="rail" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="rail-head">
+        <h2 id="work-title" class="eyebrow" style="color:var(--ink);letter-spacing:.16em">Selected Work (Teasers)</h2>
+        <p>Scroll →</p>
+      </div>
+      <div class="track" role="list">
+        <article class="tile" role="listitem" tabindex="0">
+          <div class="pill"><span class="chip">Web</span></div>
+          <div class="shot" aria-hidden="true"></div>
+          <div class="meta">
+            <h4>Launch: Bright Commerce</h4>
+            <div class="small">Fast storefront with clean product UI</div>
+          </div>
+        </article>
+        <article class="tile" role="listitem" tabindex="0">
+          <div class="pill"><span class="chip">Digital Art</span></div>
+          <div class="shot" aria-hidden="true"></div>
+          <div class="meta">
+            <h4>Editorial Series</h4>
+            <div class="small">Concept visuals for a culture zine</div>
+          </div>
+        </article>
+        <article class="tile" role="listitem" tabindex="0">
+          <div class="pill"><span class="chip">Print</span></div>
+          <div class="shot" aria-hidden="true"></div>
+          <div class="meta">
+            <h4>Poster Set</h4>
+            <div class="small">Tactile color & bold type on paper</div>
+          </div>
+        </article>
+        <article class="tile" role="listitem" tabindex="0">
+          <div class="pill"><span class="chip">SEO</span></div>
+          <div class="shot" aria-hidden="true"></div>
+          <div class="meta">
+            <h4>Content Revamp</h4>
+            <div class="small">Structure + performance uplift</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    Monday – Friday • 09:00 – 17:00<br>
-    © <span id="year"></span> Neon Forge. All rights reserved.
+  <!-- ===== INTERACTION PLAYGROUND ===== -->
+  <section class="play" id="play" aria-labelledby="play-title">
+    <div class="wrap play-grid">
+      <div class="panel">
+        <h3 id="play-title">Command Palette <span class="kbd">K</span></h3>
+        <p>Press <span class="kbd">⌘K</span> (Mac) or <span class="kbd">Ctrl+K</span> (Windows/Linux) to open quick actions. Fully keyboard accessible.</p>
+        <div class="tooltips">
+          <span class="badge tip" data-tip="Jump to Services (S)">Jump S</span>
+          <span class="badge tip" data-tip="Jump to Work (W)">Jump W</span>
+          <span class="badge tip" data-tip="Email Us (E)">Email E</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Copy Email</h3>
+        <p>One-click copy with success feedback and ARIA status updates.</p>
+        <button class="copy" type="button" data-copy="info@neonforge.co.uk" aria-live="polite">
+          <span class="mono">info@neonforge.co.uk</span> <span>Copy</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="cta" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="cta-panel">
+        <div>
+          <h2 id="contact-title" style="margin:.1rem 0 .4rem">Let’s build something bright</h2>
+          <p class="eyebrow" style="color:var(--ink-muted)">For all enquiries get in touch — I usually reply within one business day.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="mailto:info@neonforge.co.uk">Email info@neonforge.co.uk</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site" role="contentinfo">
+    <div class="wrap">
+      Monday – Friday • 09:00 – 17:00<br />
+      © <span id="year"></span> Neon Forge. All rights reserved.
+    </div>
   </footer>
 
+  <!-- ===== COMMAND PALETTE (modal) ===== -->
+  <dialog id="cmd" aria-label="Command palette">
+    <form method="dialog" style="margin:0">
+      <div style="padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px 12px 0 0">
+        <span class="kbd">⌘/Ctrl+K</span>
+        <input id="cmdInput" placeholder="Type: services, work, contact, email" style="flex:1;border:none;outline:none;font:inherit" />
+        <button value="close" class="btn" style="margin:0">Close</button>
+      </div>
+      <div style="padding:12px 14px;background:#fff">
+        <div class="eyebrow" style="color:var(--ink-muted);margin-bottom:.35rem">Actions</div>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
+          <li><button class="btn" data-jump="#services" type="button">Go to Services</button></li>
+          <li><button class="btn" data-jump="#work" type="button">Go to Work</button></li>
+          <li><button class="btn" data-jump="#play" type="button">Go to Playground</button></li>
+          <li><a class="btn" href="mailto:info@neonforge.co.uk">Email Us</a></li>
+        </ul>
+      </div>
+    </form>
+    <style>
+      dialog#cmd{border:none;border-radius:14px;box-shadow:var(--shadow);padding:0;width:min(600px,92vw)}
+      dialog#cmd::backdrop{background:rgba(0,0,0,.25);backdrop-filter:blur(2px)}
+    </style>
+  </dialog>
+
   <script>
+    /* =========================================================
+       Neon Forge — Progressive Enhancements
+       ========================================================= */
+    document.documentElement.classList.remove('no-js');
+
+    // Year stamp
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // View-based reveal (IntersectionObserver)
+    const reveal = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.animate([{opacity:0, transform:'translateY(10px)'},{opacity:1, transform:'translateY(0)'}],
+            {duration:500, easing:'cubic-bezier(.2,.6,.2,1)', fill:'both'});
+          reveal.unobserve(e.target);
+        }
+      });
+    }, {threshold:.2});
+    document.querySelectorAll('.card, .tile, .panel, .cta-panel').forEach(el=>reveal.observe(el));
+
+    // Command palette
+    const dlg = document.getElementById('cmd');
+    const cmdInput = document.getElementById('cmdInput');
+    function openCmd(){
+      if(typeof dlg.showModal === 'function'){ dlg.showModal(); cmdInput.value=''; cmdInput.focus(); }
+      else window.location.hash = '#services';
+    }
+    function closeCmd(){ if(dlg.open) dlg.close(); }
+
+    document.querySelector('[data-cmd]')?.addEventListener('click', openCmd);
+    window.addEventListener('keydown', (e)=>{
+      const k = e.key.toLowerCase();
+      if((e.metaKey || e.ctrlKey) && k === 'k'){ e.preventDefault(); openCmd(); }
+      if(k === 'escape'){ closeCmd(); }
+      if(dlg.open && k === 'enter'){
+        const val = cmdInput.value.trim().toLowerCase();
+        if(val.includes('service')) jump('#services');
+        else if(val.includes('work')) jump('#work');
+        else if(val.includes('play')) jump('#play');
+        else if(val.includes('contact') || val.includes('email')) window.location.href = 'mailto:info@neonforge.co.uk';
+      }
+    });
+
+    // Palette list buttons
+    dlg.addEventListener('click', (e)=>{
+      const j = e.target.closest('[data-jump]');
+      if(j){ jump(j.getAttribute('data-jump')); closeCmd(); }
+    });
+
+    // Smooth jump helper
+    function jump(hash){
+      const t = document.querySelector(hash);
+      if(!t) return;
+      t.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    // Copy email
+    const copyBtn = document.querySelector('.copy');
+    copyBtn?.addEventListener('click', async ()=>{
+      const email = copyBtn.getAttribute('data-copy');
+      try{
+        await navigator.clipboard.writeText(email);
+        copyBtn.classList.add('ok');
+        copyBtn.querySelector('span:last-child').textContent = 'Copied!';
+        setTimeout(()=>{
+          copyBtn.classList.remove('ok');
+          copyBtn.querySelector('span:last-child').textContent = 'Copy';
+        }, 1800);
+      }catch{
+        // Fallback: select text
+        const r = document.createRange();
+        r.selectNodeContents(copyBtn.querySelector('.mono'));
+        const sel = window.getSelection();
+        sel.removeAllRanges(); sel.addRange(r);
+      }
+    });
   </script>
 </body>
 </html>
