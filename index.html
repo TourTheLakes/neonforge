@@ -7,199 +7,152 @@
   <meta name="description" content="Neon Forge — design & development for websites, digital art, physical media, SEO optimization, graphic design, and simple apps." />
   <meta name="theme-color" content="#F5F6F7" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,700;6..72,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#F5F6F7;
-      --paper:#FFFFFF;
       --ink:#1F2328;
       --muted:#6B7280;
+      --accent:#3B82F6;
       --line:#E5E7EB;
-      --accent:#3B82F6; /* controlled, occasional color */
-      --radius:18px;
 
       --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
       --step-0:clamp(1rem,.9rem + .4vw,1.12rem);
       --step-1:clamp(1.15rem,1.02rem + .8vw,1.35rem);
       --step-2:clamp(1.6rem,1.25rem + 1.8vw,2.1rem);
-      --step-3:clamp(2.4rem,1.9rem + 3.2vw,3.4rem);
+      --step-3:clamp(2.6rem,2rem + 3vw,3.2rem);
     }
 
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
     body{
-      margin:0; min-height:100svh;
+      margin:0; 
+      min-height:100svh;
       font-family:"Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      font-size:var(--step-0); line-height:1.65; letter-spacing:.01em;
-      color:var(--ink); background:var(--bg);
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      font-size:var(--step-0);
+      line-height:1.65;
+      letter-spacing:.01em;
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased; 
+      text-rendering:optimizeLegibility;
     }
-    :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:10px}
-
-    .wrap{width:min(1080px,92vw); margin-inline:auto}
 
     header{
-      position:sticky; top:0; z-index:10;
-      background:linear-gradient(180deg,#FFFFFF,rgba(255,255,255,.92));
+      position:sticky;
+      top:0;
+      background:linear-gradient(180deg,#FFFFFF,rgba(255,255,255,.95));
       border-bottom:1px solid var(--line);
+      text-align:center;
+      padding:20px 0 14px;
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:14px 0;
+
+    header .brand{
+      font-family:"Newsreader", serif;
+      font-weight:800;
+      font-size:clamp(1.8rem, 1.5rem + 1.5vw, 2.8rem);
+      letter-spacing:0;
+      white-space:nowrap;
     }
-    .brand{
-      display:flex; align-items:baseline; gap:10px; text-decoration:none; color:inherit;
-    }
-    .brand .name{
-      font-family:"Newsreader", serif; font-weight:800; font-size:1.25rem; letter-spacing:.01em;
-    }
-    .brand .role{
-      color:var(--muted); font-weight:600; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase;
-    }
-    .nav .mail{
-      display:inline-flex; align-items:center; gap:.55rem;
-      padding:.55rem .9rem; border-radius:12px;
-      background:#fff; border:1px solid var(--line); color:inherit; text-decoration:none;
+
+    header .role{
+      display:block;
+      font-weight:600;
+      font-size:clamp(.9rem, .85rem + .4vw, 1.1rem);
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-top:4px;
+      white-space:nowrap;
     }
 
     main{
-      min-height:calc(100svh - 140px);
-      display:grid; place-items:center;
-      padding:30px 0 20px;
+      max-width:880px;
+      margin:0 auto;
+      padding:clamp(2.8rem, 5vw, 5rem) 1.2rem;
     }
-    .panel{
-      display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center;
-      background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
-      padding:clamp(18px,4vw,28px); box-shadow:0 10px 34px rgba(0,0,0,.06);
-    }
-    .lead .eyebrow{
-      color:var(--muted); font:600 .78rem/1 "Source Sans 3", system-ui; letter-spacing:.18em; text-transform:uppercase;
-    }
-    .lead h1{
-      font-family:"Newsreader", serif; font-weight:800; line-height:1.03;
-      font-size:var(--step-3); margin:.5rem 0 .75rem;
+
+    h1{
+      font-family:"Newsreader", serif;
+      font-weight:800;
+      font-size:var(--step-3);
+      line-height:1.1;
+      margin:0 0 1.4rem;
       letter-spacing:0;
+      white-space:nowrap;
     }
-    .lead h1 .tint{color:var(--accent)}
-    .lead p{color:var(--muted); font-size:var(--step-1); margin:0 0 1rem}
+
+    h1 .color{
+      color:var(--accent);
+    }
+
+    p.lede{
+      font-size:var(--step-1);
+      color:var(--muted);
+      margin-bottom:2rem;
+      max-width:65ch;
+    }
+
     .list{
-      display:grid; gap:.45rem; margin-top:.6rem;
+      display:grid;
+      gap:.6rem;
+      margin:0;
+      padding:0;
+      list-style:none;
     }
-    .list .item{
-      display:flex; align-items:flex-start; gap:.6rem; color:var(--ink);
-    }
-    .item .dot{
-      width:8px; height:8px; border-radius:50%; margin-top:.55rem;
-      background:color-mix(in oklab, var(--accent) 55%, #ffffff);
-      box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 14%, #ffffff) inset;
-      flex:0 0 auto;
-    }
-    .item strong{font-weight:600}
-    .dim{color:var(--muted)}
 
-    .side{
-      display:grid; gap:18px;
+    .list li{
+      position:relative;
+      padding-left:1.4rem;
+      color:var(--ink);
     }
-    .card{
-      padding:16px; border:1px solid var(--line); border-radius:14px; background:#fff;
-    }
-    .card h3{
-      margin:0 0 .35rem; font:700 var(--step-2)/1.15 "Newsreader", serif;
-    }
-    .card p{margin:0; color:var(--muted)}
-    .grid{
-      display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:.75rem;
-    }
-    .pill{
-      display:inline-block; padding:.45rem .65rem; border-radius:999px;
-      border:1px solid var(--line); background:#fff; font:600 .85rem/1 "Source Sans 3", system-ui; color:var(--ink);
-    }
-    .pill .focus{color:var(--accent)}
 
-    .contact{
-      margin-top:.4rem; padding-top:.9rem; border-top:1px dashed var(--line);
-      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    .list li::before{
+      content:'';
+      position:absolute;
+      top:.7rem;
+      left:0;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--accent);
+      opacity:.7;
     }
-    .contact a{
-      color:var(--accent); text-decoration:none; font-weight:600;
+
+    .list strong{
+      font-weight:600;
     }
 
     footer{
       border-top:1px solid var(--line);
-      background:#FFFFFF;
+      text-align:center;
+      padding:1.5rem 1rem;
       color:var(--muted);
-    }
-    .foot{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      padding:18px 0 22px;
-    }
-    .hours{font-variant-numeric:tabular-nums}
-
-    @media (max-width: 980px){
-      .panel{grid-template-columns:1fr; gap:22px}
-    }
-    @media (prefers-reduced-motion: reduce){
-      *{transition:none!important; animation:none!important; scroll-behavior:auto!important}
+      font-size:var(--step--1);
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap nav">
-      <a class="brand" href="#" aria-label="Neon Forge">
-        <span class="name">Neon Forge</span>
-        <span class="role">Design & Development</span>
-      </a>
-      <a class="mail" href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
-    </div>
+    <div class="brand">Neon Forge</div>
+    <div class="role">Design & Development</div>
   </header>
 
   <main>
-    <section class="wrap panel" aria-label="Overview">
-      <div class="lead">
-        <div class="eyebrow">neonforge.co.uk</div>
-        <h1>Design & Development that feels <span class="tint">effortless</span>.</h1>
-        <p>I create clear, modern work across digital and physical media — building websites that communicate well, visuals that carry meaning, and small, elegant tools that make everyday tasks easier.</p>
-        <div class="list" aria-label="What I do">
-          <div class="item"><span class="dot" aria-hidden="true"></span><div><strong>Websites</strong> — responsive, fast, and calm to use.</div></div>
-          <div class="item"><span class="dot" aria-hidden="true"></span><div><strong>Digital art</strong> — original assets for campaigns and products.</div></div>
-          <div class="item"><span class="dot" aria-hidden="true"></span><div><strong>Physical media</strong> — posters, packaging, and printed collateral.</div></div>
-          <div class="item"><span class="dot" aria-hidden="true"></span><div><strong>SEO optimization</strong> — structure and performance that help people find you.</div></div>
-          <div class="item"><span class="dot" aria-hidden="true"></span><div><strong>Graphic design</strong> — identity, typography, and layout systems.</div></div>
-          <div class="item"><span class="dot" aria-hidden="true"></span><div><strong>Simple apps</strong> — focused web tools for real workflows.</div></div>
-        </div>
-      </div>
-
-      <aside class="side" aria-label="Summary">
-        <div class="card">
-          <h3><span class="tint" style="color:var(--accent)">Approach</span></h3>
-          <p>Thoughtful, restrained and robust. I prefer quiet clarity over noise; practical details over gimmicks.</p>
-        </div>
-        <div class="card">
-          <h3><span class="tint" style="color:var(--accent)">Capabilities</span></h3>
-          <div class="grid" role="list">
-            <span class="pill" role="listitem"><span class="focus">UI</span> / UX</span>
-            <span class="pill" role="listitem">Front-end</span>
-            <span class="pill" role="listitem">Brand</span>
-            <span class="pill" role="listitem">Art Direction</span>
-            <span class="pill" role="listitem">Print</span>
-            <span class="pill" role="listitem">Accessibility</span>
-          </div>
-        </div>
-        <div class="contact" aria-label="Contact">
-          <span class="dim">For all enquiries:</span>
-          <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
-        </div>
-      </aside>
-    </section>
+    <h1>Design & Development that <span class="color">feels</span> effortless.</h1>
+    <p class="lede">I create clear, modern work across digital and physical media — building websites that communicate well, visuals that carry meaning, and small, elegant tools that make everyday tasks easier.</p>
+    <ul class="list">
+      <li><strong>Websites</strong> — responsive, fast, and calm to use.</li>
+      <li><strong>Digital art</strong> — original assets for campaigns and products.</li>
+      <li><strong>Physical media</strong> — posters, packaging, and printed collateral.</li>
+      <li><strong>SEO optimization</strong> — structure and performance that help people find you.</li>
+      <li><strong>Graphic design</strong> — identity, typography, and layout systems.</li>
+      <li><strong>Simple apps</strong> — focused web tools for real workflows.</li>
+    </ul>
   </main>
 
   <footer>
-    <div class="wrap foot">
-      <span class="hours">Mon–Fri · 09:00–17:00</span>
-      <span>© <span id="year"></span> Neon Forge</span>
-    </div>
+    Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
   </footer>
 
   <script>
