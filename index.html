@@ -19,109 +19,70 @@
       --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
       --step-0:clamp(1rem,.9rem + .4vw,1.12rem);
       --step-1:clamp(1.15rem,1.02rem + .8vw,1.35rem);
-      --step-2:clamp(1.6rem,1.25rem + 1.8vw,2.1rem);
-      --step-3:clamp(2.6rem,2rem + 3vw,3.2rem);
     }
 
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
     body{
-      margin:0; 
+      margin:0;
       min-height:100svh;
-      font-family:"Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       font-size:var(--step-0);
       line-height:1.65;
-      letter-spacing:.01em;
       color:var(--ink);
       background:var(--bg);
-      -webkit-font-smoothing:antialiased; 
+      -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
 
     header{
-      position:sticky;
-      top:0;
-      background:linear-gradient(180deg,#FFFFFF,rgba(255,255,255,.95));
+      position:sticky; top:0;
+      background:linear-gradient(180deg,#fff,rgba(255,255,255,.96));
       border-bottom:1px solid var(--line);
       text-align:center;
-      padding:20px 0 14px;
+      padding:18px 12px 14px;
     }
-
-    header .brand{
-      font-family:"Newsreader", serif;
-      font-weight:800;
-      font-size:clamp(1.8rem, 1.5rem + 1.5vw, 2.8rem);
-      letter-spacing:0;
-      white-space:nowrap;
-    }
-
-    header .role{
-      display:block;
+    .brand{font-family:"Newsreader",serif;font-weight:800;letter-spacing:.01em;white-space:nowrap}
+    .brand span{display:block}
+    .brand .name{font-size:clamp(1.6rem,4.5vw,2.4rem);line-height:1}
+    .brand .role{
+      margin-top:6px;
       font-weight:600;
-      font-size:clamp(.9rem, .85rem + .4vw, 1.1rem);
-      letter-spacing:.15em;
+      font-size:clamp(.85rem,1.8vw,1.05rem);
+      letter-spacing:.16em;
       text-transform:uppercase;
       color:var(--muted);
-      margin-top:4px;
       white-space:nowrap;
     }
 
-    main{
-      max-width:880px;
-      margin:0 auto;
-      padding:clamp(2.8rem, 5vw, 5rem) 1.2rem;
-    }
-
+    main{max-width:880px;margin:0 auto;padding:clamp(2.2rem,5vw,4.8rem) 1.2rem}
     h1{
-      font-family:"Newsreader", serif;
-      font-weight:800;
-      font-size:var(--step-3);
-      line-height:1.1;
       margin:0 0 1.4rem;
+      font-family:"Newsreader",serif;
+      font-weight:800;
+      line-height:1.08;
       letter-spacing:0;
-      white-space:nowrap;
     }
-
-    h1 .color{
-      color:var(--accent);
-    }
+    .line1,.line2{display:block;white-space:nowrap}
+    .line1{font-size:clamp(1.8rem,7.4vw,3.1rem)}
+    .line2{font-size:clamp(1.6rem,6.6vw,2.6rem)}
+    .line2 .color{color:var(--accent)}
 
     p.lede{
       font-size:var(--step-1);
       color:var(--muted);
-      margin-bottom:2rem;
+      margin:0 0 1.8rem;
       max-width:65ch;
+      text-wrap:balance;
     }
 
-    .list{
-      display:grid;
-      gap:.6rem;
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-
-    .list li{
-      position:relative;
-      padding-left:1.4rem;
-      color:var(--ink);
-    }
-
+    ul.list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+    .list li{padding-left:1.35rem;position:relative}
     .list li::before{
-      content:'';
-      position:absolute;
-      top:.7rem;
-      left:0;
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--accent);
-      opacity:.7;
+      content:"";position:absolute;left:0;top:.72rem;width:8px;height:8px;border-radius:50%;
+      background:var(--accent);opacity:.75
     }
-
-    .list strong{
-      font-weight:600;
-    }
+    .list strong{font-weight:600}
 
     footer{
       border-top:1px solid var(--line);
@@ -134,13 +95,20 @@
 </head>
 <body>
   <header>
-    <div class="brand">Neon Forge</div>
-    <div class="role">Design & Development</div>
+    <div class="brand">
+      <span class="name">Neon Forge</span>
+      <span class="role">Design & Development</span>
+    </div>
   </header>
 
   <main>
-    <h1>Design & Development that <span class="color">feels</span> effortless.</h1>
+    <h1>
+      <span class="line1">Design &amp; Development</span>
+      <span class="line2">that <span class="color">feels</span> effortless.</span>
+    </h1>
+
     <p class="lede">I create clear, modern work across digital and physical media — building websites that communicate well, visuals that carry meaning, and small, elegant tools that make everyday tasks easier.</p>
+
     <ul class="list">
       <li><strong>Websites</strong> — responsive, fast, and calm to use.</li>
       <li><strong>Digital art</strong> — original assets for campaigns and products.</li>
