@@ -9,20 +9,22 @@
   <link rel="canonical" href="https://www.neonforge.co.uk/" />
   <meta name="theme-color" content="#0B0D10" />
 
+  <!-- Social -->
   <meta property="og:title" content="Neon Forge — Design & Development" />
   <meta property="og:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.neonforge.co.uk/" />
-
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Neon Forge — Design & Development" />
   <meta name="twitter:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
 
+  <!-- Favicon (keep existing) -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,700;6..72,800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700;6..72,800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -33,7 +35,7 @@
       --accent:#3B82F6;
       --line:#E7E9ED;
 
-      --panel-bg:#0B0D10;
+      --panel-bg: rgba(28,30,34,.5); /* dark grey, 50% transparency */
       --panel-ink:#F1F5F9;
 
       --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
@@ -160,54 +162,58 @@
     .menu-open .hamburger .lines::before{ transform:translateY(6px) rotate(45deg) }
     .menu-open .hamburger .lines::after{ transform:translateY(-6px) rotate(-45deg) }
 
-    /* SIDE PANEL (right, full height, pushes content) */
+    /* SIDE PANEL (right, full height, pushes content). Refined serif, luxury hover */
     .side-panel{
       position:fixed; top:0; right:0; height:100vh; z-index:1000;
       width:min(380px,80vw);
       background:var(--panel-bg); color:var(--panel-ink);
-      border-left:1px solid rgba(255,255,255,.06);
       transform:translateX(100%);
       transition:transform .45s cubic-bezier(.22,.61,.36,1);
       display:flex; flex-direction:column;
-      padding:18px 18px 24px;
+      padding:18px 22px 24px;
+      backdrop-filter:saturate(130%) blur(8px);
+      border-left:1px solid rgba(255,255,255,.06);
     }
     .menu-open .side-panel{ transform:translateX(0) }
 
-    .panel-header{ display:flex; align-items:center; justify-content:space-between; padding:6px 4px 10px }
+    .panel-header{ display:flex; align-items:center; justify-content:space-between; padding:6px 2px 12px }
     .panel-title{
-      font-family:"Newsreader",serif; font-size:1.1rem; letter-spacing:.08em; text-transform:uppercase; opacity:.7
+      font-family:"Newsreader",serif; font-weight:700; font-size:1.05rem;
+      letter-spacing:.1em; text-transform:uppercase; opacity:.8
     }
-    .panel-close{
-      appearance:none; background:transparent; border:none; cursor:pointer; color:#E5E7EB;
-      font-size:1.2rem; padding:.4rem; border-radius:8px;
-    }
-    .panel-close:focus-visible{ outline:2px solid #3B82F6; outline-offset:2px }
 
-    .panel-nav{ margin-top:8px; padding-top:12px; border-top:1px solid rgba(255,255,255,.08); }
+    .panel-nav{ margin-top:10px; padding-top:12px; border-top:1px solid rgba(255,255,255,.08); }
     .panel-nav a{
-      display:block; padding:.9rem .4rem;
-      color:var(--panel-ink); text-decoration:none; font-size:1.1rem; font-weight:600;
-      letter-spacing:.02em;
+      display:block; padding:.95rem .25rem;
+      color:var(--panel-ink); text-decoration:none;
+      font-family:"Newsreader",serif; font-weight:700; letter-spacing:.02em;
+      font-size:1.15rem;
+      /* luxury underline + colour fade */
+      background-image:linear-gradient(currentColor,currentColor);
+      background-position:0 100%;
+      background-repeat:no-repeat;
+      background-size:0% 1px;
+      transition:color .25s ease, background-size .25s ease;
     }
-    .panel-nav a:hover{ color:#A7C0FF }
+    .panel-nav a:hover{
+      color:#E0E8FF;
+      background-size:100% 1px;
+    }
+
     .panel-footer{
       margin-top:auto; padding-top:14px; border-top:1px solid rgba(255,255,255,.08);
-      font-size:.95rem; color:#AAB1B9;
+      font-size:.95rem; color:#C7D0DB; font-family:"Source Sans 3",system-ui;
     }
-    .panel-footer a{ color:#C9D4E4; text-decoration:none; font-weight:600 }
-    .panel-footer a:hover{ color:#A7C0FF }
-    .small-note{ display:block; opacity:.7; margin-top:.35rem }
+    .panel-footer a{ color:#E8EEF9; text-decoration:none; font-weight:600 }
+    .panel-footer a:hover{ color:#D3DFFF }
 
-    /* Hidden anchors to keep scroll targets without changing visuals */
-    .anchor{
-      position:relative; top:-72px; /* offset for sticky header */
-      height:0; width:0; overflow:hidden;
-    }
-    @media (max-width:640px){
-      .anchor{ top:-64px }
+    /* Offset for sticky header when jumping to anchors */
+    .anchor-offset{
+      scroll-margin-top:80px; /* modern browsers */
     }
   </style>
 
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -227,11 +233,11 @@
     <span class="lines" aria-hidden="true"></span>
   </button>
 
-  <!-- SIDE PANEL (pushes content) -->
+  <!-- SIDE PANEL (no inner ✕; hamburger is the only close control) -->
   <aside id="side-panel" class="side-panel" role="navigation" aria-label="Site menu">
     <div class="panel-header">
       <div class="panel-title">Menu</div>
-      <button class="panel-close" aria-label="Close menu">✕</button>
+      <!-- intentionally no close button here -->
     </div>
     <nav class="panel-nav">
       <a href="#intro">Home</a>
@@ -242,7 +248,7 @@
     </nav>
     <div class="panel-footer">
       <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
-      <span class="small-note">Mon–Fri · 09:00–17:00</span>
+      <div>Mon–Fri · 09:00–17:00</div>
     </div>
   </aside>
 
@@ -258,12 +264,8 @@
       </div>
     </header>
 
-    <!-- Invisible anchors to map menu names without visual changes -->
-    <div id="about" class="anchor" aria-hidden="true"></div>
-    <div id="projects" class="anchor" aria-hidden="true"></div>
-
     <!-- HERO / INTRO -->
-    <section id="intro" class="flow backdrop-1">
+    <section id="intro" class="flow backdrop-1 anchor-offset">
       <div class="wrap">
         <div class="content">
           <h1 class="reveal">Design &amp; Development that <span class="highlight">feels</span> effortless.</h1>
@@ -272,18 +274,18 @@
       </div>
     </section>
 
-    <!-- WHAT WE DO -->
-    <section id="work" class="flow backdrop-2">
+    <!-- ABOUT (map "About" to this section) -->
+    <section id="about" class="flow backdrop-2 anchor-offset">
       <div class="wrap">
         <div class="content">
           <h2 class="reveal">Clarity, rhythm, restraint.</h2>
           <p class="reveal delay-1">Typography, spacing and structure do the heavy lifting here. The aim is readability and ease: decisions that reduce noise, interactions that don’t shout, and layouts that breathe on every screen.</p>
-        </div>
+      </div>
       </div>
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="flow backdrop-3">
+    <section id="services" class="flow backdrop-3 anchor-offset">
       <div class="wrap">
         <div class="content">
           <h2 class="reveal">What we make</h2>
@@ -300,7 +302,7 @@
     </section>
 
     <!-- APPROACH -->
-    <section id="approach" class="flow backdrop-4">
+    <section id="approach" class="flow backdrop-4 anchor-offset">
       <div class="wrap">
         <div class="content">
           <h2 class="reveal">A quieter kind of presence</h2>
@@ -310,11 +312,23 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="flow backdrop-1" aria-labelledby="contact-heading">
+    <section id="contact" class="flow backdrop-1 anchor-offset" aria-labelledby="contact-heading">
       <div class="wrap">
         <div class="content">
           <h2 id="contact-heading" class="reveal">Start a conversation</h2>
           <p class="contact-line reveal delay-1">Write to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a> — a brief note is enough. We’ll explore direction, shape the scope, and move at a thoughtful pace.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (pure text placeholders, no boxes) -->
+    <section id="projects" class="flow backdrop-3 anchor-offset" aria-labelledby="projects-heading">
+      <div class="wrap">
+        <div class="content">
+          <h2 id="projects-heading" class="reveal">Projects &amp; Case Studies</h2>
+          <p class="reveal delay-1"><strong>Placeholder — Project One</strong> · A concise line describing the challenge and the shape of the solution.</p>
+          <p class="reveal delay-2"><strong>Placeholder — Project Two</strong> · A short note on outcomes — what changed for the client or audience.</p>
+          <p class="reveal delay-3"><strong>Placeholder — Project Three</strong> · Scope highlights: identity, website, print; delivered with a calm, readable system.</p>
         </div>
       </div>
     </section>
@@ -346,37 +360,37 @@
       els.forEach(function(el){ io.observe(el); });
     })();
 
-    // Slide-out panel logic (push content)
+    // Slide-out panel logic (push content) — only hamburger toggles open/close
     (function(){
       var body = document.body;
       var burger = document.querySelector('.hamburger');
       var panel = document.getElementById('side-panel');
-      var closeBtn = document.querySelector('.panel-close');
 
       function openMenu(){
         body.classList.add('menu-open');
         burger.setAttribute('aria-expanded','true');
         burger.setAttribute('aria-label','Close menu');
-        panel.focus({preventScroll:true});
+        panel.setAttribute('aria-hidden','false');
       }
       function closeMenu(){
         body.classList.remove('menu-open');
         burger.setAttribute('aria-expanded','false');
         burger.setAttribute('aria-label','Open menu');
+        panel.setAttribute('aria-hidden','true');
       }
 
       burger.addEventListener('click', function(){
         if(body.classList.contains('menu-open')) closeMenu(); else openMenu();
       });
-      closeBtn.addEventListener('click', closeMenu);
 
-      // Keep menu open on link click (as requested) — do nothing here.
-      // Escape key closes
+      // Keep menu open on link click (as requested)
+
+      // Escape key closes (accessibility)
       document.addEventListener('keydown', function(e){
         if(e.key === 'Escape' && body.classList.contains('menu-open')) closeMenu();
       });
 
-      // Improve anchor scrolling offset (account for sticky header)
+      // Smooth scroll with header offset for all in-page anchors
       document.querySelectorAll('a[href^="#"]').forEach(function(a){
         a.addEventListener('click', function(e){
           var id = a.getAttribute('href').slice(1);
