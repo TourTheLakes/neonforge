@@ -72,14 +72,17 @@ header {
   /* Use your exported PNG */
   background: url("assets/images/honeycomb-header.png") no-repeat center;
   background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px
 }
 
 .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px clamp(12px, 4vw, 24px);
-  text-align: center;
+text-align: center;
   position: relative;
+  padding: 0;
 }
 
 .brand {
