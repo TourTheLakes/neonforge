@@ -7,23 +7,19 @@
   <meta name="description" content="Neon Forge — a design & development studio creating spacious, considered digital and physical work that feels effortless." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.neonforge.co.uk/" />
-  <meta name="theme-color" content="#F6F7F8" />
+  <meta name="theme-color" content="#0B0D10" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Neon Forge — Design & Development" />
   <meta property="og:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.neonforge.co.uk/" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Neon Forge — Design & Development" />
   <meta name="twitter:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
 
-  <!-- Favicon (keep existing) -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,700;6..72,800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -36,6 +32,9 @@
       --muted:#6B7280;
       --accent:#3B82F6;
       --line:#E7E9ED;
+
+      --panel-bg:#0B0D10;
+      --panel-ink:#F1F5F9;
 
       --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
       --step-0:clamp(1rem,.9rem + .4vw,1.12rem);
@@ -55,9 +54,20 @@
       background:var(--bg);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
+      overflow-x:hidden;
     }
 
-    /* Header — brand only, no UI chrome */
+    /* SITE WRAPPER (pushed when menu opens) */
+    .site{
+      transform:translateX(0);
+      transition:transform .45s cubic-bezier(.22,.61,.36,1);
+      will-change:transform;
+    }
+    .menu-open .site{
+      transform:translateX(-min(380px,80vw)); /* push content left by panel width */
+    }
+
+    /* Header */
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter:saturate(180%) blur(6px);
@@ -68,55 +78,41 @@
       max-width:1200px; margin:0 auto;
       padding:16px clamp(12px,4vw,24px);
       text-align:center;
+      position:relative;
     }
     .brand{
-      font-family:"Newsreader",serif; font-weight:800; letter-spacing:.01em;
-      line-height:1.05;
+      font-family:"Newsreader",serif; font-weight:800; letter-spacing:.01em; line-height:1.05;
     }
-    .brand .name{
-      display:block; white-space:nowrap;
-      font-size:clamp(1.7rem,3.8vw,2.6rem);
-    }
+    .brand .name{ display:block; white-space:nowrap; font-size:clamp(1.7rem,3.8vw,2.6rem) }
     .brand .role{
       display:block; margin-top:6px; color:var(--muted);
       font-weight:600; letter-spacing:.15em; text-transform:uppercase;
-      font-size:clamp(.85rem,1.6vw,1.05rem);
-      white-space:nowrap;
+      font-size:clamp(.85rem,1.6vw,1.05rem); white-space:nowrap;
     }
+    .no-wrap{ white-space:nowrap }
 
-    /* Full-viewport sections (Heft-style flow) */
-    section.flow{
-      min-height:100svh; display:flex; align-items:center;
-      position:relative; overflow:hidden;
-    }
+    /* Full-viewport sections */
+    section.flow{ min-height:100svh; display:flex; align-items:center; position:relative; overflow:hidden }
     .flow .wrap{
       max-width:1100px; margin:0 auto; width:100%;
       padding:clamp(40px,6vw,80px) clamp(18px,5vw,40px);
       display:grid; grid-template-columns: 1fr min(820px,100%) 1fr;
     }
-    .flow .content{
-      grid-column:2; text-align:left;
-    }
+    .flow .content{ grid-column:2; text-align:left }
 
-    /* Alternating neutral “backdrops” (no hard boxes, no borders) */
-    .backdrop-1{ background:var(--bg-alt); }
-    .backdrop-2{ background:linear-gradient(180deg,var(--bg),#fff); }
-    .backdrop-3{ background:var(--bg); }
-    .backdrop-4{ background:linear-gradient(180deg,#fff,var(--bg)); }
+    .backdrop-1{ background:#FFFFFF }
+    .backdrop-2{ background:linear-gradient(180deg,var(--bg),#fff) }
+    .backdrop-3{ background:var(--bg) }
+    .backdrop-4{ background:linear-gradient(180deg,#fff,var(--bg)) }
 
-    /* Typographic rhythm */
     h1,h2{font-family:"Newsreader",serif; font-weight:800; margin:0 0 .8rem}
     h1{ font-size:var(--step-3); line-height:1.07; text-wrap:balance }
     h2{ font-size:var(--step-2); line-height:1.15; text-wrap:balance }
     p{ margin:.6rem 0; max-width:70ch }
     .lede{ font-size:var(--step-1); color:var(--muted) }
-
     .highlight{ color:var(--accent) }
 
-    /* Services list — airy, unboxed, dot cue */
-    ul.services{
-      list-style:none; padding:0; margin:1.4rem 0 0; display:grid; gap:.75rem
-    }
+    ul.services{ list-style:none; padding:0; margin:1.4rem 0 0; display:grid; gap:.75rem }
     .services li{ padding-left:1.2rem; position:relative }
     .services li::before{
       content:""; position:absolute; left:0; top:.78rem;
@@ -124,16 +120,10 @@
     }
     .services strong{ font-weight:600 }
 
-    /* Contact line — inline, no button, no underline */
-    .contact-line{
-      margin-top:2.2rem; color:var(--muted); font-size:var(--step-1);
-    }
-    .contact-line a{
-      color:var(--accent); text-decoration:none; font-weight:600;
-    }
+    .contact-line{ margin-top:2.2rem; color:var(--muted); font-size:var(--step-1) }
+    .contact-line a{ color:var(--accent); text-decoration:none; font-weight:600 }
     .contact-line a:hover{ color:#2558c4 }
 
-    /* Footer */
     footer{
       border-top:1px solid var(--line);
       text-align:center; color:var(--muted);
@@ -141,21 +131,81 @@
       background:#fff;
     }
 
-    /* Subtle reveal animations (no gimmicks) */
+    /* Reveal animations */
     .reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
     .reveal.delay-1{ transition-delay:.06s }
     .reveal.delay-2{ transition-delay:.12s }
     .reveal.delay-3{ transition-delay:.18s }
     .reveal-visible{opacity:1; transform:none}
-
-    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce){
       html:focus-within{scroll-behavior:auto}
       .reveal{opacity:1; transform:none; transition:none}
     }
 
-    /* Ensure “Neon Forge” and “Design & Development” do not wrap mid-phrase on narrow screens */
-    .no-wrap{ white-space:nowrap }
+    /* HAMBURGER (always visible, top-right, fixed) */
+    .hamburger{
+      position:fixed; top:14px; right:14px; z-index:1001;
+      width:42px; height:42px; display:grid; place-items:center;
+      background:rgba(11,13,16,.82); border:1px solid rgba(255,255,255,.08);
+      border-radius:10px; cursor:pointer; -webkit-tap-highlight-color:transparent;
+      box-shadow:0 6px 20px rgba(0,0,0,.15);
+    }
+    .hamburger .lines{ position:relative; width:20px; height:2px; background:#E5E7EB; border-radius:2px; transition:transform .3s ease }
+    .hamburger .lines::before,.hamburger .lines::after{
+      content:""; position:absolute; left:0; width:20px; height:2px; background:#E5E7EB; border-radius:2px; transition:transform .3s ease, opacity .2s ease
+    }
+    .hamburger .lines::before{ top:-6px }
+    .hamburger .lines::after{ top:6px }
+    .menu-open .hamburger .lines{ background:transparent }
+    .menu-open .hamburger .lines::before{ transform:translateY(6px) rotate(45deg) }
+    .menu-open .hamburger .lines::after{ transform:translateY(-6px) rotate(-45deg) }
+
+    /* SIDE PANEL (right, full height, pushes content) */
+    .side-panel{
+      position:fixed; top:0; right:0; height:100vh; z-index:1000;
+      width:min(380px,80vw);
+      background:var(--panel-bg); color:var(--panel-ink);
+      border-left:1px solid rgba(255,255,255,.06);
+      transform:translateX(100%);
+      transition:transform .45s cubic-bezier(.22,.61,.36,1);
+      display:flex; flex-direction:column;
+      padding:18px 18px 24px;
+    }
+    .menu-open .side-panel{ transform:translateX(0) }
+
+    .panel-header{ display:flex; align-items:center; justify-content:space-between; padding:6px 4px 10px }
+    .panel-title{
+      font-family:"Newsreader",serif; font-size:1.1rem; letter-spacing:.08em; text-transform:uppercase; opacity:.7
+    }
+    .panel-close{
+      appearance:none; background:transparent; border:none; cursor:pointer; color:#E5E7EB;
+      font-size:1.2rem; padding:.4rem; border-radius:8px;
+    }
+    .panel-close:focus-visible{ outline:2px solid #3B82F6; outline-offset:2px }
+
+    .panel-nav{ margin-top:8px; padding-top:12px; border-top:1px solid rgba(255,255,255,.08); }
+    .panel-nav a{
+      display:block; padding:.9rem .4rem;
+      color:var(--panel-ink); text-decoration:none; font-size:1.1rem; font-weight:600;
+      letter-spacing:.02em;
+    }
+    .panel-nav a:hover{ color:#A7C0FF }
+    .panel-footer{
+      margin-top:auto; padding-top:14px; border-top:1px solid rgba(255,255,255,.08);
+      font-size:.95rem; color:#AAB1B9;
+    }
+    .panel-footer a{ color:#C9D4E4; text-decoration:none; font-weight:600 }
+    .panel-footer a:hover{ color:#A7C0FF }
+    .small-note{ display:block; opacity:.7; margin-top:.35rem }
+
+    /* Hidden anchors to keep scroll targets without changing visuals */
+    .anchor{
+      position:relative; top:-72px; /* offset for sticky header */
+      height:0; width:0; overflow:hidden;
+    }
+    @media (max-width:640px){
+      .anchor{ top:-64px }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -171,81 +221,114 @@
   </script>
 </head>
 <body>
-  <header>
-    <div class="header-inner" aria-label="Site header">
-      <div class="brand" aria-label="Neon Forge">
-        <span class="name no-wrap">Neon Forge</span>
-        <span class="role no-wrap">Design &amp; Development</span>
-      </div>
-    </div>
-  </header>
 
-  <!-- HERO / INTRO -->
-  <section id="intro" class="flow backdrop-1">
-    <div class="wrap">
-      <div class="content">
-        <h1 class="reveal">Design &amp; Development that <span class="highlight">feels</span> effortless.</h1>
-        <p class="lede reveal delay-1">Work that belongs where it lives — calm, spacious and considered. Websites, visuals and simple tools shaped to carry meaning and move without friction.</p>
-      </div>
-    </div>
-  </section>
+  <!-- HAMBURGER (always visible) -->
+  <button class="hamburger" aria-label="Open menu" aria-controls="side-panel" aria-expanded="false">
+    <span class="lines" aria-hidden="true"></span>
+  </button>
 
-  <!-- WHAT WE DO (Design & Development) -->
-  <section id="work" class="flow backdrop-2">
-    <div class="wrap">
-      <div class="content">
-        <h2 class="reveal">Clarity, rhythm, restraint.</h2>
-        <p class="reveal delay-1">Typography, spacing and structure do the heavy lifting here. The aim is readability and ease: decisions that reduce noise, interactions that don’t shout, and layouts that breathe on every screen.</p>
-      </div>
+  <!-- SIDE PANEL (pushes content) -->
+  <aside id="side-panel" class="side-panel" role="navigation" aria-label="Site menu">
+    <div class="panel-header">
+      <div class="panel-title">Menu</div>
+      <button class="panel-close" aria-label="Close menu">✕</button>
     </div>
-  </section>
-
-  <!-- SERVICES (mapped, understated) -->
-  <section id="services" class="flow backdrop-3">
-    <div class="wrap">
-      <div class="content">
-        <h2 class="reveal">What we make</h2>
-        <ul class="services">
-          <li class="reveal delay-1"><strong>Websites</strong> — responsive, fast, and calm to use.</li>
-          <li class="reveal delay-2"><strong>Digital art</strong> — original assets for campaigns and products.</li>
-          <li class="reveal delay-3"><strong>Physical media</strong> — posters, packaging, and printed collateral.</li>
-          <li class="reveal delay-1"><strong>SEO optimisation</strong> — structure and performance that help people find you.</li>
-          <li class="reveal delay-2"><strong>Graphic design</strong> — identity, typography and layout systems.</li>
-          <li class="reveal delay-3"><strong>Simple apps</strong> — focused web tools for real workflows.</li>
-        </ul>
-      </div>
+    <nav class="panel-nav">
+      <a href="#intro">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="#projects">Projects</a>
+    </nav>
+    <div class="panel-footer">
+      <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
+      <span class="small-note">Mon–Fri · 09:00–17:00</span>
     </div>
-  </section>
+  </aside>
 
-  <!-- PHILOSOPHY / APPROACH -->
-  <section id="approach" class="flow backdrop-4">
-    <div class="wrap">
-      <div class="content">
-        <h2 class="reveal">A quieter kind of presence</h2>
-        <p class="reveal delay-1">Design earns its place when it serves the task. We favour systems that scale, type that guides, and interactions that feel natural — the sort you don’t have to think about.</p>
+  <!-- SITE (content gets pushed) -->
+  <div class="site" id="site">
+
+    <header>
+      <div class="header-inner" aria-label="Site header">
+        <div class="brand" aria-label="Neon Forge">
+          <span class="name no-wrap">Neon Forge</span>
+          <span class="role no-wrap">Design &amp; Development</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- CONTACT (inline, no button, no underline) -->
-  <section id="contact" class="flow backdrop-1" aria-labelledby="contact-heading">
-    <div class="wrap">
-      <div class="content">
-        <h2 id="contact-heading" class="reveal">Start a conversation</h2>
-        <p class="contact-line reveal delay-1">Write to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a> — a brief note is enough. We’ll explore direction, shape the scope, and move at a thoughtful pace.</p>
+    <!-- Invisible anchors to map menu names without visual changes -->
+    <div id="about" class="anchor" aria-hidden="true"></div>
+    <div id="projects" class="anchor" aria-hidden="true"></div>
+
+    <!-- HERO / INTRO -->
+    <section id="intro" class="flow backdrop-1">
+      <div class="wrap">
+        <div class="content">
+          <h1 class="reveal">Design &amp; Development that <span class="highlight">feels</span> effortless.</h1>
+          <p class="lede reveal delay-1">Work that belongs where it lives — calm, spacious and considered. Websites, visuals and simple tools shaped to carry meaning and move without friction.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer role="contentinfo">
-    Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
-  </footer>
+    <!-- WHAT WE DO -->
+    <section id="work" class="flow backdrop-2">
+      <div class="wrap">
+        <div class="content">
+          <h2 class="reveal">Clarity, rhythm, restraint.</h2>
+          <p class="reveal delay-1">Typography, spacing and structure do the heavy lifting here. The aim is readability and ease: decisions that reduce noise, interactions that don’t shout, and layouts that breathe on every screen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="flow backdrop-3">
+      <div class="wrap">
+        <div class="content">
+          <h2 class="reveal">What we make</h2>
+          <ul class="services">
+            <li class="reveal delay-1"><strong>Websites</strong> — responsive, fast, and calm to use.</li>
+            <li class="reveal delay-2"><strong>Digital art</strong> — original assets for campaigns and products.</li>
+            <li class="reveal delay-3"><strong>Physical media</strong> — posters, packaging, and printed collateral.</li>
+            <li class="reveal delay-1"><strong>SEO optimisation</strong> — structure and performance that help people find you.</li>
+            <li class="reveal delay-2"><strong>Graphic design</strong> — identity, typography and layout systems.</li>
+            <li class="reveal delay-3"><strong>Simple apps</strong> — focused web tools for real workflows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section id="approach" class="flow backdrop-4">
+      <div class="wrap">
+        <div class="content">
+          <h2 class="reveal">A quieter kind of presence</h2>
+          <p class="reveal delay-1">Design earns its place when it serves the task. We favour systems that scale, type that guides, and interactions that feel natural — the sort you don’t have to think about.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="flow backdrop-1" aria-labelledby="contact-heading">
+      <div class="wrap">
+        <div class="content">
+          <h2 id="contact-heading" class="reveal">Start a conversation</h2>
+          <p class="contact-line reveal delay-1">Write to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a> — a brief note is enough. We’ll explore direction, shape the scope, and move at a thoughtful pace.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
+    </footer>
+  </div>
 
   <script>
-    // Current year
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // IntersectionObserver for subtle reveals
+    // IntersectionObserver reveals
     (function(){
       var els = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)){
@@ -261,6 +344,51 @@
         });
       }, {root:null, rootMargin:'0px 0px -10% 0px', threshold:0.15});
       els.forEach(function(el){ io.observe(el); });
+    })();
+
+    // Slide-out panel logic (push content)
+    (function(){
+      var body = document.body;
+      var burger = document.querySelector('.hamburger');
+      var panel = document.getElementById('side-panel');
+      var closeBtn = document.querySelector('.panel-close');
+
+      function openMenu(){
+        body.classList.add('menu-open');
+        burger.setAttribute('aria-expanded','true');
+        burger.setAttribute('aria-label','Close menu');
+        panel.focus({preventScroll:true});
+      }
+      function closeMenu(){
+        body.classList.remove('menu-open');
+        burger.setAttribute('aria-expanded','false');
+        burger.setAttribute('aria-label','Open menu');
+      }
+
+      burger.addEventListener('click', function(){
+        if(body.classList.contains('menu-open')) closeMenu(); else openMenu();
+      });
+      closeBtn.addEventListener('click', closeMenu);
+
+      // Keep menu open on link click (as requested) — do nothing here.
+      // Escape key closes
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && body.classList.contains('menu-open')) closeMenu();
+      });
+
+      // Improve anchor scrolling offset (account for sticky header)
+      document.querySelectorAll('a[href^="#"]').forEach(function(a){
+        a.addEventListener('click', function(e){
+          var id = a.getAttribute('href').slice(1);
+          if(!id) return;
+          var target = document.getElementById(id);
+          if(target){
+            e.preventDefault();
+            var top = target.getBoundingClientRect().top + window.scrollY - 72;
+            window.scrollTo({top:Math.max(top,0), behavior:'smooth'});
+          }
+        });
+      });
     })();
   </script>
 </body>
