@@ -9,7 +9,6 @@
   <link rel="canonical" href="https://www.neonforge.co.uk/" />
   <meta name="theme-color" content="#0B0D10" />
 
-  <!-- Social -->
   <meta property="og:title" content="Neon Forge — Design & Development" />
   <meta property="og:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
   <meta property="og:type" content="website" />
@@ -18,12 +17,8 @@
   <meta name="twitter:title" content="Neon Forge — Design & Development" />
   <meta name="twitter:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
 
-  <!-- Keep your existing favicon -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Headings / hero / NF -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700;900&display=swap" rel="stylesheet">
   <!-- Body / nav / sidebar (requested) -->
@@ -64,27 +59,39 @@
       overflow-x:hidden;
     }
 
-    /* SITE (pushed when menu opens) */
     .site{ transform:translateX(0); transition:transform .45s cubic-bezier(.22,.61,.36,1) }
     .menu-open .site{ transform:translateX(-min(380px,80vw)) }
 
-    /* Header */
+    /* HEADER with wide, airy flat-gold honeycomb pattern as the background */
     header{
       position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(180%) blur(6px);
-      background:linear-gradient(180deg,#fff,rgba(255,255,255,.92));
       border-bottom:1px solid var(--line);
+      background-image:
+        url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='140' height='120' viewBox='0 0 140 120'>\
+  <rect width='100%' height='100%' fill='%23d4af37'/>\
+  <g fill='none' stroke='%23b68f2e' stroke-opacity='0.35' stroke-width='2'>\
+    <!-- row 1 -->\
+    <polygon points='25,9 55,9 70,35 55,61 25,61 10,35'/>\
+    <polygon points='70,35 100,35 115,61 100,87 70,87 55,61'/>\
+    <!-- row 2 (offset look via additional hex) -->\
+    <polygon points='40,61 70,61 85,87 70,113 40,113 25,87'/>\
+  </g>\
+</svg>");
+      background-repeat:repeat;
+      background-size:auto;
     }
     .header-inner{
       max-width:1200px; margin:0 auto;
-      padding:14px clamp(12px,4vw,24px);
+      padding:12px clamp(12px,4vw,24px);
       text-align:center; position:relative;
     }
     .brand{
       font-family:"Playfair Display SC",serif; font-weight:900; letter-spacing:.02em;
       line-height:1; color:var(--ink); user-select:none;
     }
-    .brand .mark{ font-size:clamp(1.5rem,2.2vw,2.2rem); }
+    /* NF 50% larger than before */
+    .brand .mark{ font-size:clamp(2.25rem,3.3vw,3.3rem) }
 
     /* Borderless Hamburger (always visible, top-right, fixed) */
     .hamburger{
@@ -138,6 +145,7 @@
     .panel-footer{
       margin-top:auto; padding-top:14px; border-top:1px solid rgba(255,255,255,.08);
       font-size:.95rem; color:#C7D0DB;
+      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;
     }
     .panel-footer a{ color:#E8EEF9; text-decoration:none; font-weight:700 }
     .panel-footer a:hover{ color:#D3DFFF }
@@ -170,7 +178,7 @@
       content:""; position:absolute; left:0; top:.76rem;
       width:8px;height:8px;border-radius:50%; background:var(--accent); opacity:.75
     }
-    .services strong{ font-weight:700 }
+    .services strong{ font-weight:700; font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui; }
 
     .contact-line{ margin-top:2.2rem; color:var(--muted); font-size:var(--step-1) }
     .contact-line a{ color:var(--accent); text-decoration:none; font-weight:700 }
@@ -181,12 +189,24 @@
       text-align:center; color:var(--muted);
       padding:18px 12px 28px; font-size:var(--step--1);
       background:#fff;
+      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;
     }
 
-    /* Hero (exactly two lines, centred) */
+    /* HERO (font swap per request) */
     .hero .content{ text-align:center }
-    .hero .title{ font-size:clamp(3rem,8vw,7rem); line-height:1; margin-bottom:.4rem }
-    .hero .subtitle{ font-family:"Playfair Display SC",serif; font-weight:700; font-size:clamp(1.1rem,2.2vw,1.6rem); color:var(--muted); letter-spacing:.05em }
+    .hero .title{
+      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;
+      font-weight:700;
+      font-size:clamp(3rem,8vw,7rem);
+      line-height:1; margin-bottom:.4rem;
+    }
+    .hero .subtitle{
+      font-family:"Playfair Display SC",serif;
+      font-weight:700;
+      font-size:clamp(1.1rem,2.2vw,1.6rem);
+      color:var(--muted);
+      letter-spacing:.05em
+    }
 
     /* Reveal */
     .reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
@@ -203,7 +223,6 @@
     .anchor-offset{ scroll-margin-top:74px }
   </style>
 
-  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -218,12 +237,10 @@
 </head>
 <body>
 
-  <!-- Hamburger (only control to open/close) -->
   <button class="hamburger" aria-label="Open menu" aria-controls="side-panel" aria-expanded="false">
     <span class="lines" aria-hidden="true"></span>
   </button>
 
-  <!-- Sidebar -->
   <aside id="side-panel" class="side-panel" role="navigation" aria-label="Site menu">
     <div class="panel-header">
       <div class="panel-title">Menu</div>
@@ -241,7 +258,6 @@
     </div>
   </aside>
 
-  <!-- Site (pushed when menu opens) -->
   <div class="site" id="site">
 
     <header>
@@ -252,7 +268,6 @@
       </div>
     </header>
 
-    <!-- HERO -->
     <section id="intro" class="flow backdrop-1 hero anchor-offset">
       <div class="wrap">
         <div class="content">
@@ -262,7 +277,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about" class="flow backdrop-2 anchor-offset">
       <div class="wrap">
         <div class="content">
@@ -272,7 +286,6 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
     <section id="services" class="flow backdrop-3 anchor-offset">
       <div class="wrap">
         <div class="content">
@@ -289,7 +302,6 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="flow backdrop-1 anchor-offset" aria-labelledby="contact-heading">
       <div class="wrap">
         <div class="content">
@@ -299,7 +311,6 @@
       </div>
     </section>
 
-    <!-- PROJECTS (text-only placeholders) -->
     <section id="projects" class="flow backdrop-3 anchor-offset" aria-labelledby="projects-heading">
       <div class="wrap">
         <div class="content">
@@ -317,10 +328,8 @@
   </div>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Reveal
     (function(){
       var els = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in window)){
@@ -338,7 +347,6 @@
       els.forEach(function(el){ io.observe(el); });
     })();
 
-    // Menu
     (function(){
       var body = document.body;
       var burger = document.querySelector('.hamburger');
@@ -360,14 +368,10 @@
         body.classList.contains('menu-open') ? closeMenu() : openMenu();
       });
 
-      // Keep menu open on link click (as requested)
-
-      // ESC closes
       document.addEventListener('keydown', function(e){
         if(e.key === 'Escape' && body.classList.contains('menu-open')) closeMenu();
       });
 
-      // Smooth scroll with mild header offset
       document.querySelectorAll('a[href^="#"]').forEach(function(a){
         a.addEventListener('click', function(e){
           var id = a.getAttribute('href').slice(1);
