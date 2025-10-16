@@ -388,19 +388,37 @@ document.getElementById('year').textContent = new Date().getFullYear();
   }
   burger.addEventListener('click', () => body.classList.contains('menu-open') ? closeMenu() : openMenu());
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && body.classList.contains('menu-open')) closeMenu(); });
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      var id = a.getAttribute('href').slice(1);
-      if(!id) return;
-      var target = document.getElementById(id);
-      if(target){
-        e.preventDefault();
-        var top = target.getBoundingClientRect().top + window.scrollY - 72;
-        window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-      }
-    });
+// Clean, no-hash smooth scrolling (and kill "#top")
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var id = a.getAttribute('href').slice(1);
+
+    // Handle "#"
+    if (!id) { e.preventDefault(); return; }
+
+    // Handle "#top"
+    if (id.toLowerCase() === 'top') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', location.pathname + location.search);
+      return;
+    }
+
+    // Handle section ids
+    var target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+      // keep URL clean (no hash)
+      history.replaceState(null, '', location.pathname + location.search);
+    }
   });
-})();
+});
+  
+if (location.hash && location.hash.toLowerCase() === '#top') {
+  history.replaceState(null, '', location.pathname + location.search);
+}
 </script>
 </body>
 </html>
