@@ -4,125 +4,158 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neon Forge — Design & Development</title>
-  <meta name="description" content="Neon Forge — design & development studio specialising in websites, digital art, physical media, SEO, graphic design, and simple apps." />
+  <meta name="description" content="Neon Forge — a design & development studio creating spacious, considered digital and physical work that feels effortless." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.neonforge.co.uk/" />
-  <meta name="theme-color" content="#F5F6F7" />
+  <meta name="theme-color" content="#F6F7F8" />
 
+  <!-- Open Graph -->
   <meta property="og:title" content="Neon Forge — Design & Development" />
-  <meta property="og:description" content="Design & development that feels effortless. Websites, branding, SEO, and creative work built with clarity and care." />
+  <meta property="og:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.neonforge.co.uk/" />
 
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Neon Forge — Design & Development" />
-  <meta name="twitter:description" content="Design & development that feels effortless. Websites, branding, SEO, and creative work built with clarity and care." />
+  <meta name="twitter:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!-- Favicon (keep existing) -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,700;6..72,800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#F5F6F7;
-      --ink:#1F2328;
+      --bg:#F6F7F8;
+      --bg-alt:#FFFFFF;
+      --ink:#1E2329;
       --muted:#6B7280;
       --accent:#3B82F6;
-      --line:#E5E7EB;
+      --line:#E7E9ED;
 
       --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
       --step-0:clamp(1rem,.9rem + .4vw,1.12rem);
       --step-1:clamp(1.15rem,1.02rem + .8vw,1.35rem);
+      --step-2:clamp(1.6rem,1.2rem + 2vw,2.2rem);
+      --step-3:clamp(2.2rem,1.8rem + 3.2vw,3.4rem);
     }
 
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
     body{
       margin:0;
-      min-height:100svh;
       font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       font-size:var(--step-0);
-      line-height:1.65;
+      line-height:1.7;
       color:var(--ink);
       background:var(--bg);
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
 
+    /* Header — brand only, no UI chrome */
     header{
-      position:sticky; top:0;
-      background:linear-gradient(180deg,#fff,rgba(255,255,255,.96));
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(180%) blur(6px);
+      background:linear-gradient(180deg,#fff,rgba(255,255,255,.92));
       border-bottom:1px solid var(--line);
-      text-align:center;
-      padding:18px 12px 14px;
     }
-    .brand{font-family:"Newsreader",serif;font-weight:800;letter-spacing:.01em;white-space:nowrap}
-    .brand span{display:block}
-    .brand .name{font-size:clamp(1.6rem,4.5vw,2.4rem);line-height:1}
+    .header-inner{
+      max-width:1200px; margin:0 auto;
+      padding:16px clamp(12px,4vw,24px);
+      text-align:center;
+    }
+    .brand{
+      font-family:"Newsreader",serif; font-weight:800; letter-spacing:.01em;
+      line-height:1.05;
+    }
+    .brand .name{
+      display:block; white-space:nowrap;
+      font-size:clamp(1.7rem,3.8vw,2.6rem);
+    }
     .brand .role{
-      margin-top:6px;
-      font-weight:600;
-      font-size:clamp(.85rem,1.8vw,1.05rem);
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:var(--muted);
+      display:block; margin-top:6px; color:var(--muted);
+      font-weight:600; letter-spacing:.15em; text-transform:uppercase;
+      font-size:clamp(.85rem,1.6vw,1.05rem);
       white-space:nowrap;
     }
 
-    main{max-width:880px;margin:0 auto;padding:clamp(2.2rem,5vw,4.8rem) 1.2rem}
-    h1{
-      margin:0 0 1.4rem;
-      font-family:"Newsreader",serif;
-      font-weight:800;
-      line-height:1.08;
-      letter-spacing:0;
+    /* Full-viewport sections (Heft-style flow) */
+    section.flow{
+      min-height:100svh; display:flex; align-items:center;
+      position:relative; overflow:hidden;
     }
-    .line1,.line2{display:block;white-space:nowrap}
-    .line1{font-size:clamp(1.8rem,7.4vw,3.1rem)}
-    .line2{font-size:clamp(1.6rem,6.6vw,2.6rem)}
-    .line2 .color{color:var(--accent)}
-
-    p.lede{
-      font-size:var(--step-1);
-      color:var(--muted);
-      margin:0 0 1.8rem;
-      max-width:65ch;
-      text-wrap:balance;
+    .flow .wrap{
+      max-width:1100px; margin:0 auto; width:100%;
+      padding:clamp(40px,6vw,80px) clamp(18px,5vw,40px);
+      display:grid; grid-template-columns: 1fr min(820px,100%) 1fr;
+    }
+    .flow .content{
+      grid-column:2; text-align:left;
     }
 
-    ul.list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
-    .list li{padding-left:1.35rem;position:relative}
-    .list li::before{
-      content:"";position:absolute;left:0;top:.72rem;width:8px;height:8px;border-radius:50%;
-      background:var(--accent);opacity:.75
-    }
-    .list strong{font-weight:600}
+    /* Alternating neutral “backdrops” (no hard boxes, no borders) */
+    .backdrop-1{ background:var(--bg-alt); }
+    .backdrop-2{ background:linear-gradient(180deg,var(--bg),#fff); }
+    .backdrop-3{ background:var(--bg); }
+    .backdrop-4{ background:linear-gradient(180deg,#fff,var(--bg)); }
 
-    .contact{
-      margin-top:3rem;
-      font-size:var(--step-1);
-      color:var(--muted);
-      line-height:1.8;
-      max-width:60ch;
-    }
-    .contact a{
-      color:var(--accent);
-      text-decoration:none;
-      font-weight:600;
-      border-bottom:none;
-      transition:color .25s ease;
-    }
-    .contact a:hover{color:#2558c4}
+    /* Typographic rhythm */
+    h1,h2{font-family:"Newsreader",serif; font-weight:800; margin:0 0 .8rem}
+    h1{ font-size:var(--step-3); line-height:1.07; text-wrap:balance }
+    h2{ font-size:var(--step-2); line-height:1.15; text-wrap:balance }
+    p{ margin:.6rem 0; max-width:70ch }
+    .lede{ font-size:var(--step-1); color:var(--muted) }
 
+    .highlight{ color:var(--accent) }
+
+    /* Services list — airy, unboxed, dot cue */
+    ul.services{
+      list-style:none; padding:0; margin:1.4rem 0 0; display:grid; gap:.75rem
+    }
+    .services li{ padding-left:1.2rem; position:relative }
+    .services li::before{
+      content:""; position:absolute; left:0; top:.78rem;
+      width:8px;height:8px;border-radius:50%; background:var(--accent); opacity:.75
+    }
+    .services strong{ font-weight:600 }
+
+    /* Contact line — inline, no button, no underline */
+    .contact-line{
+      margin-top:2.2rem; color:var(--muted); font-size:var(--step-1);
+    }
+    .contact-line a{
+      color:var(--accent); text-decoration:none; font-weight:600;
+    }
+    .contact-line a:hover{ color:#2558c4 }
+
+    /* Footer */
     footer{
       border-top:1px solid var(--line);
-      text-align:center;
-      padding:1.5rem 1rem;
-      color:var(--muted);
-      font-size:var(--step--1);
+      text-align:center; color:var(--muted);
+      padding:18px 12px 28px; font-size:var(--step--1);
+      background:#fff;
     }
+
+    /* Subtle reveal animations (no gimmicks) */
+    .reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.delay-1{ transition-delay:.06s }
+    .reveal.delay-2{ transition-delay:.12s }
+    .reveal.delay-3{ transition-delay:.18s }
+    .reveal-visible{opacity:1; transform:none}
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html:focus-within{scroll-behavior:auto}
+      .reveal{opacity:1; transform:none; transition:none}
+    }
+
+    /* Ensure “Neon Forge” and “Design & Development” do not wrap mid-phrase on narrow screens */
+    .no-wrap{ white-space:nowrap }
   </style>
 
   <script type="application/ld+json">
@@ -139,40 +172,96 @@
 </head>
 <body>
   <header>
-    <nav aria-label="Site">
+    <div class="header-inner" aria-label="Site header">
       <div class="brand" aria-label="Neon Forge">
-        <span class="name">Neon Forge</span>
-        <span class="role">Design & Development</span>
+        <span class="name no-wrap">Neon Forge</span>
+        <span class="role no-wrap">Design &amp; Development</span>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main id="main" role="main">
-    <h1>
-      <span class="line1">Design &amp; Development</span>
-      <span class="line2">that <span class="color">feels</span> effortless.</span>
-    </h1>
+  <!-- HERO / INTRO -->
+  <section id="intro" class="flow backdrop-1">
+    <div class="wrap">
+      <div class="content">
+        <h1 class="reveal">Design &amp; Development that <span class="highlight">feels</span> effortless.</h1>
+        <p class="lede reveal delay-1">Work that belongs where it lives — calm, spacious and considered. Websites, visuals and simple tools shaped to carry meaning and move without friction.</p>
+      </div>
+    </div>
+  </section>
 
-    <p class="lede">Design should feel as though it belongs — not bolted on, not shouting for attention, but woven into the way something works. At Neon Forge, every detail is considered with intention, so that what’s built is both clear and quietly confident.</p>
+  <!-- WHAT WE DO (Design & Development) -->
+  <section id="work" class="flow backdrop-2">
+    <div class="wrap">
+      <div class="content">
+        <h2 class="reveal">Clarity, rhythm, restraint.</h2>
+        <p class="reveal delay-1">Typography, spacing and structure do the heavy lifting here. The aim is readability and ease: decisions that reduce noise, interactions that don’t shout, and layouts that breathe on every screen.</p>
+      </div>
+    </div>
+  </section>
 
-    <ul class="list" aria-label="Services">
-      <li><strong>Websites</strong> — responsive, fast, and intuitive to use.</li>
-      <li><strong>Digital art</strong> — original assets that elevate campaigns and products.</li>
-      <li><strong>Physical media</strong> — printed collateral that extends your identity beyond the screen.</li>
-      <li><strong>SEO optimisation</strong> — thoughtful structure and performance that help people find you.</li>
-      <li><strong>Graphic design</strong> — typography, identity, and layouts that communicate with clarity.</li>
-      <li><strong>Simple apps</strong> — focused web tools that solve real problems elegantly.</li>
-    </ul>
+  <!-- SERVICES (mapped, understated) -->
+  <section id="services" class="flow backdrop-3">
+    <div class="wrap">
+      <div class="content">
+        <h2 class="reveal">What we make</h2>
+        <ul class="services">
+          <li class="reveal delay-1"><strong>Websites</strong> — responsive, fast, and calm to use.</li>
+          <li class="reveal delay-2"><strong>Digital art</strong> — original assets for campaigns and products.</li>
+          <li class="reveal delay-3"><strong>Physical media</strong> — posters, packaging, and printed collateral.</li>
+          <li class="reveal delay-1"><strong>SEO optimisation</strong> — structure and performance that help people find you.</li>
+          <li class="reveal delay-2"><strong>Graphic design</strong> — identity, typography and layout systems.</li>
+          <li class="reveal delay-3"><strong>Simple apps</strong> — focused web tools for real workflows.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <p class="contact">If that sounds like the kind of work you’re looking for, you can always start a conversation simply by writing to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>. From there, we shape the details together.</p>
-  </main>
+  <!-- PHILOSOPHY / APPROACH -->
+  <section id="approach" class="flow backdrop-4">
+    <div class="wrap">
+      <div class="content">
+        <h2 class="reveal">A quieter kind of presence</h2>
+        <p class="reveal delay-1">Design earns its place when it serves the task. We favour systems that scale, type that guides, and interactions that feel natural — the sort you don’t have to think about.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (inline, no button, no underline) -->
+  <section id="contact" class="flow backdrop-1" aria-labelledby="contact-heading">
+    <div class="wrap">
+      <div class="content">
+        <h2 id="contact-heading" class="reveal">Start a conversation</h2>
+        <p class="contact-line reveal delay-1">Write to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a> — a brief note is enough. We’ll explore direction, shape the scope, and move at a thoughtful pace.</p>
+      </div>
+    </div>
+  </section>
 
   <footer role="contentinfo">
     Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
   </footer>
 
   <script>
+    // Current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // IntersectionObserver for subtle reveals
+    (function(){
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)){
+        els.forEach(function(el){ el.classList.add('reveal-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('reveal-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {root:null, rootMargin:'0px 0px -10% 0px', threshold:0.15});
+      els.forEach(function(el){ io.observe(el); });
+    })();
   </script>
 </body>
 </html>
