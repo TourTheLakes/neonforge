@@ -109,8 +109,11 @@ header {
   background: var(--ink);
   border-radius: 2px;
   transition: transform .3s ease, background .2s ease;
-
-
+/* Change burger "X" colour when menu is open */
+.menu-open .hamburger .lines::before,
+.menu-open .hamburger .lines::after {
+  background: var(--panel-ink); /* same colour as menu text */
+}
 }
 .hamburger .lines::before,
 .hamburger .lines::after {
