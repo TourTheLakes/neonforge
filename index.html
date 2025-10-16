@@ -1,397 +1,227 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neon Forge — Design & Development</title>
-  <meta name="description" content="Neon Forge — spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.neonforge.co.uk/" />
-  <meta name="theme-color" content="#0B0D10" />
-
-  <meta property="og:title" content="Neon Forge — Design & Development" />
-  <meta property="og:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.neonforge.co.uk/" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Neon Forge — Design & Development" />
-  <meta name="twitter:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
-
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-
-  <!-- Headings / hero / NF -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700;900&display=swap" rel="stylesheet">
-  <!-- Body / nav / sidebar (requested) -->
-  <link href="https://fonts.googleapis.com/css2?family=Playwrite+Deutschland+Schulausgangsschrift:wght@300..700&display=swap" rel="stylesheet">
-  <!-- Sensible fallback if Playwrite fails -->
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#F6F7F8;
-      --bg-alt:#FFFFFF;
-      --ink:#1E2329;
-      --muted:#6B7280;
-      --accent:#3B82F6;
-      --line:#E7E9ED;
-
-      --panel-bg: rgba(28,30,34,.5); /* dark grey @50% */
-      --panel-ink:#F1F5F9;
-
-      --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
-      --step-0:clamp(1rem,.9rem + .4vw,1.12rem);
-      --step-1:clamp(1.15rem,1.02rem + .8vw,1.35rem);
-      --step-2:clamp(1.6rem,1.2rem + 2vw,2.2rem);
-      --step-3:clamp(2.8rem,2.2rem + 4vw,4.4rem);
-    }
-
-    *,*::before,*::after{box-sizing:border-box}
-    html:focus-within{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      font-size:var(--step-0);
-      line-height:1.7;
-      color:var(--ink);
-      background:var(--bg);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-      overflow-x:hidden;
-    }
-
-    .site{ transform:translateX(0); transition:transform .45s cubic-bezier(.22,.61,.36,1) }
-    .menu-open .site{ transform:translateX(-min(380px,80vw)) }
-
-/* HEADER — ultra-thin with textured background and 'Neon Forge' text */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  border-bottom: 1px solid var(--line);
-
-  /* Textured background: diagonal metallic pattern */
-  background: linear-gradient(135deg, #2e2e32 25%, #3a3a3f 25%, #3a3a3f 50%, #2e2e32 50%, #2e2e32 75%, #3a3a3f 75%, #3a3a3f 100%);
-  background-size: 40px 40px;
-
-  /* Ultra-thin height (same as hamburger) */
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neon Forge — Design & Development</title>
+<meta name="description" content="Neon Forge — spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.neonforge.co.uk/" />
+<meta name="theme-color" content="#0B0D10" />
+<meta property="og:title" content="Neon Forge — Design & Development" />
+<meta property="og:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.neonforge.co.uk/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Neon Forge — Design & Development" />
+<meta name="twitter:description" content="Spacious, considered design & development across websites, digital art, physical media, SEO and graphic design." />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+Deutschland+Schulausgangsschrift:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F8;--bg-alt:#FFFFFF;--ink:#1E2329;--muted:#6B7280;--accent:#3B82F6;--line:#E7E9ED;
+  --panel-bg:rgba(28,30,34,.5);--panel-ink:#F1F5F9;
+  --step--1:clamp(.95rem,.9rem + .2vw,1.02rem);
+  --step-0:clamp(1rem,.9rem + .4vw,1.12rem);
+  --step-1:clamp(1.15rem,1.02rem + .8vw,1.35rem);
+  --step-2:clamp(1.6rem,1.2rem + 2vw,2.2rem);
+  --step-3:clamp(2.8rem,2.2rem + 4vw,4.4rem);
 }
+*,*::before,*::after{box-sizing:border-box}
+html:focus-within{scroll-behavior:smooth}
+body{margin:0;font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;font-size:var(--step-0);line-height:1.7;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+.site{transform:translateX(0);transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+.menu-open .site{transform:translateX(-min(380px,80vw))}
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-  padding: 0;
+/* HEADER — thin, textured, with 'Neon Forge' text */
+header{
+  position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);height:60px;
+  background:repeating-linear-gradient(135deg,#ececf0 0px,#ececf0 10px,#f6f6f9 10px,#f6f6f9 20px);
+  display:flex;align-items:center;justify-content:center
 }
+.header-inner{display:flex;align-items:center;justify-content:center;width:100%;text-align:center;padding:0}
+.brand{font-family:"Playfair Display SC",serif;font-weight:900;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:.05em;line-height:1;color:var(--ink);user-select:none;text-transform:capitalize}
 
-.brand {
-  font-family: "Cinzel Decorative", "Papyrus", cursive;
-  font-weight: 700;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  letter-spacing: 0.08em;
-  line-height: 1;
-  color: var(--ink);
-  user-select: none;
-  text-transform: capitalize;
-}
+/* Borderless Hamburger (always visible) */
+.hamburger{position:fixed;top:10px;right:12px;z-index:1001;width:44px;height:44px;display:grid;place-items:center;background:transparent;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hamburger .lines{position:relative;width:22px;height:2px;background:#1f2937;border-radius:2px;transition:transform .3s ease,background .2s ease}
+.hamburger .lines::before,.hamburger .lines::after{content:"";position:absolute;left:0;width:22px;height:2px;background:#1f2937;border-radius:2px;transition:transform .3s ease,opacity .2s ease}
+.hamburger .lines::before{top:-7px}.hamburger .lines::after{top:7px}
+.menu-open .hamburger .lines{background:transparent}
+.menu-open .hamburger .lines::before{transform:translateY(7px) rotate(45deg)}
+.menu-open .hamburger .lines::after{transform:translateY(-7px) rotate(-45deg)}
 
-    /* Borderless Hamburger (always visible, top-right, fixed) */
-    .hamburger{
-      position:fixed; top:10px; right:12px; z-index:1001;
-      width:44px; height:44px; display:grid; place-items:center;
-      background:transparent; border:none; cursor:pointer;
-      -webkit-tap-highlight-color:transparent;
-    }
-    .hamburger .lines{ position:relative; width:22px; height:2px; background:#1f2937; border-radius:2px; transition:transform .3s ease, background .2s ease }
-    .hamburger .lines::before,.hamburger .lines::after{
-      content:""; position:absolute; left:0; width:22px; height:2px; background:#1f2937; border-radius:2px; transition:transform .3s ease, opacity .2s ease
-    }
-    .hamburger .lines::before{ top:-7px }
-    .hamburger .lines::after{ top:7px }
-    .menu-open .hamburger .lines{ background:transparent }
-    .menu-open .hamburger .lines::before{ transform:translateY(7px) rotate(45deg) }
-    .menu-open .hamburger .lines::after{ transform:translateY(-7px) rotate(-45deg) }
+/* Side Panel */
+.side-panel{position:fixed;top:0;right:0;height:100vh;z-index:1000;width:min(380px,80vw);background:var(--panel-bg);color:var(--panel-ink);transform:translateX(100%);transition:transform .45s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;padding:18px 22px 24px;backdrop-filter:saturate(130%) blur(8px);border-left:1px solid rgba(255,255,255,.06)}
+.menu-open .side-panel{transform:translateX(0)}
+.panel-header{display:flex;align-items:center;justify-content:space-between;padding:4px 2px 10px}
+.panel-title{font-family:"Playfair Display SC",serif;font-weight:700;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.panel-nav{margin-top:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+.panel-nav a{display:block;padding:.95rem .25rem;color:var(--panel-ink);text-decoration:none;font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;font-weight:600;letter-spacing:.02em;font-size:1.06rem;background-image:linear-gradient(currentColor,currentColor);background-position:0 100%;background-repeat:no-repeat;background-size:0% 1px;transition:color .25s ease,background-size .25s ease}
+.panel-nav a:hover{color:#E0E8FF;background-size:100% 1px}
+.panel-footer{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);font-size:.95rem;color:#C7D0DB;font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui}
+.panel-footer a{color:#E8EEF9;text-decoration:none;font-weight:700}
+.panel-footer a:hover{color:#D3DFFF}
 
-    /* Side Panel */
-    .side-panel{
-      position:fixed; top:0; right:0; height:100vh; z-index:1000;
-      width:min(380px,80vw);
-      background:var(--panel-bg); color:var(--panel-ink);
-      transform:translateX(100%);
-      transition:transform .45s cubic-bezier(.22,.61,.36,1);
-      display:flex; flex-direction:column;
-      padding:18px 22px 24px;
-      backdrop-filter:saturate(130%) blur(8px);
-      border-left:1px solid rgba(255,255,255,.06);
-    }
-    .menu-open .side-panel{ transform:translateX(0) }
+/* Sections */
+section.flow{min-height:100svh;display:flex;align-items:center;position:relative}
+.flow .wrap{max-width:1100px;margin:0 auto;width:100%;padding:clamp(40px,6vw,80px) clamp(18px,5vw,40px);display:grid;grid-template-columns:1fr min(820px,100%) 1fr}
+.flow .content{grid-column:2;text-align:left}
+.backdrop-1{background:#FFFFFF}
+.backdrop-2{background:linear-gradient(180deg,var(--bg),#fff)}
+.backdrop-3{background:var(--bg)}
+.backdrop-4{background:linear-gradient(180deg,#fff,var(--bg))}
 
-    .panel-header{ display:flex; align-items:center; justify-content:space-between; padding:4px 2px 10px }
-    .panel-title{
-      font-family:"Playfair Display SC",serif; font-weight:700; font-size:1.05rem;
-      letter-spacing:.1em; text-transform:uppercase; opacity:.85
-    }
+/* Typography */
+h1,h2{font-family:"Playfair Display SC",serif;font-weight:900;margin:0 0 .8rem;line-height:1.08}
+h1{font-size:var(--step-3)} h2{font-size:var(--step-2)}
+p{margin:.6rem 0;max-width:70ch}
+.lede{font-size:var(--step-1);color:var(--muted)}
+.highlight{color:var(--accent)}
+ul.services{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.75rem}
+.services li{padding-left:1.2rem;position:relative}
+.services li::before{content:"";position:absolute;left:0;top:.76rem;width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.75}
+.services strong{font-weight:700;font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui}
+.contact-line{margin-top:2.2rem;color:var(--muted);font-size:var(--step-1)}
+.contact-line a{color:var(--accent);text-decoration:none;font-weight:700}
+.contact-line a:hover{color:#2558c4}
 
-    .panel-nav{ margin-top:8px; padding-top:12px; border-top:1px solid rgba(255,255,255,.08); }
-    .panel-nav a{
-      display:block; padding:.95rem .25rem;
-      color:var(--panel-ink); text-decoration:none;
-      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;
-      font-weight:600; letter-spacing:.02em; font-size:1.06rem;
-      background-image:linear-gradient(currentColor,currentColor);
-      background-position:0 100%; background-repeat:no-repeat; background-size:0% 1px;
-      transition:color .25s ease, background-size .25s ease;
-    }
-    .panel-nav a:hover{ color:#E0E8FF; background-size:100% 1px }
+footer{border-top:1px solid var(--line);text-align:center;color:var(--muted);padding:18px 12px 28px;font-size:var(--step--1);background:#fff;font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui}
 
-    .panel-footer{
-      margin-top:auto; padding-top:14px; border-top:1px solid rgba(255,255,255,.08);
-      font-size:.95rem; color:#C7D0DB;
-      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;
-    }
-    .panel-footer a{ color:#E8EEF9; text-decoration:none; font-weight:700 }
-    .panel-footer a:hover{ color:#D3DFFF }
+/* HERO */
+.hero .content{text-align:center}
+.hero .title{font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;font-weight:700;font-size:clamp(3rem,8vw,7rem);line-height:1;margin-bottom:.4rem}
+.hero .subtitle{font-family:"Playfair Display SC",serif;font-weight:700;font-size:clamp(1.1rem,2.2vw,1.6rem);color:var(--muted);letter-spacing:.05em}
 
-    /* Sections */
-    section.flow{ min-height:100svh; display:flex; align-items:center; position:relative }
-    .flow .wrap{
-      max-width:1100px; margin:0 auto; width:100%;
-      padding:clamp(40px,6vw,80px) clamp(18px,5vw,40px);
-      display:grid; grid-template-columns:1fr min(820px,100%) 1fr;
-    }
-    .flow .content{ grid-column:2; text-align:left }
+/* Reveal */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.reveal.delay-1{transition-delay:.06s}.reveal.delay-2{transition-delay:.12s}.reveal.delay-3{transition-delay:.18s}
+.reveal-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+.anchor-offset{scroll-margin-top:74px}
+</style>
 
-    .backdrop-1{ background:#FFFFFF }
-    .backdrop-2{ background:linear-gradient(180deg,var(--bg),#fff) }
-    .backdrop-3{ background:var(--bg) }
-    .backdrop-4{ background:linear-gradient(180deg,#fff,var(--bg)) }
-
-    /* Typography */
-    h1,h2{ font-family:"Playfair Display SC",serif; font-weight:900; margin:0 0 .8rem; line-height:1.08 }
-    h1{ font-size:var(--step-3) }
-    h2{ font-size:var(--step-2) }
-    p{ margin:.6rem 0; max-width:70ch }
-    .lede{ font-size:var(--step-1); color:var(--muted) }
-    .highlight{ color:var(--accent) }
-
-    ul.services{ list-style:none; padding:0; margin:1.4rem 0 0; display:grid; gap:.75rem }
-    .services li{ padding-left:1.2rem; position:relative }
-    .services li::before{
-      content:""; position:absolute; left:0; top:.76rem;
-      width:8px;height:8px;border-radius:50%; background:var(--accent); opacity:.75
-    }
-    .services strong{ font-weight:700; font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui; }
-
-    .contact-line{ margin-top:2.2rem; color:var(--muted); font-size:var(--step-1) }
-    .contact-line a{ color:var(--accent); text-decoration:none; font-weight:700 }
-    .contact-line a:hover{ color:#2558c4 }
-
-    footer{
-      border-top:1px solid var(--line);
-      text-align:center; color:var(--muted);
-      padding:18px 12px 28px; font-size:var(--step--1);
-      background:#fff;
-      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;
-    }
-
-    /* HERO (font swap per request) */
-    .hero .content{ text-align:center }
-    .hero .title{
-      font-family:"Playwrite Deutschland Schulausgangsschrift","Source Sans 3",system-ui;
-      font-weight:700;
-      font-size:clamp(3rem,8vw,7rem);
-      line-height:1; margin-bottom:.4rem;
-    }
-    .hero .subtitle{
-      font-family:"Playfair Display SC",serif;
-      font-weight:700;
-      font-size:clamp(1.1rem,2.2vw,1.6rem);
-      color:var(--muted);
-      letter-spacing:.05em
-    }
-
-    /* Reveal */
-    .reveal{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
-    .reveal.delay-1{ transition-delay:.06s }
-    .reveal.delay-2{ transition-delay:.12s }
-    .reveal.delay-3{ transition-delay:.18s }
-    .reveal-visible{opacity:1; transform:none}
-    @media (prefers-reduced-motion: reduce){
-      html:focus-within{scroll-behavior:auto}
-      .reveal{opacity:1; transform:none; transition:none}
-    }
-
-    /* Anchor offset for sticky header */
-    .anchor-offset{ scroll-margin-top:74px }
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Neon Forge",
-    "url": "https://www.neonforge.co.uk/",
-    "description": "Design & development studio specialising in websites, digital art, physical media, SEO, graphic design, and simple apps.",
-    "email": "info@neonforge.co.uk",
-    "openingHours": "Mo-Fr 09:00-17:00"
-  }
-  </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Neon Forge","url":"https://www.neonforge.co.uk/","description":"Design & development studio specialising in websites, digital art, physical media, SEO, graphic design, and simple apps.","email":"info@neonforge.co.uk","openingHours":"Mo-Fr 09:00-17:00"}
+</script>
 </head>
 <body>
 
-  <button class="hamburger" aria-label="Open menu" aria-controls="side-panel" aria-expanded="false">
-    <span class="lines" aria-hidden="true"></span>
-  </button>
+<button class="hamburger" aria-label="Open menu" aria-controls="side-panel" aria-expanded="false"><span class="lines" aria-hidden="true"></span></button>
 
-  <aside id="side-panel" class="side-panel" role="navigation" aria-label="Site menu">
-    <div class="panel-header">
-      <div class="panel-title">Menu</div>
-    </div>
-    <nav class="panel-nav">
-      <a href="#intro">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#projects">Projects</a>
-    </nav>
-    <div class="panel-footer">
-      <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
-      <div>Mon–Fri · 09:00–17:00</div>
-    </div>
-  </aside>
-
-  <div class="site" id="site">
-
-    <header>
-      <div class="header-inner">
-        <div class="brand" aria-label="Brand">
-          <span class="mark">NF</span>
-        </div>
-      </div>
-    </header>
-
-    <section id="intro" class="flow backdrop-1 hero anchor-offset">
-      <div class="wrap">
-        <div class="content">
-          <div class="title reveal">Neon Forge</div>
-          <div class="subtitle reveal delay-1">Web Development &amp; Design</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="flow backdrop-2 anchor-offset">
-      <div class="wrap">
-        <div class="content">
-          <h2 class="reveal">Clarity, rhythm, restraint.</h2>
-          <p class="reveal delay-1">Typography, spacing and structure do the heavy lifting here. The aim is readability and ease: decisions that reduce noise, interactions that don’t shout, and layouts that breathe on every screen.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="flow backdrop-3 anchor-offset">
-      <div class="wrap">
-        <div class="content">
-          <h2 class="reveal">What we make</h2>
-          <ul class="services">
-            <li class="reveal delay-1"><strong>Websites</strong> — responsive, fast, and calm to use.</li>
-            <li class="reveal delay-2"><strong>Digital art</strong> — original assets for campaigns and products.</li>
-            <li class="reveal delay-3"><strong>Physical media</strong> — posters, packaging, and printed collateral.</li>
-            <li class="reveal delay-1"><strong>SEO optimisation</strong> — structure and performance that help people find you.</li>
-            <li class="reveal delay-2"><strong>Graphic design</strong> — identity, typography and layout systems.</li>
-            <li class="reveal delay-3"><strong>Simple apps</strong> — focused web tools for real workflows.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="flow backdrop-1 anchor-offset" aria-labelledby="contact-heading">
-      <div class="wrap">
-        <div class="content">
-          <h2 id="contact-heading" class="reveal">Start a conversation</h2>
-          <p class="contact-line reveal delay-1">Write to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a> — a brief note is enough. We’ll explore direction, shape the scope, and move at a thoughtful pace.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="flow backdrop-3 anchor-offset" aria-labelledby="projects-heading">
-      <div class="wrap">
-        <div class="content">
-          <h2 id="projects-heading" class="reveal">Projects &amp; Case Studies</h2>
-          <p class="reveal delay-1"><strong>Placeholder — Project One</strong> · A concise line describing the challenge and the shape of the solution.</p>
-          <p class="reveal delay-2"><strong>Placeholder — Project Two</strong> · A short note on outcomes — what changed for the client or audience.</p>
-          <p class="reveal delay-3"><strong>Placeholder — Project Three</strong> · Scope highlights: identity, website, print; delivered with a calm, readable system.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer role="contentinfo">
-      Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
-    </footer>
+<aside id="side-panel" class="side-panel" role="navigation" aria-label="Site menu">
+  <div class="panel-header"><div class="panel-title">Menu</div></div>
+  <nav class="panel-nav">
+    <a href="#intro">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#projects">Projects</a>
+  </nav>
+  <div class="panel-footer">
+    <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
+    <div>Mon–Fri · 09:00–17:00</div>
   </div>
+</aside>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+<div class="site" id="site">
 
-    (function(){
-      var els = document.querySelectorAll('.reveal');
-      if (!('IntersectionObserver' in window)){
-        els.forEach(function(el){ el.classList.add('reveal-visible'); });
-        return;
-      }
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            entry.target.classList.add('reveal-visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, {threshold:0.15});
-      els.forEach(function(el){ io.observe(el); });
-    })();
+  <header>
+    <div class="header-inner">
+      <div class="brand" aria-label="Brand">Neon Forge</div>
+    </div>
+  </header>
 
-    (function(){
-      var body = document.body;
-      var burger = document.querySelector('.hamburger');
-      var panel = document.getElementById('side-panel');
+  <section id="intro" class="flow backdrop-1 hero anchor-offset">
+    <div class="wrap">
+      <div class="content">
+        <div class="title reveal">Neon Forge</div>
+        <div class="subtitle reveal delay-1">Web Development &amp; Design</div>
+      </div>
+    </div>
+  </section>
 
-      function openMenu(){
-        body.classList.add('menu-open');
-        burger.setAttribute('aria-expanded','true');
-        burger.setAttribute('aria-label','Close menu');
-        panel.setAttribute('aria-hidden','false');
-      }
-      function closeMenu(){
-        body.classList.remove('menu-open');
-        burger.setAttribute('aria-expanded','false');
-        burger.setAttribute('aria-label','Open menu');
-        panel.setAttribute('aria-hidden','true');
-      }
-      burger.addEventListener('click', function(){
-        body.classList.contains('menu-open') ? closeMenu() : openMenu();
-      });
+  <section id="about" class="flow backdrop-2 anchor-offset">
+    <div class="wrap">
+      <div class="content">
+        <h2 class="reveal">Clarity, rhythm, restraint.</h2>
+        <p class="reveal delay-1">Typography, spacing and structure do the heavy lifting here. The aim is readability and ease: decisions that reduce noise, interactions that don’t shout, and layouts that breathe on every screen.</p>
+      </div>
+    </div>
+  </section>
 
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape' && body.classList.contains('menu-open')) closeMenu();
-      });
+  <section id="services" class="flow backdrop-3 anchor-offset">
+    <div class="wrap">
+      <div class="content">
+        <h2 class="reveal">What we make</h2>
+        <ul class="services">
+          <li class="reveal delay-1"><strong>Websites</strong> — responsive, fast, and calm to use.</li>
+          <li class="reveal delay-2"><strong>Digital art</strong> — original assets for campaigns and products.</li>
+          <li class="reveal delay-3"><strong>Physical media</strong> — posters, packaging, and printed collateral.</li>
+          <li class="reveal delay-1"><strong>SEO optimisation</strong> — structure and performance that help people find you.</li>
+          <li class="reveal delay-2"><strong>Graphic design</strong> — identity, typography and layout systems.</li>
+          <li class="reveal delay-3"><strong>Simple apps</strong> — focused web tools for real workflows.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      document.querySelectorAll('a[href^="#"]').forEach(function(a){
-        a.addEventListener('click', function(e){
-          var id = a.getAttribute('href').slice(1);
-          if(!id) return;
-          var target = document.getElementById(id);
-          if(target){
-            e.preventDefault();
-            var top = target.getBoundingClientRect().top + window.scrollY - 72;
-            window.scrollTo({top:Math.max(top,0), behavior:'smooth'});
-          }
-        });
-      });
-    })();
-  </script>
+  <section id="contact" class="flow backdrop-1 anchor-offset" aria-labelledby="contact-heading">
+    <div class="wrap">
+      <div class="content">
+        <h2 id="contact-heading" class="reveal">Start a conversation</h2>
+        <p class="contact-line reveal delay-1">Write to <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a> — a brief note is enough. We’ll explore direction, shape the scope, and move at a thoughtful pace.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="flow backdrop-3 anchor-offset" aria-labelledby="projects-heading">
+    <div class="wrap">
+      <div class="content">
+        <h2 id="projects-heading" class="reveal">Projects &amp; Case Studies</h2>
+        <p class="reveal delay-1"><strong>Placeholder — Project One</strong> · A concise line describing the challenge and the shape of the solution.</p>
+        <p class="reveal delay-2"><strong>Placeholder — Project Two</strong> · A short note on outcomes — what changed for the client or audience.</p>
+        <p class="reveal delay-3"><strong>Placeholder — Project Three</strong> · Scope highlights: identity, website, print; delivered with a calm, readable system.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
+  </footer>
+</div>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// reveal
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver'in window)){els.forEach(function(el){el.classList.add('reveal-visible')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('reveal-visible');io.unobserve(entry.target);}});
+  },{threshold:0.15});
+  els.forEach(function(el){io.observe(el);});
+})();
+
+// menu
+(function(){
+  var body=document.body,burger=document.querySelector('.hamburger'),panel=document.getElementById('side-panel');
+  function openMenu(){body.classList.add('menu-open');burger.setAttribute('aria-expanded','true');burger.setAttribute('aria-label','Close menu');panel.setAttribute('aria-hidden','false');}
+  function closeMenu(){body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu');panel.setAttribute('aria-hidden','true');}
+  burger.addEventListener('click',function(){body.classList.contains('menu-open')?closeMenu():openMenu();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&body.classList.contains('menu-open'))closeMenu();});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href').slice(1); if(!id)return;
+      var target=document.getElementById(id);
+      if(target){e.preventDefault();var top=target.getBoundingClientRect().top+window.scrollY-72;window.scrollTo({top:Math.max(top,0),behavior:'smooth'});}
+    });
+  });
+})();
+</script>
 </body>
 </html>
+```0
