@@ -62,25 +62,26 @@
     .site{ transform:translateX(0); transition:transform .45s cubic-bezier(.22,.61,.36,1) }
     .menu-open .site{ transform:translateX(-min(380px,80vw)) }
 
-/* HEADER with wide, airy flat-gold honeycomb pattern as the background */
+    /* HEADER — ultra-thin strip with fantasy-style "Neon Forge" text */
 header {
   position: sticky;
   top: 0;
   z-index: 50;
   border-bottom: 1px solid var(--line);
 
-  /* Use your exported PNG */
+  /* Background image */
   background: url("assets/images/Neon Forge Header.png") no-repeat center;
   background-size: cover;
 
-  height: 140px;
+  /* Match hamburger height */
+  height: 60px; /* adjust if hamburger changes size */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .header-inner {
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -89,16 +90,15 @@ display: flex;
 }
 
 .brand {
-  font-family: "Playfair Display SC", serif;
-  font-weight: 900;
-  font-size: clamp(2rem, 5vw, 4rem); /* Responsive NF sizing */
-  letter-spacing: 0.02em;
+  font-family: "Papyrus", "Cinzel Decorative", cursive; /* fantasy style stack */
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  letter-spacing: 0.05em;
   line-height: 1;
   color: var(--ink);
   user-select: none;
+  text-transform: capitalize;
 }
-    /* NF 50% larger than before */
-    .brand .mark{ font-size:clamp(2.25rem,3.3vw,3.3rem) }
 
     /* Borderless Hamburger (always visible, top-right, fixed) */
     .hamburger{
