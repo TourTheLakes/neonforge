@@ -123,24 +123,18 @@ header {
   border-radius: 2px;
   transition: transform .3s ease, opacity .2s ease, background .2s ease;
 }
-
 .hamburger .lines::before { 
   top: -7px; 
 }
-
 .hamburger .lines::after { 
   top: 7px; 
 }
-
-/* X state */
 .menu-open .hamburger .lines { 
   background: transparent; 
 }
-
 .menu-open .hamburger .lines::before { 
   transform: translateY(7px) rotate(45deg); 
 }
-
 .menu-open .hamburger .lines::after { 
   transform: translateY(-7px) rotate(-45deg); 
 }
@@ -163,8 +157,8 @@ header {
   transition: transform .45s cubic-bezier(.22, .61, .36, 1);
   display: flex;
   flex-direction: column;
-  justify-content: center; /* ✅ vertical center stays */
-  padding-left: 40px;       /* ✅ push links inward for a clean margin */
+  justify-content: center;
+  padding-left: 40px;
   backdrop-filter: saturate(130%) blur(8px);
   border-left: 1px solid rgba(255,255,255,.06);
 }
@@ -176,7 +170,7 @@ header {
 .panel-nav {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* ✅ left align text */
+  align-items: flex-start;
   justify-content: center;
   gap: 1.5rem;
   text-align: left;
@@ -274,6 +268,7 @@ section.flow {
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Neon Forge","url":"https://www.neonforge.co.uk/","description":"Design & development studio specialising in websites, digital art, physical media, SEO, graphic design, and simple apps.","email":"info@neonforge.co.uk","openingHours":"Mo-Fr 09:00-17:00"}
 </script>
 </head>
+  
 <body>
 
 <button class="hamburger" aria-label="Open menu" aria-controls="side-panel" aria-expanded="false"><span class="lines" aria-hidden="true"></span></button>
@@ -302,7 +297,7 @@ section.flow {
   <div class="wrap">
     <div class="content">
       <h1 class="title reveal">Neon Forge</h1>
-      <h2 class="subtitle reveal delay-1">Web Design &amp; Development</h2>
+      <h2 class="subtitle reveal delay-1">Web Design and Development</h2>
     </div>
   </div>
 </section>
