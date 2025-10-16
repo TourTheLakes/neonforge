@@ -272,7 +272,11 @@ section.flow {
 .flow .content { grid-column: 2; text-align: left; }
 
 /* ---------- HERO ---------- */
-
+.hero .title {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  margin-bottom: .4rem;
+  white-space: nowrap;
+}
 
 /* ---------- REVEAL ---------- */
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
