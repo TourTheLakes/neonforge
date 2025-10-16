@@ -142,7 +142,8 @@ header {
 .menu-open .hamburger .lines::after {
   background: var(--panel-ink);
 }
-/*Side Panel*/
+
+/* ---------- SIDE PANEL ---------- */
 .side-panel {
   position: fixed;
   top: 0;
@@ -150,6 +151,7 @@ header {
   height: 100vh;
   z-index: 1000;
   width: min(380px, 80vw);
+  background: var(--panel-bg);
   color: var(--panel-ink);
   transform: translateX(100%);
   transition: transform .45s cubic-bezier(.22, .61, .36, 1);
@@ -159,20 +161,10 @@ header {
   padding-left: 40px;
   backdrop-filter: saturate(130%) blur(8px);
   border-left: 1px solid rgba(255,255,255,.06);
-
-  /* ✅ Make the background slightly darker and fully opaque */
-  background-color: rgba(20,22,25, 0.98);
-
-  /* ✅ Subtle woven gradient texture with more visible opacity */
-  background-image:
-    linear-gradient(135deg, rgba(255,255,255,0.06) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(255,255,255,0.07) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(255,255,255,0.04) 25%, transparent 25%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
-
+.menu-open .side-panel {
+  transform: translateX(0);
+}
 
 /* Navigation links — now left aligned */
 .panel-nav {
