@@ -57,6 +57,22 @@ body {
 .site { transform: translateX(0); transition: transform .45s cubic-bezier(.22,.61,.36,1); }
 .menu-open .site { transform: translateX(-min(380px,80vw)); }
 
+  /* Hero title graphic */
+.title-graphic{
+  display:block;
+  width:min(92vw, 1100px);
+  height:auto;
+  margin:0 auto;
+}
+
+.visually-hidden{
+  position:absolute!important;
+  width:1px;height:1px;
+  margin:-1px;padding:0;border:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;
+}
+
+
 /* ---------- HEADER (logo + hamburger only) ---------- */
 header {
   position: sticky;
@@ -314,11 +330,15 @@ section.flow {
 <section id="intro" class="flow hero anchor-offset">
   <div class="wrap">
     <div class="content">
-      <h1 class="title reveal">Neon Forge</h1>
-      <h2 class="subtitle reveal delay-1">Digital Design and Development</h2>
+      <h1 class="visually-hidden">Neon Forge — Web Design and Development</h1>
+      <img
+        class="title-graphic reveal"
+        src="assets/images/Title-Graphic.png"
+        alt="Neon Forge — Web Design and Development">
     </div>
   </div>
 </section>
+
 
 <section id="about" class="flow anchor-offset">
   <div class="wrap">
