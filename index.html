@@ -65,9 +65,9 @@ html, body {
 .site {
   transform: translateX(0);
   transition: transform .45s cubic-bezier(.22, .61, .36, 1);
-  scroll-snap-type: y mandatory;     /* ✅ Enable scroll snapping here */
-  overflow-y: auto;                  /* ✅ Makes .site scrollable */
-  height: 100vh;                     /* ✅ Required for snap container */
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: 100vh;
 }
 .menu-open .site {
   transform: translateX(-min(380px, 80vw));
@@ -284,7 +284,7 @@ footer {
   border-top: 1px solid var(--line);
   text-align: center;
   color: var(--muted);
-  padding: 40px 12px 60px;
+  padding: 18px 12px 28px;
   font-size: var(--step--1);
   background: #fff;
 
