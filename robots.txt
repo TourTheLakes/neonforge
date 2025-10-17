@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Optional but tidy – helps prevent bots from hammering your server
+Crawl-delay: 5
+
+# Sitemap location
 Sitemap: https://www.neonforge.co.uk/sitemap.xml
