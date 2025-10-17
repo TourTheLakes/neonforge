@@ -497,85 +497,8 @@ section.flow {
   </div> <!-- END .site -->
 
   <!-- ===== SCRIPTS ===== -->
-  <script>
-    // Auto-update footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Reveal animations
-    (function() {
-      var els = document.querySelectorAll('.reveal');
-      if (!('IntersectionObserver' in window)) {
-        els.forEach(function(el) { el.classList.add('reveal-visible'); });
-        return;
-      }
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      els.forEach(function(el) { io.observe(el); });
-    })();
-
-    // Menu + hashless smooth scroll
-    (function() {
-      var body = document.body;
-      var burger = document.querySelector('.hamburger');
-      var panel = document.getElementById('side-panel');
-
-      function openMenu() {
-        body.classList.add('menu-open');
-        burger.setAttribute('aria-expanded', 'true');
-        burger.setAttribute('aria-label', 'Close menu');
-        panel.setAttribute('aria-hidden', 'false');
-      }
-
-      function closeMenu() {
-        body.classList.remove('menu-open');
-        burger.setAttribute('aria-expanded', 'false');
-        burger.setAttribute('aria-label', 'Open menu');
-        panel.setAttribute('aria-hidden', 'true');
-      }
-
-      burger.addEventListener('click', function() {
-        body.classList.contains('menu-open') ? closeMenu() : openMenu();
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && body.classList.contains('menu-open')) closeMenu();
-      });
-
-      // Remove #top on load
-      if (location.hash && location.hash.toLowerCase() === '#top') {
-        history.replaceState(null, '', location.pathname + location.search);
-      }
-
-      // Smooth scroll without URL hash
-      document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-        a.addEventListener('click', function(e) {
-          var id = a.getAttribute('href').slice(1);
-          if (!id) { e.preventDefault(); return; }
-
-          if (id.toLowerCase() === 'top') {
-            e.preventDefault();
-            document.querySelector('.site').scrollTo({ top: 0, behaviour: 'smooth'});
-            history.replaceState(null, '', location.pathname + location.search);
-            return;
-          }
-
-          var target = document.getElementById(id);
-          if (target) {
-            e.preventDefault();
-            var top = target.getBoundingClientRect().top + window.scrollY - 72;
-            document.querySelector('.site').scrollTo({ top: Match.max(top, 0), behaviour: 'smooth' });
-            history.replaceState(null, '', location.pathname + location.search);
-          }
-        });
-      });
-    })();
-  </script>
+    
 
   <noscript>
     <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
