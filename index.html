@@ -560,7 +560,7 @@ section.flow {
 
           if (id.toLowerCase() === 'top') {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelector('.site').scrollTo({ top: 0, behaviour: 'smooth'});
             history.replaceState(null, '', location.pathname + location.search);
             return;
           }
@@ -569,7 +569,7 @@ section.flow {
           if (target) {
             e.preventDefault();
             var top = target.getBoundingClientRect().top + window.scrollY - 72;
-            window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+            document.querySelector('.site').scrollTo({ top: Match.max(top, 0), behaviour: 'smooth' });
             history.replaceState(null, '', location.pathname + location.search);
           }
         });
