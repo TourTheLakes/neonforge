@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — Page Not Found | Neon Forge</title>
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/images/NF-Favicon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0B0D10;
+      --ink: #F1F5F9;
+      --accent: #3B82F6;
+      --muted: #9CA3AF;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 2rem;
+      animation: fadeIn 0.8s ease;
+    }
+
+    h1 {
+      font-family: "Playfair Display SC", serif;
+      font-size: clamp(2.4rem, 6vw, 3.5rem);
+      margin-bottom: 0.4rem;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    p {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--muted);
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    a {
+      display: inline-block;
+      color: var(--ink);
+      background: var(--accent);
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      background: #2563EB;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <p>Looks like this page doesn’t exist — but don’t worry, the rest of Neon Forge does.</p>
+    <a href="https://www.neonforge.co.uk/">Return Home</a>
+  </div>
+  <footer>© <span id="year"></span> Neon Forge</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
