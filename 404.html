@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="assets/images/NF-Favicon.png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -29,6 +29,8 @@
       height: 100%;
       color: var(--panel-ink);
       font-family: "Source Sans 3", system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
       background-color: var(--panel-bg);
       background-image:
         linear-gradient(135deg, rgba(255,255,255,0.35) 25%, transparent 25%),
@@ -38,43 +40,62 @@
       background-size: 20px 20px;
       background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
       background-blend-mode: overlay;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 80px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
       display: flex;
-      justify-content: center;
       align-items: center;
-      text-align: center;
+      justify-content: center;
     }
 
-    .container {
-      max-width: 700px;
-      padding: 2rem;
-      animation: fadeIn 0.8s ease;
-    }
-
-    img.logo {
+    .brand img {
+      height: 64px;
+      width: auto;
       display: block;
-      margin: 0 auto 1.5rem;
-      width: min(70vw, 260px);
-      height: auto;
+      object-fit: contain;
       user-select: none;
       -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    /* ---------- MAIN CONTENT ---------- */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .content {
+      max-width: 700px;
+      animation: fadeIn 0.8s ease;
     }
 
     h1 {
       font-family: "Playfair Display SC", serif;
-      font-size: clamp(2.6rem, 6vw, 3.6rem);
-      margin: 0.5rem 0;
+      font-size: clamp(2.4rem, 6vw, 3.5rem);
       color: var(--accent);
-      letter-spacing: 0.02em;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
     }
 
     p {
+      font-size: clamp(1rem, 2vw, 1.15rem);
       color: var(--panel-ink);
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      margin: 1rem 0 2rem;
-      opacity: 0.85;
+      margin-bottom: 2rem;
+      opacity: 0.9;
     }
 
-    a {
+    a.button {
       display: inline-block;
       color: var(--panel-ink);
       background: var(--accent);
@@ -85,19 +106,18 @@
       transition: background 0.25s ease, transform 0.25s ease;
     }
 
-    a:hover {
+    a.button:hover {
       background: #2563EB;
       transform: translateY(-2px);
     }
 
     footer {
-      position: absolute;
-      bottom: 12px;
-      left: 0;
-      width: 100%;
+      border-top: 1px solid var(--line);
       text-align: center;
-      font-size: 0.85rem;
-      color: rgba(241,245,249,0.6);
+      color: var(--muted);
+      padding: 18px 12px 28px;
+      font-size: 0.9rem;
+      background: #fff;
     }
 
     @keyframes fadeIn {
@@ -107,15 +127,27 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="assets/images/Neon-Forge-Logo.png" alt="Neon Forge Logo" class="logo">
-    <h1>404 — Page Not Found</h1>
-    <p>Looks like this page wandered off into the digital ether.<br>
-    Let’s get you back to where things make sense.</p>
-    <a href="https://www.neonforge.co.uk/">Return Home</a>
-  </div>
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <img src="assets/images/Neon-Forge-Logo.png" alt="Neon Forge Logo">
+    </div>
+  </header>
 
-  <footer>© <span id="year"></span> Neon Forge</footer>
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="content">
+      <h1>404 — Page Not Found</h1>
+      <p>This page doesn’t exist, or it might have been moved.<br>
+      Don’t worry — the rest of Neon Forge is exactly where it should be.</p>
+      <a href="https://www.neonforge.co.uk/" class="button">Return Home</a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
+  </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
