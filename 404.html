@@ -14,19 +14,30 @@
 
   <style>
     :root {
-      --bg: #0B0D10;
-      --ink: #F1F5F9;
+      --bg: #F6F7F8;
+      --ink: #1E2329;
+      --muted: #6B7280;
       --accent: #3B82F6;
-      --muted: #9CA3AF;
+      --line: #E7E9ED;
+      --panel-bg: rgba(28,30,34,.95);
+      --panel-ink: #F1F5F9;
     }
 
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
+      color: var(--panel-ink);
       font-family: "Source Sans 3", system-ui, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
+      background-color: var(--panel-bg);
+      background-image:
+        linear-gradient(135deg, rgba(255,255,255,0.35) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(255,255,255,0.55) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(255,255,255,0.65) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(255,255,255,0.45) 25%, transparent 25%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-blend-mode: overlay;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -34,34 +45,44 @@
     }
 
     .container {
-      max-width: 600px;
+      max-width: 700px;
       padding: 2rem;
       animation: fadeIn 0.8s ease;
     }
 
+    img.logo {
+      display: block;
+      margin: 0 auto 1.5rem;
+      width: min(70vw, 260px);
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
     h1 {
       font-family: "Playfair Display SC", serif;
-      font-size: clamp(2.4rem, 6vw, 3.5rem);
-      margin-bottom: 0.4rem;
+      font-size: clamp(2.6rem, 6vw, 3.6rem);
+      margin: 0.5rem 0;
       color: var(--accent);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
     }
 
     p {
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      color: var(--muted);
-      margin: 0.5rem 0 1.5rem;
+      color: var(--panel-ink);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin: 1rem 0 2rem;
+      opacity: 0.85;
     }
 
     a {
       display: inline-block;
-      color: var(--ink);
+      color: var(--panel-ink);
       background: var(--accent);
-      padding: 0.6rem 1.4rem;
-      border-radius: 6px;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.2s ease;
+      transition: background 0.25s ease, transform 0.25s ease;
     }
 
     a:hover {
@@ -71,26 +92,29 @@
 
     footer {
       position: absolute;
-      bottom: 10px;
+      bottom: 12px;
       left: 0;
       width: 100%;
       text-align: center;
       font-size: 0.85rem;
-      color: var(--muted);
+      color: rgba(241,245,249,0.6);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>404</h1>
-    <p>Looks like this page doesn’t exist — but don’t worry, the rest of Neon Forge does.</p>
+    <img src="assets/images/Neon-Forge-Logo.png" alt="Neon Forge Logo" class="logo">
+    <h1>404 — Page Not Found</h1>
+    <p>Looks like this page wandered off into the digital ether.<br>
+    Let’s get you back to where things make sense.</p>
     <a href="https://www.neonforge.co.uk/">Return Home</a>
   </div>
+
   <footer>© <span id="year"></span> Neon Forge</footer>
 
   <script>
