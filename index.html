@@ -439,7 +439,7 @@
     .window-top {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 16px;
       padding: 16px 18px;
       border-bottom: 1px solid rgba(30,35,41,0.07);
@@ -461,14 +461,6 @@
     .window-dots span:first-child { background: #ffb4b4; }
     .window-dots span:nth-child(2) { background: #ffe0a6; }
     .window-dots span:nth-child(3) { background: #b9efca; }
-
-    .window-label {
-      color: var(--ink-dim);
-      font-size: .9rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
 
     .hero-stage {
       padding: 20px;
@@ -702,21 +694,9 @@
       background: var(--accent);
     }
 
-    .cred-grid {
-      display: grid;
-      grid-template-columns: 1.06fr .94fr;
-      gap: 20px;
-      align-items: stretch;
-    }
-
     .story-card,
-    .stats-card,
     .process-card,
-    .work-card,
-    .faq-wrap,
-    .cta-card,
-    .lab-card,
-    .quote-card {
+    .cta-card {
       padding: 28px;
       background: rgba(255,255,255,0.62);
       border: 1px solid rgba(30,35,41,0.08);
@@ -724,11 +704,7 @@
     }
 
     .story-card h3,
-    .stats-card h3,
     .process-card h3,
-    .work-card h3,
-    .lab-card h3,
-    .faq-wrap h3,
     .cta-card h3 {
       margin: 0 0 14px;
       font-size: 1.35rem;
@@ -737,38 +713,8 @@
 
     .story-card p,
     .process-card p,
-    .work-card p,
-    .lab-card p,
-    .faq-wrap p,
-    .cta-card p,
-    .quote-card p {
+    .cta-card p {
       color: var(--ink-soft);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .stat {
-      padding: 18px;
-      border: 1px solid rgba(30,35,41,0.08);
-      background: rgba(255,255,255,0.54);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: clamp(1.8rem, 1.35rem + 1.8vw, 2.55rem);
-      line-height: 1;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .stat span {
-      color: var(--ink-soft);
-      font-weight: 600;
     }
 
     .process-grid {
@@ -806,249 +752,6 @@
       margin: 0;
       color: var(--ink-soft);
       font-size: .98rem;
-    }
-
-    .lab-layout {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .fun-stage {
-      margin-top: 18px;
-      min-height: 360px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(30,35,41,0.08);
-      background:
-        radial-gradient(circle at center, rgba(59,130,246,0.08), transparent 0 46%),
-        linear-gradient(180deg, rgba(255,255,255,0.4), rgba(219,234,254,0.16));
-      user-select: none;
-      touch-action: none;
-    }
-
-    .constellation-dot {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      margin: -6px 0 0 -6px;
-      background: rgba(59,130,246,0.9);
-      box-shadow: 0 0 0 7px rgba(59,130,246,0.10);
-      transition: transform .25s ease, background .25s ease;
-    }
-
-    .constellation-line {
-      position: absolute;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(59,130,246,0.02), rgba(59,130,246,0.34), rgba(59,130,246,0.02));
-      transform-origin: left center;
-      opacity: .66;
-    }
-
-    .trail-ring {
-      position: absolute;
-      border: 1px solid rgba(59,130,246,0.28);
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      animation: ripple 1.6s ease-out forwards;
-    }
-
-    @keyframes ripple {
-      0% { width: 10px; height: 10px; opacity: .8; }
-      100% { width: 180px; height: 180px; opacity: 0; }
-    }
-
-    .lab-readouts {
-      display: grid;
-      gap: 16px;
-    }
-
-    .lab-note {
-      padding: 18px;
-      border: 1px solid rgba(30,35,41,0.08);
-      background: rgba(255,255,255,0.56);
-    }
-
-    .lab-note small {
-      display: block;
-      margin-bottom: 8px;
-      font-size: .84rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-    }
-
-    .lab-note strong {
-      display: block;
-      font-size: 1.3rem;
-      line-height: 1.1;
-      color: var(--ink);
-    }
-
-    .lab-mini-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .lab-mini-list li {
-      position: relative;
-      padding-left: 16px;
-      color: var(--ink-soft);
-    }
-
-    .lab-mini-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: .6em;
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-    }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
-
-    .work-feature {
-      grid-column: span 7;
-      min-height: 420px;
-    }
-
-    .work-side {
-      grid-column: span 5;
-      display: grid;
-      gap: 18px;
-    }
-
-    .work-preview {
-      position: relative;
-      min-height: 220px;
-      margin-bottom: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(30,35,41,0.08);
-      background:
-        radial-gradient(circle at 18% 18%, rgba(59,130,246,0.12), transparent 0 32%),
-        linear-gradient(145deg, rgba(219,234,254,0.48), rgba(255,255,255,0.7));
-    }
-
-    .mock-window {
-      position: absolute;
-      inset: 22px 22px auto 22px;
-      padding: 14px;
-      border: 1px solid rgba(30,35,41,0.08);
-      background: rgba(255,255,255,0.82);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .mock-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .mock-bar {
-      height: 8px;
-      flex: 1;
-      background: rgba(30,35,41,0.08);
-    }
-
-    .mock-ui {
-      display: grid;
-      grid-template-columns: 1fr 110px;
-      gap: 12px;
-    }
-
-    .mock-ui > div {
-      min-height: 88px;
-      background: rgba(59,130,246,0.07);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mock-ui > div::before {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      background: linear-gradient(180deg, rgba(59,130,246,0.12), rgba(59,130,246,0.03));
-    }
-
-    .float-sheen {
-      position: absolute;
-      right: 18px;
-      bottom: 18px;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(59,130,246,0.22), transparent 68%);
-      animation: orb 5s ease-in-out infinite;
-    }
-
-    .quote-card strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-
-    .quote-card span {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--ink-dim);
-    }
-
-    .faq-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    .faq-item {
-      border: 1px solid rgba(30,35,41,0.08);
-      background: rgba(255,255,255,0.56);
-      overflow: hidden;
-    }
-
-    .faq-trigger {
-      width: 100%;
-      background: transparent;
-      border: 0;
-      color: var(--ink);
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .faq-trigger span:last-child {
-      color: var(--accent-strong);
-      font-size: 1.3rem;
-      line-height: 1;
-      transition: transform .2s ease;
-    }
-
-    .faq-item.open .faq-trigger span:last-child {
-      transform: rotate(45deg);
-    }
-
-    .faq-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .3s ease;
-    }
-
-    .faq-body-inner {
-      padding: 0 20px 18px;
-      color: var(--ink-soft);
     }
 
     .cta-card {
@@ -1126,9 +829,7 @@
     .delay-6 { transition-delay: .36s; }
 
     @media (max-width: 1120px) {
-      .hero-grid,
-      .cred-grid,
-      .lab-layout {
+      .hero-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1138,11 +839,6 @@
 
       .service-card {
         grid-column: span 6;
-      }
-
-      .work-feature,
-      .work-side {
-        grid-column: span 12;
       }
 
       .process-grid {
@@ -1187,7 +883,6 @@
         grid-column: span 12;
       }
 
-      .stats-grid,
       .process-grid {
         grid-template-columns: 1fr;
       }
@@ -1204,8 +899,7 @@
         min-height: auto;
       }
 
-      .preview-canvas,
-      .fun-stage {
+      .preview-canvas {
         min-height: 280px;
       }
     }
@@ -1267,39 +961,6 @@
     ]
   }
   </script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"How much does a small business website cost?",
-        "acceptedAnswer":{
-          "@type":"Answer",
-          "text":"Most simple static websites start from around £300 plus hosting, with pricing scaling according to scope, content, integrations and overall system complexity."
-        }
-      },
-      {
-        "@type":"Question",
-        "name":"Do you only work with businesses in Kendal and Cumbria?",
-        "acceptedAnswer":{
-          "@type":"Answer",
-          "text":"No. Neon Forge is based in Kendal and works with businesses locally and across the UK."
-        }
-      },
-      {
-        "@type":"Question",
-        "name":"Do you handle both design and development?",
-        "acceptedAnswer":{
-          "@type":"Answer",
-          "text":"Yes. Neon Forge combines visual direction, front-end build quality, technical structure and SEO-aware implementation in one joined-up process."
-        }
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
   <div class="site-shell">
@@ -1318,14 +979,11 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#capability">Capability</a></li>
             <li><a href="#process">Process</a></li>
-            <li><a href="#lab">Studio Lab</a></li>
-            <li><a href="#work">Our Work</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
 
         <div class="header-actions">
-          <a class="button button-secondary" href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
           <a class="button button-primary" href="#contact">Start a Project</a>
           <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
             <span></span>
@@ -1339,10 +997,7 @@
         <a href="#services">Services</a>
         <a href="#capability">Capability</a>
         <a href="#process">Process</a>
-        <a href="#lab">Studio Lab</a>
-        <a href="#work">Our Work</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Start a Project</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
 
@@ -1360,7 +1015,6 @@
 
             <div class="hero-actions">
               <a class="button button-primary" href="#contact">Discuss a Project</a>
-              <a class="button button-secondary" href="#services">Explore Services</a>
             </div>
 
             <div class="hero-meta">
@@ -1391,7 +1045,6 @@
                 <div class="window-dots" aria-hidden="true">
                   <span></span><span></span><span></span>
                 </div>
-                <div class="window-label">Neon Forge Studio Preview</div>
               </div>
 
               <div class="hero-stage">
@@ -1546,42 +1199,18 @@
             </p>
           </div>
 
-          <div class="cred-grid">
-            <article class="story-card reveal delay-1">
-              <h3>Positioning through execution</h3>
-              <p>
-                Neon Forge approaches digital work with the assumption that presentation and engineering are inseparable. The strongest online presences are not loud by accident; they are carefully built, technically controlled and visually deliberate.
-              </p>
-              <p>
-                That means considered typography, measured animation, robust code structure, clear messaging hierarchy and a user experience that never feels improvised. The result is digital work that looks established because it has been built with discipline.
-              </p>
-              <p>
-                Based in Kendal, Neon Forge works with businesses that need more than something merely online. They need something coherent, credible and commercially useful.
-              </p>
-            </article>
-
-            <aside class="stats-card reveal delay-2">
-              <h3>What strong build quality should signal</h3>
-              <div class="stats-grid">
-                <div class="stat">
-                  <strong data-counter="100">0</strong>
-                  <span>Responsive layouts by default</span>
-                </div>
-                <div class="stat">
-                  <strong data-counter="24">0</strong>
-                  <span>Hour monitoring mindset on critical behaviour</span>
-                </div>
-                <div class="stat">
-                  <strong data-counter="300">0</strong>
-                  <span>Entry point for simple static websites</span>
-                </div>
-                <div class="stat">
-                  <strong data-counter="1">0</strong>
-                  <span>Joined-up design and development thinking</span>
-                </div>
-              </div>
-            </aside>
-          </div>
+          <article class="story-card reveal delay-1">
+            <h3>Positioning through execution</h3>
+            <p>
+              Neon Forge approaches digital work with the assumption that presentation and engineering are inseparable. The strongest online presences are not loud by accident; they are carefully built, technically controlled and visually deliberate.
+            </p>
+            <p>
+              That means considered typography, measured animation, robust code structure, clear messaging hierarchy and a user experience that never feels improvised. The result is digital work that looks established because it has been built with discipline.
+            </p>
+            <p>
+              Based in Kendal, Neon Forge works with businesses that need more than something merely online. They need something coherent, credible and commercially useful.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -1616,177 +1245,6 @@
         </div>
       </section>
 
-      <section id="lab">
-        <div class="container">
-          <div class="section-head reveal">
-            <div class="eyebrow">Studio Lab</div>
-            <h2>A small interactive detail, because memorable sites invite curiosity.</h2>
-            <p>
-              This is a simple consumer-facing moment rather than a developer toy. Move across the field and draw the points together. Tap or click to create a ripple. It is light, clean and just interesting enough to make people stay a little longer.
-            </p>
-          </div>
-
-          <div class="lab-layout">
-            <article class="lab-card reveal delay-1">
-              <h3>Constellation field</h3>
-              <p>
-                Good interaction should feel intentional, not noisy. This kind of subtle feature adds life to a site without getting in the way of the message.
-              </p>
-
-              <div class="fun-stage" id="funStage" aria-label="Interactive constellation field"></div>
-            </article>
-
-            <aside class="lab-readouts reveal delay-2">
-              <div class="lab-note">
-                <small>Interaction level</small>
-                <strong id="energyReadout">Calm</strong>
-              </div>
-
-              <div class="lab-note">
-                <small>Cluster strength</small>
-                <strong id="clusterReadout">0%</strong>
-              </div>
-
-              <div class="lab-note">
-                <small>Why it works</small>
-                <ul class="lab-mini-list">
-                  <li>It rewards curiosity without distracting from the page.</li>
-                  <li>It gives the site a sense of craft and care.</li>
-                  <li>It feels refined rather than gimmicky.</li>
-                </ul>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section id="work">
-        <div class="container">
-          <div class="section-head reveal">
-            <div class="eyebrow">Our Work</div>
-            <h2>Growing the portfolio with the right projects, not just more projects.</h2>
-            <p>
-              Neon Forge is building a body of work defined by quality, not noise. Every project is treated as a reference point for what the studio stands for.
-            </p>
-          </div>
-
-          <div class="work-grid">
-            <article class="work-card work-feature reveal delay-1">
-              <div class="work-preview" aria-hidden="true">
-                <div class="mock-window">
-                  <div class="mock-top">
-                    <div class="window-dots"><span></span><span></span><span></span></div>
-                    <div class="mock-bar"></div>
-                  </div>
-                  <div class="mock-ui">
-                    <div></div>
-                    <div></div>
-                  </div>
-                </div>
-                <div class="float-sheen"></div>
-              </div>
-
-              <h3>Precision over placeholders</h3>
-              <p>
-                The studio’s portfolio is being assembled deliberately. That means well-considered launches, cleaner systems, stronger presentation and the kind of digital work that reads as established from the outside.
-              </p>
-              <p>
-                Rather than filling space, Neon Forge is building toward a portfolio that demonstrates design intelligence, technical control and commercial understanding.
-              </p>
-              <a class="button button-secondary" href="#contact">Become part of the portfolio</a>
-            </article>
-
-            <div class="work-side">
-              <div class="quote-card reveal delay-2">
-                <strong>Website architecture with intent</strong>
-                <span>Not just pages. Not just visuals.</span>
-                <p>
-                  Every build is an opportunity to establish trust, sharpen positioning and create a digital presence that does more than simply exist.
-                </p>
-              </div>
-
-              <div class="quote-card reveal delay-3">
-                <strong>Corporate feel without the dead weight</strong>
-                <span>Lean execution. Serious presentation.</span>
-                <p>
-                  Neon Forge focuses on giving brands a polished, capable online presence without bloated systems or unnecessary complexity.
-                </p>
-              </div>
-
-              <div class="quote-card reveal delay-4">
-                <strong>Early-stage advantage</strong>
-                <span>Direct access. Focused delivery.</span>
-                <p>
-                  For businesses moving now, this is the stage where strong direction and close build quality can shape something distinctive from the start.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="faq">
-        <div class="container">
-          <div class="section-head reveal">
-            <div class="eyebrow">FAQ</div>
-            <h2>Clear answers, because good projects usually start with practical questions.</h2>
-            <p>
-              A few of the common things businesses want to know before a conversation begins.
-            </p>
-          </div>
-
-          <div class="faq-grid">
-            <article class="faq-item reveal delay-1">
-              <button class="faq-trigger" type="button" aria-expanded="false">
-                <span>How much does a small business website cost?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                <div class="faq-body-inner">
-                  Most simple static websites start from around £300 plus hosting. Final pricing depends on scope, content volume, animation, integrations and whether additional systems are required.
-                </div>
-              </div>
-            </article>
-
-            <article class="faq-item reveal delay-2">
-              <button class="faq-trigger" type="button" aria-expanded="false">
-                <span>Do you only work with businesses in Kendal and Cumbria?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                <div class="faq-body-inner">
-                  No. Neon Forge is based in Kendal and works with businesses locally and across the UK. Geographic location matters for some projects, but good digital work travels well.
-                </div>
-              </div>
-            </article>
-
-            <article class="faq-item reveal delay-3">
-              <button class="faq-trigger" type="button" aria-expanded="false">
-                <span>Can you handle both design and development?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                <div class="faq-body-inner">
-                  Yes. Neon Forge approaches design and development as one connected discipline, so visual polish, structure, responsiveness and technical behaviour are aligned from the start.
-                </div>
-              </div>
-            </article>
-
-            <article class="faq-item reveal delay-4">
-              <button class="faq-trigger" type="button" aria-expanded="false">
-                <span>Will the site be ready for Google from launch?</span>
-                <span>+</span>
-              </button>
-              <div class="faq-body">
-                <div class="faq-body-inner">
-                  Launch builds are structured with technical SEO best practice in mind, including metadata, canonical setup, schema, sitemap and clean semantic markup where appropriate.
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section id="contact">
         <div class="container">
           <article class="cta-card reveal">
@@ -1803,7 +1261,6 @@
 
             <div class="cta-actions">
               <a class="button button-primary" href="mailto:info@neonforge.co.uk">Email info@neonforge.co.uk</a>
-              <a class="button button-secondary" href="#top">Back to top</a>
             </div>
           </article>
         </div>
@@ -1819,7 +1276,6 @@
 
         <div class="footer-links">
           <a href="#services">Services</a>
-          <a href="#work">Our Work</a>
           <a href="mailto:info@neonforge.co.uk">Contact</a>
         </div>
       </div>
@@ -1896,40 +1352,6 @@
       }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
 
       sections.forEach(section => io.observe(section));
-    })();
-
-    (function () {
-      const counters = document.querySelectorAll('[data-counter]');
-      if (!('IntersectionObserver' in window)) {
-        counters.forEach(counter => counter.textContent = counter.getAttribute('data-counter'));
-        return;
-      }
-
-      const animateCounter = (el) => {
-        const target = Number(el.getAttribute('data-counter'));
-        const duration = 1300;
-        const start = performance.now();
-
-        function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(target * eased);
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-
-        requestAnimationFrame(tick);
-      };
-
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.45 });
-
-      counters.forEach(counter => io.observe(counter));
     })();
 
     (function () {
@@ -2062,149 +1484,6 @@
 
       resize();
       animate();
-    })();
-
-    (function () {
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(item => {
-        const button = item.querySelector('.faq-trigger');
-        const body = item.querySelector('.faq-body');
-
-        button.addEventListener('click', () => {
-          const isOpen = item.classList.contains('open');
-
-          faqItems.forEach(other => {
-            other.classList.remove('open');
-            other.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
-            other.querySelector('.faq-body').style.maxHeight = null;
-          });
-
-          if (!isOpen) {
-            item.classList.add('open');
-            button.setAttribute('aria-expanded', 'true');
-            body.style.maxHeight = body.scrollHeight + 'px';
-          }
-        });
-      });
-    })();
-
-    (function () {
-      const stage = document.getElementById('funStage');
-      const energyReadout = document.getElementById('energyReadout');
-      const clusterReadout = document.getElementById('clusterReadout');
-      if (!stage) return;
-
-      const seed = [
-        [16, 22],[35, 18],[56, 26],[78, 20],
-        [20, 46],[42, 40],[64, 50],[82, 44],
-        [18, 72],[38, 68],[58, 78],[76, 70]
-      ];
-
-      const dots = [];
-      const lines = [];
-      let activity = 0;
-
-      const fragment = document.createDocumentFragment();
-
-      seed.forEach((point) => {
-        const dot = document.createElement('span');
-        dot.className = 'constellation-dot';
-        dot.style.left = point[0] + '%';
-        dot.style.top = point[1] + '%';
-        fragment.appendChild(dot);
-        dots.push(dot);
-      });
-
-      for (let i = 0; i < seed.length - 1; i++) {
-        const line = document.createElement('span');
-        line.className = 'constellation-line';
-        fragment.appendChild(line);
-        lines.push(line);
-      }
-
-      stage.appendChild(fragment);
-
-      function rect() {
-        return stage.getBoundingClientRect();
-      }
-
-      function positionLines() {
-        const r = rect();
-        lines.forEach((line, i) => {
-          const a = dots[i].getBoundingClientRect();
-          const b = dots[i + 1].getBoundingClientRect();
-          const ax = a.left + a.width / 2 - r.left;
-          const ay = a.top + a.height / 2 - r.top;
-          const bx = b.left + b.width / 2 - r.left;
-          const by = b.top + b.height / 2 - r.top;
-          const dx = bx - ax;
-          const dy = by - ay;
-          const len = Math.sqrt(dx * dx + dy * dy);
-
-          line.style.width = len + 'px';
-          line.style.left = ax + 'px';
-          line.style.top = ay + 'px';
-          line.style.transform = 'rotate(' + Math.atan2(dy, dx) + 'rad)';
-        });
-      }
-
-      function setReadouts(level) {
-        clusterReadout.textContent = Math.min(100, Math.round(level)) + '%';
-        if (level < 20) energyReadout.textContent = 'Calm';
-        else if (level < 45) energyReadout.textContent = 'Curious';
-        else if (level < 72) energyReadout.textContent = 'Engaged';
-        else energyReadout.textContent = 'Alive';
-      }
-
-      function updateDots(clientX, clientY) {
-        const r = rect();
-        let totalPull = 0;
-
-        dots.forEach((dot, index) => {
-          const baseX = seed[index][0] / 100 * r.width;
-          const baseY = seed[index][1] / 100 * r.height;
-          const dx = clientX - r.left - baseX;
-          const dy = clientY - r.top - baseY;
-          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-          const pull = Math.max(0, 1 - dist / 230) * 22;
-          totalPull += pull;
-          const ox = (dx / dist) * pull;
-          const oy = (dy / dist) * pull;
-
-          dot.style.transform = 'translate(' + ox.toFixed(2) + 'px,' + oy.toFixed(2) + 'px) scale(' + (1 + pull / 42).toFixed(3) + ')';
-          if (pull > 8) dot.style.background = 'rgba(29,78,216,0.95)';
-          else dot.style.background = 'rgba(59,130,246,0.9)';
-        });
-
-        activity = totalPull / dots.length * 5;
-        setReadouts(activity);
-        positionLines();
-      }
-
-      stage.addEventListener('pointermove', (e) => updateDots(e.clientX, e.clientY));
-
-      stage.addEventListener('pointerleave', () => {
-        dots.forEach(dot => {
-          dot.style.transform = '';
-          dot.style.background = 'rgba(59,130,246,0.9)';
-        });
-        activity = 0;
-        setReadouts(activity);
-        positionLines();
-      });
-
-      stage.addEventListener('pointerdown', (e) => {
-        const ring = document.createElement('span');
-        ring.className = 'trail-ring';
-        ring.style.left = (e.clientX - rect().left) + 'px';
-        ring.style.top = (e.clientY - rect().top) + 'px';
-        stage.appendChild(ring);
-        setTimeout(() => ring.remove(), 1600);
-      });
-
-      window.addEventListener('resize', positionLines);
-      positionLines();
-      setReadouts(0);
     })();
   </script>
 </body>
