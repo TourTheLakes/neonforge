@@ -16,14 +16,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Neon Forge | Web Design, Development & Digital Systems in Kendal, UK</title>
-  <meta name="description" content="Neon Forge is a web design and development studio in Kendal, UK, creating high-performance websites, digital systems, branding, SEO-ready builds and polished online experiences for ambitious businesses." />
+  <meta name="description" content="Neon Forge is a web design and development studio in Kendal, UK, creating refined websites, digital systems, branding and SEO-ready online experiences for ambitious businesses." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://www.neonforge.co.uk/" />
-  <meta name="theme-color" content="#0b0d10" />
+  <meta name="theme-color" content="#f6f7f8" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Neon Forge | Web Design, Development & Digital Systems in Kendal, UK" />
-  <meta property="og:description" content="High-performance websites, digital systems, branding and SEO-ready development for ambitious businesses." />
+  <meta property="og:description" content="Refined websites, digital systems, branding and SEO-ready online experiences for ambitious businesses." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.neonforge.co.uk/" />
   <meta property="og:site_name" content="Neon Forge" />
@@ -33,7 +33,7 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Neon Forge | Web Design, Development & Digital Systems in Kendal, UK" />
-  <meta name="twitter:description" content="High-performance websites, digital systems, branding and SEO-ready development for ambitious businesses." />
+  <meta name="twitter:description" content="Refined websites, digital systems, branding and SEO-ready online experiences for ambitious businesses." />
   <meta name="twitter:image" content="https://www.neonforge.co.uk/assets/images/social-preview.png" />
 
   <!-- Favicon -->
@@ -48,39 +48,34 @@
 
   <style>
     :root {
-      --bg: #0b0d10;
-      --bg-soft: #10141a;
-      --bg-panel: rgba(17, 22, 28, 0.88);
-      --surface: #131923;
-      --surface-2: #192231;
-      --surface-3: #0f1319;
-      --ink: #edf2f7;
-      --ink-soft: #b7c1cf;
-      --ink-dim: #8f99a7;
-      --line: rgba(255,255,255,0.09);
-      --line-strong: rgba(255,255,255,0.16);
-      --accent: #4ea1ff;
-      --accent-2: #88c7ff;
-      --accent-glow: rgba(78,161,255,0.24);
-      --success: #7df2b2;
-      --danger: #ff8f8f;
-      --max: 1240px;
+      --bg: #f6f7f8;
+      --bg-soft: #fbfbfc;
+      --surface: rgba(255,255,255,0.72);
+      --surface-strong: rgba(255,255,255,0.9);
+      --ink: #1e2329;
+      --ink-soft: #5c6672;
+      --ink-dim: #7c8693;
+      --line: rgba(30,35,41,0.10);
+      --line-strong: rgba(30,35,41,0.16);
+      --accent: #3b82f6;
+      --accent-soft: #dbeafe;
+      --accent-strong: #1d4ed8;
+      --max: 1220px;
       --radius: 22px;
       --radius-sm: 14px;
-      --shadow: 0 30px 80px rgba(0,0,0,0.35);
-      --step--1: clamp(.94rem, .92rem + .15vw, 1rem);
-      --step-0: clamp(1rem, .96rem + .35vw, 1.12rem);
-      --step-1: clamp(1.25rem, 1.1rem + .8vw, 1.55rem);
-      --step-2: clamp(1.7rem, 1.35rem + 1.7vw, 2.35rem);
-      --step-3: clamp(2.5rem, 2rem + 2.8vw, 4rem);
-      --step-4: clamp(3.2rem, 2.6rem + 4.4vw, 5.6rem);
+      --shadow-soft: 0 14px 40px rgba(19, 28, 38, 0.06);
+      --shadow-med: 0 26px 70px rgba(19, 28, 38, 0.08);
+      --step--1: clamp(.95rem, .92rem + .16vw, 1rem);
+      --step-0: clamp(1rem, .96rem + .3vw, 1.1rem);
+      --step-1: clamp(1.18rem, 1.08rem + .72vw, 1.5rem);
+      --step-2: clamp(1.7rem, 1.36rem + 1.5vw, 2.35rem);
+      --step-3: clamp(2.45rem, 2rem + 2.6vw, 4rem);
+      --step-4: clamp(3.2rem, 2.7rem + 3.8vw, 5rem);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -90,9 +85,9 @@
       line-height: 1.65;
       color: var(--ink);
       background:
-        radial-gradient(circle at 15% 20%, rgba(78,161,255,0.09), transparent 0 30%),
-        radial-gradient(circle at 85% 12%, rgba(136,199,255,0.08), transparent 0 26%),
-        linear-gradient(180deg, #090b0e 0%, #0d1117 100%);
+        radial-gradient(circle at 12% 16%, rgba(59,130,246,0.10), transparent 0 28%),
+        radial-gradient(circle at 88% 10%, rgba(59,130,246,0.08), transparent 0 24%),
+        linear-gradient(180deg, #fbfbfc 0%, #f4f6f8 100%);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -129,33 +124,30 @@
       isolation: isolate;
     }
 
-    .texture {
+    .fabric {
       position: fixed;
       inset: 0;
       z-index: -3;
       pointer-events: none;
-      opacity: .18;
+      opacity: .08;
       background-image:
-        linear-gradient(135deg, rgba(255,255,255,0.22) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(255,255,255,0.15) 25%, transparent 25%),
-        linear-gradient(45deg, rgba(255,255,255,0.12) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(255,255,255,0.18) 25%, transparent 25%);
+        linear-gradient(135deg, rgba(30,35,41,0.16) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(30,35,41,0.12) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(30,35,41,0.08) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(30,35,41,0.10) 25%, transparent 25%);
       background-size: 20px 20px;
-      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0;
     }
 
-    .noise {
+    .glow-field {
       position: fixed;
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      opacity: .06;
-      background-image:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18) 0 1px, transparent 1px),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,.14) 0 1px, transparent 1px),
-        radial-gradient(circle at 40% 80%, rgba(255,255,255,.18) 0 1px, transparent 1px);
-      background-size: 28px 28px, 34px 34px, 26px 26px;
-      mix-blend-mode: screen;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(59,130,246,.08), transparent 0 22%),
+        radial-gradient(circle at 76% 64%, rgba(59,130,246,.06), transparent 0 20%);
+      filter: blur(22px);
     }
 
     .mesh-canvas {
@@ -163,11 +155,11 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: .55;
+      opacity: .48;
     }
 
     .container {
-      width: min(calc(100% - 32px), var(--max));
+      width: min(calc(100% - 36px), var(--max));
       margin: 0 auto;
     }
 
@@ -175,9 +167,9 @@
       position: sticky;
       top: 0;
       z-index: 80;
-      backdrop-filter: blur(18px) saturate(140%);
-      background: linear-gradient(180deg, rgba(9, 11, 14, 0.92), rgba(9, 11, 14, 0.72));
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(246,247,248,.78);
+      backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid rgba(30,35,41,0.06);
     }
 
     .header-inner {
@@ -185,24 +177,13 @@
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 20px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
+      gap: 18px;
     }
 
     .brand img {
-      height: 58px;
+      height: 60px;
       width: auto;
       object-fit: contain;
-    }
-
-    .brand-mark {
-      display: none;
     }
 
     nav.main-nav {
@@ -212,30 +193,30 @@
     .main-nav ul {
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 6px;
       list-style: none;
       margin: 0;
       padding: 0;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     .main-nav a {
       display: inline-flex;
       align-items: center;
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: 999px;
+      min-height: 40px;
+      padding: 0 12px;
       color: var(--ink-soft);
       font-weight: 600;
       letter-spacing: .01em;
-      transition: color .2s ease, background .2s ease, transform .2s ease;
+      border-bottom: 2px solid transparent;
+      transition: color .2s ease, border-color .2s ease;
     }
 
     .main-nav a:hover,
     .main-nav a.active {
       color: var(--ink);
-      background: rgba(255,255,255,0.06);
+      border-color: var(--accent);
     }
 
     .header-actions {
@@ -248,42 +229,47 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      border: 1px solid transparent;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
       font-weight: 700;
       letter-spacing: .01em;
-      transition: transform .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease, color .22s ease;
+      transition: color .22s ease, border-color .22s ease, background .22s ease, transform .22s ease;
       cursor: pointer;
+      box-shadow: none;
     }
 
     .button:hover {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
     }
 
     .button-primary {
-      color: #06111f;
-      background: linear-gradient(180deg, var(--accent-2), var(--accent));
-      box-shadow: 0 12px 34px rgba(78,161,255,0.28);
+      background: rgba(59,130,246,0.08);
+      border-color: rgba(59,130,246,0.18);
+      color: var(--accent-strong);
+    }
+
+    .button-primary:hover {
+      background: rgba(59,130,246,0.12);
+      border-color: rgba(59,130,246,0.24);
     }
 
     .button-secondary {
-      color: var(--ink);
-      border-color: rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.42);
     }
 
     .mobile-toggle {
       display: none;
-      position: relative;
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      cursor: pointer;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.48);
       color: var(--ink);
+      cursor: pointer;
+      position: relative;
     }
 
     .mobile-toggle span,
@@ -294,23 +280,14 @@
       width: 20px;
       height: 2px;
       background: currentColor;
-      border-radius: 2px;
       transform: translateX(-50%);
       content: "";
-      transition: transform .25s ease, opacity .25s ease;
+      transition: transform .24s ease, opacity .24s ease;
     }
 
-    .mobile-toggle span {
-      top: 23px;
-    }
-
-    .mobile-toggle span::before {
-      top: -7px;
-    }
-
-    .mobile-toggle span::after {
-      top: 7px;
-    }
+    .mobile-toggle span { top: 22px; }
+    .mobile-toggle span::before { top: -7px; }
+    .mobile-toggle span::after { top: 7px; }
 
     body.menu-open .mobile-toggle span {
       background: transparent;
@@ -327,41 +304,32 @@
     .mobile-panel {
       display: none;
       position: fixed;
-      inset: 84px 16px auto 16px;
+      inset: 84px 18px auto 18px;
       z-index: 75;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      background:
-        linear-gradient(180deg, rgba(14,18,24,.98), rgba(14,18,24,.95)),
-        linear-gradient(135deg, rgba(255,255,255,0.22) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(255,255,255,0.16) 25%, transparent 25%),
-        linear-gradient(45deg, rgba(255,255,255,0.13) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(255,255,255,0.18) 25%, transparent 25%);
-      background-size: auto, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
-      background-position: 0 0, 0 0, 0 10px, 10px -10px, -10px 0;
-      box-shadow: var(--shadow);
+      padding: 14px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(30,35,41,0.08);
+      box-shadow: var(--shadow-med);
     }
 
     .mobile-panel nav {
       display: grid;
-      gap: 10px;
+      gap: 8px;
     }
 
     .mobile-panel a {
-      min-height: 48px;
+      min-height: 46px;
       display: flex;
       align-items: center;
-      border-radius: 14px;
-      padding: 0 14px;
-      font-weight: 700;
+      padding: 0 12px;
       color: var(--ink-soft);
-      background: rgba(255,255,255,0.03);
+      font-weight: 700;
+      background: rgba(59,130,246,0.04);
     }
 
     .mobile-panel a:hover {
       color: var(--ink);
-      background: rgba(255,255,255,0.06);
+      background: rgba(59,130,246,0.08);
     }
 
     body.menu-open .mobile-panel {
@@ -374,44 +342,31 @@
 
     section {
       position: relative;
-      padding: 110px 0;
+      padding: 108px 0;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--ink-soft);
+      display: inline-block;
+      color: var(--accent-strong);
       font-size: .95rem;
       font-weight: 700;
-      letter-spacing: .03em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(78,161,255,0.14);
+      border-bottom: 1px solid rgba(59,130,246,0.22);
+      padding-bottom: 6px;
     }
 
     .hero {
-      padding-top: 72px;
       min-height: calc(100svh - 84px);
       display: flex;
       align-items: center;
+      padding-top: 52px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
-      gap: clamp(30px, 5vw, 74px);
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+      gap: clamp(34px, 5vw, 76px);
       align-items: center;
     }
 
@@ -420,265 +375,247 @@
       font-family: "Playfair Display SC", serif;
       font-weight: 900;
       font-size: var(--step-4);
-      line-height: .96;
+      line-height: .98;
       letter-spacing: -.02em;
       text-wrap: balance;
     }
 
     .hero-copy h1 span {
       display: block;
-      color: var(--accent-2);
-      text-shadow: 0 0 40px rgba(136,199,255,.18);
+      color: var(--accent-strong);
     }
 
     .hero-copy p {
       max-width: 62ch;
-      margin: 0 0 28px;
+      margin: 0 0 26px;
       color: var(--ink-soft);
-      font-size: clamp(1.05rem, 1rem + .5vw, 1.24rem);
+      font-size: clamp(1.05rem, 1rem + .44vw, 1.2rem);
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 30px;
+      margin-bottom: 26px;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
     }
 
     .hero-meta-item {
-      min-height: 54px;
+      min-height: 52px;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 0 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.5);
       color: var(--ink-soft);
     }
 
     .hero-meta-item strong {
-      color: var(--ink);
       display: block;
+      color: var(--ink);
       line-height: 1.1;
     }
 
-    .hero-lab {
+    .hero-panel {
       position: relative;
     }
 
     .panel {
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(16,20,26,.92), rgba(10,13,17,.94));
-      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.7));
+      border: 1px solid rgba(30,35,41,0.08);
+      box-shadow: var(--shadow-med);
       overflow: hidden;
     }
 
-    .lab-shell {
-      position: relative;
-      min-height: 560px;
+    .hero-window {
+      min-height: 570px;
     }
 
-    .lab-topbar {
+    .window-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 16px;
       padding: 16px 18px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(30,35,41,0.07);
+      background: rgba(255,255,255,0.48);
     }
 
-    .lab-dots {
+    .window-dots {
       display: flex;
       gap: 8px;
     }
 
-    .lab-dots span {
+    .window-dots span {
       width: 10px;
       height: 10px;
+      background: rgba(30,35,41,0.12);
       border-radius: 50%;
-      background: rgba(255,255,255,0.14);
     }
 
-    .lab-dots span:first-child { background: #ff7b7b; }
-    .lab-dots span:nth-child(2) { background: #ffd27b; }
-    .lab-dots span:nth-child(3) { background: #7df2b2; }
+    .window-dots span:first-child { background: #ffb4b4; }
+    .window-dots span:nth-child(2) { background: #ffe0a6; }
+    .window-dots span:nth-child(3) { background: #b9efca; }
 
-    .lab-label {
-      color: var(--ink-soft);
-      font-size: .94rem;
+    .window-label {
+      color: var(--ink-dim);
+      font-size: .9rem;
       font-weight: 700;
-      letter-spacing: .04em;
+      letter-spacing: .06em;
       text-transform: uppercase;
     }
 
-    .hero-console {
-      position: relative;
-      padding: 18px;
+    .hero-stage {
+      padding: 20px;
       display: grid;
-      gap: 16px;
+      gap: 18px;
     }
 
-    .hero-console-grid {
+    .preview-grid {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
+      gap: 18px;
     }
 
-    .signal-field {
-      position: relative;
-      min-height: 350px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
+    .preview-canvas {
+      min-height: 360px;
+      border: 1px solid rgba(30,35,41,0.08);
       background:
-        radial-gradient(circle at center, rgba(78,161,255,.14), transparent 0 42%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+        radial-gradient(circle at 50% 50%, rgba(59,130,246,0.10), transparent 0 42%),
+        linear-gradient(180deg, rgba(59,130,246,0.03), rgba(255,255,255,0.3));
+      position: relative;
       overflow: hidden;
-      cursor: crosshair;
     }
 
-    .signal-grid {
+    .preview-grid-lines {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size: 32px 32px;
-      mask-image: radial-gradient(circle at center, black 52%, transparent 100%);
+        linear-gradient(rgba(30,35,41,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,35,41,.05) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 58%, transparent 100%);
     }
 
-    .signal-node {
+    .float-chip {
       position: absolute;
-      width: 10px;
-      height: 10px;
-      margin: -5px 0 0 -5px;
-      border-radius: 50%;
-      background: rgba(136,199,255,.85);
-      box-shadow: 0 0 0 6px rgba(78,161,255,.08), 0 0 18px rgba(136,199,255,.24);
-      transition: transform .25s ease;
-    }
-
-    .signal-beam {
-      position: absolute;
-      inset: auto;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(136,199,255,.65), transparent);
-      transform-origin: left center;
-      opacity: .6;
-    }
-
-    .signal-ping {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(136,199,255,.55);
-      transform: translate(-50%, -50%);
-      animation: ping 1.8s ease-out forwards;
-      pointer-events: none;
-    }
-
-    @keyframes ping {
-      0% { width: 10px; height: 10px; opacity: .85; }
-      100% { width: 180px; height: 180px; opacity: 0; }
-    }
-
-    .lab-side {
-      display: grid;
-      gap: 16px;
-    }
-
-    .mini-card {
-      padding: 16px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .mini-card h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
+      min-height: 38px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(30,35,41,0.08);
       color: var(--ink);
-      text-transform: uppercase;
-      letter-spacing: .06em;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
     }
 
-    .metric-stack {
+    .float-chip:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59,130,246,0.2);
+      background: rgba(219,234,254,0.72);
+    }
+
+    .chip-1 { left: 8%; top: 14%; }
+    .chip-2 { left: 56%; top: 11%; }
+    .chip-3 { left: 20%; top: 54%; }
+    .chip-4 { left: 62%; top: 58%; }
+    .chip-5 { left: 34%; top: 30%; }
+    .chip-6 { left: 10%; top: 76%; }
+
+    .soft-orb {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: 18px;
+      bottom: 16px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(59,130,246,.34) 0 12%, rgba(59,130,246,.08) 34%, transparent 68%);
+      animation: orb 5s ease-in-out infinite;
+      opacity: .92;
+    }
+
+    @keyframes orb {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.05); }
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 18px;
+      border: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.54);
+    }
+
+    .info-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.02rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .readout {
       display: grid;
       gap: 12px;
     }
 
-    .metric {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.06);
+    .readout-row {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(30,35,41,0.07);
     }
 
-    .metric strong {
-      font-size: 1.04rem;
+    .readout-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .readout-row strong {
+      display: block;
       color: var(--ink);
+      font-size: 1.02rem;
     }
 
-    .metric span {
+    .readout-row span {
       color: var(--ink-soft);
     }
 
-    .meter {
-      position: relative;
-      height: 8px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.08);
-      margin-top: 8px;
-    }
-
-    .meter i {
-      display: block;
-      height: 100%;
-      width: 0;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      transition: width .8s ease;
-    }
-
-    .code-window {
+    .typing-lines {
       min-height: 158px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: .9rem;
-      color: #cfe7ff;
+      color: #36526f;
       white-space: pre-wrap;
     }
 
-    .code-line {
+    .typing-line {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       line-height: 1.7;
-      opacity: .92;
     }
 
-    .code-line em {
-      font-style: normal;
-      color: rgba(255,255,255,.35);
+    .typing-line em {
       width: 20px;
+      color: rgba(30,35,41,.28);
+      font-style: normal;
       text-align: right;
       flex: 0 0 auto;
     }
 
     .section-head {
       max-width: 780px;
-      margin-bottom: 38px;
+      margin-bottom: 36px;
     }
 
     .section-head h2 {
@@ -693,7 +630,7 @@
     .section-head p {
       margin: 0;
       color: var(--ink-soft);
-      font-size: clamp(1.04rem, 1rem + .36vw, 1.18rem);
+      font-size: clamp(1.03rem, 1rem + .34vw, 1.16rem);
     }
 
     .services-grid {
@@ -705,54 +642,39 @@
     .service-card {
       grid-column: span 4;
       padding: 22px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-      position: relative;
-      overflow: hidden;
-      transition: transform .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(30,35,41,0.08);
+      box-shadow: var(--shadow-soft);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
     }
 
     .service-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(136,199,255,.22);
-      box-shadow: 0 25px 60px rgba(0,0,0,.22);
-    }
-
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: -40% auto auto -20%;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(78,161,255,.16), transparent 70%);
-      pointer-events: none;
+      transform: translateY(-4px);
+      border-color: rgba(59,130,246,0.16);
+      box-shadow: 0 20px 50px rgba(19, 28, 38, 0.08);
+      background: rgba(255,255,255,0.8);
     }
 
     .service-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
-      margin-bottom: 18px;
-      color: var(--accent-2);
+      margin-bottom: 16px;
+      border: 1px solid rgba(59,130,246,0.14);
+      background: rgba(219,234,254,0.48);
+      color: var(--accent-strong);
       font-weight: 900;
-      font-size: 1.15rem;
     }
 
     .service-card h3 {
       margin: 0 0 10px;
-      font-size: 1.28rem;
+      font-size: 1.26rem;
       color: var(--ink);
     }
 
     .service-card p {
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: var(--ink-soft);
     }
 
@@ -766,7 +688,7 @@
 
     .service-card li {
       position: relative;
-      padding-left: 18px;
+      padding-left: 16px;
       color: var(--ink-soft);
     }
 
@@ -775,17 +697,15 @@
       position: absolute;
       left: 0;
       top: .58em;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+      width: 7px;
+      height: 7px;
       background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(78,161,255,.12);
     }
 
     .cred-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 22px;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 20px;
       align-items: stretch;
     }
 
@@ -793,33 +713,36 @@
     .stats-card,
     .process-card,
     .work-card,
-    .faq-card,
-    .cta-card {
+    .faq-wrap,
+    .cta-card,
+    .lab-card,
+    .quote-card {
       padding: 28px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-      box-shadow: 0 12px 36px rgba(0,0,0,.18);
-    }
-
-    .story-card p,
-    .process-card p,
-    .work-card p,
-    .faq-card p,
-    .cta-card p {
-      color: var(--ink-soft);
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(30,35,41,0.08);
+      box-shadow: var(--shadow-soft);
     }
 
     .story-card h3,
     .stats-card h3,
     .process-card h3,
     .work-card h3,
-    .faq-card h3,
+    .lab-card h3,
+    .faq-wrap h3,
     .cta-card h3 {
       margin: 0 0 14px;
       font-size: 1.35rem;
       color: var(--ink);
+    }
+
+    .story-card p,
+    .process-card p,
+    .work-card p,
+    .lab-card p,
+    .faq-wrap p,
+    .cta-card p,
+    .quote-card p {
+      color: var(--ink-soft);
     }
 
     .stats-grid {
@@ -831,14 +754,13 @@
 
     .stat {
       padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.54);
     }
 
     .stat strong {
       display: block;
-      font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.6rem);
+      font-size: clamp(1.8rem, 1.35rem + 1.8vw, 2.55rem);
       line-height: 1;
       color: var(--ink);
       margin-bottom: 8px;
@@ -858,21 +780,20 @@
     .process-step {
       position: relative;
       padding: 22px 18px 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.56);
       overflow: hidden;
     }
 
     .process-step::before {
       content: attr(data-step);
       position: absolute;
-      right: 14px;
+      right: 12px;
       top: 10px;
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       line-height: 1;
       font-weight: 900;
-      color: rgba(255,255,255,0.05);
+      color: rgba(30,35,41,0.05);
     }
 
     .process-step h4 {
@@ -887,6 +808,108 @@
       font-size: .98rem;
     }
 
+    .lab-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .fun-stage {
+      margin-top: 18px;
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(30,35,41,0.08);
+      background:
+        radial-gradient(circle at center, rgba(59,130,246,0.08), transparent 0 46%),
+        linear-gradient(180deg, rgba(255,255,255,0.4), rgba(219,234,254,0.16));
+      user-select: none;
+      touch-action: none;
+    }
+
+    .constellation-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      margin: -6px 0 0 -6px;
+      background: rgba(59,130,246,0.9);
+      box-shadow: 0 0 0 7px rgba(59,130,246,0.10);
+      transition: transform .25s ease, background .25s ease;
+    }
+
+    .constellation-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(59,130,246,0.02), rgba(59,130,246,0.34), rgba(59,130,246,0.02));
+      transform-origin: left center;
+      opacity: .66;
+    }
+
+    .trail-ring {
+      position: absolute;
+      border: 1px solid rgba(59,130,246,0.28);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: ripple 1.6s ease-out forwards;
+    }
+
+    @keyframes ripple {
+      0% { width: 10px; height: 10px; opacity: .8; }
+      100% { width: 180px; height: 180px; opacity: 0; }
+    }
+
+    .lab-readouts {
+      display: grid;
+      gap: 16px;
+    }
+
+    .lab-note {
+      padding: 18px;
+      border: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.56);
+    }
+
+    .lab-note small {
+      display: block;
+      margin-bottom: 8px;
+      font-size: .84rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    .lab-note strong {
+      display: block;
+      font-size: 1.3rem;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .lab-mini-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .lab-mini-list li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--ink-soft);
+    }
+
+    .lab-mini-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .6em;
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+    }
+
     .work-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -896,8 +919,6 @@
     .work-feature {
       grid-column: span 7;
       min-height: 420px;
-      position: relative;
-      overflow: hidden;
     }
 
     .work-side {
@@ -906,41 +927,38 @@
       gap: 18px;
     }
 
-    .work-feature-visual {
+    .work-preview {
       position: relative;
-      min-height: 230px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(78,161,255,.18), transparent 0 34%),
-        linear-gradient(145deg, #132030, #0f141b 60%);
-      overflow: hidden;
+      min-height: 220px;
       margin-bottom: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(30,35,41,0.08);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(59,130,246,0.12), transparent 0 32%),
+        linear-gradient(145deg, rgba(219,234,254,0.48), rgba(255,255,255,0.7));
     }
 
     .mock-window {
       position: absolute;
       inset: 22px 22px auto 22px;
       padding: 14px;
-      border-radius: 18px;
-      background: rgba(11, 16, 24, 0.92);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 25px 50px rgba(0,0,0,.22);
+      border: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.82);
+      box-shadow: var(--shadow-soft);
     }
 
     .mock-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      justify-content: space-between;
       gap: 10px;
+      margin-bottom: 14px;
     }
 
     .mock-bar {
       height: 8px;
       flex: 1;
-      border-radius: 999px;
-      background: rgba(255,255,255,.08);
+      background: rgba(30,35,41,0.08);
     }
 
     .mock-ui {
@@ -950,9 +968,8 @@
     }
 
     .mock-ui > div {
-      border-radius: 12px;
-      background: rgba(255,255,255,.05);
       min-height: 88px;
+      background: rgba(59,130,246,0.07);
       position: relative;
       overflow: hidden;
     }
@@ -960,40 +977,18 @@
     .mock-ui > div::before {
       content: "";
       position: absolute;
-      inset: 14px;
-      border-radius: 10px;
-      background:
-        linear-gradient(180deg, rgba(136,199,255,.14), rgba(136,199,255,.03));
+      inset: 12px;
+      background: linear-gradient(180deg, rgba(59,130,246,0.12), rgba(59,130,246,0.03));
     }
 
-    .pulse-orb {
+    .float-sheen {
       position: absolute;
       right: 18px;
       bottom: 18px;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(136,199,255,.9) 0 6%, rgba(78,161,255,.18) 30%, transparent 65%);
-      animation: orb 4s ease-in-out infinite;
-      opacity: .9;
-    }
-
-    @keyframes orb {
-      0%,100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-10px) scale(1.06); }
-    }
-
-    .work-feature .button,
-    .work-side .button {
-      margin-top: 8px;
-    }
-
-    .quote-card {
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.03);
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(59,130,246,0.22), transparent 68%);
+      animation: orb 5s ease-in-out infinite;
     }
 
     .quote-card strong {
@@ -1003,107 +998,9 @@
     }
 
     .quote-card span {
-      color: var(--ink-dim);
       display: block;
       margin-bottom: 10px;
-    }
-
-    .lab-band {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .mini-demo-card {
-      padding: 26px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-    }
-
-    .demo-stage {
-      margin-top: 18px;
-      min-height: 320px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.08);
-      background:
-        radial-gradient(circle at center, rgba(78,161,255,.12), transparent 0 42%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      position: relative;
-      overflow: hidden;
-      user-select: none;
-      touch-action: none;
-    }
-
-    .gear-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 2px dashed rgba(136,199,255,.5);
-      animation: spin 20s linear infinite;
-    }
-
-    .gear-ring.reverse {
-      animation-direction: reverse;
-      animation-duration: 15s;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .draggable-core {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 96px;
-      height: 96px;
-      margin: -48px 0 0 -48px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(circle at 32% 32%, rgba(255,255,255,.18), rgba(255,255,255,.03) 60%),
-        linear-gradient(180deg, #182233, #101722);
-      box-shadow: 0 0 0 18px rgba(78,161,255,.05), 0 18px 40px rgba(0,0,0,.24);
-      display: grid;
-      place-items: center;
-      color: var(--accent-2);
-      font-weight: 900;
-      cursor: grab;
-    }
-
-    .draggable-core:active {
-      cursor: grabbing;
-    }
-
-    .demo-readout {
-      display: grid;
-      gap: 12px;
-      align-content: start;
-    }
-
-    .readout-block {
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-    }
-
-    .readout-block small {
-      display: block;
-      margin-bottom: 6px;
-      font-size: .86rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
       color: var(--ink-dim);
-    }
-
-    .readout-block strong {
-      display: block;
-      font-size: 1.45rem;
-      line-height: 1.1;
-      color: var(--ink);
     }
 
     .faq-grid {
@@ -1112,9 +1009,8 @@
     }
 
     .faq-item {
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.56);
       overflow: hidden;
     }
 
@@ -1134,7 +1030,7 @@
     }
 
     .faq-trigger span:last-child {
-      color: var(--accent-2);
+      color: var(--accent-strong);
       font-size: 1.3rem;
       line-height: 1;
       transition: transform .2s ease;
@@ -1159,19 +1055,8 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at top right, rgba(78,161,255,.16), transparent 0 36%),
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
-    }
-
-    .cta-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -30px -30px auto;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(78,161,255,.14), transparent 68%);
-      pointer-events: none;
+        radial-gradient(circle at top right, rgba(59,130,246,0.12), transparent 0 34%),
+        rgba(255,255,255,0.68);
     }
 
     .cta-actions {
@@ -1182,15 +1067,15 @@
     }
 
     footer.site-footer {
-      border-top: 1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.22);
-      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.62);
+      backdrop-filter: blur(8px);
     }
 
     .footer-inner {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 20px;
+      gap: 18px;
       align-items: center;
       padding: 22px 0 34px;
     }
@@ -1212,13 +1097,12 @@
     }
 
     .footer-links a {
-      min-height: 42px;
+      min-height: 40px;
       display: inline-flex;
       align-items: center;
-      padding: 0 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
+      padding: 0 12px;
+      border: 1px solid rgba(30,35,41,0.08);
+      background: rgba(255,255,255,0.42);
       color: var(--ink-soft);
       font-weight: 700;
     }
@@ -1244,11 +1128,11 @@
     @media (max-width: 1120px) {
       .hero-grid,
       .cred-grid,
-      .lab-band {
+      .lab-layout {
         grid-template-columns: 1fr;
       }
 
-      .hero-console-grid {
+      .preview-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1273,20 +1157,11 @@
       }
 
       .mobile-toggle {
-        display: inline-grid;
-        place-items: center;
-      }
-
-      .header-inner {
-        grid-template-columns: auto 1fr auto;
+        display: inline-block;
       }
 
       .brand img {
-        height: 54px;
-      }
-
-      .hero {
-        padding-top: 38px;
+        height: 56px;
       }
 
       .hero-copy h1 {
@@ -1296,7 +1171,7 @@
 
     @media (max-width: 720px) {
       section {
-        padding: 82px 0;
+        padding: 84px 0;
       }
 
       .container {
@@ -1325,20 +1200,13 @@
         justify-content: flex-start;
       }
 
-      .hero-console {
-        padding: 14px;
-      }
-
-      .lab-shell {
+      .hero-window {
         min-height: auto;
       }
 
-      .signal-field {
+      .preview-canvas,
+      .fun-stage {
         min-height: 280px;
-      }
-
-      .demo-stage {
-        min-height: 260px;
       }
     }
 
@@ -1360,7 +1228,7 @@
     "url": "https://www.neonforge.co.uk/",
     "logo": "https://www.neonforge.co.uk/assets/images/Neon-Forge-Logo.png",
     "image": "https://www.neonforge.co.uk/assets/images/Neon-Forge-Logo.png",
-    "description": "Neon Forge is a web design and development studio in Kendal, UK, creating high-performance websites, digital systems, branding, SEO-ready builds and polished online experiences for ambitious businesses.",
+    "description": "Neon Forge is a web design and development studio in Kendal, UK, creating refined websites, digital systems, branding and SEO-ready online experiences for ambitious businesses.",
     "email": "info@neonforge.co.uk",
     "priceRange": "£300+",
     "address": {
@@ -1410,7 +1278,7 @@
         "name":"How much does a small business website cost?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"Most simple static websites start from around £300 plus hosting, with pricing scaling according to scope, content, integrations and system complexity."
+          "text":"Most simple static websites start from around £300 plus hosting, with pricing scaling according to scope, content, integrations and overall system complexity."
         }
       },
       {
@@ -1426,7 +1294,7 @@
         "name":"Do you handle both design and development?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"Yes. Neon Forge delivers design direction, front-end build quality, technical structure and SEO-aware implementation as part of one joined-up process."
+          "text":"Yes. Neon Forge combines visual direction, front-end build quality, technical structure and SEO-aware implementation in one joined-up process."
         }
       }
     ]
@@ -1435,8 +1303,8 @@
 </head>
 <body>
   <div class="site-shell">
-    <div class="texture" aria-hidden="true"></div>
-    <div class="noise" aria-hidden="true"></div>
+    <div class="fabric" aria-hidden="true"></div>
+    <div class="glow-field" aria-hidden="true"></div>
     <canvas class="mesh-canvas" id="meshCanvas" aria-hidden="true"></canvas>
 
     <header class="site-header">
@@ -1484,10 +1352,10 @@
           <div class="hero-copy reveal visible">
             <div class="eyebrow">Web Design · Development · Digital Systems</div>
             <h1>
-              Intelligent websites.<span>Sharper systems.</span>
+              Intelligent websites.<span>Clearer presence.</span>
             </h1>
             <p>
-              Neon Forge creates polished, high-performance digital experiences for ambitious businesses. From fast-loading websites and landing pages to structured brand systems and custom-built tools, every project is engineered to look refined, behave beautifully and scale with confidence.
+              Neon Forge creates refined digital experiences for ambitious businesses. From fast, polished websites and landing pages to structured brand systems and custom-built tools, every project is shaped to feel established, capable and commercially sharp from the first interaction.
             </p>
 
             <div class="hero-actions">
@@ -1505,66 +1373,62 @@
               <div class="hero-meta-item">
                 <div>
                   <strong>From £300+</strong>
-                  <span>Clear entry points for small business builds.</span>
+                  <span>Clear entry point for small business builds.</span>
                 </div>
               </div>
               <div class="hero-meta-item">
                 <div>
                   <strong>Performance-first</strong>
-                  <span>Fast, SEO-aware, responsive and accessible.</span>
+                  <span>Fast, responsive, accessible and SEO-aware.</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="hero-lab reveal delay-2 visible" aria-label="Interactive studio preview">
-            <div class="panel lab-shell">
-              <div class="lab-topbar">
-                <div class="lab-dots" aria-hidden="true">
+          <div class="hero-panel reveal delay-2 visible" aria-label="Studio preview">
+            <div class="panel hero-window">
+              <div class="window-top">
+                <div class="window-dots" aria-hidden="true">
                   <span></span><span></span><span></span>
                 </div>
-                <div class="lab-label">Neon Forge Control Surface</div>
+                <div class="window-label">Neon Forge Studio Preview</div>
               </div>
 
-              <div class="hero-console">
-                <div class="hero-console-grid">
-                  <div class="signal-field" id="signalField" aria-label="Interactive signal field">
-                    <div class="signal-grid" aria-hidden="true"></div>
+              <div class="hero-stage">
+                <div class="preview-grid">
+                  <div class="preview-canvas" aria-label="Floating capability preview">
+                    <div class="preview-grid-lines" aria-hidden="true"></div>
+                    <span class="float-chip chip-1">Fast Loading</span>
+                    <span class="float-chip chip-2">Responsive Layouts</span>
+                    <span class="float-chip chip-3">Brand Systems</span>
+                    <span class="float-chip chip-4">SEO Ready</span>
+                    <span class="float-chip chip-5">Custom Features</span>
+                    <span class="float-chip chip-6">Clean UX</span>
+                    <div class="soft-orb" aria-hidden="true"></div>
                   </div>
 
-                  <div class="lab-side">
-                    <div class="mini-card">
-                      <h3>System Status</h3>
-                      <div class="metric-stack">
-                        <div class="metric">
-                          <div>
-                            <strong>Latency</strong>
-                            <span><span id="latencyValue">18</span> ms</span>
-                          </div>
+                  <div class="hero-side">
+                    <div class="info-card">
+                      <h3>Project Priorities</h3>
+                      <div class="readout">
+                        <div class="readout-row">
+                          <strong>Clarity first</strong>
+                          <span>Measured layouts and calm hierarchy.</span>
                         </div>
-                        <div class="meter"><i id="latencyMeter"></i></div>
-
-                        <div class="metric">
-                          <div>
-                            <strong>Render Integrity</strong>
-                            <span><span id="integrityValue">97</span>%</span>
-                          </div>
+                        <div class="readout-row">
+                          <strong>Performance built in</strong>
+                          <span>Lean code and strong behaviour across devices.</span>
                         </div>
-                        <div class="meter"><i id="integrityMeter"></i></div>
-
-                        <div class="metric">
-                          <div>
-                            <strong>Signal Match</strong>
-                            <span><span id="signalValue">88</span>%</span>
-                          </div>
+                        <div class="readout-row">
+                          <strong>Commercially useful</strong>
+                          <span>Presentation that supports trust and enquiry.</span>
                         </div>
-                        <div class="meter"><i id="signalMeter"></i></div>
                       </div>
                     </div>
 
-                    <div class="mini-card">
+                    <div class="info-card">
                       <h3>Build Stream</h3>
-                      <div class="code-window" id="codeWindow" aria-live="polite"></div>
+                      <div class="typing-lines" id="codeWindow" aria-live="polite"></div>
                     </div>
                   </div>
                 </div>
@@ -1578,9 +1442,9 @@
         <div class="container">
           <div class="section-head reveal">
             <div class="eyebrow">What we deliver</div>
-            <h2>Digital work that looks composed and performs under pressure.</h2>
+            <h2>Digital work that feels composed, polished and ready to be taken seriously.</h2>
             <p>
-              Every Neon Forge build is structured around clarity, speed, resilience and visual control. The outcome is simple: a website or digital system that feels established, capable and commercially sharp from the first interaction.
+              Every Neon Forge build is structured around clarity, speed, resilience and visual control. The outcome is simple: a website or digital system that feels settled, trustworthy and commercially focused from the first visit.
             </p>
           </div>
 
@@ -1589,11 +1453,11 @@
               <div class="service-icon">01</div>
               <h3>Web Design & UX</h3>
               <p>
-                Corporate-grade visual systems, sophisticated layouts and user journeys that feel measured, deliberate and easy to trust.
+                Sophisticated layouts, measured hierarchy and user journeys that feel calm, clear and easy to trust.
               </p>
               <ul>
                 <li>Homepage and landing page design</li>
-                <li>Interface direction and hierarchy</li>
+                <li>Interface structure and visual hierarchy</li>
                 <li>Responsive layout systems</li>
                 <li>Conversion-aware user flow</li>
               </ul>
@@ -1603,12 +1467,12 @@
               <div class="service-icon">02</div>
               <h3>Website Development</h3>
               <p>
-                Fast, robust builds with clean front-end execution, strong semantics and dependable behaviour across devices and screen sizes.
+                Fast, reliable builds with clean execution and strong behaviour across devices, browsers and screen sizes.
               </p>
               <ul>
                 <li>Static and custom website builds</li>
                 <li>Mobile-first implementation</li>
-                <li>Interaction and animation systems</li>
+                <li>Animation and interaction systems</li>
                 <li>Structured, maintainable code</li>
               </ul>
             </article>
@@ -1617,13 +1481,13 @@
               <div class="service-icon">03</div>
               <h3>Brand & Content Systems</h3>
               <p>
-                Cohesive visual identities and content structures that make businesses feel more established, more consistent and easier to recognise.
+                Cohesive visual direction and content structure that make businesses feel more established and more recognisable.
               </p>
               <ul>
                 <li>Digital brand direction</li>
                 <li>Typography and layout language</li>
                 <li>On-page messaging structure</li>
-                <li>Cross-channel visual consistency</li>
+                <li>Cross-channel consistency</li>
               </ul>
             </article>
 
@@ -1631,7 +1495,7 @@
               <div class="service-icon">04</div>
               <h3>SEO-Ready Foundations</h3>
               <p>
-                Technical SEO best practice baked into the build from day one, so performance, crawlability and structure are not afterthoughts.
+                Technical SEO best practice built in from day one, so crawlability, metadata and structure are not afterthoughts.
               </p>
               <ul>
                 <li>Meta, canonical and schema setup</li>
@@ -1645,7 +1509,7 @@
               <div class="service-icon">05</div>
               <h3>Digital Tooling</h3>
               <p>
-                Lightweight systems and operational features that streamline real workflows and add capability beyond a standard brochure site.
+                Lightweight systems and operational features that add capability beyond a standard brochure site.
               </p>
               <ul>
                 <li>Interactive booking or admin features</li>
@@ -1659,7 +1523,7 @@
               <div class="service-icon">06</div>
               <h3>Launch & Continuity</h3>
               <p>
-                Calm, considered launches with enough technical discipline behind them to feel stable, mature and ready to be taken seriously.
+                Calm launches with enough technical discipline behind them to feel stable, mature and ready for growth.
               </p>
               <ul>
                 <li>Domain and deployment support</li>
@@ -1678,7 +1542,7 @@
             <div class="eyebrow">Capability</div>
             <h2>Built to communicate confidence before a single conversation begins.</h2>
             <p>
-              Strong websites do more than present information. They project credibility, sharpen a brand’s position and give visitors the sense that capable people are behind the screen.
+              Strong websites do more than present information. They sharpen a brand’s position, establish trust and give visitors the sense that capable people are behind the screen.
             </p>
           </div>
 
@@ -1697,7 +1561,7 @@
             </article>
 
             <aside class="stats-card reveal delay-2">
-              <h3>What good build quality should signal</h3>
+              <h3>What strong build quality should signal</h3>
               <div class="stats-grid">
                 <div class="stat">
                   <strong data-counter="100">0</strong>
@@ -1727,14 +1591,14 @@
             <div class="eyebrow">Process</div>
             <h2>Structured enough to stay sharp. Flexible enough to stay useful.</h2>
             <p>
-              The strongest projects move with control. Strategy, design, build and refinement are treated as connected stages, not disconnected tasks.
+              The strongest projects move with control. Strategy, design, build and refinement are treated as connected stages rather than disconnected tasks.
             </p>
           </div>
 
           <div class="process-grid">
             <article class="process-step reveal delay-1" data-step="01">
               <h4>Direction</h4>
-              <p>Clarify goals, audience, commercial purpose and the digital impression the site needs to create.</p>
+              <p>Clarify goals, audience, commercial purpose and the impression the site needs to create.</p>
             </article>
             <article class="process-step reveal delay-2" data-step="02">
               <h4>Structure</h4>
@@ -1742,7 +1606,7 @@
             </article>
             <article class="process-step reveal delay-3" data-step="03">
               <h4>Build</h4>
-              <p>Translate visual intent into clean front-end execution with responsiveness, performance and control.</p>
+              <p>Translate visual intent into clean execution with responsiveness, performance and control.</p>
             </article>
             <article class="process-step reveal delay-4" data-step="04">
               <h4>Refine</h4>
@@ -1756,43 +1620,40 @@
         <div class="container">
           <div class="section-head reveal">
             <div class="eyebrow">Studio Lab</div>
-            <h2>A site should do more than sit there.</h2>
+            <h2>A small interactive detail, because memorable sites invite curiosity.</h2>
             <p>
-              The best digital work often includes a mechanical edge — a small, intelligent detail that makes visitors look twice. This demo is deliberately subtle: drag the core and the system recalibrates around it.
+              This is a simple consumer-facing moment rather than a developer toy. Move across the field and draw the points together. Tap or click to create a ripple. It is light, clean and just interesting enough to make people stay a little longer.
             </p>
           </div>
 
-          <div class="lab-band">
-            <article class="mini-demo-card reveal delay-1">
-              <h3>Interactive calibration module</h3>
+          <div class="lab-layout">
+            <article class="lab-card reveal delay-1">
+              <h3>Constellation field</h3>
               <p>
-                This is the kind of restrained technical feature that adds personality without turning a serious website into a toy. Motion, feedback and visual systems are controlled tightly so the experience feels engineered rather than decorative.
+                Good interaction should feel intentional, not noisy. This kind of subtle feature adds life to a site without getting in the way of the message.
               </p>
 
-              <div class="demo-stage" id="demoStage" aria-label="Interactive calibration demo">
-                <div class="gear-ring" style="width: 300px; height: 300px; left: calc(50% - 150px); top: calc(50% - 150px);"></div>
-                <div class="gear-ring reverse" style="width: 220px; height: 220px; left: calc(50% - 110px); top: calc(50% - 110px);"></div>
-                <div class="gear-ring" style="width: 140px; height: 140px; left: calc(50% - 70px); top: calc(50% - 70px);"></div>
-                <div class="draggable-core" id="draggableCore" aria-label="Drag to recalibrate" tabindex="0">NF</div>
-              </div>
+              <div class="fun-stage" id="funStage" aria-label="Interactive constellation field"></div>
             </article>
 
-            <aside class="demo-readout reveal delay-2">
-              <div class="readout-block">
-                <small>Axis Offset</small>
-                <strong id="offsetReadout">0 px</strong>
+            <aside class="lab-readouts reveal delay-2">
+              <div class="lab-note">
+                <small>Interaction level</small>
+                <strong id="energyReadout">Calm</strong>
               </div>
-              <div class="readout-block">
-                <small>Stability</small>
-                <strong id="stabilityReadout">100%</strong>
+
+              <div class="lab-note">
+                <small>Cluster strength</small>
+                <strong id="clusterReadout">0%</strong>
               </div>
-              <div class="readout-block">
-                <small>Interpretation</small>
-                <strong id="modeReadout">Aligned</strong>
-              </div>
-              <div class="readout-block">
-                <small>Design Principle</small>
-                <strong>Controlled interaction over novelty.</strong>
+
+              <div class="lab-note">
+                <small>Why it works</small>
+                <ul class="lab-mini-list">
+                  <li>It rewards curiosity without distracting from the page.</li>
+                  <li>It gives the site a sense of craft and care.</li>
+                  <li>It feels refined rather than gimmicky.</li>
+                </ul>
               </div>
             </aside>
           </div>
@@ -1811,10 +1672,10 @@
 
           <div class="work-grid">
             <article class="work-card work-feature reveal delay-1">
-              <div class="work-feature-visual" aria-hidden="true">
+              <div class="work-preview" aria-hidden="true">
                 <div class="mock-window">
                   <div class="mock-top">
-                    <div class="lab-dots"><span></span><span></span><span></span></div>
+                    <div class="window-dots"><span></span><span></span><span></span></div>
                     <div class="mock-bar"></div>
                   </div>
                   <div class="mock-ui">
@@ -1822,7 +1683,7 @@
                     <div></div>
                   </div>
                 </div>
-                <div class="pulse-orb"></div>
+                <div class="float-sheen"></div>
               </div>
 
               <h3>Precision over placeholders</h3>
@@ -1931,7 +1792,7 @@
           <article class="cta-card reveal">
             <div class="section-head" style="margin-bottom: 0;">
               <div class="eyebrow">Start the conversation</div>
-              <h2>Ready to build something that feels sharper, cleaner and far more established?</h2>
+              <h2>Ready to build something sharper, clearer and far more established?</h2>
               <p>
                 Whether the requirement is a compact static website, a stronger digital identity, a higher-performance rebuild or a focused operational tool, Neon Forge is ready to shape the next step with clarity and technical control.
               </p>
@@ -2003,16 +1864,11 @@
       }
 
       toggle.addEventListener('click', function () {
-        if (document.body.classList.contains('menu-open')) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
+        if (document.body.classList.contains('menu-open')) closeMenu();
+        else openMenu();
       });
 
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
+      mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeMenu();
@@ -2060,6 +1916,7 @@
           el.textContent = Math.round(target * eased);
           if (progress < 1) requestAnimationFrame(tick);
         }
+
         requestAnimationFrame(tick);
       };
 
@@ -2070,142 +1927,28 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.4 });
+      }, { threshold: 0.45 });
 
       counters.forEach(counter => io.observe(counter));
     })();
 
     (function () {
-      const field = document.getElementById('signalField');
-      if (!field) return;
-
-      const bounds = () => field.getBoundingClientRect();
-      const seed = [
-        [18, 28],[36, 16],[58, 24],[77, 20],
-        [22, 52],[44, 44],[68, 52],[84, 46],
-        [16, 78],[40, 72],[60, 82],[78, 74]
+      const lines = [
+        'clarity.map("brand", "presence");',
+        'performance.tune({ responsive: true });',
+        'structure.apply("seo-ready");',
+        'experience.refine("clean interaction");',
+        'launch.prepare("measured confidence");',
+        'presence.build("lasting impression");'
       ];
 
-      const nodes = [];
-      const beams = [];
-      const fragment = document.createDocumentFragment();
-
-      seed.forEach((point) => {
-        const node = document.createElement('span');
-        node.className = 'signal-node';
-        node.style.left = point[0] + '%';
-        node.style.top = point[1] + '%';
-        fragment.appendChild(node);
-        nodes.push(node);
-      });
-
-      for (let i = 0; i < seed.length - 1; i++) {
-        const beam = document.createElement('span');
-        beam.className = 'signal-beam';
-        fragment.appendChild(beam);
-        beams.push(beam);
-      }
-
-      field.appendChild(fragment);
-
-      function positionBeams() {
-        const rect = bounds();
-        beams.forEach((beam, i) => {
-          const a = nodes[i].getBoundingClientRect();
-          const b = nodes[i + 1].getBoundingClientRect();
-          const ax = a.left + a.width / 2 - rect.left;
-          const ay = a.top + a.height / 2 - rect.top;
-          const bx = b.left + b.width / 2 - rect.left;
-          const by = b.top + b.height / 2 - rect.top;
-          const dx = bx - ax;
-          const dy = by - ay;
-          const len = Math.sqrt(dx * dx + dy * dy);
-
-          beam.style.width = len + 'px';
-          beam.style.left = ax + 'px';
-          beam.style.top = ay + 'px';
-          beam.style.transform = 'rotate(' + Math.atan2(dy, dx) + 'rad)';
-        });
-      }
-
-      positionBeams();
-      window.addEventListener('resize', positionBeams);
-
-      function updateNodes(clientX, clientY) {
-        const rect = bounds();
-        nodes.forEach((node, index) => {
-          const baseX = seed[index][0] / 100 * rect.width;
-          const baseY = seed[index][1] / 100 * rect.height;
-          const dx = clientX - rect.left - baseX;
-          const dy = clientY - rect.top - baseY;
-          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-          const pull = Math.max(0, 1 - dist / 240) * 18;
-          const offsetX = (dx / dist) * pull;
-          const offsetY = (dy / dist) * pull;
-          node.style.transform = 'translate(' + offsetX.toFixed(2) + 'px,' + offsetY.toFixed(2) + 'px) scale(' + (1 + pull / 48).toFixed(3) + ')';
-        });
-        positionBeams();
-      }
-
-      field.addEventListener('pointermove', (e) => updateNodes(e.clientX, e.clientY));
-      field.addEventListener('pointerleave', () => {
-        nodes.forEach(node => node.style.transform = '');
-        positionBeams();
-      });
-
-      field.addEventListener('pointerdown', (e) => {
-        const ping = document.createElement('span');
-        ping.className = 'signal-ping';
-        ping.style.left = (e.clientX - bounds().left) + 'px';
-        ping.style.top = (e.clientY - bounds().top) + 'px';
-        field.appendChild(ping);
-        setTimeout(() => ping.remove(), 1800);
-      });
-    })();
-
-    (function () {
-      const latencyValue = document.getElementById('latencyValue');
-      const integrityValue = document.getElementById('integrityValue');
-      const signalValue = document.getElementById('signalValue');
-      const latencyMeter = document.getElementById('latencyMeter');
-      const integrityMeter = document.getElementById('integrityMeter');
-      const signalMeter = document.getElementById('signalMeter');
-
-      function update() {
-        const latency = 14 + Math.floor(Math.random() * 11);
-        const integrity = 95 + Math.floor(Math.random() * 5);
-        const signal = 84 + Math.floor(Math.random() * 11);
-
-        latencyValue.textContent = latency;
-        integrityValue.textContent = integrity;
-        signalValue.textContent = signal;
-
-        latencyMeter.style.width = Math.min(100, 100 - latency + 10) + '%';
-        integrityMeter.style.width = integrity + '%';
-        signalMeter.style.width = signal + '%';
-      }
-
-      update();
-      setInterval(update, 1600);
-    })();
-
-    (function () {
       const windowEl = document.getElementById('codeWindow');
       if (!windowEl) return;
-
-      const lines = [
-        'route.map("brand", clarity);',
-        'signal.performance(optimised);',
-        'schema.attach("ProfessionalService");',
-        'layout.refine({ responsive: true });',
-        'motion.balance({ subtle: true });',
-        'deploy.withConfidence();'
-      ];
-
       let index = 0;
+
       function drawLine() {
         const line = document.createElement('div');
-        line.className = 'code-line';
+        line.className = 'typing-line';
         line.innerHTML = '<em>' + String(index + 1).padStart(2, '0') + '</em><span>' + lines[index] + '</span>';
         windowEl.innerHTML = '';
         windowEl.appendChild(line);
@@ -2213,7 +1956,7 @@
       }
 
       drawLine();
-      setInterval(drawLine, 1400);
+      setInterval(drawLine, 1500);
     })();
 
     (function () {
@@ -2224,25 +1967,26 @@
       const pointer = { x: null, y: null };
 
       function resize() {
-        canvas.width = window.innerWidth * Math.min(window.devicePixelRatio || 1, 2);
-        canvas.height = window.innerHeight * Math.min(window.devicePixelRatio || 1, 2);
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = window.innerWidth * ratio;
+        canvas.height = window.innerHeight * ratio;
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
-        ctx.setTransform(1,0,0,1,0,0);
-        ctx.scale(canvas.width / window.innerWidth, canvas.height / window.innerHeight);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(ratio, ratio);
         seed();
       }
 
       function seed() {
         points.length = 0;
-        const spacing = Math.max(110, Math.min(window.innerWidth, window.innerHeight) / 6);
+        const spacing = Math.max(120, Math.min(window.innerWidth, window.innerHeight) / 6);
         for (let x = spacing * .5; x < window.innerWidth; x += spacing) {
           for (let y = spacing * .5; y < window.innerHeight; y += spacing) {
             points.push({
               x,
               y,
-              ox: x + (Math.random() * 20 - 10),
-              oy: y + (Math.random() * 20 - 10),
+              ox: x + (Math.random() * 18 - 9),
+              oy: y + (Math.random() * 18 - 9),
               vx: 0,
               vy: 0
             });
@@ -2257,15 +2001,15 @@
           const p = points[i];
           const dx0 = p.ox - p.x;
           const dy0 = p.oy - p.y;
-          p.vx += dx0 * 0.002;
-          p.vy += dy0 * 0.002;
+          p.vx += dx0 * 0.0018;
+          p.vy += dy0 * 0.0018;
 
           if (pointer.x !== null) {
             const dx = p.x - pointer.x;
             const dy = p.y - pointer.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 180) {
-              const force = (1 - dist / 180) * 0.07;
+            if (dist < 160) {
+              const force = (1 - dist / 160) * 0.06;
               p.vx += (dx / (dist || 1)) * force;
               p.vy += (dy / (dist || 1)) * force;
             }
@@ -2287,7 +2031,7 @@
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 170) {
               const alpha = (1 - dist / 170) * 0.12;
-              ctx.strokeStyle = 'rgba(120, 180, 255,' + alpha + ')';
+              ctx.strokeStyle = 'rgba(59,130,246,' + alpha + ')';
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
@@ -2297,9 +2041,9 @@
         }
 
         points.forEach(p => {
-          ctx.fillStyle = 'rgba(150, 205, 255, 0.35)';
+          ctx.fillStyle = 'rgba(59,130,246,0.28)';
           ctx.beginPath();
-          ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+          ctx.rect(p.x - 1.2, p.y - 1.2, 2.4, 2.4);
           ctx.fill();
         });
 
@@ -2325,8 +2069,10 @@
       faqItems.forEach(item => {
         const button = item.querySelector('.faq-trigger');
         const body = item.querySelector('.faq-body');
+
         button.addEventListener('click', () => {
           const isOpen = item.classList.contains('open');
+
           faqItems.forEach(other => {
             other.classList.remove('open');
             other.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
@@ -2343,77 +2089,122 @@
     })();
 
     (function () {
-      const stage = document.getElementById('demoStage');
-      const core = document.getElementById('draggableCore');
-      const offsetReadout = document.getElementById('offsetReadout');
-      const stabilityReadout = document.getElementById('stabilityReadout');
-      const modeReadout = document.getElementById('modeReadout');
+      const stage = document.getElementById('funStage');
+      const energyReadout = document.getElementById('energyReadout');
+      const clusterReadout = document.getElementById('clusterReadout');
+      if (!stage) return;
 
-      if (!stage || !core) return;
+      const seed = [
+        [16, 22],[35, 18],[56, 26],[78, 20],
+        [20, 46],[42, 40],[64, 50],[82, 44],
+        [18, 72],[38, 68],[58, 78],[76, 70]
+      ];
 
-      let dragging = false;
-      let offsetX = 0;
-      let offsetY = 0;
+      const dots = [];
+      const lines = [];
+      let activity = 0;
 
-      function clamp(value, min, max) {
-        return Math.min(max, Math.max(min, value));
-      }
+      const fragment = document.createDocumentFragment();
 
-      function applyPosition(x, y) {
-        const rect = stage.getBoundingClientRect();
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-        const maxX = rect.width * 0.24;
-        const maxY = rect.height * 0.24;
-        offsetX = clamp(x - cx, -maxX, maxX);
-        offsetY = clamp(y - cy, -maxY, maxY);
-
-        core.style.left = (cx + offsetX) + 'px';
-        core.style.top = (cy + offsetY) + 'px';
-
-        const distance = Math.round(Math.sqrt(offsetX * offsetX + offsetY * offsetY));
-        const stability = Math.max(0, 100 - Math.round(distance / 2));
-        let mode = 'Aligned';
-        if (distance > 95) mode = 'Adaptive';
-        if (distance > 155) mode = 'Exploratory';
-
-        offsetReadout.textContent = distance + ' px';
-        stabilityReadout.textContent = stability + '%';
-        modeReadout.textContent = mode;
-      }
-
-      function resetPosition() {
-        const rect = stage.getBoundingClientRect();
-        applyPosition(rect.width / 2, rect.height / 2);
-      }
-
-      function onPointerMove(e) {
-        if (!dragging) return;
-        const rect = stage.getBoundingClientRect();
-        applyPosition(e.clientX - rect.left, e.clientY - rect.top);
-      }
-
-      core.addEventListener('pointerdown', (e) => {
-        dragging = true;
-        core.setPointerCapture(e.pointerId);
+      seed.forEach((point) => {
+        const dot = document.createElement('span');
+        dot.className = 'constellation-dot';
+        dot.style.left = point[0] + '%';
+        dot.style.top = point[1] + '%';
+        fragment.appendChild(dot);
+        dots.push(dot);
       });
 
-      core.addEventListener('pointerup', () => dragging = false);
-      core.addEventListener('pointercancel', () => dragging = false);
-      stage.addEventListener('pointermove', onPointerMove);
-      window.addEventListener('resize', resetPosition);
+      for (let i = 0; i < seed.length - 1; i++) {
+        const line = document.createElement('span');
+        line.className = 'constellation-line';
+        fragment.appendChild(line);
+        lines.push(line);
+      }
 
-      core.addEventListener('keydown', (e) => {
-        const rect = stage.getBoundingClientRect();
-        const cx = rect.width / 2 + offsetX;
-        const cy = rect.height / 2 + offsetY;
-        if (e.key === 'ArrowLeft') applyPosition(cx - 16, cy);
-        if (e.key === 'ArrowRight') applyPosition(cx + 16, cy);
-        if (e.key === 'ArrowUp') applyPosition(cx, cy - 16);
-        if (e.key === 'ArrowDown') applyPosition(cx, cy + 16);
+      stage.appendChild(fragment);
+
+      function rect() {
+        return stage.getBoundingClientRect();
+      }
+
+      function positionLines() {
+        const r = rect();
+        lines.forEach((line, i) => {
+          const a = dots[i].getBoundingClientRect();
+          const b = dots[i + 1].getBoundingClientRect();
+          const ax = a.left + a.width / 2 - r.left;
+          const ay = a.top + a.height / 2 - r.top;
+          const bx = b.left + b.width / 2 - r.left;
+          const by = b.top + b.height / 2 - r.top;
+          const dx = bx - ax;
+          const dy = by - ay;
+          const len = Math.sqrt(dx * dx + dy * dy);
+
+          line.style.width = len + 'px';
+          line.style.left = ax + 'px';
+          line.style.top = ay + 'px';
+          line.style.transform = 'rotate(' + Math.atan2(dy, dx) + 'rad)';
+        });
+      }
+
+      function setReadouts(level) {
+        clusterReadout.textContent = Math.min(100, Math.round(level)) + '%';
+        if (level < 20) energyReadout.textContent = 'Calm';
+        else if (level < 45) energyReadout.textContent = 'Curious';
+        else if (level < 72) energyReadout.textContent = 'Engaged';
+        else energyReadout.textContent = 'Alive';
+      }
+
+      function updateDots(clientX, clientY) {
+        const r = rect();
+        let totalPull = 0;
+
+        dots.forEach((dot, index) => {
+          const baseX = seed[index][0] / 100 * r.width;
+          const baseY = seed[index][1] / 100 * r.height;
+          const dx = clientX - r.left - baseX;
+          const dy = clientY - r.top - baseY;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const pull = Math.max(0, 1 - dist / 230) * 22;
+          totalPull += pull;
+          const ox = (dx / dist) * pull;
+          const oy = (dy / dist) * pull;
+
+          dot.style.transform = 'translate(' + ox.toFixed(2) + 'px,' + oy.toFixed(2) + 'px) scale(' + (1 + pull / 42).toFixed(3) + ')';
+          if (pull > 8) dot.style.background = 'rgba(29,78,216,0.95)';
+          else dot.style.background = 'rgba(59,130,246,0.9)';
+        });
+
+        activity = totalPull / dots.length * 5;
+        setReadouts(activity);
+        positionLines();
+      }
+
+      stage.addEventListener('pointermove', (e) => updateDots(e.clientX, e.clientY));
+
+      stage.addEventListener('pointerleave', () => {
+        dots.forEach(dot => {
+          dot.style.transform = '';
+          dot.style.background = 'rgba(59,130,246,0.9)';
+        });
+        activity = 0;
+        setReadouts(activity);
+        positionLines();
       });
 
-      resetPosition();
+      stage.addEventListener('pointerdown', (e) => {
+        const ring = document.createElement('span');
+        ring.className = 'trail-ring';
+        ring.style.left = (e.clientX - rect().left) + 'px';
+        ring.style.top = (e.clientY - rect().top) + 'px';
+        stage.appendChild(ring);
+        setTimeout(() => ring.remove(), 1600);
+      });
+
+      window.addEventListener('resize', positionLines);
+      positionLines();
+      setReadouts(0);
     })();
   </script>
 </body>
