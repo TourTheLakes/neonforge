@@ -1,697 +1,2420 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LXF0WRP7CF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXF0WRP7CF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LXF0WRP7CF', {
+      cookie_domain: 'www.neonforge.co.uk'
+    });
+  </script>
 
-  gtag('config', 'G-LXF0WRP7CF', {
-    cookie_domain: 'www.neonforge.co.uk'
-  });
-</script>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Neon Forge — Web Design and Development Studio in Kendal, UK</title>
+  <title>Neon Forge | Web Design, Development & Digital Systems in Kendal, UK</title>
+  <meta name="description" content="Neon Forge is a web design and development studio in Kendal, UK, creating high-performance websites, digital systems, branding, SEO-ready builds and polished online experiences for ambitious businesses." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://www.neonforge.co.uk/" />
+  <meta name="theme-color" content="#0b0d10" />
 
-<meta name="description" content="Neon Forge is a small, focused web design and development studio based in Kendal, UK. We build clean, fast, and reliable websites for small businesses — from landing pages to full platforms — crafted with clarity, performance, and thoughtful design." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Neon Forge | Web Design, Development & Digital Systems in Kendal, UK" />
+  <meta property="og:description" content="High-performance websites, digital systems, branding and SEO-ready development for ambitious businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.neonforge.co.uk/" />
+  <meta property="og:site_name" content="Neon Forge" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://www.neonforge.co.uk/assets/images/social-preview.png" />
 
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Neon Forge | Web Design, Development & Digital Systems in Kendal, UK" />
+  <meta name="twitter:description" content="High-performance websites, digital systems, branding and SEO-ready development for ambitious businesses." />
+  <meta name="twitter:image" content="https://www.neonforge.co.uk/assets/images/social-preview.png" />
 
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-<link rel="canonical" href="https://www.neonforge.co.uk/" />
-<meta name="theme-color" content="#0B0D10" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/images/NF-Favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/NF-Favicon.png" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-<!-- ===== Open Graph (Facebook, LinkedIn, etc.) ===== -->
-<meta property="og:title" content="Neon Forge — Web Design & Development Studio in Kendal, UK" />
-<meta property="og:description" content="Thoughtful, accessible websites built for real people. From small business sites to custom platforms — crafted in Kendal, UK." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.neonforge.co.uk/" />
-<meta property="og:site_name" content="Neon Forge" />
-<meta property="og:locale" content="en_GB" />
-<meta property="og:image" content="https://www.neonforge.co.uk/assets/images/social-preview.png" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700;900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- ===== Twitter / X Card ===== -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Neon Forge — Web Design & Development Studio in Kendal, UK" />
-<meta name="twitter:description" content="Clean, fast, and reliable websites designed and built for small businesses in the UK." />
-<meta name="twitter:image" content="https://www.neonforge.co.uk/assets/images/social-preview.png" />
-
-<!-- ===== Favicon ===== -->
-<link rel="icon" type="image/png" sizes="512x512" href="assets/images/NF-Favicon.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="assets/images/NF-Favicon.png" />
-
-<!-- ===== Fonts ===== -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-/* ---------- ROOT VARIABLES ---------- */
-:root {
-  --bg: #F6F7F8;
-  --ink: #1E2329;
-  --muted: #6B7280;
-  --accent: #3B82F6;
-  --line: #E7E9ED;
-  --panel-bg: rgba(28,30,34,.95);
-  --panel-ink: #F1F5F9;
-
-  --step--1: clamp(.95rem, .9rem + .2vw, 1.02rem);
-  --step-0: clamp(1rem, .9rem + .4vw, 1.12rem);
-  --step-1: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
-  --step-2: clamp(2rem, 1.8rem + 2vw, 2.8rem);
-  --step-3: clamp(3rem, 2.5rem + 4vw, 4.4rem);
-}
-
-/* ---------- GLOBAL RESET ---------- */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* ---------- HTML / BODY ---------- */
-html, body {
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  font-size: var(--step-0);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-}
-
-/* ---------- SITE CONTAINER ---------- */
-.site {
-  transform: translateX(0);
-  transition: transform .45s cubic-bezier(.22, .61, .36, 1);
-  scroll-snap-type: y mandatory;
-  overflow-y: auto;
-  height: 100vh;
-}
-.menu-open .site {
-  transform: translateX(-min(380px, 80vw));
-}
-
-/* ---------- HERO TITLE GRAPHIC ---------- */
-.title-graphic {
-  display: block;
-  width: min(92vw, 1100px);
-  height: auto;
-  margin: 0 auto;
-}
-
-/* ---------- ACCESSIBILITY ---------- */
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-/* ---------- HEADER ---------- */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  height: 80px;
-  background: #ffffff;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.brand img {
-  height: 64px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-}
-
-/* ---------- HAMBURGER ---------- */
-.hamburger {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 1001;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.hamburger .lines {
-  position: relative;
-  width: 22px;
-  height: 2px;
-  background: var(--ink);
-  border-radius: 2px;
-  transition: transform .3s ease, background .2s ease;
-}
-
-.hamburger .lines::before,
-.hamburger .lines::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 22px;
-  height: 2px;
-  background: var(--ink);
-  border-radius: 2px;
-  transition: transform .3s ease, opacity .2s ease, background .2s ease;
-}
-
-.hamburger .lines::before { top: -7px; }
-.hamburger .lines::after { top: 7px; }
-
-.menu-open .hamburger .lines { background: transparent; }
-.menu-open .hamburger .lines::before {
-  transform: translateY(7px) rotate(45deg);
-}
-.menu-open .hamburger .lines::after {
-  transform: translateY(-7px) rotate(-45deg);
-}
-.menu-open .hamburger .lines::before,
-.menu-open .hamburger .lines::after {
-  background: var(--panel-ink);
-}
-
-/* ---------- SIDE PANEL ---------- */
-.side-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  z-index: 1000;
-  width: min(250px, 60vw);
-  color: var(--panel-ink);
-  transform: translateX(100%);
-  transition: transform .45s cubic-bezier(.22, .61, .36, 1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 40px;
-  backdrop-filter: saturate(130%) blur(8px);
-  border-left: 1px solid rgba(255,255,255,.06);
-
-  /* Background textile pattern */
-  background-color: var(--panel-bg);
-  background-image:
-    linear-gradient(135deg, rgba(255,255,255,0.35) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(255,255,255,0.55) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(255,255,255,0.65) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(255,255,255,0.45) 25%, transparent 25%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-  background-blend-mode: overlay;
-}
-.menu-open .side-panel { transform: translateX(0); }
-
-/* ---------- SIDE PANEL NAVIGATION ---------- */
-.panel-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.5rem;
-  text-align: left;
-}
-
-.panel-nav a {
-  color: var(--panel-ink);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.4rem;
-  letter-spacing: 0.03em;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 0% 1px;
-  transition: color .25s ease, background-size .25s ease;
-}
-.panel-nav a:hover {
-  color: #E0E8FF;
-  background-size: 100% 1px;
-}
-
-/* ---------- TYPOGRAPHY ---------- */
-h1, h2, h3, h4 {
-  font-family: "Playfair Display SC", serif;
-  font-weight: 900;
-  margin: 0 0 .8rem;
-  line-height: 1.08;
-  color: var(--ink);
-}
-h1 { font-size: var(--step-3); }
-h2 { font-size: var(--step-2); }
-h3 { font-size: var(--step-1); }
-
-p, li, a {
-  font-family: "Source Sans 3", system-ui, sans-serif;
-  font-size: var(--step-0);
-  color: var(--ink);
-}
-p {
-  margin: .6rem 0;
-  max-width: 70ch;
-}
-
-ul.services {
-  list-style: none;
-  padding: 0;
-  margin: 1.4rem 0 0;
-  display: grid;
-  gap: .75rem;
-}
-.services li {
-  padding-left: 1.2rem;
-  position: relative;
-}
-.services li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: .76rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: .75;
-}
-
-/* ---------- FOOTER ---------- */
-footer {
-  border-top: 1px solid var(--line);
-  text-align: center;
-  color: var(--muted);
-  padding: 18px 12px 28px;
-  font-size: var(--step--1);
-  background: #fff;
-
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-/* ---------- SECTIONS ---------- */
-section.flow {
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  background-color: #F6F7F8;
-  background-image:
-    linear-gradient(135deg, rgba(255,255,255,0.35) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(255,255,255,0.55) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(255,255,255,0.65) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(255,255,255,0.45) 25%, transparent 25%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  padding-bottom: 8vh;
-}
-
-.flow .wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-  padding: clamp(40px, 6vw, 80px) clamp(18px, 5vw, 40px);
-  display: grid;
-  grid-template-columns: 1fr min(820px, 100%) 1fr;
-}
-
-.flow .content {
-  grid-column: 2;
-  text-align: left;
-}
-
-/* ---------- HERO ---------- */
-.hero .content {
-  text-align: center;
-}
-
-.hero .title {
-  font-size: var(--step-3);
-  margin-bottom: .4rem;
-}
-
-.hero .subtitle {
-  font-size: var(--step-1);
-  color: var(--muted);
-  letter-spacing: .05em;
-}
-
-/* ---------- REVEAL ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.reveal-visible {
-  opacity: 1;
-  transform: none;
-}
-
-.anchor-offset {
-  scroll-margin-top: 74px;
-}
-
-/* ---------- HERO CENTERING ---------- */
-.hero .wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.hero .content {
-  grid-column: auto;
-  width: 100%;
-  max-width: 1100px;
-}
-
-.hero img {
-  display: block;
-  margin: 0 auto;
-  max-width: 90%;
-  height: auto;
-}
-</style> 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://www.neonforge.co.uk/#professionalservice",
-  "name": "Neon Forge",
-  "url": "https://www.neonforge.co.uk/",
-  "logo": "https://www.neonforge.co.uk/assets/images/Neon-Forge-Logo.png",
-  "image": "https://www.neonforge.co.uk/assets/images/Neon-Forge-Logo.png",
-  "description": "Neon Forge is a small, focused web design and development studio based in Kendal, UK. We specialise in building clean, fast, and reliable websites for small businesses — from simple landing pages to full-scale platforms. Our work is thoughtful, accessible, and built to grow with your business.",
-  "email": "info@neonforge.co.uk",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Kendal",
-    "addressRegion": "Cumbria",
-    "addressCountry": "GB"
-  },
-  "areaServed": {
-    "@type": "Place",
-    "name": "United Kingdom"
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "09:00",
-      "closes": "17:00"
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --bg-soft: #10141a;
+      --bg-panel: rgba(17, 22, 28, 0.88);
+      --surface: #131923;
+      --surface-2: #192231;
+      --surface-3: #0f1319;
+      --ink: #edf2f7;
+      --ink-soft: #b7c1cf;
+      --ink-dim: #8f99a7;
+      --line: rgba(255,255,255,0.09);
+      --line-strong: rgba(255,255,255,0.16);
+      --accent: #4ea1ff;
+      --accent-2: #88c7ff;
+      --accent-glow: rgba(78,161,255,0.24);
+      --success: #7df2b2;
+      --danger: #ff8f8f;
+      --max: 1240px;
+      --radius: 22px;
+      --radius-sm: 14px;
+      --shadow: 0 30px 80px rgba(0,0,0,0.35);
+      --step--1: clamp(.94rem, .92rem + .15vw, 1rem);
+      --step-0: clamp(1rem, .96rem + .35vw, 1.12rem);
+      --step-1: clamp(1.25rem, 1.1rem + .8vw, 1.55rem);
+      --step-2: clamp(1.7rem, 1.35rem + 1.7vw, 2.35rem);
+      --step-3: clamp(2.5rem, 2rem + 2.8vw, 4rem);
+      --step-4: clamp(3.2rem, 2.6rem + 4.4vw, 5.6rem);
     }
-  ],
-  "serviceType": [
-    "Website design and development",
-    "Custom static websites",
-    "Responsive and mobile-first websites",
-    "Small business website builds",
-    "Landing page design and deployment",
-    "Website hosting setup and support"
-  ],
-  "priceRange": "£300+"
-}
-</script>  
-  
-</head>  
 
-  <body>
+    *, *::before, *::after { box-sizing: border-box; }
 
-  <!-- ===== HAMBURGER BUTTON ===== -->
-  <button 
-    class="hamburger" 
-    aria-label="Open menu" 
-    aria-controls="side-panel" 
-    aria-expanded="false">
-    <span class="lines" aria-hidden="true"></span>
-  </button>
+    html {
+      scroll-behavior: smooth;
+    }
 
-  <!-- ===== SIDE PANEL NAVIGATION ===== -->
-  <aside 
-    id="side-panel" 
-    class="side-panel" 
-    role="navigation" 
-    aria-label="Site menu">
-    <nav class="panel-nav">
-      <a href="#intro">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#projects">Our Work</a>
-    </nav>
-  </aside>
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: var(--step-0);
+      line-height: 1.65;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(78,161,255,0.09), transparent 0 30%),
+        radial-gradient(circle at 85% 12%, rgba(136,199,255,0.08), transparent 0 26%),
+        linear-gradient(180deg, #090b0e 0%, #0d1117 100%);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-  <!-- ===== SITE WRAPPER ===== -->
-  <div class="site" id="site">
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-    <!-- ===== HEADER ===== -->
-    <header>
-      <div class="header-inner">
-        <div class="brand" aria-label="Neon Forge">
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .site-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .texture {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        linear-gradient(135deg, rgba(255,255,255,0.22) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(255,255,255,0.15) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(255,255,255,0.12) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(255,255,255,0.18) 25%, transparent 25%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: .06;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18) 0 1px, transparent 1px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.14) 0 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,.18) 0 1px, transparent 1px);
+      background-size: 28px 28px, 34px 34px, 26px 26px;
+      mix-blend-mode: screen;
+    }
+
+    .mesh-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .55;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      backdrop-filter: blur(18px) saturate(140%);
+      background: linear-gradient(180deg, rgba(9, 11, 14, 0.92), rgba(9, 11, 14, 0.72));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .header-inner {
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      height: 58px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-mark {
+      display: none;
+    }
+
+    nav.main-nav {
+      justify-self: center;
+    }
+
+    .main-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .main-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: var(--ink-soft);
+      font-weight: 600;
+      letter-spacing: .01em;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--ink);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: .01em;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease, color .22s ease;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #06111f;
+      background: linear-gradient(180deg, var(--accent-2), var(--accent));
+      box-shadow: 0 12px 34px rgba(78,161,255,0.28);
+    }
+
+    .button-secondary {
+      color: var(--ink);
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .mobile-toggle {
+      display: none;
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .mobile-toggle span,
+    .mobile-toggle span::before,
+    .mobile-toggle span::after {
+      position: absolute;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transform: translateX(-50%);
+      content: "";
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .mobile-toggle span {
+      top: 23px;
+    }
+
+    .mobile-toggle span::before {
+      top: -7px;
+    }
+
+    .mobile-toggle span::after {
+      top: 7px;
+    }
+
+    body.menu-open .mobile-toggle span {
+      background: transparent;
+    }
+
+    body.menu-open .mobile-toggle span::before {
+      transform: translateX(-50%) translateY(7px) rotate(45deg);
+    }
+
+    body.menu-open .mobile-toggle span::after {
+      transform: translateX(-50%) translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      display: none;
+      position: fixed;
+      inset: 84px 16px auto 16px;
+      z-index: 75;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(14,18,24,.98), rgba(14,18,24,.95)),
+        linear-gradient(135deg, rgba(255,255,255,0.22) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(255,255,255,0.16) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(255,255,255,0.13) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(255,255,255,0.18) 25%, transparent 25%);
+      background-size: auto, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
+      background-position: 0 0, 0 0, 0 10px, 10px -10px, -10px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-panel nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mobile-panel a {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      border-radius: 14px;
+      padding: 0 14px;
+      font-weight: 700;
+      color: var(--ink-soft);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .mobile-panel a:hover {
+      color: var(--ink);
+      background: rgba(255,255,255,0.06);
+    }
+
+    body.menu-open .mobile-panel {
+      display: block;
+    }
+
+    main {
+      position: relative;
+    }
+
+    section {
+      position: relative;
+      padding: 110px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--ink-soft);
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(78,161,255,0.14);
+    }
+
+    .hero {
+      padding-top: 72px;
+      min-height: calc(100svh - 84px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+      gap: clamp(30px, 5vw, 74px);
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      margin: 18px 0 16px;
+      font-family: "Playfair Display SC", serif;
+      font-weight: 900;
+      font-size: var(--step-4);
+      line-height: .96;
+      letter-spacing: -.02em;
+      text-wrap: balance;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+      color: var(--accent-2);
+      text-shadow: 0 0 40px rgba(136,199,255,.18);
+    }
+
+    .hero-copy p {
+      max-width: 62ch;
+      margin: 0 0 28px;
+      color: var(--ink-soft);
+      font-size: clamp(1.05rem, 1rem + .5vw, 1.24rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-meta-item {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--ink-soft);
+    }
+
+    .hero-meta-item strong {
+      color: var(--ink);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .hero-lab {
+      position: relative;
+    }
+
+    .panel {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(16,20,26,.92), rgba(10,13,17,.94));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .lab-shell {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .lab-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .lab-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lab-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+    }
+
+    .lab-dots span:first-child { background: #ff7b7b; }
+    .lab-dots span:nth-child(2) { background: #ffd27b; }
+    .lab-dots span:nth-child(3) { background: #7df2b2; }
+
+    .lab-label {
+      color: var(--ink-soft);
+      font-size: .94rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .hero-console {
+      position: relative;
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-console-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+    }
+
+    .signal-field {
+      position: relative;
+      min-height: 350px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at center, rgba(78,161,255,.14), transparent 0 42%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    .signal-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at center, black 52%, transparent 100%);
+    }
+
+    .signal-node {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      margin: -5px 0 0 -5px;
+      border-radius: 50%;
+      background: rgba(136,199,255,.85);
+      box-shadow: 0 0 0 6px rgba(78,161,255,.08), 0 0 18px rgba(136,199,255,.24);
+      transition: transform .25s ease;
+    }
+
+    .signal-beam {
+      position: absolute;
+      inset: auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(136,199,255,.65), transparent);
+      transform-origin: left center;
+      opacity: .6;
+    }
+
+    .signal-ping {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(136,199,255,.55);
+      transform: translate(-50%, -50%);
+      animation: ping 1.8s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes ping {
+      0% { width: 10px; height: 10px; opacity: .85; }
+      100% { width: 180px; height: 180px; opacity: 0; }
+    }
+
+    .lab-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .mini-card {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .mini-card h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .metric-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .metric {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .metric strong {
+      font-size: 1.04rem;
+      color: var(--ink);
+    }
+
+    .metric span {
+      color: var(--ink-soft);
+    }
+
+    .meter {
+      position: relative;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+      margin-top: 8px;
+    }
+
+    .meter i {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .8s ease;
+    }
+
+    .code-window {
+      min-height: 158px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .9rem;
+      color: #cfe7ff;
+      white-space: pre-wrap;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 16px;
+      line-height: 1.7;
+      opacity: .92;
+    }
+
+    .code-line em {
+      font-style: normal;
+      color: rgba(255,255,255,.35);
+      width: 20px;
+      text-align: right;
+      flex: 0 0 auto;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 38px;
+    }
+
+    .section-head h2 {
+      margin: 16px 0 12px;
+      font-size: var(--step-3);
+      line-height: 1;
+      font-family: "Playfair Display SC", serif;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: clamp(1.04rem, 1rem + .36vw, 1.18rem);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      grid-column: span 4;
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      position: relative;
+      overflow: hidden;
+      transition: transform .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(136,199,255,.22);
+      box-shadow: 0 25px 60px rgba(0,0,0,.22);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -20%;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(78,161,255,.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 18px;
+      color: var(--accent-2);
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+
+    .service-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.28rem;
+      color: var(--ink);
+    }
+
+    .service-card p {
+      margin: 0 0 18px;
+      color: var(--ink-soft);
+    }
+
+    .service-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .service-card li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--ink-soft);
+    }
+
+    .service-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .58em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(78,161,255,.12);
+    }
+
+    .cred-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .story-card,
+    .stats-card,
+    .process-card,
+    .work-card,
+    .faq-card,
+    .cta-card {
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
+      box-shadow: 0 12px 36px rgba(0,0,0,.18);
+    }
+
+    .story-card p,
+    .process-card p,
+    .work-card p,
+    .faq-card p,
+    .cta-card p {
+      color: var(--ink-soft);
+    }
+
+    .story-card h3,
+    .stats-card h3,
+    .process-card h3,
+    .work-card h3,
+    .faq-card h3,
+    .cta-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.35rem;
+      color: var(--ink);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.6rem);
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .process-step {
+      position: relative;
+      padding: 22px 18px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .process-step::before {
+      content: attr(data-step);
+      position: absolute;
+      right: 14px;
+      top: 10px;
+      font-size: 2.6rem;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(255,255,255,0.05);
+    }
+
+    .process-step h4 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      color: var(--ink);
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: .98rem;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .work-feature {
+      grid-column: span 7;
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-side {
+      grid-column: span 5;
+      display: grid;
+      gap: 18px;
+    }
+
+    .work-feature-visual {
+      position: relative;
+      min-height: 230px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(78,161,255,.18), transparent 0 34%),
+        linear-gradient(145deg, #132030, #0f141b 60%);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .mock-window {
+      position: absolute;
+      inset: 22px 22px auto 22px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(11, 16, 24, 0.92);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 25px 50px rgba(0,0,0,.22);
+    }
+
+    .mock-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .mock-bar {
+      height: 8px;
+      flex: 1;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .mock-ui {
+      display: grid;
+      grid-template-columns: 1fr 110px;
+      gap: 12px;
+    }
+
+    .mock-ui > div {
+      border-radius: 12px;
+      background: rgba(255,255,255,.05);
+      min-height: 88px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock-ui > div::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(136,199,255,.14), rgba(136,199,255,.03));
+    }
+
+    .pulse-orb {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(136,199,255,.9) 0 6%, rgba(78,161,255,.18) 30%, transparent 65%);
+      animation: orb 4s ease-in-out infinite;
+      opacity: .9;
+    }
+
+    @keyframes orb {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-10px) scale(1.06); }
+    }
+
+    .work-feature .button,
+    .work-side .button {
+      margin-top: 8px;
+    }
+
+    .quote-card {
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .quote-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .quote-card span {
+      color: var(--ink-dim);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .lab-band {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .mini-demo-card {
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
+    }
+
+    .demo-stage {
+      margin-top: 18px;
+      min-height: 320px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at center, rgba(78,161,255,.12), transparent 0 42%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .gear-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px dashed rgba(136,199,255,.5);
+      animation: spin 20s linear infinite;
+    }
+
+    .gear-ring.reverse {
+      animation-direction: reverse;
+      animation-duration: 15s;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .draggable-core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 96px;
+      height: 96px;
+      margin: -48px 0 0 -48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at 32% 32%, rgba(255,255,255,.18), rgba(255,255,255,.03) 60%),
+        linear-gradient(180deg, #182233, #101722);
+      box-shadow: 0 0 0 18px rgba(78,161,255,.05), 0 18px 40px rgba(0,0,0,.24);
+      display: grid;
+      place-items: center;
+      color: var(--accent-2);
+      font-weight: 900;
+      cursor: grab;
+    }
+
+    .draggable-core:active {
+      cursor: grabbing;
+    }
+
+    .demo-readout {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .readout-block {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+
+    .readout-block small {
+      display: block;
+      margin-bottom: 6px;
+      font-size: .86rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    .readout-block strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      overflow: hidden;
+    }
+
+    .faq-trigger {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      color: var(--ink);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-trigger span:last-child {
+      color: var(--accent-2);
+      font-size: 1.3rem;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    .faq-item.open .faq-trigger span:last-child {
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .faq-body-inner {
+      padding: 0 20px 18px;
+      color: var(--ink-soft);
+    }
+
+    .cta-card {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(78,161,255,.16), transparent 0 36%),
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    }
+
+    .cta-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -30px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(78,161,255,.14), transparent 68%);
+      pointer-events: none;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    footer.site-footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 22px 0 34px;
+    }
+
+    .footer-copy {
+      color: var(--ink-dim);
+      font-size: .98rem;
+    }
+
+    .footer-copy strong {
+      color: var(--ink-soft);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--ink-soft);
+      font-weight: 700;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .delay-1 { transition-delay: .06s; }
+    .delay-2 { transition-delay: .12s; }
+    .delay-3 { transition-delay: .18s; }
+    .delay-4 { transition-delay: .24s; }
+    .delay-5 { transition-delay: .3s; }
+    .delay-6 { transition-delay: .36s; }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .cred-grid,
+      .lab-band {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-console-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        grid-column: span 6;
+      }
+
+      .work-feature,
+      .work-side {
+        grid-column: span 12;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 920px) {
+      nav.main-nav,
+      .header-actions .button {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .header-inner {
+        grid-template-columns: auto 1fr auto;
+      }
+
+      .brand img {
+        height: 54px;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .hero-copy h1 {
+        max-width: 12ch;
+      }
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 82px 0;
+      }
+
+      .container {
+        width: min(calc(100% - 22px), var(--max));
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        grid-column: span 12;
+      }
+
+      .stats-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+
+      .hero-console {
+        padding: 14px;
+      }
+
+      .lab-shell {
+        min-height: auto;
+      }
+
+      .signal-field {
+        min-height: 280px;
+      }
+
+      .demo-stage {
+        min-height: 260px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://www.neonforge.co.uk/#professionalservice",
+    "name": "Neon Forge",
+    "url": "https://www.neonforge.co.uk/",
+    "logo": "https://www.neonforge.co.uk/assets/images/Neon-Forge-Logo.png",
+    "image": "https://www.neonforge.co.uk/assets/images/Neon-Forge-Logo.png",
+    "description": "Neon Forge is a web design and development studio in Kendal, UK, creating high-performance websites, digital systems, branding, SEO-ready builds and polished online experiences for ambitious businesses.",
+    "email": "info@neonforge.co.uk",
+    "priceRange": "£300+",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kendal",
+      "addressRegion": "Cumbria",
+      "addressCountry": "GB"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Kingdom"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
+    "serviceType": [
+      "Web design",
+      "Website development",
+      "Brand systems",
+      "SEO-ready websites",
+      "Custom digital tools",
+      "Performance optimisation",
+      "Static websites",
+      "Landing page development"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"How much does a small business website cost?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Most simple static websites start from around £300 plus hosting, with pricing scaling according to scope, content, integrations and system complexity."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Do you only work with businesses in Kendal and Cumbria?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"No. Neon Forge is based in Kendal and works with businesses locally and across the UK."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Do you handle both design and development?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. Neon Forge delivers design direction, front-end build quality, technical structure and SEO-aware implementation as part of one joined-up process."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="site-shell">
+    <div class="texture" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+    <canvas class="mesh-canvas" id="meshCanvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Neon Forge home">
           <img src="assets/images/Neon-Forge-Logo.png" alt="Neon Forge Logo">
+        </a>
+
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#capability">Capability</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#lab">Studio Lab</a></li>
+            <li><a href="#work">Our Work</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a class="button button-secondary" href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a>
+          <a class="button button-primary" href="#contact">Start a Project</a>
+          <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+            <span></span>
+          </button>
         </div>
       </div>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section id="intro" class="flow hero anchor-offset">
-      <div class="wrap">
-        <div class="content">
-          <h1 class="visually-hidden">Neon Forge — Web Design and Development</h1>
-          <img
-            class="title-graphic reveal"
-            src="assets/images/Title-Graphic.png"
-            alt="Neon Forge — Web Design and Development">
+    <div class="mobile-panel" id="mobilePanel" hidden>
+      <nav aria-label="Mobile">
+        <a href="#services">Services</a>
+        <a href="#capability">Capability</a>
+        <a href="#process">Process</a>
+        <a href="#lab">Studio Lab</a>
+        <a href="#work">Our Work</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Start a Project</a>
+      </nav>
+    </div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal visible">
+            <div class="eyebrow">Web Design · Development · Digital Systems</div>
+            <h1>
+              Intelligent websites.<span>Sharper systems.</span>
+            </h1>
+            <p>
+              Neon Forge creates polished, high-performance digital experiences for ambitious businesses. From fast-loading websites and landing pages to structured brand systems and custom-built tools, every project is engineered to look refined, behave beautifully and scale with confidence.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact">Discuss a Project</a>
+              <a class="button button-secondary" href="#services">Explore Services</a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <div>
+                  <strong>Kendal, UK</strong>
+                  <span>Built locally. Delivered nationally.</span>
+                </div>
+              </div>
+              <div class="hero-meta-item">
+                <div>
+                  <strong>From £300+</strong>
+                  <span>Clear entry points for small business builds.</span>
+                </div>
+              </div>
+              <div class="hero-meta-item">
+                <div>
+                  <strong>Performance-first</strong>
+                  <span>Fast, SEO-aware, responsive and accessible.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-lab reveal delay-2 visible" aria-label="Interactive studio preview">
+            <div class="panel lab-shell">
+              <div class="lab-topbar">
+                <div class="lab-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="lab-label">Neon Forge Control Surface</div>
+              </div>
+
+              <div class="hero-console">
+                <div class="hero-console-grid">
+                  <div class="signal-field" id="signalField" aria-label="Interactive signal field">
+                    <div class="signal-grid" aria-hidden="true"></div>
+                  </div>
+
+                  <div class="lab-side">
+                    <div class="mini-card">
+                      <h3>System Status</h3>
+                      <div class="metric-stack">
+                        <div class="metric">
+                          <div>
+                            <strong>Latency</strong>
+                            <span><span id="latencyValue">18</span> ms</span>
+                          </div>
+                        </div>
+                        <div class="meter"><i id="latencyMeter"></i></div>
+
+                        <div class="metric">
+                          <div>
+                            <strong>Render Integrity</strong>
+                            <span><span id="integrityValue">97</span>%</span>
+                          </div>
+                        </div>
+                        <div class="meter"><i id="integrityMeter"></i></div>
+
+                        <div class="metric">
+                          <div>
+                            <strong>Signal Match</strong>
+                            <span><span id="signalValue">88</span>%</span>
+                          </div>
+                        </div>
+                        <div class="meter"><i id="signalMeter"></i></div>
+                      </div>
+                    </div>
+
+                    <div class="mini-card">
+                      <h3>Build Stream</h3>
+                      <div class="code-window" id="codeWindow" aria-live="polite"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="eyebrow">What we deliver</div>
+            <h2>Digital work that looks composed and performs under pressure.</h2>
+            <p>
+              Every Neon Forge build is structured around clarity, speed, resilience and visual control. The outcome is simple: a website or digital system that feels established, capable and commercially sharp from the first interaction.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card reveal delay-1">
+              <div class="service-icon">01</div>
+              <h3>Web Design & UX</h3>
+              <p>
+                Corporate-grade visual systems, sophisticated layouts and user journeys that feel measured, deliberate and easy to trust.
+              </p>
+              <ul>
+                <li>Homepage and landing page design</li>
+                <li>Interface direction and hierarchy</li>
+                <li>Responsive layout systems</li>
+                <li>Conversion-aware user flow</li>
+              </ul>
+            </article>
+
+            <article class="service-card reveal delay-2">
+              <div class="service-icon">02</div>
+              <h3>Website Development</h3>
+              <p>
+                Fast, robust builds with clean front-end execution, strong semantics and dependable behaviour across devices and screen sizes.
+              </p>
+              <ul>
+                <li>Static and custom website builds</li>
+                <li>Mobile-first implementation</li>
+                <li>Interaction and animation systems</li>
+                <li>Structured, maintainable code</li>
+              </ul>
+            </article>
+
+            <article class="service-card reveal delay-3">
+              <div class="service-icon">03</div>
+              <h3>Brand & Content Systems</h3>
+              <p>
+                Cohesive visual identities and content structures that make businesses feel more established, more consistent and easier to recognise.
+              </p>
+              <ul>
+                <li>Digital brand direction</li>
+                <li>Typography and layout language</li>
+                <li>On-page messaging structure</li>
+                <li>Cross-channel visual consistency</li>
+              </ul>
+            </article>
+
+            <article class="service-card reveal delay-4">
+              <div class="service-icon">04</div>
+              <h3>SEO-Ready Foundations</h3>
+              <p>
+                Technical SEO best practice baked into the build from day one, so performance, crawlability and structure are not afterthoughts.
+              </p>
+              <ul>
+                <li>Meta, canonical and schema setup</li>
+                <li>Search Console and Analytics alignment</li>
+                <li>Performance-conscious page structure</li>
+                <li>Semantic markup and indexing hygiene</li>
+              </ul>
+            </article>
+
+            <article class="service-card reveal delay-5">
+              <div class="service-icon">05</div>
+              <h3>Digital Tooling</h3>
+              <p>
+                Lightweight systems and operational features that streamline real workflows and add capability beyond a standard brochure site.
+              </p>
+              <ul>
+                <li>Interactive booking or admin features</li>
+                <li>Data-led UI components</li>
+                <li>Internal operational tools</li>
+                <li>Custom front-end interfaces</li>
+              </ul>
+            </article>
+
+            <article class="service-card reveal delay-6">
+              <div class="service-icon">06</div>
+              <h3>Launch & Continuity</h3>
+              <p>
+                Calm, considered launches with enough technical discipline behind them to feel stable, mature and ready to be taken seriously.
+              </p>
+              <ul>
+                <li>Domain and deployment support</li>
+                <li>404, robots and sitemap setup</li>
+                <li>Ongoing refinement and iteration</li>
+                <li>Clear handover and future direction</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="capability">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="eyebrow">Capability</div>
+            <h2>Built to communicate confidence before a single conversation begins.</h2>
+            <p>
+              Strong websites do more than present information. They project credibility, sharpen a brand’s position and give visitors the sense that capable people are behind the screen.
+            </p>
+          </div>
+
+          <div class="cred-grid">
+            <article class="story-card reveal delay-1">
+              <h3>Positioning through execution</h3>
+              <p>
+                Neon Forge approaches digital work with the assumption that presentation and engineering are inseparable. The strongest online presences are not loud by accident; they are carefully built, technically controlled and visually deliberate.
+              </p>
+              <p>
+                That means considered typography, measured animation, robust code structure, clear messaging hierarchy and a user experience that never feels improvised. The result is digital work that looks established because it has been built with discipline.
+              </p>
+              <p>
+                Based in Kendal, Neon Forge works with businesses that need more than something merely online. They need something coherent, credible and commercially useful.
+              </p>
+            </article>
+
+            <aside class="stats-card reveal delay-2">
+              <h3>What good build quality should signal</h3>
+              <div class="stats-grid">
+                <div class="stat">
+                  <strong data-counter="100">0</strong>
+                  <span>Responsive layouts by default</span>
+                </div>
+                <div class="stat">
+                  <strong data-counter="24">0</strong>
+                  <span>Hour monitoring mindset on critical behaviour</span>
+                </div>
+                <div class="stat">
+                  <strong data-counter="300">0</strong>
+                  <span>Entry point for simple static websites</span>
+                </div>
+                <div class="stat">
+                  <strong data-counter="1">0</strong>
+                  <span>Joined-up design and development thinking</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="eyebrow">Process</div>
+            <h2>Structured enough to stay sharp. Flexible enough to stay useful.</h2>
+            <p>
+              The strongest projects move with control. Strategy, design, build and refinement are treated as connected stages, not disconnected tasks.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-step reveal delay-1" data-step="01">
+              <h4>Direction</h4>
+              <p>Clarify goals, audience, commercial purpose and the digital impression the site needs to create.</p>
+            </article>
+            <article class="process-step reveal delay-2" data-step="02">
+              <h4>Structure</h4>
+              <p>Shape content, layout systems, hierarchy, technical requirements and interaction opportunities.</p>
+            </article>
+            <article class="process-step reveal delay-3" data-step="03">
+              <h4>Build</h4>
+              <p>Translate visual intent into clean front-end execution with responsiveness, performance and control.</p>
+            </article>
+            <article class="process-step reveal delay-4" data-step="04">
+              <h4>Refine</h4>
+              <p>Polish behaviour, validate structure, tighten presentation and prepare for confident deployment.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="lab">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="eyebrow">Studio Lab</div>
+            <h2>A site should do more than sit there.</h2>
+            <p>
+              The best digital work often includes a mechanical edge — a small, intelligent detail that makes visitors look twice. This demo is deliberately subtle: drag the core and the system recalibrates around it.
+            </p>
+          </div>
+
+          <div class="lab-band">
+            <article class="mini-demo-card reveal delay-1">
+              <h3>Interactive calibration module</h3>
+              <p>
+                This is the kind of restrained technical feature that adds personality without turning a serious website into a toy. Motion, feedback and visual systems are controlled tightly so the experience feels engineered rather than decorative.
+              </p>
+
+              <div class="demo-stage" id="demoStage" aria-label="Interactive calibration demo">
+                <div class="gear-ring" style="width: 300px; height: 300px; left: calc(50% - 150px); top: calc(50% - 150px);"></div>
+                <div class="gear-ring reverse" style="width: 220px; height: 220px; left: calc(50% - 110px); top: calc(50% - 110px);"></div>
+                <div class="gear-ring" style="width: 140px; height: 140px; left: calc(50% - 70px); top: calc(50% - 70px);"></div>
+                <div class="draggable-core" id="draggableCore" aria-label="Drag to recalibrate" tabindex="0">NF</div>
+              </div>
+            </article>
+
+            <aside class="demo-readout reveal delay-2">
+              <div class="readout-block">
+                <small>Axis Offset</small>
+                <strong id="offsetReadout">0 px</strong>
+              </div>
+              <div class="readout-block">
+                <small>Stability</small>
+                <strong id="stabilityReadout">100%</strong>
+              </div>
+              <div class="readout-block">
+                <small>Interpretation</small>
+                <strong id="modeReadout">Aligned</strong>
+              </div>
+              <div class="readout-block">
+                <small>Design Principle</small>
+                <strong>Controlled interaction over novelty.</strong>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="eyebrow">Our Work</div>
+            <h2>Growing the portfolio with the right projects, not just more projects.</h2>
+            <p>
+              Neon Forge is building a body of work defined by quality, not noise. Every project is treated as a reference point for what the studio stands for.
+            </p>
+          </div>
+
+          <div class="work-grid">
+            <article class="work-card work-feature reveal delay-1">
+              <div class="work-feature-visual" aria-hidden="true">
+                <div class="mock-window">
+                  <div class="mock-top">
+                    <div class="lab-dots"><span></span><span></span><span></span></div>
+                    <div class="mock-bar"></div>
+                  </div>
+                  <div class="mock-ui">
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+                <div class="pulse-orb"></div>
+              </div>
+
+              <h3>Precision over placeholders</h3>
+              <p>
+                The studio’s portfolio is being assembled deliberately. That means well-considered launches, cleaner systems, stronger presentation and the kind of digital work that reads as established from the outside.
+              </p>
+              <p>
+                Rather than filling space, Neon Forge is building toward a portfolio that demonstrates design intelligence, technical control and commercial understanding.
+              </p>
+              <a class="button button-secondary" href="#contact">Become part of the portfolio</a>
+            </article>
+
+            <div class="work-side">
+              <div class="quote-card reveal delay-2">
+                <strong>Website architecture with intent</strong>
+                <span>Not just pages. Not just visuals.</span>
+                <p>
+                  Every build is an opportunity to establish trust, sharpen positioning and create a digital presence that does more than simply exist.
+                </p>
+              </div>
+
+              <div class="quote-card reveal delay-3">
+                <strong>Corporate feel without the dead weight</strong>
+                <span>Lean execution. Serious presentation.</span>
+                <p>
+                  Neon Forge focuses on giving brands a polished, capable online presence without bloated systems or unnecessary complexity.
+                </p>
+              </div>
+
+              <div class="quote-card reveal delay-4">
+                <strong>Early-stage advantage</strong>
+                <span>Direct access. Focused delivery.</span>
+                <p>
+                  For businesses moving now, this is the stage where strong direction and close build quality can shape something distinctive from the start.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="eyebrow">FAQ</div>
+            <h2>Clear answers, because good projects usually start with practical questions.</h2>
+            <p>
+              A few of the common things businesses want to know before a conversation begins.
+            </p>
+          </div>
+
+          <div class="faq-grid">
+            <article class="faq-item reveal delay-1">
+              <button class="faq-trigger" type="button" aria-expanded="false">
+                <span>How much does a small business website cost?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  Most simple static websites start from around £300 plus hosting. Final pricing depends on scope, content volume, animation, integrations and whether additional systems are required.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal delay-2">
+              <button class="faq-trigger" type="button" aria-expanded="false">
+                <span>Do you only work with businesses in Kendal and Cumbria?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  No. Neon Forge is based in Kendal and works with businesses locally and across the UK. Geographic location matters for some projects, but good digital work travels well.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal delay-3">
+              <button class="faq-trigger" type="button" aria-expanded="false">
+                <span>Can you handle both design and development?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  Yes. Neon Forge approaches design and development as one connected discipline, so visual polish, structure, responsiveness and technical behaviour are aligned from the start.
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item reveal delay-4">
+              <button class="faq-trigger" type="button" aria-expanded="false">
+                <span>Will the site be ready for Google from launch?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  Launch builds are structured with technical SEO best practice in mind, including metadata, canonical setup, schema, sitemap and clean semantic markup where appropriate.
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <article class="cta-card reveal">
+            <div class="section-head" style="margin-bottom: 0;">
+              <div class="eyebrow">Start the conversation</div>
+              <h2>Ready to build something that feels sharper, cleaner and far more established?</h2>
+              <p>
+                Whether the requirement is a compact static website, a stronger digital identity, a higher-performance rebuild or a focused operational tool, Neon Forge is ready to shape the next step with clarity and technical control.
+              </p>
+              <p>
+                Send a brief outline, a rough idea or a current problem to solve. A considered response is always a good place to begin.
+              </p>
+            </div>
+
+            <div class="cta-actions">
+              <a class="button button-primary" href="mailto:info@neonforge.co.uk">Email info@neonforge.co.uk</a>
+              <a class="button button-secondary" href="#top">Back to top</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-copy">
+          <strong>Neon Forge</strong> · Web Design, Development & Digital Systems<br>
+          Kendal, Cumbria · Mon–Fri · 09:00–17:00 · © <span id="year"></span>
+        </div>
+
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#work">Our Work</a>
+          <a href="mailto:info@neonforge.co.uk">Contact</a>
         </div>
       </div>
-    </section>
-
-    <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="flow anchor-offset">
-      <div class="wrap">
-        <div class="content">
-          <h2 class="reveal">Who’s Behind Neon Forge?</h2>
-          <p class="reveal delay-1">
-            Neon Forge is a small, focused creative studio built on the strength of two minds. One designer and one coder, who decided in mid 2025 to swap the confines of office life for the freedom to build things our own way. Between us, we bring together a blend of creative expertise and technical know how. BA [Hons] in Graphic Design on one side, and coding experience on the other.<br><br>
-            That mix is at the heart of what we do. From crafting bold, memorable digital artwork to building websites that work as beautifully as they look, we cover every aspect of digital design and development with care, curiosity and a focus on getting the job done properly.<br><br>
-            We’re not here to make grand mission statements, we'd rather set ourselves clear goals to deliver thoughtful, effective, and well built digital work for people and businesses who need it.
-          </p>
-        </div>
-      </div>
-    </section>
-
-<!-- ===== SERVICES SECTION ===== -->
-<section id="services" class="flow anchor-offset">
-  <div class="wrap">
-    <div class="content">
-      <h2 class="reveal">Our Services</h2>
-
-      <p class="reveal delay-1">
-        We design and build websites that go beyond looks! Responsive, quick, and thoughtfully structured around how real people browse.
-        From simple landing pages to full scale platforms, our aim is always the same - clean, reliable performance that feels effortless to use.
-      </p>
-
-      <p class="reveal delay-2">
-        Identity and design systems sit at the heart of what we do. We create logos, typography, and visual languages that give brands clarity and cohesion.
-        The foundations for everything from websites and campaigns to printed materials and packaging.
-      </p>
-
-      <p class="reveal delay-3">
-        Digital artwork and campaign assets are another core part of our work. Whether it’s visuals for a launch, product imagery, or a complete set of marketing graphics, we build pieces that cut through noise and leave a lasting impression.
-      </p>
-
-      <p class="reveal delay-4">
-        We also bring brands into the physical world. Posters, signage, packaging and other printed materials are designed to work seamlessly alongside your digital presence, extending your story across every touchpoint.
-      </p>
-
-      <p class="reveal delay-5">
-        Behind the scenes, we focus on the details that help people find you. From SEO structure and semantic markup to speed optimisation, we fine tune sites so they perform well and rank naturally.
-      </p>
-
-      <p class="reveal delay-6">
-        And when you need something more bespoke, we build lightweight web tools and simple apps that solve specific problems, automating processes, streamlining workflows, and making day to day tasks easier.
-      <br>
-        <br>
-         <br>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT SECTION ===== -->
-<section id="contact" class="flow anchor-offset" aria-labelledby="contact-heading">
-  <div class="wrap">
-    <div class="content">
-      <h2 id="contact-heading" class="reveal">Let’s Build Something</h2>
-      <p class="contact-line reveal delay-1">
-        Every project starts with a conversation. Tell us a little about what you’re working on, an idea, a challenge, or even just a rough sketch and we’ll take it from there.  
-        <br><br>
-        Drop us a line at <a href="mailto:info@neonforge.co.uk">info@neonforge.co.uk</a> and we’ll get back to you with thoughts, options, and a clear next step.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PROJECTS SECTION ===== -->
-<section id="projects" class="flow anchor-offset" aria-labelledby="projects-heading">
-  <div class="wrap">
-    <div class="content">
-      <h2 id="projects-heading" class="reveal">Our Work</h2>
-
-      <p class="reveal delay-1">
-        Every project we take on is built with the same care and attention to detail with no rushed templates, no half measures. We’re deliberately growing our portfolio piece by piece, working closely with clients who value thoughtful design and considered development.
-      </p>
-
-      <p class="reveal delay-2">
-        As a young studio, we’re proud of the projects already underway and even more excited about the ones still to come. The space below will soon showcase the work we’re most proud of.
-      </p>
-
-      <p class="reveal delay-3">
-        If you’d like your project to be one of the first to feature here, <strong>we’d love to talk</strong>. It’s a chance to shape something from the ground up and help set the tone for the work that defines Neon Forge.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-    <!-- ===== FOOTER ===== -->
-    <footer role="contentinfo">
-      Mon–Fri · 09:00–17:00<br>© <span id="year"></span> Neon Forge
     </footer>
+  </div>
 
-  </div> <!-- END .site -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <!-- ===== SCRIPTS ===== -->
+    (function () {
+      const reveals = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        reveals.forEach(el => el.classList.add('visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(el => io.observe(el));
+    })();
 
-    <script>
-  // Auto-update footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
+    (function () {
+      const toggle = document.querySelector('.mobile-toggle');
+      const panel = document.getElementById('mobilePanel');
+      const mobileLinks = panel.querySelectorAll('a');
 
-  // Reveal animations
-  (function() {
-    var els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(function(el) { el.classList.add('reveal-visible'); });
-      return;
-    }
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal-visible');
-          io.unobserve(entry.target);
+      function closeMenu() {
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+      }
+
+      function openMenu() {
+        document.body.classList.add('menu-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+      }
+
+      toggle.addEventListener('click', function () {
+        if (document.body.classList.contains('menu-open')) {
+          closeMenu();
+        } else {
+          openMenu();
         }
       });
-    }, { threshold: 0.15 });
-    els.forEach(function(el) { io.observe(el); });
-  })();
 
-  // Menu + hashless smooth scroll
-  (function() {
-    var body = document.body;
-    var burger = document.querySelector('.hamburger');
-    var panel = document.getElementById('side-panel');
-    var site = document.querySelector('.site');
-
-    function openMenu() {
-      body.classList.add('menu-open');
-      burger.setAttribute('aria-expanded', 'true');
-      burger.setAttribute('aria-label', 'Close menu');
-      panel.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeMenu() {
-      body.classList.remove('menu-open');
-      burger.setAttribute('aria-expanded', 'false');
-      burger.setAttribute('aria-label', 'Open menu');
-      panel.setAttribute('aria-hidden', 'true');
-    }
-
-    burger.addEventListener('click', function() {
-      body.classList.contains('menu-open') ? closeMenu() : openMenu();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && body.classList.contains('menu-open')) closeMenu();
-    });
-
-    // Remove #top on load
-    if (location.hash && location.hash.toLowerCase() === '#top') {
-      history.replaceState(null, '', location.pathname + location.search);
-    }
-
-    // Smooth scroll without URL hash
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        var id = a.getAttribute('href').slice(1);
-        if (!id) { e.preventDefault(); return; }
-
-        // Scroll container instead of window now
-        if (id.toLowerCase() === 'top') {
-          e.preventDefault();
-          site.scrollTo({ top: 0, behavior: 'smooth' });
-          history.replaceState(null, '', location.pathname + location.search);
-          closeMenu();
-          return;
-        }
-
-        var target = document.getElementById(id);
-        if (target) {
-          e.preventDefault();
-
-          // Calculate distance relative to `.site` scroll container
-          var siteTop = site.scrollTop;
-          var targetTop = target.getBoundingClientRect().top + siteTop - 72;
-
-          site.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
-          history.replaceState(null, '', location.pathname + location.search);
-          closeMenu();
-        }
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
       });
-    });
-  })();
-    </script>
 
-  <noscript>
-    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
-  </noscript>
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
 
-  </body>
+      panel.hidden = true;
+    })();
 
+    (function () {
+      const navLinks = document.querySelectorAll('.main-nav a');
+      const sections = [...document.querySelectorAll('main section[id]')];
+      if (!('IntersectionObserver' in window) || !sections.length) return;
+
+      const map = new Map();
+      navLinks.forEach(link => map.set(link.getAttribute('href').slice(1), link));
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const link = map.get(entry.target.id);
+          if (entry.isIntersecting) {
+            navLinks.forEach(a => a.classList.remove('active'));
+            if (link) link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+      sections.forEach(section => io.observe(section));
+    })();
+
+    (function () {
+      const counters = document.querySelectorAll('[data-counter]');
+      if (!('IntersectionObserver' in window)) {
+        counters.forEach(counter => counter.textContent = counter.getAttribute('data-counter'));
+        return;
+      }
+
+      const animateCounter = (el) => {
+        const target = Number(el.getAttribute('data-counter'));
+        const duration = 1300;
+        const start = performance.now();
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      };
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      counters.forEach(counter => io.observe(counter));
+    })();
+
+    (function () {
+      const field = document.getElementById('signalField');
+      if (!field) return;
+
+      const bounds = () => field.getBoundingClientRect();
+      const seed = [
+        [18, 28],[36, 16],[58, 24],[77, 20],
+        [22, 52],[44, 44],[68, 52],[84, 46],
+        [16, 78],[40, 72],[60, 82],[78, 74]
+      ];
+
+      const nodes = [];
+      const beams = [];
+      const fragment = document.createDocumentFragment();
+
+      seed.forEach((point) => {
+        const node = document.createElement('span');
+        node.className = 'signal-node';
+        node.style.left = point[0] + '%';
+        node.style.top = point[1] + '%';
+        fragment.appendChild(node);
+        nodes.push(node);
+      });
+
+      for (let i = 0; i < seed.length - 1; i++) {
+        const beam = document.createElement('span');
+        beam.className = 'signal-beam';
+        fragment.appendChild(beam);
+        beams.push(beam);
+      }
+
+      field.appendChild(fragment);
+
+      function positionBeams() {
+        const rect = bounds();
+        beams.forEach((beam, i) => {
+          const a = nodes[i].getBoundingClientRect();
+          const b = nodes[i + 1].getBoundingClientRect();
+          const ax = a.left + a.width / 2 - rect.left;
+          const ay = a.top + a.height / 2 - rect.top;
+          const bx = b.left + b.width / 2 - rect.left;
+          const by = b.top + b.height / 2 - rect.top;
+          const dx = bx - ax;
+          const dy = by - ay;
+          const len = Math.sqrt(dx * dx + dy * dy);
+
+          beam.style.width = len + 'px';
+          beam.style.left = ax + 'px';
+          beam.style.top = ay + 'px';
+          beam.style.transform = 'rotate(' + Math.atan2(dy, dx) + 'rad)';
+        });
+      }
+
+      positionBeams();
+      window.addEventListener('resize', positionBeams);
+
+      function updateNodes(clientX, clientY) {
+        const rect = bounds();
+        nodes.forEach((node, index) => {
+          const baseX = seed[index][0] / 100 * rect.width;
+          const baseY = seed[index][1] / 100 * rect.height;
+          const dx = clientX - rect.left - baseX;
+          const dy = clientY - rect.top - baseY;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const pull = Math.max(0, 1 - dist / 240) * 18;
+          const offsetX = (dx / dist) * pull;
+          const offsetY = (dy / dist) * pull;
+          node.style.transform = 'translate(' + offsetX.toFixed(2) + 'px,' + offsetY.toFixed(2) + 'px) scale(' + (1 + pull / 48).toFixed(3) + ')';
+        });
+        positionBeams();
+      }
+
+      field.addEventListener('pointermove', (e) => updateNodes(e.clientX, e.clientY));
+      field.addEventListener('pointerleave', () => {
+        nodes.forEach(node => node.style.transform = '');
+        positionBeams();
+      });
+
+      field.addEventListener('pointerdown', (e) => {
+        const ping = document.createElement('span');
+        ping.className = 'signal-ping';
+        ping.style.left = (e.clientX - bounds().left) + 'px';
+        ping.style.top = (e.clientY - bounds().top) + 'px';
+        field.appendChild(ping);
+        setTimeout(() => ping.remove(), 1800);
+      });
+    })();
+
+    (function () {
+      const latencyValue = document.getElementById('latencyValue');
+      const integrityValue = document.getElementById('integrityValue');
+      const signalValue = document.getElementById('signalValue');
+      const latencyMeter = document.getElementById('latencyMeter');
+      const integrityMeter = document.getElementById('integrityMeter');
+      const signalMeter = document.getElementById('signalMeter');
+
+      function update() {
+        const latency = 14 + Math.floor(Math.random() * 11);
+        const integrity = 95 + Math.floor(Math.random() * 5);
+        const signal = 84 + Math.floor(Math.random() * 11);
+
+        latencyValue.textContent = latency;
+        integrityValue.textContent = integrity;
+        signalValue.textContent = signal;
+
+        latencyMeter.style.width = Math.min(100, 100 - latency + 10) + '%';
+        integrityMeter.style.width = integrity + '%';
+        signalMeter.style.width = signal + '%';
+      }
+
+      update();
+      setInterval(update, 1600);
+    })();
+
+    (function () {
+      const windowEl = document.getElementById('codeWindow');
+      if (!windowEl) return;
+
+      const lines = [
+        'route.map("brand", clarity);',
+        'signal.performance(optimised);',
+        'schema.attach("ProfessionalService");',
+        'layout.refine({ responsive: true });',
+        'motion.balance({ subtle: true });',
+        'deploy.withConfidence();'
+      ];
+
+      let index = 0;
+      function drawLine() {
+        const line = document.createElement('div');
+        line.className = 'code-line';
+        line.innerHTML = '<em>' + String(index + 1).padStart(2, '0') + '</em><span>' + lines[index] + '</span>';
+        windowEl.innerHTML = '';
+        windowEl.appendChild(line);
+        index = (index + 1) % lines.length;
+      }
+
+      drawLine();
+      setInterval(drawLine, 1400);
+    })();
+
+    (function () {
+      const canvas = document.getElementById('meshCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const points = [];
+      const pointer = { x: null, y: null };
+
+      function resize() {
+        canvas.width = window.innerWidth * Math.min(window.devicePixelRatio || 1, 2);
+        canvas.height = window.innerHeight * Math.min(window.devicePixelRatio || 1, 2);
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.setTransform(1,0,0,1,0,0);
+        ctx.scale(canvas.width / window.innerWidth, canvas.height / window.innerHeight);
+        seed();
+      }
+
+      function seed() {
+        points.length = 0;
+        const spacing = Math.max(110, Math.min(window.innerWidth, window.innerHeight) / 6);
+        for (let x = spacing * .5; x < window.innerWidth; x += spacing) {
+          for (let y = spacing * .5; y < window.innerHeight; y += spacing) {
+            points.push({
+              x,
+              y,
+              ox: x + (Math.random() * 20 - 10),
+              oy: y + (Math.random() * 20 - 10),
+              vx: 0,
+              vy: 0
+            });
+          }
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+        for (let i = 0; i < points.length; i++) {
+          const p = points[i];
+          const dx0 = p.ox - p.x;
+          const dy0 = p.oy - p.y;
+          p.vx += dx0 * 0.002;
+          p.vy += dy0 * 0.002;
+
+          if (pointer.x !== null) {
+            const dx = p.x - pointer.x;
+            const dy = p.y - pointer.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 180) {
+              const force = (1 - dist / 180) * 0.07;
+              p.vx += (dx / (dist || 1)) * force;
+              p.vy += (dy / (dist || 1)) * force;
+            }
+          }
+
+          p.vx *= 0.96;
+          p.vy *= 0.96;
+          p.x += p.vx;
+          p.y += p.vy;
+        }
+
+        ctx.lineWidth = 1;
+        for (let i = 0; i < points.length; i++) {
+          for (let j = i + 1; j < points.length; j++) {
+            const a = points[i];
+            const b = points[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 170) {
+              const alpha = (1 - dist / 170) * 0.12;
+              ctx.strokeStyle = 'rgba(120, 180, 255,' + alpha + ')';
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        points.forEach(p => {
+          ctx.fillStyle = 'rgba(150, 205, 255, 0.35)';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resize);
+      window.addEventListener('pointermove', e => {
+        pointer.x = e.clientX;
+        pointer.y = e.clientY;
+      });
+      window.addEventListener('pointerleave', () => {
+        pointer.x = null;
+        pointer.y = null;
+      });
+
+      resize();
+      animate();
+    })();
+
+    (function () {
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const button = item.querySelector('.faq-trigger');
+        const body = item.querySelector('.faq-body');
+        button.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          faqItems.forEach(other => {
+            other.classList.remove('open');
+            other.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+            other.querySelector('.faq-body').style.maxHeight = null;
+          });
+
+          if (!isOpen) {
+            item.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
+        });
+      });
+    })();
+
+    (function () {
+      const stage = document.getElementById('demoStage');
+      const core = document.getElementById('draggableCore');
+      const offsetReadout = document.getElementById('offsetReadout');
+      const stabilityReadout = document.getElementById('stabilityReadout');
+      const modeReadout = document.getElementById('modeReadout');
+
+      if (!stage || !core) return;
+
+      let dragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function applyPosition(x, y) {
+        const rect = stage.getBoundingClientRect();
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const maxX = rect.width * 0.24;
+        const maxY = rect.height * 0.24;
+        offsetX = clamp(x - cx, -maxX, maxX);
+        offsetY = clamp(y - cy, -maxY, maxY);
+
+        core.style.left = (cx + offsetX) + 'px';
+        core.style.top = (cy + offsetY) + 'px';
+
+        const distance = Math.round(Math.sqrt(offsetX * offsetX + offsetY * offsetY));
+        const stability = Math.max(0, 100 - Math.round(distance / 2));
+        let mode = 'Aligned';
+        if (distance > 95) mode = 'Adaptive';
+        if (distance > 155) mode = 'Exploratory';
+
+        offsetReadout.textContent = distance + ' px';
+        stabilityReadout.textContent = stability + '%';
+        modeReadout.textContent = mode;
+      }
+
+      function resetPosition() {
+        const rect = stage.getBoundingClientRect();
+        applyPosition(rect.width / 2, rect.height / 2);
+      }
+
+      function onPointerMove(e) {
+        if (!dragging) return;
+        const rect = stage.getBoundingClientRect();
+        applyPosition(e.clientX - rect.left, e.clientY - rect.top);
+      }
+
+      core.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        core.setPointerCapture(e.pointerId);
+      });
+
+      core.addEventListener('pointerup', () => dragging = false);
+      core.addEventListener('pointercancel', () => dragging = false);
+      stage.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('resize', resetPosition);
+
+      core.addEventListener('keydown', (e) => {
+        const rect = stage.getBoundingClientRect();
+        const cx = rect.width / 2 + offsetX;
+        const cy = rect.height / 2 + offsetY;
+        if (e.key === 'ArrowLeft') applyPosition(cx - 16, cy);
+        if (e.key === 'ArrowRight') applyPosition(cx + 16, cy);
+        if (e.key === 'ArrowUp') applyPosition(cx, cy - 16);
+        if (e.key === 'ArrowDown') applyPosition(cx, cy + 16);
+      });
+
+      resetPosition();
+    })();
+  </script>
+</body>
 </html>
